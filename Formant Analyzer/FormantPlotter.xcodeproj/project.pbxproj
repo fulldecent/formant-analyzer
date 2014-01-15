@@ -16,14 +16,16 @@
 		C1059EB514C86ADD0014DC93 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB214C86ADD0014DC93 /* green_light.png */; };
 		C1059EB614C86ADD0014DC93 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB314C86ADD0014DC93 /* blue_light.png */; };
 		C1059EC914C872550014DC93 /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1059EC814C872540014DC93 /* PlotView.m */; };
+		C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1759B5614C9D39300509C50 /* AudioToolbox.framework */; };
+		C1759B5B14C9D47400509C50 /* AudioDeviceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */; };
 		C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878514C69DF0008CA643 /* UIKit.framework */; };
 		C18C878814C69DF0008CA643 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878714C69DF0008CA643 /* Foundation.framework */; };
 		C18C878A14C69DF0008CA643 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878914C69DF0008CA643 /* CoreGraphics.framework */; };
 		C18C879014C69DF0008CA643 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C18C878E14C69DF0008CA643 /* InfoPlist.strings */; };
 		C18C879314C69DF0008CA643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879214C69DF0008CA643 /* main.m */; };
-		C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */; };
+		C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */; };
 		C18C879914C69DF1008CA643 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C879714C69DF1008CA643 /* MainWindow.xib */; };
-		C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879B14C69DF1008CA643 /* FirstViewController.m */; };
+		C18C879C14C69DF1008CA643 /* FirstViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C18C879B14C69DF1008CA643 /* FirstViewController.mm */; };
 		C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879E14C69DF1008CA643 /* SecondViewController.m */; };
 		C18C87A214C69DF1008CA643 /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A014C69DF1008CA643 /* FirstView.xib */; };
 		C18C87A514C69DF1008CA643 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A314C69DF1008CA643 /* SecondView.xib */; };
@@ -40,6 +42,9 @@
 		C1059EB314C86ADD0014DC93 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
 		C1059EC714C872540014DC93 /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlotView.h; path = ../PlotView.h; sourceTree = "<group>"; };
 		C1059EC814C872540014DC93 /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlotView.m; path = ../PlotView.m; sourceTree = "<group>"; };
+		C1759B5614C9D39300509C50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		C1759B5914C9D47400509C50 /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDeviceManager.h; path = ../AudioDeviceManager.h; sourceTree = "<group>"; };
+		C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AudioDeviceManager.mm; path = ../AudioDeviceManager.mm; sourceTree = "<group>"; };
 		C18C878114C69DF0008CA643 /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18C878514C69DF0008CA643 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C18C878714C69DF0008CA643 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -49,10 +54,10 @@
 		C18C879114C69DF0008CA643 /* FormantPlotter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Prefix.pch"; sourceTree = "<group>"; };
 		C18C879214C69DF0008CA643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormantPlotterAppDelegate.h; sourceTree = "<group>"; };
-		C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormantPlotterAppDelegate.m; sourceTree = "<group>"; };
+		C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FormantPlotterAppDelegate.mm; sourceTree = "<group>"; };
 		C18C879814C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C18C879A14C69DF1008CA643 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C18C879B14C69DF1008CA643 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		C18C879B14C69DF1008CA643 /* FirstViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FirstViewController.mm; sourceTree = "<group>"; };
 		C18C879D14C69DF1008CA643 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		C18C879E14C69DF1008CA643 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C18C87A114C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
@@ -64,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */,
 				C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */,
 				C18C878814C69DF0008CA643 /* Foundation.framework in Frameworks */,
 				C18C878A14C69DF0008CA643 /* CoreGraphics.framework in Frameworks */,
@@ -93,6 +99,7 @@
 		C18C878414C69DF0008CA643 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C1759B5614C9D39300509C50 /* AudioToolbox.framework */,
 				C18C878514C69DF0008CA643 /* UIKit.framework */,
 				C18C878714C69DF0008CA643 /* Foundation.framework */,
 				C18C878914C69DF0008CA643 /* CoreGraphics.framework */,
@@ -104,14 +111,16 @@
 			isa = PBXGroup;
 			children = (
 				C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */,
-				C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */,
+				C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */,
 				C18C879714C69DF1008CA643 /* MainWindow.xib */,
 				C18C879A14C69DF1008CA643 /* FirstViewController.h */,
-				C18C879B14C69DF1008CA643 /* FirstViewController.m */,
+				C18C879B14C69DF1008CA643 /* FirstViewController.mm */,
 				C18C87A014C69DF1008CA643 /* FirstView.xib */,
 				C18C879D14C69DF1008CA643 /* SecondViewController.h */,
 				C18C879E14C69DF1008CA643 /* SecondViewController.m */,
 				C18C87A314C69DF1008CA643 /* SecondView.xib */,
+				C1759B5914C9D47400509C50 /* AudioDeviceManager.h */,
+				C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */,
 				C1059EC714C872540014DC93 /* PlotView.h */,
 				C1059EC814C872540014DC93 /* PlotView.m */,
 				C18C878C14C69DF0008CA643 /* Supporting Files */,
@@ -163,6 +172,9 @@
 /* Begin PBXProject section */
 		C18C877814C69DF0008CA643 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = C18C877B14C69DF0008CA643 /* Build configuration list for PBXProject "FormantPlotter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -208,10 +220,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C18C879314C69DF0008CA643 /* main.m in Sources */,
-				C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */,
-				C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */,
+				C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.mm in Sources */,
+				C18C879C14C69DF1008CA643 /* FirstViewController.mm in Sources */,
 				C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */,
 				C1059EC914C872550014DC93 /* PlotView.m in Sources */,
+				C1759B5B14C9D47400509C50 /* AudioDeviceManager.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +270,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
@@ -267,8 +280,8 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -277,16 +290,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Release;
@@ -299,7 +312,9 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
+				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -312,6 +327,7 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;
