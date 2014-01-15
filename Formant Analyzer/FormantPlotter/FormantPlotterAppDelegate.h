@@ -2,20 +2,18 @@
 //  FormantPlotterAppDelegate.h
 //  FormantPlotter
 //
-//  Created by Muhammad Akmal Butt on 1/14/12.
+//  Created by Muhammad Akmal Butt on 1/18/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@class FormantPlotterViewController;
-
-@interface FormantPlotterAppDelegate : NSObject <UIApplicationDelegate> {
+@interface FormantPlotterAppDelegate : NSObject <UIApplicationDelegate, UITabBarControllerDelegate> {
 
 }
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 
-@property (nonatomic, retain) IBOutlet FormantPlotterViewController *viewController;
+@property (nonatomic, retain) IBOutlet UITabBarController *tabBarController;
 
 @end

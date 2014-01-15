@@ -2,26 +2,24 @@
 //  FormantPlotterAppDelegate.m
 //  FormantPlotter
 //
-//  Created by Muhammad Akmal Butt on 1/14/12.
+//  Created by Muhammad Akmal Butt on 1/18/12.
 //  Copyright 2012 __MyCompanyName__. All rights reserved.
 //
 
 #import "FormantPlotterAppDelegate.h"
-
-#import "FormantPlotterViewController.h"
 
 @implementation FormantPlotterAppDelegate
 
 
 @synthesize window=_window;
 
-@synthesize viewController=_viewController;
+@synthesize tabBarController=_tabBarController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-     
-    self.window.rootViewController = self.viewController;
+    // Add the tab bar controller's current view as a subview of the window
+    self.window.rootViewController = self.tabBarController;
     [self.window makeKeyAndVisible];
     return YES;
 }
@@ -68,8 +66,22 @@
 - (void)dealloc
 {
     [_window release];
-    [_viewController release];
+    [_tabBarController release];
     [super dealloc];
 }
+
+/*
+// Optional UITabBarControllerDelegate method.
+- (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
+{
+}
+*/
+
+/*
+// Optional UITabBarControllerDelegate method.
+- (void)tabBarController:(UITabBarController *)tabBarController didEndCustomizingViewControllers:(NSArray *)viewControllers changed:(BOOL)changed
+{
+}
+*/
 
 @end
