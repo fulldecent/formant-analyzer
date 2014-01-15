@@ -38,6 +38,7 @@
 		C18C87A514C69DF1008CA643 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A314C69DF1008CA643 /* SecondView.xib */; };
 		C1B2946E14E9A420008AF596 /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */; };
 		C1B2946F14E9A420008AF596 /* vowelPlotBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */; };
+		C1F800CC150EDD4100ADA64F /* vowel_bground.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F800CB150EDD4100ADA64F /* vowel_bground.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		C18C87A414C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
 		C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
 		C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vowelPlotBackground@2x.png"; sourceTree = "<group>"; };
+		C1F800CB150EDD4100ADA64F /* vowel_bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowel_bground.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 				C10B4C7A14E2F13F0015C204 /* four.raw */,
 				C10B4C7B14E2F13F0015C204 /* who.raw */,
 				C1059EAF14C86ACA0014DC93 /* formant_plot_help.html */,
+				C1F800CB150EDD4100ADA64F /* vowel_bground.png */,
 				C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */,
 				C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */,
 				C1059EB114C86ADD0014DC93 /* red_light.png */,
@@ -199,6 +202,9 @@
 /* Begin PBXProject section */
 		C18C877814C69DF0008CA643 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+			};
 			buildConfigurationList = C18C877B14C69DF0008CA643 /* Build configuration list for PBXProject "FormantPlotter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -242,6 +248,7 @@
 				C10B4C8214E2F13F0015C204 /* who.raw in Resources */,
 				C1B2946E14E9A420008AF596 /* vowelPlotBackground.png in Resources */,
 				C1B2946F14E9A420008AF596 /* vowelPlotBackground@2x.png in Resources */,
+				C1F800CC150EDD4100ADA64F /* vowel_bground.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,7 +309,6 @@
 		C18C87A614C69DF1008CA643 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -313,6 +319,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				ONLY_ACTIVE_ARCH = YES;
 				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
 				SDKROOT = iphoneos;
@@ -322,7 +329,6 @@
 		C18C87A714C69DF1008CA643 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -347,6 +353,7 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,12 +368,15 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
