@@ -1,0 +1,32 @@
+   After many matlab simulations and hours of research (Adam 
+found some great speech processing books that are helping us 
+mucho) we have redirected our efforts.  Initially, we thought that
+wavelets would be the panacea that would allow us to easily 
+compare speech of different words and speakers.  However, it 
+appears that sampling at 8K (or even 16K) and applying filterbanks
+to the sample did not give enough frequency resolution to 
+differentiate between speakers.  We will still try and use a 
+filterbank approach in analyzing words with transient elements 
+(sh and ch sounds) but for vowel sound we have began focusing on 
+pitch determination and formant analysis.
+   As we have learned from the many speech analysis books we have
+aquired, the human vocal system can be modeled as an all-pole
+system when producing vowel sounds.  Using forward-backward
+Auto-Regressive methods we were able to identify the formant
+components in vowel sound sample.  We hope to be able to use the
+first two formant frequencies and amplitudes in determing the
+vowel spoken.  As shown in many text, the first few formant
+frequencies when plotted against each other tend to cluster. 
+This would be useful in producing formant-vowel maps and
+comparing test signal formant against the map in determing the
+sampled vowel.  
+   Another useful idea in speech recognition is the vocal tract
+model.  We were able to produce an AR model (using the ar command
+in matlab) and then use the AR transfer function excited by an 
+impulse train (representing the glottal impulses) to SYNTHESIZE 
+the vowel sound!  We thought that was super kewl.  
+   The gang is slowly but surely regrouping after a difficult
+start and will pull together a report outlining the difficulties 
+we've encountered and the progress we've made in speech synthesis.
+The formant analysis we are currently learning about looks 
+promising.

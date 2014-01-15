@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C10018DE14C1C35100AB8C2F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10018DD14C1C35100AB8C2F /* UIKit.framework */; };
+		C10018E014C1C35100AB8C2F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10018DF14C1C35100AB8C2F /* Foundation.framework */; };
+		C10018E214C1C35100AB8C2F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C10018E114C1C35100AB8C2F /* CoreGraphics.framework */; };
+		C10018E814C1C35100AB8C2F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C10018E614C1C35100AB8C2F /* InfoPlist.strings */; };
+		C10018EB14C1C35100AB8C2F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C10018EA14C1C35100AB8C2F /* main.m */; };
+		C10018EE14C1C35100AB8C2F /* FormantPlotterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C10018ED14C1C35100AB8C2F /* FormantPlotterAppDelegate.m */; };
+		C10018F114C1C35200AB8C2F /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10018EF14C1C35200AB8C2F /* MainWindow.xib */; };
+		C10018F414C1C35200AB8C2F /* FormantPlotterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C10018F314C1C35200AB8C2F /* FormantPlotterViewController.m */; };
+		C10018F714C1C35200AB8C2F /* FormantPlotterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C10018F514C1C35200AB8C2F /* FormantPlotterViewController.xib */; };
+		C100190614C1CCEE00AB8C2F /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C100190314C1CCEE00AB8C2F /* red_light.png */; };
+		C100190714C1CCEE00AB8C2F /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C100190414C1CCEE00AB8C2F /* green_light.png */; };
+		C100190814C1CCEE00AB8C2F /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C100190514C1CCEE00AB8C2F /* blue_light.png */; };
+		C100191214C1D05600AB8C2F /* help_button.png in Resources */ = {isa = PBXBuildFile; fileRef = C100191114C1D05600AB8C2F /* help_button.png */; };
+		C100191A14C1D41900AB8C2F /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = C100191914C1D41900AB8C2F /* PlotView.m */; };
+		C100191E14C1D4AE00AB8C2F /* HelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C100191C14C1D4AE00AB8C2F /* HelpViewController.m */; };
+		C100191F14C1D4AE00AB8C2F /* HelpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C100191D14C1D4AE00AB8C2F /* HelpViewController.xib */; };
+		C100192B14C1DAFA00AB8C2F /* formant_plot_help.html in Resources */ = {isa = PBXBuildFile; fileRef = C100192A14C1DAFA00AB8C2F /* formant_plot_help.html */; };
+		C100192D14C1DC5600AB8C2F /* bg.png in Resources */ = {isa = PBXBuildFile; fileRef = C100192C14C1DC5600AB8C2F /* bg.png */; };
+		C100192F14C1F6CB00AB8C2F /* red_light_tb.png in Resources */ = {isa = PBXBuildFile; fileRef = C100192E14C1F6CB00AB8C2F /* red_light_tb.png */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C10018D914C1C35100AB8C2F /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C10018DD14C1C35100AB8C2F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C10018DF14C1C35100AB8C2F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C10018E114C1C35100AB8C2F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C10018E514C1C35100AB8C2F /* FormantPlotter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FormantPlotter-Info.plist"; sourceTree = "<group>"; };
+		C10018E714C1C35100AB8C2F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C10018E914C1C35100AB8C2F /* FormantPlotter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Prefix.pch"; sourceTree = "<group>"; };
+		C10018EA14C1C35100AB8C2F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C10018EC14C1C35100AB8C2F /* FormantPlotterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormantPlotterAppDelegate.h; sourceTree = "<group>"; };
+		C10018ED14C1C35100AB8C2F /* FormantPlotterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormantPlotterAppDelegate.m; sourceTree = "<group>"; };
+		C10018F014C1C35200AB8C2F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		C10018F214C1C35200AB8C2F /* FormantPlotterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormantPlotterViewController.h; sourceTree = "<group>"; };
+		C10018F314C1C35200AB8C2F /* FormantPlotterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormantPlotterViewController.m; sourceTree = "<group>"; };
+		C10018F614C1C35200AB8C2F /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FormantPlotterViewController.xib; sourceTree = "<group>"; };
+		C100190314C1CCEE00AB8C2F /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
+		C100190414C1CCEE00AB8C2F /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
+		C100190514C1CCEE00AB8C2F /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
+		C100191114C1D05600AB8C2F /* help_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = help_button.png; sourceTree = "<group>"; };
+		C100191814C1D41900AB8C2F /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlotView.h; path = FormantPlotter.xcodeproj/PlotView.h; sourceTree = SOURCE_ROOT; };
+		C100191914C1D41900AB8C2F /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlotView.m; path = FormantPlotter.xcodeproj/PlotView.m; sourceTree = SOURCE_ROOT; };
+		C100191B14C1D4AE00AB8C2F /* HelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HelpViewController.h; path = FormantPlotter.xcodeproj/HelpViewController.h; sourceTree = SOURCE_ROOT; };
+		C100191C14C1D4AE00AB8C2F /* HelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HelpViewController.m; path = FormantPlotter.xcodeproj/HelpViewController.m; sourceTree = SOURCE_ROOT; };
+		C100191D14C1D4AE00AB8C2F /* HelpViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = HelpViewController.xib; path = FormantPlotter.xcodeproj/HelpViewController.xib; sourceTree = SOURCE_ROOT; };
+		C100192A14C1DAFA00AB8C2F /* formant_plot_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = formant_plot_help.html; sourceTree = "<group>"; };
+		C100192C14C1DC5600AB8C2F /* bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bg.png; sourceTree = "<group>"; };
+		C100192E14C1F6CB00AB8C2F /* red_light_tb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light_tb.png; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C10018D614C1C35100AB8C2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10018DE14C1C35100AB8C2F /* UIKit.framework in Frameworks */,
+				C10018E014C1C35100AB8C2F /* Foundation.framework in Frameworks */,
+				C10018E214C1C35100AB8C2F /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C10018CE14C1C35100AB8C2F = {
+			isa = PBXGroup;
+			children = (
+				C10018E314C1C35100AB8C2F /* FormantPlotter */,
+				C10018DC14C1C35100AB8C2F /* Frameworks */,
+				C10018DA14C1C35100AB8C2F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C10018DA14C1C35100AB8C2F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C10018D914C1C35100AB8C2F /* FormantPlotter.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C10018DC14C1C35100AB8C2F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C10018DD14C1C35100AB8C2F /* UIKit.framework */,
+				C10018DF14C1C35100AB8C2F /* Foundation.framework */,
+				C10018E114C1C35100AB8C2F /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C10018E314C1C35100AB8C2F /* FormantPlotter */ = {
+			isa = PBXGroup;
+			children = (
+				C10018EC14C1C35100AB8C2F /* FormantPlotterAppDelegate.h */,
+				C10018ED14C1C35100AB8C2F /* FormantPlotterAppDelegate.m */,
+				C10018EF14C1C35200AB8C2F /* MainWindow.xib */,
+				C10018F214C1C35200AB8C2F /* FormantPlotterViewController.h */,
+				C10018F314C1C35200AB8C2F /* FormantPlotterViewController.m */,
+				C10018F514C1C35200AB8C2F /* FormantPlotterViewController.xib */,
+				C100191B14C1D4AE00AB8C2F /* HelpViewController.h */,
+				C100191C14C1D4AE00AB8C2F /* HelpViewController.m */,
+				C100191D14C1D4AE00AB8C2F /* HelpViewController.xib */,
+				C100191814C1D41900AB8C2F /* PlotView.h */,
+				C100191914C1D41900AB8C2F /* PlotView.m */,
+				C10018E414C1C35100AB8C2F /* Supporting Files */,
+			);
+			path = FormantPlotter;
+			sourceTree = "<group>";
+		};
+		C10018E414C1C35100AB8C2F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C100192C14C1DC5600AB8C2F /* bg.png */,
+				C100190314C1CCEE00AB8C2F /* red_light.png */,
+				C100192E14C1F6CB00AB8C2F /* red_light_tb.png */,
+				C100190414C1CCEE00AB8C2F /* green_light.png */,
+				C100190514C1CCEE00AB8C2F /* blue_light.png */,
+				C100191114C1D05600AB8C2F /* help_button.png */,
+				C100192A14C1DAFA00AB8C2F /* formant_plot_help.html */,
+				C10018E514C1C35100AB8C2F /* FormantPlotter-Info.plist */,
+				C10018E614C1C35100AB8C2F /* InfoPlist.strings */,
+				C10018E914C1C35100AB8C2F /* FormantPlotter-Prefix.pch */,
+				C10018EA14C1C35100AB8C2F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C10018D814C1C35100AB8C2F /* FormantPlotter */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C10018FA14C1C35200AB8C2F /* Build configuration list for PBXNativeTarget "FormantPlotter" */;
+			buildPhases = (
+				C10018D514C1C35100AB8C2F /* Sources */,
+				C10018D614C1C35100AB8C2F /* Frameworks */,
+				C10018D714C1C35100AB8C2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FormantPlotter;
+			productName = FormantPlotter;
+			productReference = C10018D914C1C35100AB8C2F /* FormantPlotter.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C10018D014C1C35100AB8C2F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = C10018D314C1C35100AB8C2F /* Build configuration list for PBXProject "FormantPlotter" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C10018CE14C1C35100AB8C2F;
+			productRefGroup = C10018DA14C1C35100AB8C2F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C10018D814C1C35100AB8C2F /* FormantPlotter */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C10018D714C1C35100AB8C2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10018E814C1C35100AB8C2F /* InfoPlist.strings in Resources */,
+				C10018F114C1C35200AB8C2F /* MainWindow.xib in Resources */,
+				C10018F714C1C35200AB8C2F /* FormantPlotterViewController.xib in Resources */,
+				C100190614C1CCEE00AB8C2F /* red_light.png in Resources */,
+				C100190714C1CCEE00AB8C2F /* green_light.png in Resources */,
+				C100190814C1CCEE00AB8C2F /* blue_light.png in Resources */,
+				C100191214C1D05600AB8C2F /* help_button.png in Resources */,
+				C100191F14C1D4AE00AB8C2F /* HelpViewController.xib in Resources */,
+				C100192B14C1DAFA00AB8C2F /* formant_plot_help.html in Resources */,
+				C100192D14C1DC5600AB8C2F /* bg.png in Resources */,
+				C100192F14C1F6CB00AB8C2F /* red_light_tb.png in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C10018D514C1C35100AB8C2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C10018EB14C1C35100AB8C2F /* main.m in Sources */,
+				C10018EE14C1C35100AB8C2F /* FormantPlotterAppDelegate.m in Sources */,
+				C10018F414C1C35200AB8C2F /* FormantPlotterViewController.m in Sources */,
+				C100191A14C1D41900AB8C2F /* PlotView.m in Sources */,
+				C100191E14C1D4AE00AB8C2F /* HelpViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C10018E614C1C35100AB8C2F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C10018E714C1C35100AB8C2F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		C10018EF14C1C35200AB8C2F /* MainWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C10018F014C1C35200AB8C2F /* en */,
+			);
+			name = MainWindow.xib;
+			sourceTree = "<group>";
+		};
+		C10018F514C1C35200AB8C2F /* FormantPlotterViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C10018F614C1C35200AB8C2F /* en */,
+			);
+			name = FormantPlotterViewController.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C10018F814C1C35200AB8C2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Will Entriken (LZSQ9DS457)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "E072227A-F989-4660-8622-CE5F3D5D226A";
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		C10018F914C1C35200AB8C2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				SDKROOT = iphoneos;
+			};
+			name = Release;
+		};
+		C10018FB14C1C35200AB8C2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C10018FC14C1C35200AB8C2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C10018D314C1C35100AB8C2F /* Build configuration list for PBXProject "FormantPlotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10018F814C1C35200AB8C2F /* Debug */,
+				C10018F914C1C35200AB8C2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C10018FA14C1C35200AB8C2F /* Build configuration list for PBXNativeTarget "FormantPlotter" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C10018FB14C1C35200AB8C2F /* Debug */,
+				C10018FC14C1C35200AB8C2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C10018D014C1C35100AB8C2F /* Project object */;
+}

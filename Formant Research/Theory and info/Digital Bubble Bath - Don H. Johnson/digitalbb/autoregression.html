@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+   <TITLE>Autoregressive Models</TITLE>
+</HEAD>
+<HTML>
+
+<H2 ALIGN=CENTER>Autoregressive Models</H2>
+
+<P>The autoregressive model is one of a group of linear prediction formulas that attempt
+to predict an output y[n] of a system based on the previous outputs 
+( y[n-1],y[n-2]...) and inputs ( x[n], x[n-1], x[n-2]...). </p> 
+
+<P>Deriving the linear prediction model involves determining the coeffiecients a1,a2,..
+and b0,b1,b2,... in the equation:</P>
+
+<blockquote>	ye[n] (estimated) = a1*y[n-1] + a2*y[n-2]... + b0*x[n] + b1*x[n-1] + ...
+</blockquote>
+
+<P>Note the REMARKABLE similarity between the prediction formula and the difference 
+equation used to describe discrete linear time invariant systems.  Calculating a set
+of coefficients that give a good prediciton ye[n] is tantamount to determining what 
+the system is, within the constraints of the order chosen.</P>
+
+<P>A model which depends only on the previous outputs of the system is called an 
+autoregressive model (AR), while a model which depends only on the inputs to the
+system is called a moving average model (MA), and of course a model based on both
+inputs and outputs is an autoregressive-moving-average model (ARMA).  Note that by
+definition, the AR model has only poles while the MA model has only zeros.
+</P>
+
+<P>Several methods and algorithms exist for calculating the coefficients of the AR
+model, all of which are implemented by the matlab command 'ar'.  We use the default
+setting ('forward-backward') to calculate the AR model for the vocal tract, with the
+following justifications:</P>
+
+<blockquote>	The simplest model for the vocal tract, consisting of linked cylindrical 
+	tubes, produces an all-pole transfer function.
+<BR><BR>
+	Only the outputs of the system are available to us.
+</blockquote>
+
+<P>Note that the AR model is based on frequency-domain analysis and should be windowed.
+ (We use the hamming.)
+</P>
+
+<P>The order of the system:  We are using the AR model to determine the characteristics
+of the vocal system and from this system model evaluate the formants, or resonant
+frequencies of the vocal system.(i.e. the peaks in the frequency response)  One 
+conjugate pole pair is required to produce each formant, and one formant is expected
+in each 1kHz band or so.  Therefore the order of the model is a function of the 
+sampling frequency:  fs/2 + 2 (the added 2 being the 'empirically determined
+adjustment factor')
+</P>
+
+<P>
+All our autoregressive matlab techniques are in the function
+<A HREF="formantscode.html">formants.m</A>.
+</P>
+
+<P>
+There is TONS of material about autoregressive models.  Check out
+your library...
+</P>
+
+<BR>
+<H4 ALIGN=LEFT>NEXT PAGE: <A HREF="vowelrecognition.html">Vowel Recognition using Formants</A></H4>
+

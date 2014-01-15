@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+   <TITLE>Weighted Vowel Guess</TITLE>
+</HEAD>
+<HTML>
+
+<H4 ALIGN=Left>Weighted Vowel Guess</H4>
+
+<P> This function is identical to the vowelguess.m funciton
+except it places emphasis on certain formants over others.
+We found that F1 and F2 should definatedly be given more
+weight when calculating the euclidean distance in the 3-d
+formant space since F3 had a narrower bandwidth across vowels.  
+A weighting matrix W=[w1 w2 w3] corresponds to formants 1, 2 and 
+3.  The function could be designed to take the W matrix as an 
+input so different W matricies could be used for different speakers
+(see <A HREF="outline.gif">Process Flowchart</A>). This function 
+also allows for input of a weighting matrix like [1 0 1] in the 
+case that the second formant was undetected and thus should have 
+no bearing on the distance calculation.
+</P>
+
+<P>Click here to <A HREF="weightedvowelguess.m">view our Weighted Vowel Guess Funciton</A> 
+<P>Click here to <A HREF="weightedvowelguess.m.bin">download our Weighted Vowel Guess M-File.</A></P>
+
+<P>* Note: the ".bin" extension on the m-file does NOT indicate a
+binary file type.<BR>  It only tricks your browser into downloading
+the file instead of viewing it.</P>
+
+<H4 ALIGN=LEFT>Back to <A HREF="mcode.html">Matlab Code page</A></H4>

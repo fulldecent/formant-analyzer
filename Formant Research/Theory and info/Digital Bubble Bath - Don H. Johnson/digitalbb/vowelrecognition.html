@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+   <TITLE>Vowel Recognition Using Formants</TITLE>
+</HEAD>
+<HTML>
+
+<H2 ALIGN=CENTER>Vowel Recognition Using Formants</H2>
+
+<P>So let's run through an example of the process of recognizing the simple vowel "uh" as in "hood".  
+First, we recorded four samples of the word "hood" from the four members of this group, and 
+physically cut out the vowels using the soundeditor program.  These vowels are stored in the 
+sound files: <A HREF="hood_a.se.bin">hood_a.se.bin</A>, <A HREF="hood_j.se.bin">hood_j.se.bin
+</A>, <A HREF="hood_s.se.bin">hood_s.se.bin</A>, and <A HREF="hood_t.se.bin">hood_t.se.bin</A> 
+(.au format, click to download).  <B>These files can be loaded into Matlab as a vector using the 
+Matlab "auread" command</B>.  Most of the following graphs use only three of the above recordings for 
+graphics purposes. </P>
+
+</P>We then load these sounds into Matlab.  A plot of the vowels is in <A HREF="uh_unnormalized.gif">
+uh_unnormalized</A>.  We then <A HREF="normalize.html">normalize</A> the amplitudes and center these 
+samples.  A plot of the normalized sounds is in <A HREF="uh_normalized.gif">uh_normalized</A>.  You 
+will notice that vowels are quasi periodic.  Although the pitch, or frequency of the periods, varies 
+from speaker to speaker, the vowels each have a distinct shape that is repeated. </P>
+
+</P>Following the normalization, we create an <A HREF="autoregression.html">Auto-Regressive Model</A> of the 
+voice from the sound signal.  We calculate the formants from the frequency response of the AR model, and then 
+match them to the closest standard vowel formants.  In our example, all four vowels (one from each speaker) 
+matched correctly to the vowel "uh".  In <A HREF="uh_formants.gif">uh_formants</A>, you can see how the 
+formants of each speakers' vowel matched with the standard formant values for "uh".  The horizontal
+lines represent the standard formant frequencies.  In <A HREF="uh_four_formants.gif">uh_four_formants
+</A>, we have superimposed all four formant plots for our samples.  It is easiliy visible how closely
+the formants for different speakers match up.  This plot is fairly demonstative of the similarities 
+in the vowel speech patterns of various speakers.</P>
+
+</P>We have a matlab function <A HREF="vowelrec.html">vowelrec.m</A> that takes a vowel sound file and 
+the sampling frequency, and then it proceeds to carry out the steps mentioned above.  It prints out 
+a formant graph of the sound and returns a phoenetic vowel match.</P>
+
+</P>We conclude our demonstration by conducting the same process on a phoenetically complicated 
+word: "syphillis".  This word consists of three subtle vowels: "sif", "ful", and "lus".  The audio 
+recording of "syphillis" and its three vowels may be found in <A HREF="syphillis_t.se.bin">
+syphillis_t.se.bin</A>, <A HREF="syph_1.se.bin">syph_1.se.bin</A>, <A HREF="syph_2.se.bin">syph_2.se.bin</A>, and 
+<A HREF="syph_3.se.bin">syph_3.se.bin</A> (all files .au format, click to download).  The 
+plot of the word "syphillis" may be found in <A HREF="syphillis.gif">syphillis.gif</A>.  The plot of its 
+normalized vowels are in <A HREF="syph_normalized.gif">syph_normalized.gif</A>.  It is possible to distinguish 
+the vowels from the consonants in the plot by the repetitive nature of the vowels.</P>
+
+</P>We then proceed to calculate the formants of the vowels and then do a vowel matching.  
+Unfortunately, as our study shows, vowel matching is very successful with simple words such as "head" 
+or "bob", but with "syphillis", our matching program was not so successful.  It showed "sif" to 
+match to AH as in bud, "ful" matched to UH as in "hood", and "lus" matched to IY as in "heed".  
+The formants and the vowel formants they matched to are in <A HREF="syph_formants.gif">syph_formants.gif</A>.  
+As is visible on the last vowel, our formant calculation missed a formant, resulting in the wide discrepency.</P>
+
+</P>This goes to demonstrate the fact that our program is not as effective with vowel samples that are 
+not steady enough.  Perhaps if our sampling frequency were higher than 8 KHz, we may have 
+been more successful.  </P>
+
+</P>However, with simpler words, our function was extremely successful.  As is visible in 
+<A HREF="vowels_analyzed.gif">vowels_analyzed.gif</A>, given vowel samples from 4 different speakers, we had a correct match rate 
+of 86%.  The only vowel we were consistently unsuccessful in matching was AO as in "hawed."  
+Nonetheless, the fact remains that none of us really know how to pronounce "hawed" anyway.</P>
+
+</P>In conclusion, our vowel recognition process is very successful for simple words with distinct 
+vowels, and not successful for phonetically complicated words.</P>
+
+<BR>
+<H4 ALIGN=LEFT>VIEW PROGRAM: <A HREF="fmnts.html">Formant Estimation/Extraction</A></H4>
+<H4 ALIGN=LEFT>NEXT PAGE: <A HREF="pitch.html">Voice Recognition using Pitch Determination</A></H4>
