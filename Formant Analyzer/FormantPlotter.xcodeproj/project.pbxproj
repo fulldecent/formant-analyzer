@@ -24,15 +24,15 @@
 		C10B4C8114E2F13F0015C204 /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7A14E2F13F0015C204 /* four.raw */; };
 		C10B4C8214E2F13F0015C204 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7B14E2F13F0015C204 /* who.raw */; };
 		C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1759B5614C9D39300509C50 /* AudioToolbox.framework */; };
-		C1759B5B14C9D47400509C50 /* AudioDeviceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */; };
+		C1759B5B14C9D47400509C50 /* AudioDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */; };
 		C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878514C69DF0008CA643 /* UIKit.framework */; };
 		C18C878814C69DF0008CA643 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878714C69DF0008CA643 /* Foundation.framework */; };
 		C18C878A14C69DF0008CA643 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878914C69DF0008CA643 /* CoreGraphics.framework */; };
 		C18C879014C69DF0008CA643 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C18C878E14C69DF0008CA643 /* InfoPlist.strings */; };
 		C18C879314C69DF0008CA643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879214C69DF0008CA643 /* main.m */; };
-		C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */; };
+		C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */; };
 		C18C879914C69DF1008CA643 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C879714C69DF1008CA643 /* MainWindow.xib */; };
-		C18C879C14C69DF1008CA643 /* FirstViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C18C879B14C69DF1008CA643 /* FirstViewController.mm */; };
+		C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879B14C69DF1008CA643 /* FirstViewController.m */; };
 		C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879E14C69DF1008CA643 /* SecondViewController.m */; };
 		C18C87A214C69DF1008CA643 /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A014C69DF1008CA643 /* FirstView.xib */; };
 		C18C87A514C69DF1008CA643 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A314C69DF1008CA643 /* SecondView.xib */; };
@@ -61,7 +61,7 @@
 		C10B4C7B14E2F13F0015C204 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
 		C1759B5614C9D39300509C50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C1759B5914C9D47400509C50 /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDeviceManager.h; path = ../AudioDeviceManager.h; sourceTree = "<group>"; };
-		C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AudioDeviceManager.mm; path = ../AudioDeviceManager.mm; sourceTree = "<group>"; };
+		C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioDeviceManager.m; path = ../AudioDeviceManager.m; sourceTree = "<group>"; };
 		C18C878114C69DF0008CA643 /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C18C878514C69DF0008CA643 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		C18C878714C69DF0008CA643 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -71,10 +71,10 @@
 		C18C879114C69DF0008CA643 /* FormantPlotter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Prefix.pch"; sourceTree = "<group>"; };
 		C18C879214C69DF0008CA643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormantPlotterAppDelegate.h; sourceTree = "<group>"; };
-		C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FormantPlotterAppDelegate.mm; sourceTree = "<group>"; };
+		C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormantPlotterAppDelegate.m; sourceTree = "<group>"; };
 		C18C879814C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		C18C879A14C69DF1008CA643 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C18C879B14C69DF1008CA643 /* FirstViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = FirstViewController.mm; sourceTree = "<group>"; };
+		C18C879B14C69DF1008CA643 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		C18C879D14C69DF1008CA643 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
 		C18C879E14C69DF1008CA643 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		C18C87A114C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
@@ -131,16 +131,16 @@
 			isa = PBXGroup;
 			children = (
 				C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */,
-				C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.mm */,
+				C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */,
 				C18C879714C69DF1008CA643 /* MainWindow.xib */,
 				C18C879A14C69DF1008CA643 /* FirstViewController.h */,
-				C18C879B14C69DF1008CA643 /* FirstViewController.mm */,
+				C18C879B14C69DF1008CA643 /* FirstViewController.m */,
 				C18C87A014C69DF1008CA643 /* FirstView.xib */,
 				C18C879D14C69DF1008CA643 /* SecondViewController.h */,
 				C18C879E14C69DF1008CA643 /* SecondViewController.m */,
 				C18C87A314C69DF1008CA643 /* SecondView.xib */,
 				C1759B5914C9D47400509C50 /* AudioDeviceManager.h */,
-				C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */,
+				C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */,
 				C1059EC714C872540014DC93 /* PlotView.h */,
 				C1059EC814C872540014DC93 /* PlotView.m */,
 				C18C878C14C69DF0008CA643 /* Supporting Files */,
@@ -260,11 +260,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				C18C879314C69DF0008CA643 /* main.m in Sources */,
-				C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.mm in Sources */,
-				C18C879C14C69DF1008CA643 /* FirstViewController.mm in Sources */,
+				C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */,
+				C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */,
 				C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */,
 				C1059EC914C872550014DC93 /* PlotView.m in Sources */,
-				C1759B5B14C9D47400509C50 /* AudioDeviceManager.mm in Sources */,
+				C1759B5B14C9D47400509C50 /* AudioDeviceManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
