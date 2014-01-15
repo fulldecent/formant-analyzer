@@ -16,66 +16,63 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Qr-2e-rSY">
-                                <rect key="frame" x="20" y="20" width="50" height="119"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Qr-2e-rSY">
+                                <rect key="frame" x="0.0" y="22" width="40" height="40"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="f1L-1s-F6P"/>
+                                    <constraint firstAttribute="width" constant="40" id="lIy-4E-z65"/>
+                                </constraints>
                             </imageView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Status Message" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="P33-9r-kcC">
-                                <rect key="frame" x="90" y="30" width="210" height="30"/>
+                                <rect key="frame" x="51" y="25" width="210" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" customClass="PlotView">
-                                <rect key="frame" x="10" y="95" width="300" height="200"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" customClass="PlotView">
+                                <rect key="frame" x="0.0" y="74" width="318" height="310"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.93795620440000005" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-am-4MW">
-                                <rect key="frame" x="15" y="360" width="135" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-am-4MW">
+                                <rect key="frame" x="20" y="437" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-hW-WYY">
-                                <rect key="frame" x="170" y="360" width="135" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-hW-WYY">
+                                <rect key="frame" x="170" y="437" width="130" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="udF-wh-LHP">
-                                <rect key="frame" x="15" y="390" width="135" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0jX-nd-JdF">
+                                <rect key="frame" x="169" y="478" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0jX-nd-JdF">
-                                <rect key="frame" x="170" y="390" width="135" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="30" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-X6-s6k">
-                                <rect key="frame" x="110" y="326" width="190" height="29"/>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="30" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-X6-s6k">
+                                <rect key="frame" x="114" y="391" width="188" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <connections>
                                     <action selector="processThresholdSlider" destination="CZ4-MO-1fc" eventType="valueChanged" id="lPy-ny-cC5"/>
                                 </connections>
                             </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Threshold" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kWa-hv-0Dl">
-                                <rect key="frame" x="15" y="325" width="76" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Threshold" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kWa-hv-0Dl">
+                                <rect key="frame" x="20" y="397" width="76" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIk-PO-Zdg">
-                                <rect key="frame" x="240" y="27" width="70" height="35"/>
+                                <rect key="frame" x="250" y="25" width="70" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Analyze">
@@ -86,7 +83,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqk-LF-enE">
-                                <rect key="frame" x="100" y="27" width="50" height="35"/>
+                                <rect key="frame" x="100" y="22" width="50" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Last">
@@ -97,7 +94,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mex-9T-dBI">
-                                <rect key="frame" x="10" y="27" width="35" height="35"/>
+                                <rect key="frame" x="41" y="22" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="&lt;">
@@ -108,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMZ-eM-vJt">
-                                <rect key="frame" x="55" y="27" width="35" height="35"/>
+                                <rect key="frame" x="78" y="22" width="35" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title=">">
@@ -118,8 +115,8 @@
                                     <action selector="processNextSegment" destination="CZ4-MO-1fc" eventType="touchUpInside" id="Ykw-Fx-MrB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRO-6A-Ra6">
-                                <rect key="frame" x="15" y="320" width="50" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRO-6A-Ra6">
+                                <rect key="frame" x="20" y="392" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Sig">
@@ -129,8 +126,8 @@
                                     <action selector="showOrig" destination="CZ4-MO-1fc" eventType="touchUpInside" id="h5z-pq-7hC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJy-B5-OJf">
-                                <rect key="frame" x="75" y="320" width="50" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cJy-B5-OJf">
+                                <rect key="frame" x="78" y="392" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="Trim">
@@ -140,8 +137,8 @@
                                     <action selector="showTrimmed" destination="CZ4-MO-1fc" eventType="touchUpInside" id="xU8-md-jUC"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7j-8M-bY6">
-                                <rect key="frame" x="135" y="320" width="50" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P7j-8M-bY6">
+                                <rect key="frame" x="136" y="392" width="47" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="LPC">
@@ -151,8 +148,8 @@
                                     <action selector="showLPC" destination="CZ4-MO-1fc" eventType="touchUpInside" id="wv0-ks-zGO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2i-0p-zow">
-                                <rect key="frame" x="195" y="320" width="50" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v2i-0p-zow">
+                                <rect key="frame" x="196" y="392" width="46" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
                                 <state key="normal" title="H(w)">
@@ -162,8 +159,8 @@
                                     <action selector="showSpectrum" destination="CZ4-MO-1fc" eventType="touchUpInside" id="3dw-KW-QuB"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-5t-ZwN">
-                                <rect key="frame" x="255" y="320" width="50" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mxV-5t-ZwN">
+                                <rect key="frame" x="253" y="393" width="47" height="29"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="14"/>
                                 <state key="normal" title="Frmnt">
@@ -174,14 +171,62 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="akS-uy-AbY">
-                                <rect key="frame" x="165" y="27" width="60" height="35"/>
+                                <rect key="frame" x="188" y="22" width="60" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="udF-wh-LHP">
+                                <rect key="frame" x="20" y="478" width="129" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bJf-am-4MW" firstAttribute="top" secondItem="kWa-hv-0Dl" secondAttribute="bottom" constant="20" id="1H6-c6-sDH"/>
+                            <constraint firstItem="8Qr-2e-rSY" firstAttribute="top" secondItem="fYR-7t-Gi2" secondAttribute="bottom" constant="2" id="1X6-8l-Hia"/>
+                            <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="udF-wh-LHP" secondAttribute="width" id="2d7-Pk-H9q"/>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="8Qr-2e-rSY" secondAttribute="bottom" constant="12" id="3Mu-AV-txs"/>
+                            <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="bJf-am-4MW" secondAttribute="width" id="4fc-KD-1Py"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="width" secondItem="P7j-8M-bY6" secondAttribute="width" id="Ahe-jb-IVE"/>
+                            <constraint firstItem="kWa-hv-0Dl" firstAttribute="centerY" secondItem="A4x-X6-s6k" secondAttribute="centerY" id="BRo-Op-CVC"/>
+                            <constraint firstItem="8Qr-2e-rSY" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="CcU-y9-jNW"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="width" secondItem="v2i-0p-zow" secondAttribute="width" id="D8o-GX-4U1"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="centerY" secondItem="v2i-0p-zow" secondAttribute="centerY" id="EIw-4b-L4Z"/>
+                            <constraint firstItem="cJy-B5-OJf" firstAttribute="leading" secondItem="WRO-6A-Ra6" secondAttribute="trailing" constant="12" id="FaT-jA-QVn"/>
+                            <constraint firstAttribute="trailing" secondItem="A4x-X6-s6k" secondAttribute="trailing" constant="20" id="Gkm-Lg-d8H"/>
+                            <constraint firstItem="v2i-0p-zow" firstAttribute="leading" secondItem="P7j-8M-bY6" secondAttribute="trailing" constant="12" id="J6N-4J-Hlt"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="centerY" secondItem="P7j-8M-bY6" secondAttribute="centerY" id="JJS-UA-HmY"/>
+                            <constraint firstItem="0jX-nd-JdF" firstAttribute="top" secondItem="uAc-hW-WYY" secondAttribute="bottom" constant="20" id="KP8-OS-X6s"/>
+                            <constraint firstItem="A4x-X6-s6k" firstAttribute="leading" secondItem="kWa-hv-0Dl" secondAttribute="trailing" constant="20" id="SMY-4p-S4x"/>
+                            <constraint firstAttribute="trailing" secondItem="uAc-hW-WYY" secondAttribute="trailing" constant="20" id="UgX-TY-1tt"/>
+                            <constraint firstItem="0jX-nd-JdF" firstAttribute="leading" secondItem="udF-wh-LHP" secondAttribute="trailing" constant="20" id="Uzh-jt-KhT"/>
+                            <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="udF-wh-LHP" secondAttribute="bottom" constant="20" id="W0A-t3-PPD"/>
+                            <constraint firstItem="WRO-6A-Ra6" firstAttribute="centerY" secondItem="kWa-hv-0Dl" secondAttribute="centerY" id="Wju-nG-jvg"/>
+                            <constraint firstItem="uAc-hW-WYY" firstAttribute="leading" secondItem="bJf-am-4MW" secondAttribute="trailing" constant="20" id="Xjo-JR-tjv"/>
+                            <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="0jX-nd-JdF" secondAttribute="width" id="ZzZ-pa-SQA"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="centerY" secondItem="WRO-6A-Ra6" secondAttribute="centerY" id="afC-ms-3B1"/>
+                            <constraint firstItem="udF-wh-LHP" firstAttribute="top" secondItem="bJf-am-4MW" secondAttribute="bottom" constant="20" id="bOO-7g-9WU"/>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="c7n-Uq-jBh"/>
+                            <constraint firstItem="WRO-6A-Ra6" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="cOJ-7p-Bgq"/>
+                            <constraint firstItem="udF-wh-LHP" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="dRZ-xh-27T"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="leading" secondItem="v2i-0p-zow" secondAttribute="trailing" constant="12" id="hb1-WU-LJK"/>
+                            <constraint firstItem="WRO-6A-Ra6" firstAttribute="top" secondItem="zrQ-dr-T2a" secondAttribute="bottom" constant="8" id="hnl-TN-bPO"/>
+                            <constraint firstItem="bJf-am-4MW" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="iCk-j6-65L"/>
+                            <constraint firstAttribute="trailing" secondItem="0jX-nd-JdF" secondAttribute="trailing" constant="20" id="igh-6h-iyV"/>
+                            <constraint firstItem="kWa-hv-0Dl" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="k9m-P5-3vS"/>
+                            <constraint firstItem="P7j-8M-bY6" firstAttribute="leading" secondItem="cJy-B5-OJf" secondAttribute="trailing" constant="12" id="lIp-Qh-l4t"/>
+                            <constraint firstAttribute="trailing" secondItem="mxV-5t-ZwN" secondAttribute="trailing" constant="20" id="n2p-bN-gZN"/>
+                            <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="0jX-nd-JdF" secondAttribute="bottom" constant="20" id="qkG-Bi-zV2"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="width" secondItem="WRO-6A-Ra6" secondAttribute="width" id="tlq-pP-P8c"/>
+                            <constraint firstAttribute="trailing" secondItem="zrQ-dr-T2a" secondAttribute="trailing" id="uFY-y5-wkL"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="centerY" secondItem="cJy-B5-OJf" secondAttribute="centerY" id="uX6-xv-ctd"/>
+                            <constraint firstItem="mxV-5t-ZwN" firstAttribute="width" secondItem="cJy-B5-OJf" secondAttribute="width" id="w0P-yf-MBv"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Plotter" image="first" id="u1e-5L-l1D"/>
                     <connections>
