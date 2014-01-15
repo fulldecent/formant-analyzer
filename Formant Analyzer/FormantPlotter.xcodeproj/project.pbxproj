@@ -16,6 +16,13 @@
 		C1059EB514C86ADD0014DC93 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB214C86ADD0014DC93 /* green_light.png */; };
 		C1059EB614C86ADD0014DC93 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB314C86ADD0014DC93 /* blue_light.png */; };
 		C1059EC914C872550014DC93 /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1059EC814C872540014DC93 /* PlotView.m */; };
+		C10B4C7C14E2F13F0015C204 /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7514E2F13F0015C204 /* arm.raw */; };
+		C10B4C7D14E2F13F0015C204 /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7614E2F13F0015C204 /* beat.raw */; };
+		C10B4C7E14E2F13F0015C204 /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7714E2F13F0015C204 /* bid.raw */; };
+		C10B4C7F14E2F13F0015C204 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7814E2F13F0015C204 /* calm.raw */; };
+		C10B4C8014E2F13F0015C204 /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7914E2F13F0015C204 /* cat.raw */; };
+		C10B4C8114E2F13F0015C204 /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7A14E2F13F0015C204 /* four.raw */; };
+		C10B4C8214E2F13F0015C204 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7B14E2F13F0015C204 /* who.raw */; };
 		C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1759B5614C9D39300509C50 /* AudioToolbox.framework */; };
 		C1759B5B14C9D47400509C50 /* AudioDeviceManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */; };
 		C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878514C69DF0008CA643 /* UIKit.framework */; };
@@ -42,6 +49,13 @@
 		C1059EB314C86ADD0014DC93 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
 		C1059EC714C872540014DC93 /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlotView.h; path = ../PlotView.h; sourceTree = "<group>"; };
 		C1059EC814C872540014DC93 /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlotView.m; path = ../PlotView.m; sourceTree = "<group>"; };
+		C10B4C7514E2F13F0015C204 /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
+		C10B4C7614E2F13F0015C204 /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
+		C10B4C7714E2F13F0015C204 /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
+		C10B4C7814E2F13F0015C204 /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
+		C10B4C7914E2F13F0015C204 /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
+		C10B4C7A14E2F13F0015C204 /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
+		C10B4C7B14E2F13F0015C204 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
 		C1759B5614C9D39300509C50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		C1759B5914C9D47400509C50 /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDeviceManager.h; path = ../AudioDeviceManager.h; sourceTree = "<group>"; };
 		C1759B5A14C9D47400509C50 /* AudioDeviceManager.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AudioDeviceManager.mm; path = ../AudioDeviceManager.mm; sourceTree = "<group>"; };
@@ -135,6 +149,13 @@
 				C18C878E14C69DF0008CA643 /* InfoPlist.strings */,
 				C18C879114C69DF0008CA643 /* FormantPlotter-Prefix.pch */,
 				C18C879214C69DF0008CA643 /* main.m */,
+				C10B4C7514E2F13F0015C204 /* arm.raw */,
+				C10B4C7614E2F13F0015C204 /* beat.raw */,
+				C10B4C7714E2F13F0015C204 /* bid.raw */,
+				C10B4C7814E2F13F0015C204 /* calm.raw */,
+				C10B4C7914E2F13F0015C204 /* cat.raw */,
+				C10B4C7A14E2F13F0015C204 /* four.raw */,
+				C10B4C7B14E2F13F0015C204 /* who.raw */,
 				C1059EAF14C86ACA0014DC93 /* formant_plot_help.html */,
 				C1059EB114C86ADD0014DC93 /* red_light.png */,
 				C1059EB214C86ADD0014DC93 /* green_light.png */,
@@ -172,9 +193,6 @@
 /* Begin PBXProject section */
 		C18C877814C69DF0008CA643 /* Project object */ = {
 			isa = PBXProject;
-			attributes = {
-				LastUpgradeCheck = 0500;
-			};
 			buildConfigurationList = C18C877B14C69DF0008CA643 /* Build configuration list for PBXProject "FormantPlotter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
@@ -209,6 +227,13 @@
 				C1059EB414C86ADD0014DC93 /* red_light.png in Resources */,
 				C1059EB514C86ADD0014DC93 /* green_light.png in Resources */,
 				C1059EB614C86ADD0014DC93 /* blue_light.png in Resources */,
+				C10B4C7C14E2F13F0015C204 /* arm.raw in Resources */,
+				C10B4C7D14E2F13F0015C204 /* beat.raw in Resources */,
+				C10B4C7E14E2F13F0015C204 /* bid.raw in Resources */,
+				C10B4C7F14E2F13F0015C204 /* calm.raw in Resources */,
+				C10B4C8014E2F13F0015C204 /* cat.raw in Resources */,
+				C10B4C8114E2F13F0015C204 /* four.raw in Resources */,
+				C10B4C8214E2F13F0015C204 /* who.raw in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +294,8 @@
 		C18C87A614C69DF1008CA643 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Will Entriken (LZSQ9DS457)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -279,8 +305,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
+				PROVISIONING_PROFILE = "E072227A-F989-4660-8622-CE5F3D5D226A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
 				SDKROOT = iphoneos;
 			};
@@ -289,7 +314,8 @@
 		C18C87A714C69DF1008CA643 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Will Entriken (LZSQ9DS457)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvmgcc42;
@@ -297,7 +323,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
+				PROVISIONING_PROFILE = "E072227A-F989-4660-8622-CE5F3D5D226A";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
 				SDKROOT = iphoneos;
 			};
@@ -313,7 +339,6 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -332,7 +357,6 @@
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
