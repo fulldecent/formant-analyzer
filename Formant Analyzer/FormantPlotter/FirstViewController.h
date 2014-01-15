@@ -2,20 +2,9 @@
 //  FirstViewController.h
 //  FormantPlotter
 //
-//  Created by Muhammad Akmal Butt on 1/18/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Created by William Entriken on 1/15/14.
+//  Copyright (c) 2014 William Entriken. All rights reserved.
 //
-
-/*
- *******************************************************
- 
- This is the main view controller that manages our capture/analysis workflow. 
- There are a lot of buttons, a slider, and a few text label on the view. Some
- of these elements are hidden depending upon the pahse (capture or analysis). 
- It would be better to eleminate analyze section or move it to a separate tab.
-
- *******************************************************
- */
 
 #import <UIKit/UIKit.h>
 #import "AudioDeviceManager.h"
@@ -33,7 +22,7 @@
     NSTimer *masterTimer;                          // Timer to manage three phases of soud capturing process
     
     short int *soundDataBuffer;                    // A pointer to long sound buffer to be captured.
-        
+    
     // Different GUI elements. They are declared IBOutlet as they need to be hidden.
     IBOutlet UILabel *statusLabel;
     IBOutlet UILabel *fileIdLabel;

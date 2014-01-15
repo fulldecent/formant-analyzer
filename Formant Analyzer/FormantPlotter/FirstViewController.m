@@ -2,8 +2,8 @@
 //  FirstViewController.m
 //  FormantPlotter
 //
-//  Created by Muhammad Akmal Butt on 1/18/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Created by William Entriken on 1/15/14.
+//  Copyright (c) 2014 William Entriken. All rights reserved.
 //
 
 #import "FirstViewController.h"
@@ -36,7 +36,7 @@
 
 @synthesize thresholdSlider;
 
-// One of the following 5 functions is called when one of the 5 buttons in analysis mode is touched. 
+// One of the following 5 functions is called when one of the 5 buttons in analysis mode is touched.
 // These buttons just set value of displayIdentifier appropriately, passes this value to plotView
 // can calls the default display updating function, drawRect(), in plotView.
 
@@ -78,7 +78,7 @@
     [plotView setDisplayIdentifier:displayIdentifier];
     [plotView setNeedsDisplay];
     
-    [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];    
+    [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
 }
 
 // This function is called half a second after the formant plot is displayed. It creates four text
@@ -107,7 +107,7 @@
 // GUI elements depending upon the phase (capture or analysis) that is currently effective.
 
 -(IBAction) processLiveToggleSwitch
-{    
+{
     if (liveSpeechSegments == TRUE) {    // Moving from live speech capturing/processing to stored sample processiing.
         liveSpeechSegments = FALSE;
         [liveToggleButton setTitle:@"Capture" forState:UIControlStateNormal];
@@ -160,13 +160,13 @@
 
 /* The following block reads two flags in audioDeviceManager to handle different stages of real-time data capturing. The audioDeviceManger starts with both of these flags in FALSE state, implying that it is waiting for a strong input signal. We display a message of 'Waiting ...' in this state.
  
- When strong input signal is detected, startCapturing becomes TRUE and remains true while signal remains strong. We display a message of 'Capturing ...' during this state. 
+ When strong input signal is detected, startCapturing becomes TRUE and remains true while signal remains strong. We display a message of 'Capturing ...' during this state.
  
  When the signal becomes weak again, both flags are true. We display a message of 'Processing ...'. When we are done with processing, we reset the two flags and display a message of 'Waiting ...' We also process recently captured frame.
  */
 
 -(void) handleTimerTick
-{    
+{
     if (liveSpeechSegments == TRUE) {           // Only do the following if we are processing live speech.
         
         // If strong signal appears (detected via flags of audioDeviceManager), display blue light.
@@ -174,12 +174,12 @@
         
         if (audioDeviceManager-> startCapturing == TRUE && audioDeviceManager->capturingComplete == FALSE)
         {
-            [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];         
+            [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
             [statusLabel setText:@"Capturing sound"];
             dummyTimerTickCounter = 0;
         }
         
-        // If signal is no longer strong (detected via flags of audioDeviceManger), increment dummyTickCounter and 
+        // If signal is no longer strong (detected via flags of audioDeviceManger), increment dummyTickCounter and
         // display a red light to indicate we are processing the captured signal.
         
         if (audioDeviceManager-> startCapturing == TRUE && audioDeviceManager->capturingComplete == TRUE)
@@ -197,9 +197,9 @@
                 [plotView setNeedsDisplay];
                 
                 [self performSelector:@selector(saveBuffer) withObject:nil afterDelay:0.1];
-                [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];    
+                [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
                 
-                [indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];         
+                [indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
                 [statusLabel setText:@"Processing sound"];
             }
             else   // If sound capturing was done a few timer ticks ago, give a dummy delay of 10counts.
@@ -212,14 +212,14 @@
                     audioDeviceManager->startCapturing = FALSE;
                     audioDeviceManager->capturingComplete = FALSE;
                     [statusLabel setText:@"Waiting ..."];
-                }            
+                }
             }
         }
     }
 }
 
 // Following function saves captured speech in Documents folder (on the device) with name lastSpeech.
-// It is a raw dump of catured data. 
+// It is a raw dump of catured data.
 -(void) saveBuffer
 {
     NSData *rawData = [[NSData alloc] initWithBytes:audioDeviceManager->longBuffer length:1024 * audioDeviceManager->bufferSegCount * sizeof(short)];
@@ -229,13 +229,12 @@
     NSString *documentsDirectory = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents"];
     NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"lastSpeech"];
     
-    [rawData writeToFile:filePath atomically:YES];   
-    [rawData release];
+    [rawData writeToFile:filePath atomically:YES];
 }
 
 // Process previous (1 out of 7) sound buffer imported into the app
 -(IBAction)processPrevSegment;
-{    
+{
     soundFileIdentifier = soundFileIdentifier + [soundFileBaseNames count] - 1;
     soundFileIdentifier = soundFileIdentifier % [soundFileBaseNames count];
     
@@ -257,13 +256,13 @@
 }
 
 // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
-// binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view 
+// binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view
 // is shown in plotView.
 
 // If we are looking at 5th plot type (formant frequencies), four text labels are updated with a delay of 0.5 sec
 -(void) processRawBuffer
 {
-    NSData *speechSegmentData;  
+    NSData *speechSegmentData;
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:[soundFileBaseNames objectAtIndex:soundFileIdentifier] ofType:@"raw"];
     speechSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
@@ -282,8 +281,6 @@
     if (displayIdentifier == 5) {
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
-    
-    [speechSegmentData release];
 }
 
 // Processes last captured (and stored) speech segment. It loads binary data from a file titled
@@ -312,8 +309,6 @@
     if (displayIdentifier == 5) {
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
-    
-    [lastSegmentData release];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -332,10 +327,10 @@
     
     // Maximum length of captured speech segment is 1024000/44100 = 23.22 seconds.
     // There are no checks to see if someone intentionally keeps on speaking loudly
-    // for a longer time. Such behaviour may cause a crash. Checks can be easily placed 
+    // for a longer time. Such behaviour may cause a crash. Checks can be easily placed
     // in audioDeviceManager.
     
-    soundDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));  
+    soundDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));
     
     // Initial hidder/visible patter of the app.
     prevSegmentButton.hidden = TRUE;
@@ -370,7 +365,7 @@
     }
     
     // Plot formant frequencies of silence (2000 sample of initialized long buffer).
-
+    
     [plotView getData:audioDeviceManager->longBuffer withLength:2000];
     [plotView setNeedsDisplay];
     
@@ -395,7 +390,7 @@
     
     // Start master timer with tick time of 0.1 seconds.
     masterTimer = nil;
-    masterTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(handleTimerTick) userInfo:nil repeats:YES];   
+    masterTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(handleTimerTick) userInfo:nil repeats:YES];
     
 }
 
@@ -418,17 +413,8 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-
-- (void)dealloc
-{
-    [super dealloc];
-    [audioDeviceManager release];
     free(soundDataBuffer);
 }
+
 
 @end

@@ -7,172 +7,155 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C1059EAA14C823FC0014DC93 /* second@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EA614C823FC0014DC93 /* second@2x.png */; };
-		C1059EAB14C823FC0014DC93 /* second.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EA714C823FC0014DC93 /* second.png */; };
-		C1059EAC14C823FC0014DC93 /* first@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EA814C823FC0014DC93 /* first@2x.png */; };
-		C1059EAD14C823FC0014DC93 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EA914C823FC0014DC93 /* first.png */; };
-		C1059EB014C86ACA0014DC93 /* formant_plot_help.html in Resources */ = {isa = PBXBuildFile; fileRef = C1059EAF14C86ACA0014DC93 /* formant_plot_help.html */; };
-		C1059EB414C86ADD0014DC93 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB114C86ADD0014DC93 /* red_light.png */; };
-		C1059EB514C86ADD0014DC93 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB214C86ADD0014DC93 /* green_light.png */; };
-		C1059EB614C86ADD0014DC93 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = C1059EB314C86ADD0014DC93 /* blue_light.png */; };
-		C1059EC914C872550014DC93 /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = C1059EC814C872540014DC93 /* PlotView.m */; };
-		C10B4C7C14E2F13F0015C204 /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7514E2F13F0015C204 /* arm.raw */; };
-		C10B4C7D14E2F13F0015C204 /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7614E2F13F0015C204 /* beat.raw */; };
-		C10B4C7E14E2F13F0015C204 /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7714E2F13F0015C204 /* bid.raw */; };
-		C10B4C7F14E2F13F0015C204 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7814E2F13F0015C204 /* calm.raw */; };
-		C10B4C8014E2F13F0015C204 /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7914E2F13F0015C204 /* cat.raw */; };
-		C10B4C8114E2F13F0015C204 /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7A14E2F13F0015C204 /* four.raw */; };
-		C10B4C8214E2F13F0015C204 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = C10B4C7B14E2F13F0015C204 /* who.raw */; };
-		C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C1759B5614C9D39300509C50 /* AudioToolbox.framework */; };
-		C1759B5B14C9D47400509C50 /* AudioDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */; };
-		C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878514C69DF0008CA643 /* UIKit.framework */; };
-		C18C878814C69DF0008CA643 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878714C69DF0008CA643 /* Foundation.framework */; };
-		C18C878A14C69DF0008CA643 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C18C878914C69DF0008CA643 /* CoreGraphics.framework */; };
-		C18C879014C69DF0008CA643 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C18C878E14C69DF0008CA643 /* InfoPlist.strings */; };
-		C18C879314C69DF0008CA643 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879214C69DF0008CA643 /* main.m */; };
-		C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */; };
-		C18C879914C69DF1008CA643 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C879714C69DF1008CA643 /* MainWindow.xib */; };
-		C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879B14C69DF1008CA643 /* FirstViewController.m */; };
-		C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C18C879E14C69DF1008CA643 /* SecondViewController.m */; };
-		C18C87A214C69DF1008CA643 /* FirstView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A014C69DF1008CA643 /* FirstView.xib */; };
-		C18C87A514C69DF1008CA643 /* SecondView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C18C87A314C69DF1008CA643 /* SecondView.xib */; };
-		C1B2946E14E9A420008AF596 /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */; };
-		C1B2946F14E9A420008AF596 /* vowelPlotBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */; };
-		C1F800CC150EDD4100ADA64F /* vowel_bground.png in Resources */ = {isa = PBXBuildFile; fileRef = C1F800CB150EDD4100ADA64F /* vowel_bground.png */; };
+		D9F770E41887426A0038839E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E31887426A0038839E /* Foundation.framework */; };
+		D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E51887426A0038839E /* CoreGraphics.framework */; };
+		D9F770E81887426A0038839E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E71887426A0038839E /* UIKit.framework */; };
+		D9F770EE1887426A0038839E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D9F770EC1887426A0038839E /* InfoPlist.strings */; };
+		D9F770F01887426A0038839E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770EF1887426A0038839E /* main.m */; };
+		D9F770F41887426A0038839E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770F31887426A0038839E /* AppDelegate.m */; };
+		D9F770F71887426A0038839E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F770F51887426A0038839E /* Main.storyboard */; };
+		D9F770FD1887426A0038839E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770FC1887426A0038839E /* FirstViewController.m */; };
+		D9F771001887426A0038839E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770FF1887426A0038839E /* SecondViewController.m */; };
+		D9F771021887426A0038839E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F771011887426A0038839E /* Images.xcassets */; };
+		D9F7711F188743B30038839E /* formant_plot_help.html in Resources */ = {isa = PBXBuildFile; fileRef = D9F7711E188743B30038839E /* formant_plot_help.html */; };
+		D9F771271887441E0038839E /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771201887441E0038839E /* arm.raw */; };
+		D9F771281887441E0038839E /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771211887441E0038839E /* beat.raw */; };
+		D9F771291887441E0038839E /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771221887441E0038839E /* bid.raw */; };
+		D9F7712A1887441E0038839E /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771231887441E0038839E /* calm.raw */; };
+		D9F7712B1887441E0038839E /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771241887441E0038839E /* cat.raw */; };
+		D9F7712C1887441E0038839E /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771251887441E0038839E /* four.raw */; };
+		D9F7712D1887441E0038839E /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771261887441E0038839E /* who.raw */; };
+		D9F77134188744320038839E /* vowel_bground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712E188744320038839E /* vowel_bground.png */; };
+		D9F77135188744320038839E /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712F188744320038839E /* vowelPlotBackground.png */; };
+		D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77130188744320038839E /* vowelPlotBackground@2x.png */; };
+		D9F77137188744320038839E /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77131188744320038839E /* red_light.png */; };
+		D9F77138188744320038839E /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77132188744320038839E /* green_light.png */; };
+		D9F77139188744320038839E /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77133188744320038839E /* blue_light.png */; };
+		D9F7713E188744AA0038839E /* AudioDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713B188744AA0038839E /* AudioDeviceManager.m */; };
+		D9F7713F188744AA0038839E /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713D188744AA0038839E /* PlotView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		C1059EA614C823FC0014DC93 /* second@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "second@2x.png"; sourceTree = "<group>"; };
-		C1059EA714C823FC0014DC93 /* second.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = second.png; sourceTree = "<group>"; };
-		C1059EA814C823FC0014DC93 /* first@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "first@2x.png"; sourceTree = "<group>"; };
-		C1059EA914C823FC0014DC93 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = first.png; sourceTree = "<group>"; };
-		C1059EAF14C86ACA0014DC93 /* formant_plot_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = formant_plot_help.html; sourceTree = "<group>"; };
-		C1059EB114C86ADD0014DC93 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
-		C1059EB214C86ADD0014DC93 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
-		C1059EB314C86ADD0014DC93 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
-		C1059EC714C872540014DC93 /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PlotView.h; path = ../PlotView.h; sourceTree = "<group>"; };
-		C1059EC814C872540014DC93 /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PlotView.m; path = ../PlotView.m; sourceTree = "<group>"; };
-		C10B4C7514E2F13F0015C204 /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
-		C10B4C7614E2F13F0015C204 /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
-		C10B4C7714E2F13F0015C204 /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
-		C10B4C7814E2F13F0015C204 /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
-		C10B4C7914E2F13F0015C204 /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
-		C10B4C7A14E2F13F0015C204 /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
-		C10B4C7B14E2F13F0015C204 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
-		C1759B5614C9D39300509C50 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		C1759B5914C9D47400509C50 /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AudioDeviceManager.h; path = ../AudioDeviceManager.h; sourceTree = "<group>"; };
-		C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AudioDeviceManager.m; path = ../AudioDeviceManager.m; sourceTree = "<group>"; };
-		C18C878114C69DF0008CA643 /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C18C878514C69DF0008CA643 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		C18C878714C69DF0008CA643 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C18C878914C69DF0008CA643 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		C18C878D14C69DF0008CA643 /* FormantPlotter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FormantPlotter-Info.plist"; sourceTree = "<group>"; };
-		C18C878F14C69DF0008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		C18C879114C69DF0008CA643 /* FormantPlotter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Prefix.pch"; sourceTree = "<group>"; };
-		C18C879214C69DF0008CA643 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FormantPlotterAppDelegate.h; sourceTree = "<group>"; };
-		C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FormantPlotterAppDelegate.m; sourceTree = "<group>"; };
-		C18C879814C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
-		C18C879A14C69DF1008CA643 /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		C18C879B14C69DF1008CA643 /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		C18C879D14C69DF1008CA643 /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		C18C879E14C69DF1008CA643 /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
-		C18C87A114C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/FirstView.xib; sourceTree = "<group>"; };
-		C18C87A414C69DF1008CA643 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/SecondView.xib; sourceTree = "<group>"; };
-		C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
-		C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vowelPlotBackground@2x.png"; sourceTree = "<group>"; };
-		C1F800CB150EDD4100ADA64F /* vowel_bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowel_bground.png; sourceTree = "<group>"; };
+		D9F770E01887426A0038839E /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9F770E31887426A0038839E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D9F770E51887426A0038839E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D9F770E71887426A0038839E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D9F770EB1887426A0038839E /* FormantPlotter-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FormantPlotter-Info.plist"; sourceTree = "<group>"; };
+		D9F770ED1887426A0038839E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D9F770EF1887426A0038839E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D9F770F11887426A0038839E /* FormantPlotter-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Prefix.pch"; sourceTree = "<group>"; };
+		D9F770F21887426A0038839E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D9F770F31887426A0038839E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D9F770F61887426A0038839E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D9F770FB1887426A0038839E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
+		D9F770FC1887426A0038839E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
+		D9F770FE1887426A0038839E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
+		D9F770FF1887426A0038839E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
+		D9F771011887426A0038839E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D9F771081887426A0038839E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D9F7711E188743B30038839E /* formant_plot_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = formant_plot_help.html; sourceTree = "<group>"; };
+		D9F771201887441E0038839E /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
+		D9F771211887441E0038839E /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
+		D9F771221887441E0038839E /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
+		D9F771231887441E0038839E /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
+		D9F771241887441E0038839E /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
+		D9F771251887441E0038839E /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
+		D9F771261887441E0038839E /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
+		D9F7712E188744320038839E /* vowel_bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowel_bground.png; sourceTree = "<group>"; };
+		D9F7712F188744320038839E /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
+		D9F77130188744320038839E /* vowelPlotBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vowelPlotBackground@2x.png"; sourceTree = "<group>"; };
+		D9F77131188744320038839E /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
+		D9F77132188744320038839E /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
+		D9F77133188744320038839E /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
+		D9F7713A188744AA0038839E /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDeviceManager.h; sourceTree = "<group>"; };
+		D9F7713B188744AA0038839E /* AudioDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDeviceManager.m; sourceTree = "<group>"; };
+		D9F7713C188744AA0038839E /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotView.h; sourceTree = "<group>"; };
+		D9F7713D188744AA0038839E /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C18C877E14C69DF0008CA643 /* Frameworks */ = {
+		D9F770DD1887426A0038839E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C1759B5714C9D39300509C50 /* AudioToolbox.framework in Frameworks */,
-				C18C878614C69DF0008CA643 /* UIKit.framework in Frameworks */,
-				C18C878814C69DF0008CA643 /* Foundation.framework in Frameworks */,
-				C18C878A14C69DF0008CA643 /* CoreGraphics.framework in Frameworks */,
+				D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */,
+				D9F770E81887426A0038839E /* UIKit.framework in Frameworks */,
+				D9F770E41887426A0038839E /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C18C877614C69DF0008CA643 = {
+		D9F770D71887426A0038839E = {
 			isa = PBXGroup;
 			children = (
-				C18C878B14C69DF0008CA643 /* FormantPlotter */,
-				C18C878414C69DF0008CA643 /* Frameworks */,
-				C18C878214C69DF0008CA643 /* Products */,
+				D9F770E91887426A0038839E /* FormantPlotter */,
+				D9F770E21887426A0038839E /* Frameworks */,
+				D9F770E11887426A0038839E /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		C18C878214C69DF0008CA643 /* Products */ = {
+		D9F770E11887426A0038839E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C18C878114C69DF0008CA643 /* FormantPlotter.app */,
+				D9F770E01887426A0038839E /* FormantPlotter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C18C878414C69DF0008CA643 /* Frameworks */ = {
+		D9F770E21887426A0038839E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C1759B5614C9D39300509C50 /* AudioToolbox.framework */,
-				C18C878514C69DF0008CA643 /* UIKit.framework */,
-				C18C878714C69DF0008CA643 /* Foundation.framework */,
-				C18C878914C69DF0008CA643 /* CoreGraphics.framework */,
+				D9F770E31887426A0038839E /* Foundation.framework */,
+				D9F770E51887426A0038839E /* CoreGraphics.framework */,
+				D9F770E71887426A0038839E /* UIKit.framework */,
+				D9F771081887426A0038839E /* XCTest.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C18C878B14C69DF0008CA643 /* FormantPlotter */ = {
+		D9F770E91887426A0038839E /* FormantPlotter */ = {
 			isa = PBXGroup;
 			children = (
-				C18C879414C69DF0008CA643 /* FormantPlotterAppDelegate.h */,
-				C18C879514C69DF0008CA643 /* FormantPlotterAppDelegate.m */,
-				C18C879714C69DF1008CA643 /* MainWindow.xib */,
-				C18C879A14C69DF1008CA643 /* FirstViewController.h */,
-				C18C879B14C69DF1008CA643 /* FirstViewController.m */,
-				C18C87A014C69DF1008CA643 /* FirstView.xib */,
-				C18C879D14C69DF1008CA643 /* SecondViewController.h */,
-				C18C879E14C69DF1008CA643 /* SecondViewController.m */,
-				C18C87A314C69DF1008CA643 /* SecondView.xib */,
-				C1759B5914C9D47400509C50 /* AudioDeviceManager.h */,
-				C1759B5A14C9D47400509C50 /* AudioDeviceManager.m */,
-				C1059EC714C872540014DC93 /* PlotView.h */,
-				C1059EC814C872540014DC93 /* PlotView.m */,
-				C18C878C14C69DF0008CA643 /* Supporting Files */,
+				D9F770F21887426A0038839E /* AppDelegate.h */,
+				D9F770F31887426A0038839E /* AppDelegate.m */,
+				D9F770F51887426A0038839E /* Main.storyboard */,
+				D9F770FB1887426A0038839E /* FirstViewController.h */,
+				D9F770FC1887426A0038839E /* FirstViewController.m */,
+				D9F770FE1887426A0038839E /* SecondViewController.h */,
+				D9F770FF1887426A0038839E /* SecondViewController.m */,
+				D9F771011887426A0038839E /* Images.xcassets */,
+				D9F7713A188744AA0038839E /* AudioDeviceManager.h */,
+				D9F7713B188744AA0038839E /* AudioDeviceManager.m */,
+				D9F7713C188744AA0038839E /* PlotView.h */,
+				D9F7713D188744AA0038839E /* PlotView.m */,
+				D9F770EA1887426A0038839E /* Supporting Files */,
 			);
 			path = FormantPlotter;
 			sourceTree = "<group>";
 		};
-		C18C878C14C69DF0008CA643 /* Supporting Files */ = {
+		D9F770EA1887426A0038839E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				C18C878D14C69DF0008CA643 /* FormantPlotter-Info.plist */,
-				C18C878E14C69DF0008CA643 /* InfoPlist.strings */,
-				C18C879114C69DF0008CA643 /* FormantPlotter-Prefix.pch */,
-				C18C879214C69DF0008CA643 /* main.m */,
-				C10B4C7514E2F13F0015C204 /* arm.raw */,
-				C10B4C7614E2F13F0015C204 /* beat.raw */,
-				C10B4C7714E2F13F0015C204 /* bid.raw */,
-				C10B4C7814E2F13F0015C204 /* calm.raw */,
-				C10B4C7914E2F13F0015C204 /* cat.raw */,
-				C10B4C7A14E2F13F0015C204 /* four.raw */,
-				C10B4C7B14E2F13F0015C204 /* who.raw */,
-				C1059EAF14C86ACA0014DC93 /* formant_plot_help.html */,
-				C1F800CB150EDD4100ADA64F /* vowel_bground.png */,
-				C1B2946C14E9A420008AF596 /* vowelPlotBackground.png */,
-				C1B2946D14E9A420008AF596 /* vowelPlotBackground@2x.png */,
-				C1059EB114C86ADD0014DC93 /* red_light.png */,
-				C1059EB214C86ADD0014DC93 /* green_light.png */,
-				C1059EB314C86ADD0014DC93 /* blue_light.png */,
-				C1059EA614C823FC0014DC93 /* second@2x.png */,
-				C1059EA714C823FC0014DC93 /* second.png */,
-				C1059EA814C823FC0014DC93 /* first@2x.png */,
-				C1059EA914C823FC0014DC93 /* first.png */,
+				D9F7711E188743B30038839E /* formant_plot_help.html */,
+				D9F770EB1887426A0038839E /* FormantPlotter-Info.plist */,
+				D9F770EC1887426A0038839E /* InfoPlist.strings */,
+				D9F770EF1887426A0038839E /* main.m */,
+				D9F770F11887426A0038839E /* FormantPlotter-Prefix.pch */,
+				D9F771201887441E0038839E /* arm.raw */,
+				D9F771211887441E0038839E /* beat.raw */,
+				D9F771221887441E0038839E /* bid.raw */,
+				D9F771231887441E0038839E /* calm.raw */,
+				D9F771241887441E0038839E /* cat.raw */,
+				D9F771251887441E0038839E /* four.raw */,
+				D9F771261887441E0038839E /* who.raw */,
+				D9F7712E188744320038839E /* vowel_bground.png */,
+				D9F7712F188744320038839E /* vowelPlotBackground.png */,
+				D9F77130188744320038839E /* vowelPlotBackground@2x.png */,
+				D9F77131188744320038839E /* red_light.png */,
+				D9F77132188744320038839E /* green_light.png */,
+				D9F77133188744320038839E /* blue_light.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -180,13 +163,13 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		C18C878014C69DF0008CA643 /* FormantPlotter */ = {
+		D9F770DF1887426A0038839E /* FormantPlotter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C18C87A814C69DF1008CA643 /* Build configuration list for PBXNativeTarget "FormantPlotter" */;
+			buildConfigurationList = D9F771181887426A0038839E /* Build configuration list for PBXNativeTarget "FormantPlotter" */;
 			buildPhases = (
-				C18C877D14C69DF0008CA643 /* Sources */,
-				C18C877E14C69DF0008CA643 /* Frameworks */,
-				C18C877F14C69DF0008CA643 /* Resources */,
+				D9F770DC1887426A0038839E /* Sources */,
+				D9F770DD1887426A0038839E /* Frameworks */,
+				D9F770DE1887426A0038839E /* Resources */,
 			);
 			buildRules = (
 			);
@@ -194,190 +177,195 @@
 			);
 			name = FormantPlotter;
 			productName = FormantPlotter;
-			productReference = C18C878114C69DF0008CA643 /* FormantPlotter.app */;
+			productReference = D9F770E01887426A0038839E /* FormantPlotter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		C18C877814C69DF0008CA643 /* Project object */ = {
+		D9F770D81887426A0038839E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "William Entriken";
 			};
-			buildConfigurationList = C18C877B14C69DF0008CA643 /* Build configuration list for PBXProject "FormantPlotter" */;
+			buildConfigurationList = D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
-			mainGroup = C18C877614C69DF0008CA643;
-			productRefGroup = C18C878214C69DF0008CA643 /* Products */;
+			mainGroup = D9F770D71887426A0038839E;
+			productRefGroup = D9F770E11887426A0038839E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C18C878014C69DF0008CA643 /* FormantPlotter */,
+				D9F770DF1887426A0038839E /* FormantPlotter */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C18C877F14C69DF0008CA643 /* Resources */ = {
+		D9F770DE1887426A0038839E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18C879014C69DF0008CA643 /* InfoPlist.strings in Resources */,
-				C18C879914C69DF1008CA643 /* MainWindow.xib in Resources */,
-				C18C87A214C69DF1008CA643 /* FirstView.xib in Resources */,
-				C18C87A514C69DF1008CA643 /* SecondView.xib in Resources */,
-				C1059EAA14C823FC0014DC93 /* second@2x.png in Resources */,
-				C1059EAB14C823FC0014DC93 /* second.png in Resources */,
-				C1059EAC14C823FC0014DC93 /* first@2x.png in Resources */,
-				C1059EAD14C823FC0014DC93 /* first.png in Resources */,
-				C1059EB014C86ACA0014DC93 /* formant_plot_help.html in Resources */,
-				C1059EB414C86ADD0014DC93 /* red_light.png in Resources */,
-				C1059EB514C86ADD0014DC93 /* green_light.png in Resources */,
-				C1059EB614C86ADD0014DC93 /* blue_light.png in Resources */,
-				C10B4C7C14E2F13F0015C204 /* arm.raw in Resources */,
-				C10B4C7D14E2F13F0015C204 /* beat.raw in Resources */,
-				C10B4C7E14E2F13F0015C204 /* bid.raw in Resources */,
-				C10B4C7F14E2F13F0015C204 /* calm.raw in Resources */,
-				C10B4C8014E2F13F0015C204 /* cat.raw in Resources */,
-				C10B4C8114E2F13F0015C204 /* four.raw in Resources */,
-				C10B4C8214E2F13F0015C204 /* who.raw in Resources */,
-				C1B2946E14E9A420008AF596 /* vowelPlotBackground.png in Resources */,
-				C1B2946F14E9A420008AF596 /* vowelPlotBackground@2x.png in Resources */,
-				C1F800CC150EDD4100ADA64F /* vowel_bground.png in Resources */,
+				D9F771021887426A0038839E /* Images.xcassets in Resources */,
+				D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */,
+				D9F770F71887426A0038839E /* Main.storyboard in Resources */,
+				D9F77139188744320038839E /* blue_light.png in Resources */,
+				D9F7712C1887441E0038839E /* four.raw in Resources */,
+				D9F771291887441E0038839E /* bid.raw in Resources */,
+				D9F7712B1887441E0038839E /* cat.raw in Resources */,
+				D9F77137188744320038839E /* red_light.png in Resources */,
+				D9F77134188744320038839E /* vowel_bground.png in Resources */,
+				D9F77135188744320038839E /* vowelPlotBackground.png in Resources */,
+				D9F7711F188743B30038839E /* formant_plot_help.html in Resources */,
+				D9F77138188744320038839E /* green_light.png in Resources */,
+				D9F7712D1887441E0038839E /* who.raw in Resources */,
+				D9F771271887441E0038839E /* arm.raw in Resources */,
+				D9F7712A1887441E0038839E /* calm.raw in Resources */,
+				D9F771281887441E0038839E /* beat.raw in Resources */,
+				D9F770EE1887426A0038839E /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C18C877D14C69DF0008CA643 /* Sources */ = {
+		D9F770DC1887426A0038839E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C18C879314C69DF0008CA643 /* main.m in Sources */,
-				C18C879614C69DF0008CA643 /* FormantPlotterAppDelegate.m in Sources */,
-				C18C879C14C69DF1008CA643 /* FirstViewController.m in Sources */,
-				C18C879F14C69DF1008CA643 /* SecondViewController.m in Sources */,
-				C1059EC914C872550014DC93 /* PlotView.m in Sources */,
-				C1759B5B14C9D47400509C50 /* AudioDeviceManager.m in Sources */,
+				D9F7713E188744AA0038839E /* AudioDeviceManager.m in Sources */,
+				D9F771001887426A0038839E /* SecondViewController.m in Sources */,
+				D9F770F41887426A0038839E /* AppDelegate.m in Sources */,
+				D9F7713F188744AA0038839E /* PlotView.m in Sources */,
+				D9F770FD1887426A0038839E /* FirstViewController.m in Sources */,
+				D9F770F01887426A0038839E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		C18C878E14C69DF0008CA643 /* InfoPlist.strings */ = {
+		D9F770EC1887426A0038839E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C18C878F14C69DF0008CA643 /* en */,
+				D9F770ED1887426A0038839E /* en */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		C18C879714C69DF1008CA643 /* MainWindow.xib */ = {
+		D9F770F51887426A0038839E /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				C18C879814C69DF1008CA643 /* en */,
+				D9F770F61887426A0038839E /* Base */,
 			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		C18C87A014C69DF1008CA643 /* FirstView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C18C87A114C69DF1008CA643 /* en */,
-			);
-			name = FirstView.xib;
-			sourceTree = "<group>";
-		};
-		C18C87A314C69DF1008CA643 /* SecondView.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C18C87A414C69DF1008CA643 /* en */,
-			);
-			name = SecondView.xib;
+			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C18C87A614C69DF1008CA643 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				SDKROOT = iphoneos;
-			};
-			name = Debug;
-		};
-		C18C87A714C69DF1008CA643 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Somers (U7RS94QL8K)";
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
-				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "37EEFE9F-6F64-4F7F-BDC6-BB9843F912AB";
-				SDKROOT = iphoneos;
-			};
-			name = Release;
-		};
-		C18C87A914C69DF1008CA643 /* Debug */ = {
+		D9F771161887426A0038839E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D9F771171887426A0038839E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D9F771191887426A0038839E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
-				"OTHER_CFLAGS[arch=*]" = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
-		C18C87AA14C69DF1008CA643 /* Release */ = {
+		D9F7711A1887426A0038839E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				COPY_PHASE_STRIP = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
-				VALIDATE_PRODUCT = YES;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -385,25 +373,24 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C18C877B14C69DF0008CA643 /* Build configuration list for PBXProject "FormantPlotter" */ = {
+		D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C18C87A614C69DF1008CA643 /* Debug */,
-				C18C87A714C69DF1008CA643 /* Release */,
+				D9F771161887426A0038839E /* Debug */,
+				D9F771171887426A0038839E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C18C87A814C69DF1008CA643 /* Build configuration list for PBXNativeTarget "FormantPlotter" */ = {
+		D9F771181887426A0038839E /* Build configuration list for PBXNativeTarget "FormantPlotter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				C18C87A914C69DF1008CA643 /* Debug */,
-				C18C87AA14C69DF1008CA643 /* Release */,
+				D9F771191887426A0038839E /* Debug */,
+				D9F7711A1887426A0038839E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = C18C877814C69DF0008CA643 /* Project object */;
+	rootObject = D9F770D81887426A0038839E /* Project object */;
 }

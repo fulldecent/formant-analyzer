@@ -510,7 +510,6 @@
             
             [backgroundImageView setImage:[UIImage imageNamed:@"vowel_bground.png"]];
             [self addSubview:backgroundImageView];
-            [backgroundImageView release];
             
             // Perform computations and add a marker on top.
             // We need to shift and scale our values to precisely mark the axis on image
@@ -526,7 +525,6 @@
                 
                 [markerImageView setImage:[UIImage imageNamed:@"second.png"]];
                 [self addSubview:markerImageView];
-                [markerImageView release];
             }
             else
             {
@@ -536,7 +534,6 @@
                 
                 [markerImageView setImage:[UIImage imageNamed:@"second.png"]];
                 [self addSubview:markerImageView];
-                [markerImageView release];
             }
             
             // Free memory allocated by our routine
@@ -745,10 +742,5 @@
     return x;
 }
 
-
-- (void)dealloc
-{
-    [super dealloc];
-}
 
 @end

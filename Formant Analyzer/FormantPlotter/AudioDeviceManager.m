@@ -23,7 +23,7 @@ static OSStatus recordingCallback(void* inRefCon,AudioUnitRenderActionFlags* ioA
     unsigned long bufferEnergy;
     
     // Create a local copy inside static function so that data could be accessed
-    AudioDeviceManager *manager = (AudioDeviceManager *)inRefCon;
+    AudioDeviceManager *manager = (__bridge AudioDeviceManager *)inRefCon;
     
 	if(startedCallback && noInterrupt) {
         OSStatus result = AudioUnitRender(audioUnit,ioActionFlags,inTimeStamp,inBusNumber,inNumberFrames,bufferList);
@@ -84,7 +84,7 @@ static OSStatus recordingCallback(void* inRefCon,AudioUnitRenderActionFlags* ioA
 void callbackInterruptionListener(void* inClientData, UInt32 inInterruption)
 {
 	NSLog(@"audio interruption %lu", inInterruption);
-	AudioDeviceManager *manager = (AudioDeviceManager *)inClientData;
+	AudioDeviceManager *manager = (__bridge AudioDeviceManager *)inClientData;
 	if(inInterruption) {
 		noInterrupt = NO;
 		[manager closeDownAudioDevice];
@@ -137,7 +137,7 @@ void callbackInterruptionListener(void* inClientData, UInt32 inInterruption)
 	desc.componentManufacturer = kAudioUnitManufacturer_Apple;
     
 	//setup AudioSession for safety (interruption handling):
-	AudioSessionInitialize(NULL,NULL,callbackInterruptionListener,self);
+	AudioSessionInitialize(NULL,NULL,callbackInterruptionListener,(__bridge void *)(self));
 	AudioSessionSetActive(true);
 	
 	UInt32 sizeofdata;
@@ -250,7 +250,7 @@ void callbackInterruptionListener(void* inClientData, UInt32 inInterruption)
 	// Set input callback
 	AURenderCallbackStruct callbackStruct;
 	callbackStruct.inputProc = recordingCallback;
-	callbackStruct.inputProcRefCon = self;
+	callbackStruct.inputProcRefCon = (__bridge void *)(self);
 	status = AudioUnitSetProperty(audioUnit, 
 								  kAudioOutputUnitProperty_SetInputCallback, 
 								  kAudioUnitScope_Global, 

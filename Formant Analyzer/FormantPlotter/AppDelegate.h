@@ -1,5 +1,5 @@
 //
-//  SecondViewController.h
+//  AppDelegate.h
 //  FormantPlotter
 //
 //  Created by William Entriken on 1/15/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SecondViewController : UIViewController
+@interface AppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 @end

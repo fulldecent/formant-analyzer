@@ -2,16 +2,17 @@
 //  main.m
 //  FormantPlotter
 //
-//  Created by Muhammad Akmal Butt on 1/18/12.
-//  Copyright 2012 __MyCompanyName__. All rights reserved.
+//  Created by William Entriken on 1/15/14.
+//  Copyright (c) 2014 William Entriken. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-int main(int argc, char *argv[])
+#import "AppDelegate.h"
+
+int main(int argc, char * argv[])
 {
-    NSAutoreleasePool *pool = [[NSAutoreleasePool alloc] init];
-    int retVal = UIApplicationMain(argc, argv, nil, nil);
-    [pool release];
-    return retVal;
+    @autoreleasepool {
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
+    }
 }
