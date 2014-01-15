@@ -39,7 +39,7 @@
 }
 
 // Gets pointer to the start of audio data and the length of the buffer.
--(void)getData:(short int *)databuffer withLenght:(int)length
+-(void)getData:(short int *)databuffer withLength:(int)length
 {
     dataBuffer = databuffer;
     dataBufferLength = length;

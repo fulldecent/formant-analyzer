@@ -42,7 +42,7 @@
 }
 
 
--(void)getData:(short int *)databuffer withLenght:(int)length;
+-(void)getData:(short int *)databuffer withLength:(int)length;
 -(void)setDisplayIdentifier:(int)displayidentifier;
 
 // Write four getter functions manually for four formant frequencies.

@@ -193,7 +193,7 @@
                 // Take the captured data from audioDeviceManger and pass it on to plotView
                 // Also save the sound buffer locally on the device. This was done to capture data
                 // with iPhone, export it to MATLAB and process offline. Not needed in final version.
-                [plotView  getData:audioDeviceManager->longBuffer withLenght:1024 * audioDeviceManager->bufferSegCount];
+                [plotView  getData:audioDeviceManager->longBuffer withLength:1024 * audioDeviceManager->bufferSegCount];
                 [plotView setNeedsDisplay];
                 
                 [self performSelector:@selector(saveBuffer) withObject:nil afterDelay:0.1];
@@ -276,7 +276,7 @@
     
     [plotView setDisplayIdentifier:displayIdentifier];
     
-    [plotView  getData:soundDataBuffer withLenght:[speechSegmentData length]/sizeof(short)];
+    [plotView  getData:soundDataBuffer withLength:[speechSegmentData length]/sizeof(short)];
     [plotView setNeedsDisplay];
     
     if (displayIdentifier == 5) {
@@ -306,7 +306,7 @@
     
     [plotView setDisplayIdentifier:displayIdentifier];
     
-    [plotView  getData:soundDataBuffer withLenght:[lastSegmentData length]/sizeof(short)];
+    [plotView  getData:soundDataBuffer withLength:[lastSegmentData length]/sizeof(short)];
     [plotView setNeedsDisplay];
     
     if (displayIdentifier == 5) {
@@ -371,7 +371,7 @@
     
     // Plot formant frequencies of silence (2000 sample of initialized long buffer).
 
-    [plotView getData:audioDeviceManager->longBuffer withLenght:2000];
+    [plotView getData:audioDeviceManager->longBuffer withLength:2000];
     [plotView setNeedsDisplay];
     
     // Setup audioDevice Manager. If it workds, put green light up and invite the user to speak.
