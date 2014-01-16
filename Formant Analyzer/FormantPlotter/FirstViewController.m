@@ -11,30 +11,19 @@
 
 typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} GraphingModes;
 
+@interface FirstViewController() <UIActionSheetDelegate>
+@end
+
 @implementation FirstViewController
 
 @synthesize indicatorImageView;
-
 @synthesize masterTimer;
-
 @synthesize statusLabel;
-@synthesize fileIdLabel;
 @synthesize firstFormantLabel;
 @synthesize secondFormantLabel;
 @synthesize thirdFormantLabel;
 @synthesize fourthFormantLabel;
-
-@synthesize liveToggleButton;
-@synthesize prevSegmentButton;
-@synthesize nextSegmentButton;
-@synthesize lastSegmentButton;
-
 @synthesize sliderLabel;
-@synthesize showOrigButton;
-@synthesize showNormButton;
-@synthesize showVowelButton;
-@synthesize showSpecButton;
-@synthesize showLPCButton;
 @synthesize graphingMode;
 
 @synthesize thresholdSlider;
@@ -89,61 +78,6 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
 -(IBAction) processThresholdSlider
 {
     audioDeviceManager->energyThreshold = (unsigned long)(thresholdSlider.value * 10000000);
-}
-
-// This function is called when top-right Capture/Analysis button is pressed. It hides and un-hides appropriate
-// GUI elements depending upon the phase (capture or analysis) that is currently effective.
-
--(IBAction) processLiveToggleSwitch
-{
-    if (liveSpeechSegments == TRUE) {    // Moving from live speech capturing/processing to stored sample processiing.
-        liveSpeechSegments = FALSE;
-        [liveToggleButton setTitle:@"Capture" forState:UIControlStateNormal];
-        audioDeviceManager->startCapturing = TRUE;
-        audioDeviceManager->capturingComplete = TRUE;
-        
-        prevSegmentButton.hidden = FALSE;
-        nextSegmentButton.hidden = FALSE;
-        lastSegmentButton.hidden = FALSE;
-        indicatorImageView.hidden = TRUE;
-        statusLabel.hidden = TRUE;
-        fileIdLabel.hidden = FALSE;
-        
-        showOrigButton.hidden = FALSE;
-        showNormButton.hidden = FALSE;
-        showVowelButton.hidden = FALSE;
-        showSpecButton.hidden = FALSE;
-        showLPCButton.hidden = FALSE;
-        
-        sliderLabel.hidden = TRUE;
-        thresholdSlider.hidden = TRUE;
-        
-        [fileIdLabel setText:[soundFileBaseNames objectAtIndex:soundFileIdentifier]];
-        [self processLastSegment];
-    }
-    else                              // Live speech capturing/processing.
-    {
-        liveSpeechSegments = TRUE;
-        [liveToggleButton setTitle:@"Analyze" forState:UIControlStateNormal];
-        audioDeviceManager->startCapturing = FALSE;
-        audioDeviceManager->capturingComplete = FALSE;
-        
-        prevSegmentButton.hidden = TRUE;
-        nextSegmentButton.hidden = TRUE;
-        lastSegmentButton.hidden = TRUE;
-        indicatorImageView.hidden = FALSE;
-        statusLabel.hidden = FALSE;
-        fileIdLabel.hidden = TRUE;
-        
-        showOrigButton.hidden = TRUE;
-        showNormButton.hidden = TRUE;
-        showVowelButton.hidden = TRUE;
-        showSpecButton.hidden = TRUE;
-        showLPCButton.hidden = TRUE;
-        sliderLabel.hidden = FALSE;
-        thresholdSlider.hidden = FALSE;
-        [self processLastSegment];
-    }
 }
 
 /* The following block reads two flags in audioDeviceManager to handle different stages of real-time data capturing. The audioDeviceManger starts with both of these flags in FALSE state, implying that it is waiting for a strong input signal. We display a message of 'Waiting ...' in this state.
@@ -220,29 +154,6 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     [rawData writeToFile:filePath atomically:YES];
 }
 
-// Process previous (1 out of 7) sound buffer imported into the app
--(IBAction)processPrevSegment;
-{
-    soundFileIdentifier = soundFileIdentifier + [soundFileBaseNames count] - 1;
-    soundFileIdentifier = soundFileIdentifier % [soundFileBaseNames count];
-    
-    [fileIdLabel setText:[soundFileBaseNames objectAtIndex:soundFileIdentifier]];
-    
-    [self processRawBuffer];
-}
-
-
-// Process next (1 out of 7) sound buffer imported into the app
--(IBAction)processNextSegment
-{
-    soundFileIdentifier = soundFileIdentifier + 1;
-    soundFileIdentifier = soundFileIdentifier % [soundFileBaseNames count];
-    
-    [fileIdLabel setText:[soundFileBaseNames objectAtIndex:soundFileIdentifier]];
-    
-    [self processRawBuffer];
-}
-
 // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
 // binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view
 // is shown in plotView.
@@ -273,7 +184,6 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
 
 // Processes last captured (and stored) speech segment. It loads binary data from a file titled
 // lastSpeech, puts data into lastSegmentData and calls the plotView, which processed the audio buffer.
-
 -(IBAction)processLastSegment
 {
     NSData *lastSegmentData;
@@ -287,7 +197,7 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     
     NSLog(@"Length of last segment NSData is %d",[lastSegmentData length]);
     
-    [fileIdLabel setText:@"Last"];
+    [statusLabel setText:@"Last"];
     
     [plotView setDisplayIdentifier:displayIdentifier];
     
@@ -321,18 +231,7 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     soundDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));
     
     // Initial hidder/visible patter of the app.
-    prevSegmentButton.hidden = TRUE;
-    nextSegmentButton.hidden = TRUE;
-    lastSegmentButton.hidden = TRUE;
     indicatorImageView.hidden = FALSE;
-    statusLabel.hidden = FALSE;
-    fileIdLabel.hidden = TRUE;
-    
-    showOrigButton.hidden = TRUE;
-    showNormButton.hidden = TRUE;
-    showVowelButton.hidden = TRUE;
-    showSpecButton.hidden = TRUE;
-    showLPCButton.hidden = TRUE;
     sliderLabel.hidden = FALSE;
     thresholdSlider.hidden = FALSE;
     
@@ -381,6 +280,47 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     masterTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(handleTimerTick) userInfo:nil repeats:YES];
     
 }
+
+- (IBAction)showInputSelectSheet:(id)sender
+{
+    UIActionSheet *inputChoice = [[UIActionSheet alloc] initWithTitle:@"Audio source" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
+    [inputChoice addButtonWithTitle:@"Microphone"];
+    for (NSString *basename in soundFileBaseNames)
+        [inputChoice addButtonWithTitle:basename];
+    [inputChoice addButtonWithTitle:@"Cancel"];
+    inputChoice.cancelButtonIndex = inputChoice.numberOfButtons-1;
+    
+    [inputChoice showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 0) { // Live speech processing
+        [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
+        [self.statusLabel setText:@"Waiting ..."];
+        liveSpeechSegments = TRUE;
+        audioDeviceManager->startCapturing = FALSE;
+        audioDeviceManager->capturingComplete = FALSE;
+        indicatorImageView.hidden = FALSE;
+        sliderLabel.hidden = FALSE;
+        thresholdSlider.hidden = FALSE;
+        [statusLabel setText:@"Waiting ..."];
+        [self processLastSegment];
+    } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
+        [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
+        liveSpeechSegments = FALSE;
+        audioDeviceManager->startCapturing = TRUE;
+        audioDeviceManager->capturingComplete = TRUE;
+        indicatorImageView.hidden = TRUE;
+        sliderLabel.hidden = TRUE;
+        thresholdSlider.hidden = TRUE;
+        soundFileIdentifier = buttonIndex - 1;
+        [statusLabel setText:[soundFileBaseNames objectAtIndex:soundFileIdentifier]];
+        [self processRawBuffer];
+        
+    }
+}
+
 
 - (void)viewDidUnload
 {

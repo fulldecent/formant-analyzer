@@ -71,57 +71,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIk-PO-Zdg">
-                                <rect key="frame" x="250" y="25" width="70" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" title="Analyze">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="processLiveToggleSwitch" destination="CZ4-MO-1fc" eventType="touchUpInside" id="Qac-bZ-Uvu"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqk-LF-enE">
-                                <rect key="frame" x="100" y="22" width="50" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" title="Last">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="processLastSegment" destination="CZ4-MO-1fc" eventType="touchUpInside" id="1NN-WI-Mzd"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mex-9T-dBI">
-                                <rect key="frame" x="41" y="22" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" title="&lt;">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="processPrevSegment" destination="CZ4-MO-1fc" eventType="touchUpInside" id="HBB-Mu-EYs"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IMZ-eM-vJt">
-                                <rect key="frame" x="78" y="22" width="35" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="15"/>
-                                <state key="normal" title=">">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="processNextSegment" destination="CZ4-MO-1fc" eventType="touchUpInside" id="Ykw-Fx-MrB"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="24" translatesAutoresizingMaskIntoConstraints="NO" id="akS-uy-AbY">
-                                <rect key="frame" x="188" y="22" width="60" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="24"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" misplaced="YES" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="udF-wh-LHP">
                                 <rect key="frame" x="20" y="478" width="129" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -143,6 +92,16 @@
                                     <action selector="graphingModeChanged:" destination="CZ4-MO-1fc" eventType="valueChanged" id="B6a-rM-N3c"/>
                                 </connections>
                             </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-9x-g17">
+                                <rect key="frame" x="239" y="25" width="61" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showInputSelectSheet:" destination="CZ4-MO-1fc" eventType="touchUpInside" id="20I-Dp-Bgl"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -172,20 +131,17 @@
                             <constraint firstItem="AkJ-0Q-cfC" firstAttribute="top" secondItem="zrQ-dr-T2a" secondAttribute="bottom" constant="20" id="pnB-oS-vbm"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="0jX-nd-JdF" secondAttribute="bottom" constant="20" id="qkG-Bi-zV2"/>
                             <constraint firstAttribute="trailing" secondItem="zrQ-dr-T2a" secondAttribute="trailing" id="uFY-y5-wkL"/>
+                            <constraint firstAttribute="trailing" secondItem="kgD-9x-g17" secondAttribute="trailing" constant="20" id="yTa-Ba-0ls"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Plotter" image="first" id="u1e-5L-l1D"/>
                     <connections>
-                        <outlet property="fileIdLabel" destination="akS-uy-AbY" id="zxv-Me-x7E"/>
                         <outlet property="firstFormantLabel" destination="bJf-am-4MW" id="Ocy-LX-xPB"/>
                         <outlet property="fourthFormantLabel" destination="0jX-nd-JdF" id="APb-Pq-l13"/>
                         <outlet property="graphingMode" destination="AkJ-0Q-cfC" id="L1J-Qp-SGf"/>
                         <outlet property="indicatorImageView" destination="8Qr-2e-rSY" id="4kP-EA-kby"/>
-                        <outlet property="lastSegmentButton" destination="cqk-LF-enE" id="L3v-Hg-kLk"/>
-                        <outlet property="liveToggleButton" destination="aIk-PO-Zdg" id="9Eb-bB-c5F"/>
-                        <outlet property="nextSegmentButton" destination="IMZ-eM-vJt" id="nfL-eA-6hV"/>
+                        <outlet property="inputSelector" destination="kgD-9x-g17" id="q9c-UM-eGr"/>
                         <outlet property="plotView" destination="zrQ-dr-T2a" id="Hqa-89-5wo"/>
-                        <outlet property="prevSegmentButton" destination="Mex-9T-dBI" id="A0F-UU-jNH"/>
                         <outlet property="secondFormantLabel" destination="uAc-hW-WYY" id="BIH-sc-sLo"/>
                         <outlet property="sliderLabel" destination="kWa-hv-0Dl" id="Teg-Ti-9Jn"/>
                         <outlet property="statusLabel" destination="P33-9r-kcC" id="wOc-wh-IRk"/>
@@ -230,7 +186,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3qq-4t-Ow8" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="587" y="769"/>
+            <point key="canvasLocation" x="699" y="492"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="Vex-rW-GRa">

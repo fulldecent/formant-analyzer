@@ -25,18 +25,10 @@
     
     // Different GUI elements. They are declared IBOutlet as they need to be hidden.
     IBOutlet UILabel *statusLabel;
-    IBOutlet UILabel *fileIdLabel;
     IBOutlet UILabel *firstFormantLabel;
     IBOutlet UILabel *secondFormantLabel;
     IBOutlet UILabel *thirdFormantLabel;
     IBOutlet UILabel *fourthFormantLabel;
-    
-    IBOutlet UIButton *liveToggleButton;
-    
-    IBOutlet UIButton *prevSegmentButton;
-    IBOutlet UIButton *nextSegmentButton;
-    IBOutlet UIButton *lastSegmentButton;
-    
     IBOutlet UILabel *sliderLabel;
     IBOutlet UISlider *thresholdSlider;
     IBOutlet UISegmentedControl *graphingMode;
@@ -51,41 +43,26 @@
 
 @property (nonatomic, retain) UIImageView *indicatorImageView;
 @property (nonatomic, retain) NSTimer *masterTimer;
-
 @property (nonatomic, retain) UILabel *statusLabel;
-@property (nonatomic, retain) UILabel *fileIdLabel;
 
 @property (nonatomic, retain) UILabel *firstFormantLabel;
 @property (nonatomic, retain) UILabel *secondFormantLabel;
 @property (nonatomic, retain) UILabel *thirdFormantLabel;
 @property (nonatomic, retain) UILabel *fourthFormantLabel;
-
-@property (nonatomic, retain) UIButton *liveToggleButton;
-@property (nonatomic, retain) UIButton *prevSegmentButton;
-@property (nonatomic, retain) UIButton *nextSegmentButton;
-@property (nonatomic, retain) UIButton *lastSegmentButton;
-
 @property (nonatomic, retain) UILabel *sliderLabel;
 @property (nonatomic, retain) UISlider *thresholdSlider;
-@property (nonatomic, retain) UIButton *showOrigButton;
-@property (nonatomic, retain) UIButton *showNormButton;
-@property (nonatomic, retain) UIButton *showVowelButton;
-@property (nonatomic, retain) UIButton *showSpecButton;
-@property (nonatomic, retain) UIButton *showLPCButton;
+@property (weak, nonatomic) IBOutlet UIButton *inputSelector;
 
 @property (nonatomic, retain) UISegmentedControl *graphingMode;
 
 -(IBAction) processThresholdSlider;
--(IBAction) processLiveToggleSwitch;
-
--(IBAction) processPrevSegment;
--(IBAction) processNextSegment;
--(IBAction) processLastSegment;
 
 -(void) processRawBuffer;
 - (IBAction)graphingModeChanged:(UISegmentedControl *)sender;
 
 -(void) displayFormantFrequencies;
+
+- (IBAction)showInputSelectSheet:(id)sender;
 
 
 @end
