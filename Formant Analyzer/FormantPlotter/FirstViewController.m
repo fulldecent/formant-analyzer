@@ -9,6 +9,8 @@
 #import "FirstViewController.h"
 #import "AudioDeviceManager.h"
 
+typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} GraphingModes;
+
 @implementation FirstViewController
 
 @synthesize indicatorImageView;
@@ -33,6 +35,7 @@
 @synthesize showVowelButton;
 @synthesize showSpecButton;
 @synthesize showLPCButton;
+@synthesize graphingMode;
 
 @synthesize thresholdSlider;
 
@@ -44,42 +47,27 @@
 // displayFormantFrequencies after a delay of 0.5 seconds so that the values are
 // calculated and available when we retrieve them with a delay of 0.5 second.
 
--(IBAction) showOrig
+- (IBAction)graphingModeChanged:(UISegmentedControl *)sender
 {
-    displayIdentifier = 1;
-    [plotView setDisplayIdentifier:displayIdentifier];
-    [plotView setNeedsDisplay];
+    switch ((GraphingModes)sender.selectedSegmentIndex) {
+        case GraphingModeSig:
+        case GraphingModeTrim:
+        case GraphingModeLPC:
+        case GraphingModeHW:
+            displayIdentifier = sender.selectedSegmentIndex+1;
+            [plotView setDisplayIdentifier:displayIdentifier];
+            [plotView setNeedsDisplay];
+            break;
+        case GraphingModeFrmnt:
+            displayIdentifier = sender.selectedSegmentIndex+1;
+            [plotView setDisplayIdentifier:displayIdentifier];
+            [plotView setNeedsDisplay];
+            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
+            break;
+    }
 }
 
--(IBAction) showTrimmed
-{
-    displayIdentifier = 2;
-    [plotView setDisplayIdentifier:displayIdentifier];
-    [plotView setNeedsDisplay];
-}
 
--(IBAction) showLPC
-{
-    displayIdentifier = 3;
-    [plotView setDisplayIdentifier:displayIdentifier];
-    [plotView setNeedsDisplay];
-}
-
--(IBAction) showSpectrum
-{
-    displayIdentifier = 4;
-    [plotView setDisplayIdentifier:displayIdentifier];
-    [plotView setNeedsDisplay];
-}
-
--(IBAction) showFormants
-{
-    displayIdentifier = 5;
-    [plotView setDisplayIdentifier:displayIdentifier];
-    [plotView setNeedsDisplay];
-    
-    [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-}
 
 // This function is called half a second after the formant plot is displayed. It creates four text
 // labels and puts that below the standard vowel diagram.
@@ -393,22 +381,6 @@
     masterTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(handleTimerTick) userInfo:nil repeats:YES];
     
 }
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
-
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc. that aren't in use.
-}
-
 
 - (void)viewDidUnload
 {

@@ -39,11 +39,7 @@
     
     IBOutlet UILabel *sliderLabel;
     IBOutlet UISlider *thresholdSlider;
-    IBOutlet UIButton *showOrigButton;
-    IBOutlet UIButton *showNormButton;
-    IBOutlet UIButton *showVowelButton;
-    IBOutlet UIButton *showSpecButton;
-    IBOutlet UIButton *showLPCButton;
+    IBOutlet UISegmentedControl *graphingMode;
     
     int dummyTimerTickCounter;
     BOOL liveSpeechSegments;               // Whether we are processing live speech or stored samples.
@@ -77,6 +73,8 @@
 @property (nonatomic, retain) UIButton *showSpecButton;
 @property (nonatomic, retain) UIButton *showLPCButton;
 
+@property (nonatomic, retain) UISegmentedControl *graphingMode;
+
 -(IBAction) processThresholdSlider;
 -(IBAction) processLiveToggleSwitch;
 
@@ -85,12 +83,7 @@
 -(IBAction) processLastSegment;
 
 -(void) processRawBuffer;
-
--(IBAction) showOrig;
--(IBAction) showTrimmed;
--(IBAction) showLPC;
--(IBAction) showSpectrum;
--(IBAction) showFormants;
+- (IBAction)graphingModeChanged:(UISegmentedControl *)sender;
 
 -(void) displayFormantFrequencies;
 
