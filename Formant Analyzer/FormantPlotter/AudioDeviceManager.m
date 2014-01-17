@@ -213,9 +213,7 @@ void callbackInterruptionListener(void* inClientData, UInt32 inInterruption)
 								  sizeof(flag));
 	
 	if(status!= noErr) {
-		
-		NSLog(@"failure at AudioUnitSetProperty 1\n"); 
-		
+		NSLog(@"failure at AudioUnitSetProperty 1\n");
 		return status; 
 	};
     
@@ -259,20 +257,15 @@ void callbackInterruptionListener(void* inClientData, UInt32 inInterruption)
 								  sizeof(callbackStruct));
 	
 	if(status!= noErr) {
-		
-		NSLog(@"failure at AudioUnitSetProperty 5\n"); 
-		
+		NSLog(@"failure at AudioUnitSetProperty 5\n");
 		return status; 
 	}; 
     	
 	UInt32 allocFlag = 1;
 	status= AudioUnitSetProperty(audioUnit,kAudioUnitProperty_ShouldAllocateBuffer,kAudioUnitScope_Input,1,&allocFlag,sizeof(allocFlag)); // == noErr)
 	
-	
 	if(status!= noErr) {
-		
-		NSLog(@"failure at AudioUnitSetProperty 7\n"); 
-		
+		NSLog(@"failure at AudioUnitSetProperty 7\n");
 		return status; 
 	}; 
 	

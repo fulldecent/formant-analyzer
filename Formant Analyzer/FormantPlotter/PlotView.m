@@ -45,16 +45,6 @@
     dataBufferLength = length;
 }
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];        
-    
-    if (self) {
-        // initialize
-    }
-    return self;
-}
-
 // Main processing and display routine. 
 - (void)drawRect:(CGRect)rect
 {
@@ -91,7 +81,7 @@
             
             [self removeSilence];    // Remove dead silence on both ends of the buffer to get strong buffer
             
-            chunkSize = (strongEndIdx - strongStartIdx)/300;
+            chunkSize = (strongEndIdx - strongStartIdx)/self.frame.size.width;
             NSLog(@"Start/end indices before 15%% clipping are at %d and %d",strongStartIdx,strongEndIdx);
             
             maxSampleValue = 0;
@@ -153,7 +143,7 @@
             NSLog(@"\n");
             
             // Now display bar-graph type plot for energy in total of 60 chunks. 
-            chunkSize = (strongEndIdx - strongStartIdx)/60;
+            chunkSize = (strongEndIdx - strongStartIdx)/(self.frame.size.width/5);
             maxEnergyValue = 0;
             for (chunkIdx=0; chunkIdx<60; chunkIdx++) {
                 chunkEnergy = 0;
@@ -506,9 +496,10 @@
             
             // Now, we add an image to current view to plot location of first two formants
             CGRect backgroundRect = CGRectMake(0, 0, 300, 200);
+            backgroundRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
             UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
             
-            [backgroundImageView setImage:[UIImage imageNamed:@"vowel_bground.png"]];
+            [backgroundImageView setImage:[UIImage imageNamed:@"vowelPlotBackground.png"]];
             [self addSubview:backgroundImageView];
             
             // Perform computations and add a marker on top.
@@ -519,6 +510,20 @@
                         
             // If FF[2] is too close to FF[1], use FF[3] for vertical axis.
             
+            float plottingX = formantFrequencies[1];
+            float plottingY = formantFrequencies[2];
+            if (formantFrequencies[2] <= 1.6*formantFrequencies[1])
+                plottingY = formantFrequencies[3];
+            //plottingX = 0;    // hard code these to graph extremes
+            //plottingY = 4000; // and fuck with below constants to get graph lined up
+            plottingX = backgroundImageView.frame.size.width*0.040 + plottingX/1400*(backgroundImageView.frame.size.width*0.92);
+            plottingY = backgroundImageView.frame.size.height * 0.94 - log(plottingY)*22.8;
+            CGRect markerRect = CGRectMake(plottingX, plottingY, 10.0, 10.0);
+            UIImageView *markerImageView = [[UIImageView alloc] initWithFrame:markerRect];
+            [markerImageView setImage:[UIImage imageNamed:@"second.png"]];
+            [self addSubview:markerImageView];
+            
+            /*
             if (formantFrequencies[2] > 1.6*formantFrequencies[1]) {
                 CGRect markerRect = CGRectMake(40.0 - 5.0 + 251.0 * formantFrequencies[1]/1400.0, 181.0 - 5.0 - (log(formantFrequencies[2]) - log(500.0))*175.0/log(8.0), 10.0, 10.0);
                 UIImageView *markerImageView = [[UIImageView alloc] initWithFrame:markerRect];
@@ -535,6 +540,7 @@
                 [markerImageView setImage:[UIImage imageNamed:@"second.png"]];
                 [self addSubview:markerImageView];
             }
+             */
             
             // Free memory allocated by our routine
             free(Rxx);
