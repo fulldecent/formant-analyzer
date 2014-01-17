@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D96EF2761888D0C600C570C7 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2731888D0C600C570C7 /* green_light.png */; };
+		D96EF2771888D0C600C570C7 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2741888D0C600C570C7 /* red_light.png */; };
+		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
 		D9F770E41887426A0038839E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E31887426A0038839E /* Foundation.framework */; };
 		D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E51887426A0038839E /* CoreGraphics.framework */; };
 		D9F770E81887426A0038839E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E71887426A0038839E /* UIKit.framework */; };
@@ -28,14 +31,14 @@
 		D9F77134188744320038839E /* vowel_bground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712E188744320038839E /* vowel_bground.png */; };
 		D9F77135188744320038839E /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712F188744320038839E /* vowelPlotBackground.png */; };
 		D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77130188744320038839E /* vowelPlotBackground@2x.png */; };
-		D9F77137188744320038839E /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77131188744320038839E /* red_light.png */; };
-		D9F77138188744320038839E /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77132188744320038839E /* green_light.png */; };
-		D9F77139188744320038839E /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77133188744320038839E /* blue_light.png */; };
 		D9F7713E188744AA0038839E /* AudioDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713B188744AA0038839E /* AudioDeviceManager.m */; };
 		D9F7713F188744AA0038839E /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713D188744AA0038839E /* PlotView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D96EF2731888D0C600C570C7 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
+		D96EF2741888D0C600C570C7 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
+		D96EF2751888D0C600C570C7 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
 		D9F770E01887426A0038839E /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F770E31887426A0038839E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9F770E51887426A0038839E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -64,9 +67,6 @@
 		D9F7712E188744320038839E /* vowel_bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowel_bground.png; sourceTree = "<group>"; };
 		D9F7712F188744320038839E /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
 		D9F77130188744320038839E /* vowelPlotBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vowelPlotBackground@2x.png"; sourceTree = "<group>"; };
-		D9F77131188744320038839E /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
-		D9F77132188744320038839E /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
-		D9F77133188744320038839E /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
 		D9F7713A188744AA0038839E /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDeviceManager.h; sourceTree = "<group>"; };
 		D9F7713B188744AA0038839E /* AudioDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDeviceManager.m; sourceTree = "<group>"; };
 		D9F7713C188744AA0038839E /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotView.h; sourceTree = "<group>"; };
@@ -153,9 +153,9 @@
 				D9F7712E188744320038839E /* vowel_bground.png */,
 				D9F7712F188744320038839E /* vowelPlotBackground.png */,
 				D9F77130188744320038839E /* vowelPlotBackground@2x.png */,
-				D9F77131188744320038839E /* red_light.png */,
-				D9F77132188744320038839E /* green_light.png */,
-				D9F77133188744320038839E /* blue_light.png */,
+				D96EF2731888D0C600C570C7 /* green_light.png */,
+				D96EF2741888D0C600C570C7 /* red_light.png */,
+				D96EF2751888D0C600C570C7 /* blue_light.png */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -214,16 +214,16 @@
 			files = (
 				D9F771021887426A0038839E /* Images.xcassets in Resources */,
 				D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */,
+				D96EF2771888D0C600C570C7 /* red_light.png in Resources */,
+				D96EF2781888D0C600C570C7 /* blue_light.png in Resources */,
 				D9F770F71887426A0038839E /* Main.storyboard in Resources */,
-				D9F77139188744320038839E /* blue_light.png in Resources */,
+				D96EF2761888D0C600C570C7 /* green_light.png in Resources */,
 				D9F7712C1887441E0038839E /* four.raw in Resources */,
 				D9F771291887441E0038839E /* bid.raw in Resources */,
 				D9F7712B1887441E0038839E /* cat.raw in Resources */,
-				D9F77137188744320038839E /* red_light.png in Resources */,
 				D9F77134188744320038839E /* vowel_bground.png in Resources */,
 				D9F77135188744320038839E /* vowelPlotBackground.png in Resources */,
 				D9F7711F188743B30038839E /* formant_plot_help.html in Resources */,
-				D9F77138188744320038839E /* green_light.png in Resources */,
 				D9F7712D1887441E0038839E /* who.raw in Resources */,
 				D9F771271887441E0038839E /* arm.raw in Resources */,
 				D9F7712A1887441E0038839E /* calm.raw in Resources */,
@@ -389,6 +389,7 @@
 				D9F7711A1887426A0038839E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
