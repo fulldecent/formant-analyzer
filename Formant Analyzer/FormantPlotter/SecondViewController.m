@@ -14,27 +14,15 @@
 
 @implementation SecondViewController
 
-- (void)viewDidLoad
+- (void)viewDidAppear:(BOOL)animated
 {
-    [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
-    
-    
+    [super viewDidAppear:animated];
     NSString *path = [[NSBundle mainBundle] bundlePath];
     NSURL *baseURL = [NSURL fileURLWithPath:path];
     
     NSString *htmlString =  [NSString stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"formant_plot_help" ofType:@"html"] encoding:NSUTF8StringEncoding error:nil];
     
     [self.webView loadHTMLString:htmlString baseURL:baseURL];
-    
-    
-    
-}
-
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end
