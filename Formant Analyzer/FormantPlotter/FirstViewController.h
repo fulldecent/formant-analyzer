@@ -64,5 +64,6 @@
 
 - (IBAction)showInputSelectSheet:(id)sender;
 
+- (IBAction)showHelp;
 
 @end

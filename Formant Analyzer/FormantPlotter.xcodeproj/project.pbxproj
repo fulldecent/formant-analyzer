@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		89611B80333F4B3EA4E3B800 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 99D2C83AC4BE46BCBE258AE6 /* libPods.a */; };
 		D96EF2761888D0C600C570C7 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2731888D0C600C570C7 /* green_light.png */; };
 		D96EF2771888D0C600C570C7 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2741888D0C600C570C7 /* red_light.png */; };
 		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
@@ -18,7 +19,6 @@
 		D9F770F41887426A0038839E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770F31887426A0038839E /* AppDelegate.m */; };
 		D9F770F71887426A0038839E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F770F51887426A0038839E /* Main.storyboard */; };
 		D9F770FD1887426A0038839E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770FC1887426A0038839E /* FirstViewController.m */; };
-		D9F771001887426A0038839E /* SecondViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770FF1887426A0038839E /* SecondViewController.m */; };
 		D9F771021887426A0038839E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F771011887426A0038839E /* Images.xcassets */; };
 		D9F7711F188743B30038839E /* formant_plot_help.html in Resources */ = {isa = PBXBuildFile; fileRef = D9F7711E188743B30038839E /* formant_plot_help.html */; };
 		D9F771271887441E0038839E /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771201887441E0038839E /* arm.raw */; };
@@ -28,14 +28,13 @@
 		D9F7712B1887441E0038839E /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771241887441E0038839E /* cat.raw */; };
 		D9F7712C1887441E0038839E /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771251887441E0038839E /* four.raw */; };
 		D9F7712D1887441E0038839E /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771261887441E0038839E /* who.raw */; };
-		D9F77134188744320038839E /* vowel_bground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712E188744320038839E /* vowel_bground.png */; };
-		D9F77135188744320038839E /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F7712F188744320038839E /* vowelPlotBackground.png */; };
-		D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77130188744320038839E /* vowelPlotBackground@2x.png */; };
+		D9F77136188744320038839E /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77130188744320038839E /* vowelPlotBackground.png */; };
 		D9F7713E188744AA0038839E /* AudioDeviceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713B188744AA0038839E /* AudioDeviceManager.m */; };
 		D9F7713F188744AA0038839E /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713D188744AA0038839E /* PlotView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		99D2C83AC4BE46BCBE258AE6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D96EF2731888D0C600C570C7 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
 		D96EF2741888D0C600C570C7 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
 		D96EF2751888D0C600C570C7 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
@@ -52,8 +51,6 @@
 		D9F770F61887426A0038839E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9F770FB1887426A0038839E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
 		D9F770FC1887426A0038839E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
-		D9F770FE1887426A0038839E /* SecondViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SecondViewController.h; sourceTree = "<group>"; };
-		D9F770FF1887426A0038839E /* SecondViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SecondViewController.m; sourceTree = "<group>"; };
 		D9F771011887426A0038839E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9F771081887426A0038839E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9F7711E188743B30038839E /* formant_plot_help.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = formant_plot_help.html; sourceTree = "<group>"; };
@@ -64,13 +61,12 @@
 		D9F771241887441E0038839E /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
 		D9F771251887441E0038839E /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
 		D9F771261887441E0038839E /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
-		D9F7712E188744320038839E /* vowel_bground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowel_bground.png; sourceTree = "<group>"; };
-		D9F7712F188744320038839E /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
-		D9F77130188744320038839E /* vowelPlotBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "vowelPlotBackground@2x.png"; sourceTree = "<group>"; };
+		D9F77130188744320038839E /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
 		D9F7713A188744AA0038839E /* AudioDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioDeviceManager.h; sourceTree = "<group>"; };
 		D9F7713B188744AA0038839E /* AudioDeviceManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioDeviceManager.m; sourceTree = "<group>"; };
 		D9F7713C188744AA0038839E /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotView.h; sourceTree = "<group>"; };
 		D9F7713D188744AA0038839E /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotView.m; sourceTree = "<group>"; };
+		E20E72F3037E4CDCBEC66BAA /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +77,7 @@
 				D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */,
 				D9F770E81887426A0038839E /* UIKit.framework in Frameworks */,
 				D9F770E41887426A0038839E /* Foundation.framework in Frameworks */,
+				89611B80333F4B3EA4E3B800 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +90,7 @@
 				D9F770E91887426A0038839E /* FormantPlotter */,
 				D9F770E21887426A0038839E /* Frameworks */,
 				D9F770E11887426A0038839E /* Products */,
+				E20E72F3037E4CDCBEC66BAA /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -111,6 +109,7 @@
 				D9F770E51887426A0038839E /* CoreGraphics.framework */,
 				D9F770E71887426A0038839E /* UIKit.framework */,
 				D9F771081887426A0038839E /* XCTest.framework */,
+				99D2C83AC4BE46BCBE258AE6 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,8 +122,6 @@
 				D9F770F51887426A0038839E /* Main.storyboard */,
 				D9F770FB1887426A0038839E /* FirstViewController.h */,
 				D9F770FC1887426A0038839E /* FirstViewController.m */,
-				D9F770FE1887426A0038839E /* SecondViewController.h */,
-				D9F770FF1887426A0038839E /* SecondViewController.m */,
 				D9F771011887426A0038839E /* Images.xcassets */,
 				D9F7713A188744AA0038839E /* AudioDeviceManager.h */,
 				D9F7713B188744AA0038839E /* AudioDeviceManager.m */,
@@ -150,9 +147,7 @@
 				D9F771241887441E0038839E /* cat.raw */,
 				D9F771251887441E0038839E /* four.raw */,
 				D9F771261887441E0038839E /* who.raw */,
-				D9F7712E188744320038839E /* vowel_bground.png */,
-				D9F7712F188744320038839E /* vowelPlotBackground.png */,
-				D9F77130188744320038839E /* vowelPlotBackground@2x.png */,
+				D9F77130188744320038839E /* vowelPlotBackground.png */,
 				D96EF2731888D0C600C570C7 /* green_light.png */,
 				D96EF2741888D0C600C570C7 /* red_light.png */,
 				D96EF2751888D0C600C570C7 /* blue_light.png */,
@@ -167,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9F771181887426A0038839E /* Build configuration list for PBXNativeTarget "FormantPlotter" */;
 			buildPhases = (
+				0CCDA465D91843609C80613D /* Check Pods Manifest.lock */,
 				D9F770DC1887426A0038839E /* Sources */,
 				D9F770DD1887426A0038839E /* Frameworks */,
 				D9F770DE1887426A0038839E /* Resources */,
+				339E53F4520943AAB7EF712D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -213,7 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9F771021887426A0038839E /* Images.xcassets in Resources */,
-				D9F77136188744320038839E /* vowelPlotBackground@2x.png in Resources */,
+				D9F77136188744320038839E /* vowelPlotBackground.png in Resources */,
 				D96EF2771888D0C600C570C7 /* red_light.png in Resources */,
 				D96EF2781888D0C600C570C7 /* blue_light.png in Resources */,
 				D9F770F71887426A0038839E /* Main.storyboard in Resources */,
@@ -221,8 +218,6 @@
 				D9F7712C1887441E0038839E /* four.raw in Resources */,
 				D9F771291887441E0038839E /* bid.raw in Resources */,
 				D9F7712B1887441E0038839E /* cat.raw in Resources */,
-				D9F77134188744320038839E /* vowel_bground.png in Resources */,
-				D9F77135188744320038839E /* vowelPlotBackground.png in Resources */,
 				D9F7711F188743B30038839E /* formant_plot_help.html in Resources */,
 				D9F7712D1887441E0038839E /* who.raw in Resources */,
 				D9F771271887441E0038839E /* arm.raw in Resources */,
@@ -234,13 +229,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0CCDA465D91843609C80613D /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		339E53F4520943AAB7EF712D /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D9F770DC1887426A0038839E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				D9F7713E188744AA0038839E /* AudioDeviceManager.m in Sources */,
-				D9F771001887426A0038839E /* SecondViewController.m in Sources */,
 				D9F770F41887426A0038839E /* AppDelegate.m in Sources */,
 				D9F7713F188744AA0038839E /* PlotView.m in Sources */,
 				D9F770FD1887426A0038839E /* FirstViewController.m in Sources */,
@@ -344,6 +371,7 @@
 		};
 		D9F771191887426A0038839E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E20E72F3037E4CDCBEC66BAA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -357,6 +385,7 @@
 		};
 		D9F7711A1887426A0038839E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E20E72F3037E4CDCBEC66BAA /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

@@ -1,64 +1,33 @@
-<HTML>
-    <HEAD>
-        <TITLE>HELLO</TITLE>
-    </HEAD>
-    <BODY bgcolor="#ffffff">
-        <p style="margin: 0.0px 0.0px 5.0px 0.0px; font: 32.0px Helvetica">
-        <span style="font-size:32px;"><span style="color:#000000;">
-            Formant Plotter
-        </span></span></p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Help</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+        <style>body{margin:1em}</style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    
+    <body>
+        <h1>Formant Plotter</h1>
+        <p class="lead">This application calculates and plots the formant frequencies of spoken vowels. The user should speak a word containing a vowel, pause while application processes the sound, and see results.</p>
         
-        <p style="margin: 0.0px 0.0px 0.0px 00.0px; font: 16.0px Helvetica">
-        <span style="font-size:16px;"><span style="color:#000000;">
-            This application calculates and plots the formant frequencies of spoken vowels. The user should speak a word containing a vowel, pause while application processes the sound, and see results.
-        </span></span></p>
+        <p>First two formant frequencies are used to graphically show the location of spoken vowel on a standard vowel diagram. An indicator light changes its color to display the status of the application.</p>
         
-        <p style="margin: 10.0px 0.0px 0.0px 00.0px; font: 16.0px Helvetica">
-        <span style="font-size:16px;"><span style="color:#000000;">
-            First two formant frequencies are used to graphically show the location of spoken vowel on a standard vowel diagram. An indicator light changes its color to display the status of the application.
-        </span></span></p>
+        <p>For more information on this project, and to report any issues or request improvements, please visit: <a href="https://github.com/fulldecent/formant-analyzer">https://github.com/fulldecent/formant-analyzer</a></p>
         
-        <p style="margin: 10.0px 0.0px 0.0px 00.0px; font: 16.0px Helvetica">
-        <span style="font-size:16px;"><span style="color:#000000;">
-            For more information on this project, and to report any issues or request improvements, please visit: <a href="https://github.com/fulldecent/formant-analyzer">https://github.com/fulldecent/formant-analyzer</a>
-        </span></span></p>
-        
-        <table align="left" border="0" cellpadding="1" cellspacing="1">
+        <table class="table">
             <tr>
-                <td>
-                    <img src="green_light.png" style="height:40px;width:40px"></img>
-                </td>
-                <td>
-                    
-                    <span style="font-size:16px;"><span style="font: 16.0px Helvetica;"><span style="color:#000000;"><span valign="center"> &nbsp;
-                               Ready to record sound
-                    </span></span></span></span>
-                </td>
+                <td><img src="green_light.png" style="height:40px;width:40px"></td>
+                <td>Ready to record sound</td>
             </tr>
             <tr>
-                <td>
-                    <img src="blue_light.png" style="height:40px;width:40px"></img>
-                </td>
-                <td>
-                    
-                    <span style="font-size:16px;"><span style="font: 16.0px Helvetica;"><span style="color:#000000;"><span valign="center"> &nbsp;
-                                Recording the sound 
-                    </span></span></span></span>
-                </td>
-                
+                <td><img src="blue_light.png" style="height:40px;width:40px"></td>
+                <td>Recording the sound</td>
             </tr>
             <tr>
-                <td>
-                    <img src="red_light.png" style="height:40px;width:40px"></img>
-                </td>
-                <td>
-                    
-                    <span style="font-size:16px;"><span style="font: 16.0px Helvetica;"><span style="color:#000000;"><span valign="center"> &nbsp;
-                              Processing the sound
-                    </span></span></span></span>
-                </td>
-                
+                <td><img src="red_light.png" style="height:40px;width:40px"></td>
+                <td>Processing the sound</td>
             </tr>
         </table>
-    </BODY>
-</HTML>
+    </body>
+</html>

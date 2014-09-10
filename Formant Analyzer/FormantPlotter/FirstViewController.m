@@ -8,6 +8,7 @@
 
 #import "FirstViewController.h"
 #import "AudioDeviceManager.h"
+#import <TOWebViewController.h>
 
 typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} GraphingModes;
 
@@ -291,6 +292,14 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     inputChoice.cancelButtonIndex = inputChoice.numberOfButtons-1;
     
     [inputChoice showFromTabBar:self.tabBarController.tabBar];
+}
+
+- (IBAction)showHelp {
+    NSURL *filePath = [[NSBundle mainBundle] URLForResource:@"formant_plot_help" withExtension:@"html"];
+    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:filePath];
+    webViewController.showActionButton = false;
+    [self presentViewController:[[UINavigationController alloc] initWithRootViewController:webViewController] animated:YES completion:nil];
+
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
