@@ -50,7 +50,7 @@
 {
     UIColor *mycolor;
     CGPoint startPoint, endPoint;
-    int i, j, k, dummo, degIdx, chunkIdx, chunkSize;
+    int i, j, k, dummo, degIdx, chunkIdx, chunkSamples;
     short int chunkMinValue, chunkMaxValue;
     
     int maxSampleValue;
@@ -81,7 +81,7 @@
             
             [self removeSilence];    // Remove dead silence on both ends of the buffer to get strong buffer
             
-            chunkSize = (strongEndIdx - strongStartIdx)/self.frame.size.width;
+            chunkSamples = (strongEndIdx - strongStartIdx)/self.frame.size.width;
             NSLog(@"Start/end indices before 15%% clipping are at %d and %d",strongStartIdx,strongEndIdx);
             
             maxSampleValue = 0;
@@ -100,9 +100,9 @@
             for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
                 chunkMinValue = 32700;
                 chunkMaxValue = -32700;
-                for (j=0; j<chunkSize; j++) {
-                    chunkMinValue = MIN(chunkMinValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSize]);
-                    chunkMaxValue = MAX(chunkMaxValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSize]);
+                for (j=0; j<chunkSamples; j++) {
+                    chunkMinValue = MIN(chunkMinValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]);
+                    chunkMaxValue = MAX(chunkMaxValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]);
                 }
                 
                 if (maxSampleValue == 0) {
@@ -142,13 +142,17 @@
             NSLog(@"Start/end indices after  15%% clipping are at %d and %d\n",truncatedStartIdx,truncatedEndIdx);
             NSLog(@"\n");
             
-            // Now display bar-graph type plot for energy in total of 60 chunks. 
-            chunkSize = (strongEndIdx - strongStartIdx)/(self.frame.size.width/5);
+            // Now display bar-graph type plot for energy in total of 60 chunks.
+            int chunks = 60;
+            int chunkWidth = self.frame.size.width / chunks;
+            chunkSamples = (strongEndIdx - strongStartIdx) / chunks;
+            
+            
             maxEnergyValue = 0;
-            for (chunkIdx=0; chunkIdx<60; chunkIdx++) {
+            for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
                 chunkEnergy = 0;
-                for (j=0; j<chunkSize; j++) {
-                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSize] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSize]/10000;
+                for (j=0; j<chunkSamples; j++) {
+                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]/10000;
                 }
                 maxEnergyValue = MAX(maxEnergyValue, chunkEnergy);
             }
@@ -157,10 +161,10 @@
                 maxEnergyValue = 1;
             }
             
-            for (chunkIdx=0; chunkIdx<60; chunkIdx++) {
+            for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
                 chunkEnergy = 0;
-                for (j=0; j<chunkSize; j++) {
-                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSize] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSize]/10000;
+                for (j=0; j<chunkSamples; j++) {
+                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]/10000;
                 }
                 
                 if (chunkIdx > 8 && chunkIdx < 51) {
@@ -168,7 +172,7 @@
                     CGContextSetLineWidth(ctx, 1.0);
                     CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
                     CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-                    CGContextFillRect(ctx, CGRectMake(chunkIdx*5, 100 - 95*chunkEnergy/maxEnergyValue, 5, 190*chunkEnergy/maxEnergyValue));
+                    CGContextFillRect(ctx, CGRectMake(chunkIdx*chunkWidth, 100 - 95*chunkEnergy/maxEnergyValue, chunkWidth, 190*chunkEnergy/maxEnergyValue));
                     CGContextStrokePath(ctx);
                 }
                 else
@@ -177,7 +181,7 @@
                     CGContextSetLineWidth(ctx, 1.0);
                     CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
                     CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-                    CGContextFillRect(ctx, CGRectMake(chunkIdx*5, 100 - 95*chunkEnergy/maxEnergyValue, 5, 190*chunkEnergy/maxEnergyValue));
+                    CGContextFillRect(ctx, CGRectMake(chunkIdx*chunkWidth, 100 - 95*chunkEnergy/maxEnergyValue, chunkWidth, 190*chunkEnergy/maxEnergyValue));
                     CGContextStrokePath(ctx);   
                 }
             }
@@ -188,7 +192,7 @@
             CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
             CGContextSetLineWidth(ctx, 1.0);
             CGContextMoveToPoint(ctx, 0, 100);
-            CGContextAddLineToPoint(ctx, 320, 100);
+            CGContextAddLineToPoint(ctx, chunks * chunkWidth, 100);
             CGContextStrokePath(ctx);
         }
             break;
