@@ -10,7 +10,7 @@
 #import "AudioDeviceManager.h"
 #import <TOWebViewController.h>
 
-typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} GraphingModes;
+typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
 
 @interface FirstViewController() <UIActionSheetDelegate>
 @end
@@ -164,14 +164,14 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
 {
     NSData *speechSegmentData;
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:[soundFileBaseNames objectAtIndex:soundFileIdentifier] ofType:@"raw"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:soundFileBaseNames[soundFileIdentifier] ofType:@"raw"];
     speechSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
     
     [speechSegmentData getBytes:soundDataBuffer];
     
     
     //NSLog(@"Length of speech segment NSData is %d",[speechSegmentData length]);
-    NSLog(@"Current base file name is %@",[soundFileBaseNames objectAtIndex:soundFileIdentifier]);
+    NSLog(@"Current base file name is %@",soundFileBaseNames[soundFileIdentifier]);
     
     [plotView setDisplayIdentifier:displayIdentifier];
     
@@ -216,7 +216,7 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
     [super viewDidLoad];
     
     // Initialize 7 names for 7 stored audio files.
-    soundFileBaseNames = [[NSArray alloc] initWithObjects:@"arm",@"beat",@"bid",@"calm",@"cat",@"four",@"who", nil];
+    soundFileBaseNames = @[@"arm",@"beat",@"bid",@"calm",@"cat",@"four",@"who"];
     
     dummyTimerTickCounter = 0;
     liveSpeechSegments = TRUE;
@@ -295,11 +295,10 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
 }
 
 - (IBAction)showHelp {
-    NSURL *filePath = [[NSBundle mainBundle] URLForResource:@"formant_plot_help" withExtension:@"html"];
-    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:filePath];
+    NSURL *url = [NSURL URLWithString:@"https://fulldecent.github.io/formant-analyzer/"];
+    TOWebViewController *webViewController = [[TOWebViewController alloc] initWithURL:url];
     webViewController.showActionButton = false;
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:webViewController] animated:YES completion:nil];
-
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
@@ -324,18 +323,16 @@ typedef enum {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW
         sliderLabel.hidden = TRUE;
         thresholdSlider.hidden = TRUE;
         soundFileIdentifier = buttonIndex - 1;
-        [statusLabel setText:[soundFileBaseNames objectAtIndex:soundFileIdentifier]];
+        [statusLabel setText:soundFileBaseNames[soundFileIdentifier]];
         [self processRawBuffer];
         
     }
 }
-
 
 - (void)viewDidUnload
 {
     [super viewDidUnload];
     free(soundDataBuffer);
 }
-
 
 @end

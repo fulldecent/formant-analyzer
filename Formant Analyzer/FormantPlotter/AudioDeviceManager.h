@@ -38,6 +38,6 @@
 -(void)freeData;
 
 -(void)closeDownAudioDevice;
--(OSStatus)setUpAudioDevice;
+@property (NS_NONATOMIC_IOSONLY, readonly) OSStatus setUpAudioDevice;
 
 @end

@@ -19,14 +19,6 @@
 #import <UIKit/UIKit.h>
 #import <complex.h>
 
-// A few constants to be used in LPC and Laguerre algorithms.
-# define ORDER 20
-
-#define EPS 2.0e-6 
-#define EPSS 1.0e-7 
-#define MR 8
-#define MT 10 
-#define MAXIT (MT*MR)
 
 
 @interface PlotView : UIView {
@@ -46,16 +38,10 @@
 -(void)setDisplayIdentifier:(int)displayidentifier;
 
 // Write four getter functions manually for four formant frequencies.
--(double) firstFFreq;
--(double) secondFFreq;
--(double) thirdFFreq;
--(double) fourthFFreq;
+@property (NS_NONATOMIC_IOSONLY, readonly) double firstFFreq;
+@property (NS_NONATOMIC_IOSONLY, readonly) double secondFFreq;
+@property (NS_NONATOMIC_IOSONLY, readonly) double thirdFFreq;
+@property (NS_NONATOMIC_IOSONLY, readonly) double fourthFFreq;
 
--(void) removeSilence;  
--(void) removeTails;
--(void) decimateDataBuffer;
-
--(double *) findFormants:(_Complex double*) pCoeff;
--(_Complex double) laguer:(_Complex double *) a currentOrder:(int) m;
 
 @end

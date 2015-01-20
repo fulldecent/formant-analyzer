@@ -7,6 +7,26 @@
 //
 
 #import "PlotView.h"
+#import "SpeechAnalyzer.h"
+
+
+// A few constants to be used in LPC and Laguerre algorithms.
+#define ORDER 20
+#define EPS 2.0e-6
+#define EPSS 1.0e-7
+#define MR 8
+#define MT 10
+#define MAXIT (MT*MR)
+
+@interface PlotView()
+-(void) removeSilence;
+-(void) removeTails;
+-(void) decimateDataBuffer;
+-(double *) findFormants:(_Complex double*) pCoeff NS_RETURNS_INNER_POINTER;
+-(_Complex double) laguer:(_Complex double *) a currentOrder:(int) m;
+
+@property (nonatomic) SpeechAnalyzer *speechAnalyzer;
+@end
 
 
 @implementation PlotView
@@ -33,16 +53,20 @@
 }
 
 // A setter function for displayIdentifier
--(void)setDisplayIdentifier:(int)displayidentifier
+- (void)setDisplayIdentifier:(int)displayidentifier
 {
     displayIdentifier = displayidentifier;
 }
 
 // Gets pointer to the start of audio data and the length of the buffer.
--(void)getData:(short int *)databuffer withLength:(int)length
+- (void)getData:(short int *)databuffer withLength:(int)length
 {
     dataBuffer = databuffer;
     dataBufferLength = length;
+    
+    NSData *data = [NSData dataWithBytes:databuffer length:length];
+    self.speechAnalyzer = [[SpeechAnalyzer alloc] init];
+    [self.speechAnalyzer loadData:data];
 }
 
 // Main processing and display routine. 
