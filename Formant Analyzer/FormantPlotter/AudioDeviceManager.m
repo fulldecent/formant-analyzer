@@ -51,17 +51,17 @@ static OSStatus recordingCallback(void* inRefCon,AudioUnitRenderActionFlags* ioA
     
     // If energy is above the threshold, copy 1024 samples to the long buffer.
     
-    if (manager->startCapturing == FALSE && manager->capturingComplete == FALSE && bufferEnergy > manager->energyThreshold ) {
+    if (manager->startCapturing == NO && manager->capturingComplete == NO && bufferEnergy > manager->energyThreshold ) {
         short signed int *source= (short signed int *)bufferList->mBuffers[0].mData; 
         for (j = 0; j < inNumberFrames; j++) {
             manager->longBuffer[j] = source[j];
         }
         manager->bufferSegCount = 1;
-        manager->startCapturing = TRUE;
+        manager->startCapturing = YES;
     }
     
     // If energy in 1024 sample buffer is at least 20% of the starting threshold, continue accumulating sound buffer.
-    if (manager->startCapturing == TRUE && manager->capturingComplete == FALSE)
+    if (manager->startCapturing == YES && manager->capturingComplete == NO)
     {
         if (bufferEnergy > (manager->energyThreshold/5) ) 
         {
@@ -74,8 +74,8 @@ static OSStatus recordingCallback(void* inRefCon,AudioUnitRenderActionFlags* ioA
         else       // energy in 1024 sample buffer is below 20% of starting threshold. Stop capturing.
         {
             NSLog(@"\n");
-            manager->startCapturing = TRUE;
-            manager->capturingComplete = TRUE;
+            manager->startCapturing = YES;
+            manager->capturingComplete = YES;
         }
     }
     return noErr;

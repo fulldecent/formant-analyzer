@@ -7,12 +7,24 @@
 //
 
 #import "FirstViewController.h"
-#import "AudioDeviceManager.h"
+#import "audioDeviceManager.h"
 #import <TOWebViewController.h>
 
 typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
 
 @interface FirstViewController() <UIActionSheetDelegate>
+@property short int *soundDataBuffer;                    // A pointer to long sound buffer to be captured.
+@property int dummyTimerTickCounter;
+@property BOOL liveSpeechSegments;               // Whether we are processing live speech or stored samples.
+@property int soundFileIdentifier;               // Which stored file (1 out of 7) is being processed
+@property int displayIdentifier;                 // What type of information (1 out of 5) is to be displayed in self.plotView.
+@property NSArray *soundFileBaseNames;           // Array of names of 7 stored sound files.
+@property AudioDeviceManager *audioDeviceManager;
+@property NSTimer *masterTimer;                          // Timer to manage three phases of soud capturing process
+
+- (void)processRawBuffer;
+- (void)displayFormantFrequencies;
+
 @end
 
 @implementation FirstViewController
@@ -30,8 +42,8 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 @synthesize thresholdSlider;
 
 // One of the following 5 functions is called when one of the 5 buttons in analysis mode is touched.
-// These buttons just set value of displayIdentifier appropriately, passes this value to plotView
-// can calls the default display updating function, drawRect(), in plotView.
+// These buttons just set value of self.displayIdentifier appropriately, passes this value to self.plotView
+// can calls the default display updating function, drawRect(), in self.plotView.
 
 // The fifth function is different. After calling drawRect(), it calls another fuction
 // displayFormantFrequencies after a delay of 0.5 seconds so that the values are
@@ -44,14 +56,14 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
         case GraphingModeTrim:
         case GraphingModeLPC:
         case GraphingModeHW:
-            displayIdentifier = sender.selectedSegmentIndex+1;
-            [plotView setDisplayIdentifier:displayIdentifier];
-            [plotView setNeedsDisplay];
+            self.displayIdentifier = sender.selectedSegmentIndex+1;
+            [self.plotView setDisplayIdentifier:self.displayIdentifier];
+            [self.plotView setNeedsDisplay];
             break;
         case GraphingModeFrmnt:
-            displayIdentifier = sender.selectedSegmentIndex+1;
-            [plotView setDisplayIdentifier:displayIdentifier];
-            [plotView setNeedsDisplay];
+            self.displayIdentifier = sender.selectedSegmentIndex+1;
+            [self.plotView setDisplayIdentifier:self.displayIdentifier];
+            [self.plotView setNeedsDisplay];
             [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
             break;
     }
@@ -63,61 +75,61 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 // labels and puts that below the standard vowel diagram.
 -(void) displayFormantFrequencies
 {
-    NSString *firstFLabel = [NSString stringWithFormat:@"Formant 1:%5.0f",[plotView firstFFreq]];
+    NSString *firstFLabel = [NSString stringWithFormat:@"Formant 1:%5.0f",[self.plotView firstFFreq]];
     firstFormantLabel.text = firstFLabel;
-    NSString *secondFLabel = [NSString stringWithFormat:@"Formant 2:%5.0f",[plotView secondFFreq]];
+    NSString *secondFLabel = [NSString stringWithFormat:@"Formant 2:%5.0f",[self.plotView secondFFreq]];
     secondFormantLabel.text = secondFLabel;
-    NSString *thirdFLabel = [NSString stringWithFormat:@"Formant 3:%5.0f",[plotView thirdFFreq]];
+    NSString *thirdFLabel = [NSString stringWithFormat:@"Formant 3:%5.0f",[self.plotView thirdFFreq]];
     thirdFormantLabel.text = thirdFLabel;
-    NSString *fourthFLabel = [NSString stringWithFormat:@"Formant 4:%5.0f",[plotView fourthFFreq]];
+    NSString *fourthFLabel = [NSString stringWithFormat:@"Formant 4:%5.0f",[self.plotView fourthFFreq]];
     fourthFormantLabel.text = fourthFLabel;
 }
 
-// This function takes value from the slider, multiplies it with 10^7 and passes on this value to audioDeviceManager.
+// This function takes value from the slider, multiplies it with 10^7 and passes on this value to self.audioDeviceManager.
 // This threshold is used to determine if microphone is listening to background chatter or real speaker. Keep the slider
 // to a lower value in quiter environmant and higher for noisy environments.
 -(IBAction) processThresholdSlider
 {
-    audioDeviceManager->energyThreshold = (unsigned long)(thresholdSlider.value * 10000000);
+    self.self.audioDeviceManager->energyThreshold = (unsigned long)(thresholdSlider.value * 10000000);
 }
 
-/* The following block reads two flags in audioDeviceManager to handle different stages of real-time data capturing. The audioDeviceManger starts with both of these flags in FALSE state, implying that it is waiting for a strong input signal. We display a message of 'Waiting ...' in this state.
+/* The following block reads two flags in self.audioDeviceManager to handle different stages of real-time data capturing. The audioDeviceManger starts with both of these flags in NO state, implying that it is waiting for a strong input signal. We display a message of 'Waiting ...' in this state.
  
- When strong input signal is detected, startCapturing becomes TRUE and remains true while signal remains strong. We display a message of 'Capturing ...' during this state.
+ When strong input signal is detected, startCapturing becomes YES and remains true while signal remains strong. We display a message of 'Capturing ...' during this state.
  
  When the signal becomes weak again, both flags are true. We display a message of 'Processing ...'. When we are done with processing, we reset the two flags and display a message of 'Waiting ...' We also process recently captured frame.
  */
 
 -(void) handleTimerTick
 {
-    if (liveSpeechSegments == TRUE) {           // Only do the following if we are processing live speech.
+    if (self.liveSpeechSegments == YES) {           // Only do the following if we are processing live speech.
         
-        // If strong signal appears (detected via flags of audioDeviceManager), display blue light.
+        // If strong signal appears (detected via flags of self.audioDeviceManager), display blue light.
         // Also reset dummyTimerTickCounter
         
-        if (audioDeviceManager-> startCapturing == TRUE && audioDeviceManager->capturingComplete == FALSE)
+        if (self.audioDeviceManager-> startCapturing == YES && self.audioDeviceManager->capturingComplete == NO)
         {
             [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
             [statusLabel setText:@"Capturing sound"];
-            dummyTimerTickCounter = 0;
+            self.dummyTimerTickCounter = 0;
         }
         
         // If signal is no longer strong (detected via flags of audioDeviceManger), increment dummyTickCounter and
         // display a red light to indicate we are processing the captured signal.
         
-        if (audioDeviceManager-> startCapturing == TRUE && audioDeviceManager->capturingComplete == TRUE)
+        if (self.audioDeviceManager-> startCapturing == YES && self.audioDeviceManager->capturingComplete == YES)
         {
-            if (dummyTimerTickCounter == 0)    // If we are just completed sound capturing
+            if (self.dummyTimerTickCounter == 0)    // If we are just completed sound capturing
             {
-                dummyTimerTickCounter++;
+                self.dummyTimerTickCounter++;
                 
-                [plotView setDisplayIdentifier:displayIdentifier];
+                [self.plotView setDisplayIdentifier:self.displayIdentifier];
                 
-                // Take the captured data from audioDeviceManger and pass it on to plotView
+                // Take the captured data from audioDeviceManger and pass it on to self.plotView
                 // Also save the sound buffer locally on the device. This was done to capture data
                 // with iPhone, export it to MATLAB and process offline. Not needed in final version.
-                [plotView  getData:audioDeviceManager->longBuffer withLength:1024 * audioDeviceManager->bufferSegCount];
-                [plotView setNeedsDisplay];
+                [self.plotView  getData:self.audioDeviceManager->longBuffer withLength:1024 * self.audioDeviceManager->bufferSegCount];
+                [self.plotView setNeedsDisplay];
                 
                 [self performSelector:@selector(saveBuffer) withObject:nil afterDelay:0.1];
                 [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
@@ -127,13 +139,13 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
             }
             else   // If sound capturing was done a few timer ticks ago, give a dummy delay of 10counts.
             {
-                dummyTimerTickCounter++;
-                if (dummyTimerTickCounter > 15)    // dummy delay is over. Reset everything for next capture.
+                self.dummyTimerTickCounter++;
+                if (self.dummyTimerTickCounter > 15)    // dummy delay is over. Reset everything for next capture.
                 {
                     [indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
-                    audioDeviceManager->bufferSegCount = 0;
-                    audioDeviceManager->startCapturing = FALSE;
-                    audioDeviceManager->capturingComplete = FALSE;
+                    self.audioDeviceManager->bufferSegCount = 0;
+                    self.audioDeviceManager->startCapturing = NO;
+                    self.audioDeviceManager->capturingComplete = NO;
                     [statusLabel setText:@"Waiting ..."];
                 }
             }
@@ -145,7 +157,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 // It is a raw dump of catured data.
 -(void) saveBuffer
 {
-    NSData *rawData = [[NSData alloc] initWithBytes:audioDeviceManager->longBuffer length:1024 * audioDeviceManager->bufferSegCount * sizeof(short)];
+    NSData *rawData = [[NSData alloc] initWithBytes:self.audioDeviceManager->longBuffer length:1024 * self.audioDeviceManager->bufferSegCount * sizeof(short)];
     
     NSLog(@"Raw Data has length %d",[rawData length]);
     
@@ -157,34 +169,34 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 
 // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
 // binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view
-// is shown in plotView.
+// is shown in self.plotView.
 
 // If we are looking at 5th plot type (formant frequencies), four text labels are updated with a delay of 0.5 sec
 -(void) processRawBuffer
 {
     NSData *speechSegmentData;
     
-    NSString *filePath = [[NSBundle mainBundle] pathForResource:soundFileBaseNames[soundFileIdentifier] ofType:@"raw"];
+    NSString *filePath = [[NSBundle mainBundle] pathForResource:self.soundFileBaseNames[self.soundFileIdentifier] ofType:@"raw"];
     speechSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
     
-    [speechSegmentData getBytes:soundDataBuffer];
+    [speechSegmentData getBytes:self.soundDataBuffer];
     
     
     //NSLog(@"Length of speech segment NSData is %d",[speechSegmentData length]);
-    NSLog(@"Current base file name is %@",soundFileBaseNames[soundFileIdentifier]);
+    NSLog(@"Current base file name is %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     
-    [plotView setDisplayIdentifier:displayIdentifier];
+    [self.plotView setDisplayIdentifier:self.displayIdentifier];
     
-    [plotView  getData:soundDataBuffer withLength:[speechSegmentData length]/sizeof(short)];
-    [plotView setNeedsDisplay];
+    [self.plotView  getData:self.soundDataBuffer withLength:[speechSegmentData length]/sizeof(short)];
+    [self.plotView setNeedsDisplay];
     
-    if (displayIdentifier == 5) {
+    if (self.displayIdentifier == 5) {
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
 }
 
 // Processes last captured (and stored) speech segment. It loads binary data from a file titled
-// lastSpeech, puts data into lastSegmentData and calls the plotView, which processed the audio buffer.
+// lastSpeech, puts data into lastSegmentData and calls the self.plotView, which processed the audio buffer.
 -(IBAction)processLastSegment
 {
     NSData *lastSegmentData;
@@ -194,18 +206,18 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     
     lastSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
     
-    [lastSegmentData getBytes:soundDataBuffer];
+    [lastSegmentData getBytes:self.soundDataBuffer];
     
     NSLog(@"Length of last segment NSData is %d",[lastSegmentData length]);
     
     [statusLabel setText:@"Last"];
     
-    [plotView setDisplayIdentifier:displayIdentifier];
+    [self.plotView setDisplayIdentifier:self.displayIdentifier];
     
-    [plotView  getData:soundDataBuffer withLength:[lastSegmentData length]/sizeof(short)];
-    [plotView setNeedsDisplay];
+    [self.plotView  getData:self.soundDataBuffer withLength:[lastSegmentData length]/sizeof(short)];
+    [self.plotView setNeedsDisplay];
     
-    if (displayIdentifier == 5) {
+    if (self.displayIdentifier == 5) {
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
 }
@@ -216,49 +228,49 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     [super viewDidLoad];
     
     // Initialize 7 names for 7 stored audio files.
-    soundFileBaseNames = @[@"arm",@"beat",@"bid",@"calm",@"cat",@"four",@"who"];
+    self.soundFileBaseNames = @[@"arm",@"beat",@"bid",@"calm",@"cat",@"four",@"who"];
     
-    dummyTimerTickCounter = 0;
-    liveSpeechSegments = TRUE;
+    self.dummyTimerTickCounter = 0;
+    self.liveSpeechSegments = YES;
     
-    displayIdentifier = 5;         // Starting display type is formant plot (last button).
-    soundFileIdentifier = 0;        // Starting stored file to be processes is 'arm'.
+    self.displayIdentifier = 5;         // Starting display type is formant plot (last button).
+    self.soundFileIdentifier = 0;        // Starting stored file to be processes is 'arm'.
     
     // Maximum length of captured speech segment is 1024000/44100 = 23.22 seconds.
     // There are no checks to see if someone intentionally keeps on speaking loudly
     // for a longer time. Such behaviour may cause a crash. Checks can be easily placed
-    // in audioDeviceManager.
+    // in self.audioDeviceManager.
     
-    soundDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));
+    self.soundDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));
     
     // Initial hidder/visible patter of the app.
-    indicatorImageView.hidden = FALSE;
-    sliderLabel.hidden = FALSE;
-    thresholdSlider.hidden = FALSE;
+    indicatorImageView.hidden = NO;
+    sliderLabel.hidden = NO;
+    thresholdSlider.hidden = NO;
     
     // Start setting up of audio capturing phenomenon
-    audioDeviceManager = [[AudioDeviceManager alloc] init];
-    [audioDeviceManager setUpData];
-    audioDeviceManager->bufferSegCount = 0;
-    audioDeviceManager->startCapturing = FALSE;
-    audioDeviceManager->capturingComplete = FALSE;
+    self.audioDeviceManager = [[AudioDeviceManager alloc] init];
+    [self.audioDeviceManager setUpData];
+    self.audioDeviceManager->bufferSegCount = 0;
+    self.audioDeviceManager->startCapturing = NO;
+    self.audioDeviceManager->capturingComplete = NO;
     
     // Set a starting value of silence threshold = 30x10000000
-    audioDeviceManager->energyThreshold = 300000000;
+    self.audioDeviceManager->energyThreshold = 300000000;
     
     
-    // Clear all entries from the long audio buffer in audioDeviceManager.
+    // Clear all entries from the long audio buffer in self.audioDeviceManager.
     for (int j=0; j<1024000; j++) {
-        audioDeviceManager->longBuffer[j] = 0;
+        self.audioDeviceManager->longBuffer[j] = 0;
     }
     
     // Plot formant frequencies of silence (2000 sample of initialized long buffer).
     
-    [plotView getData:audioDeviceManager->longBuffer withLength:2000];
-    [plotView setNeedsDisplay];
+    [self.plotView getData:self.audioDeviceManager->longBuffer withLength:2000];
+    [self.plotView setNeedsDisplay];
     
     // Setup audioDevice Manager. If it workds, put green light up and invite the user to speak.
-    OSStatus status = [audioDeviceManager setUpAudioDevice];
+    OSStatus status = [self.audioDeviceManager setUpAudioDevice];
     
     if (status == noErr) {
         [indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
@@ -286,7 +298,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 {
     UIActionSheet *inputChoice = [[UIActionSheet alloc] initWithTitle:@"Audio source" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
     [inputChoice addButtonWithTitle:@"Microphone"];
-    for (NSString *basename in soundFileBaseNames)
+    for (NSString *basename in self.soundFileBaseNames)
         [inputChoice addButtonWithTitle:basename];
     [inputChoice addButtonWithTitle:@"Cancel"];
     inputChoice.cancelButtonIndex = inputChoice.numberOfButtons-1;
@@ -306,24 +318,24 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     if (buttonIndex == 0) { // Live speech processing
         [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
         [self.statusLabel setText:@"Waiting ..."];
-        liveSpeechSegments = TRUE;
-        audioDeviceManager->startCapturing = FALSE;
-        audioDeviceManager->capturingComplete = FALSE;
-        indicatorImageView.hidden = FALSE;
-        sliderLabel.hidden = FALSE;
-        thresholdSlider.hidden = FALSE;
+        self.liveSpeechSegments = YES;
+        self.audioDeviceManager->startCapturing = NO;
+        self.audioDeviceManager->capturingComplete = NO;
+        indicatorImageView.hidden = NO;
+        sliderLabel.hidden = NO;
+        thresholdSlider.hidden = NO;
         [statusLabel setText:@"Waiting ..."];
         [self processLastSegment];
     } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
         [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
-        liveSpeechSegments = FALSE;
-        audioDeviceManager->startCapturing = TRUE;
-        audioDeviceManager->capturingComplete = TRUE;
-        indicatorImageView.hidden = TRUE;
-        sliderLabel.hidden = TRUE;
-        thresholdSlider.hidden = TRUE;
-        soundFileIdentifier = buttonIndex - 1;
-        [statusLabel setText:soundFileBaseNames[soundFileIdentifier]];
+        self.liveSpeechSegments = NO;
+        self.audioDeviceManager->startCapturing = YES;
+        self.audioDeviceManager->capturingComplete = YES;
+        indicatorImageView.hidden = YES;
+        sliderLabel.hidden = YES;
+        thresholdSlider.hidden = YES;
+        self.soundFileIdentifier = buttonIndex - 1;
+        [statusLabel setText:self.soundFileBaseNames[self.soundFileIdentifier]];
         [self processRawBuffer];
         
     }
@@ -332,7 +344,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 - (void)viewDidUnload
 {
     [super viewDidUnload];
-    free(soundDataBuffer);
+    free(self.soundDataBuffer);
 }
 
 @end
