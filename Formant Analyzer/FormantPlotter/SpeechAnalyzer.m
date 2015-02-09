@@ -67,6 +67,13 @@
     return NSMakeRange(startSample, endSample);
 }
 
+- (NSRange)truncateRangeTails:(NSRange)range
+{
+    NSUInteger newLength = range.length * 0.7;
+    NSUInteger newLocation = range.location + range.length * 0.15;
+    return NSMakeRange(newLocation, newLength);
+}
+
 
 
 
@@ -82,7 +89,7 @@
     
 }
 
-- (void)computeTrimPointsOnCompletion:(void(^)(NSNumber *start, NSNumber *finish))complete
+- (void)computeTrimPointsOnCompletion:(void(^)(NSRange trimPoints))complete;
 {
     
 }

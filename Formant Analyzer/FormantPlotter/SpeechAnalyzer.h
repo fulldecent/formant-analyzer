@@ -25,9 +25,9 @@
 
 /**
  * Find start and finish points representing vowel signal in speech data
- * @param complete Block will receive two floats on a scale of [0, 1] representing the full signal
+ * @param complete Block will receive NSRange of sample points after trimming
  */
-- (void)computeTrimPointsOnCompletion:(void(^)(NSNumber *start, NSNumber *finish))complete;
+- (void)computeTrimPointsOnCompletion:(void(^)(NSRange trimPoints))complete;
 
 /**
  * Find LPC coefficients from the signal

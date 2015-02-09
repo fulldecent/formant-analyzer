@@ -33,9 +33,8 @@
     double firstFFreq, secondFFreq, thirdFFreq, fourthFFreq;
 }
 
-
--(void)getData:(short int *)databuffer withLength:(int)length;
--(void)setDisplayIdentifier:(int)displayidentifier;
+- (void)getData:(short int *)databuffer withLength:(int)length;
+- (void)setDisplayIdentifier:(int)displayidentifier;
 
 // Write four getter functions manually for four formant frequencies.
 @property (NS_NONATOMIC_IOSONLY, readonly) double firstFFreq;
