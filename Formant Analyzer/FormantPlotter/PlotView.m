@@ -19,50 +19,28 @@
 #define MAXIT (MT*MR)
 
 @interface PlotView()
--(void) removeSilence;
--(void) removeTails;
--(void) decimateDataBuffer;
--(double *) findFormants:(_Complex double*) pCoeff NS_RETURNS_INNER_POINTER;
--(_Complex double) laguer:(_Complex double *) a currentOrder:(int) m;
+- (void)removeSilence;
+- (void)removeTails;
+- (void)decimateDataBuffer;
+- (double *)findFormants:(_Complex double*) pCoeff NS_RETURNS_INNER_POINTER;
+- (_Complex double)laguer:(_Complex double *) a currentOrder:(int) m;
 
 @property (nonatomic) SpeechAnalyzer *speechAnalyzer;
+
+@property (nonatomic) double firstFFreq;
+@property (nonatomic) double secondFFreq;
+@property (nonatomic) double thirdFFreq;
+@property (nonatomic) double fourthFFreq;
 @end
 
 
 @implementation PlotView
 
-// Four getter functions to export four formant frequencies back to firstViewController
--(double) firstFFreq
-{
-    return firstFFreq;
-}
-
--(double) secondFFreq
-{
-    return secondFFreq;
-}
-
--(double) thirdFFreq
-{
-    return thirdFFreq;
-}
-
--(double) fourthFFreq
-{
-    return fourthFFreq;
-}
-
-// A setter function for displayIdentifier
-- (void)setDisplayIdentifier:(int)displayidentifier
-{
-    displayIdentifier = displayidentifier;
-}
-
 // Gets pointer to the start of audio data and the length of the buffer.
 - (void)getData:(short int *)databuffer withLength:(int)length
 {
-    dataBuffer = databuffer;
-    dataBufferLength = length;
+    self.dataBuffer = databuffer;
+    self.dataBufferLength = length;
     
     NSData *data = [NSData dataWithBytes:databuffer length:length];
     self.speechAnalyzer = [[SpeechAnalyzer alloc] init];
@@ -94,7 +72,7 @@
         [view removeFromSuperview];
     }
     
-    switch (displayIdentifier) {
+    switch (self.displayIdentifier) {
             
         case 1:
         {
@@ -105,12 +83,12 @@
             
             [self removeSilence];    // Remove dead silence on both ends of the buffer to get strong buffer
             
-            chunkSamples = (strongEndIdx - strongStartIdx)/self.frame.size.width;
-            NSLog(@"Start/end indices before 15%% clipping are at %d and %d",strongStartIdx,strongEndIdx);
+            chunkSamples = (self.strongEndIdx - self.strongStartIdx)/self.frame.size.width;
+            NSLog(@"Start/end indices before 15%% clipping are at %d and %d",self.strongStartIdx,self.strongEndIdx);
             
             maxSampleValue = 0;
-            for (j = strongStartIdx;  j < strongEndIdx; j++) {
-                maxSampleValue = MAX(maxSampleValue, abs(dataBuffer[j]));
+            for (j = self.strongStartIdx;  j < self.strongEndIdx; j++) {
+                maxSampleValue = MAX(maxSampleValue, abs(self.dataBuffer[j]));
             }
             
             mycolor = [UIColor greenColor];
@@ -125,8 +103,8 @@
                 chunkMinValue = 32700;
                 chunkMaxValue = -32700;
                 for (j=0; j<chunkSamples; j++) {
-                    chunkMinValue = MIN(chunkMinValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]);
-                    chunkMaxValue = MAX(chunkMaxValue, dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]);
+                    chunkMinValue = MIN(chunkMinValue, self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]);
+                    chunkMaxValue = MAX(chunkMaxValue, self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]);
                 }
                 
                 if (maxSampleValue == 0) {
@@ -163,20 +141,20 @@
             [self removeSilence];
             [self removeTails];
             
-            NSLog(@"Start/end indices after  15%% clipping are at %d and %d\n",truncatedStartIdx,truncatedEndIdx);
+            NSLog(@"Start/end indices after  15%% clipping are at %d and %d\n",self.truncatedStartIdx,self.truncatedEndIdx);
             NSLog(@"\n");
             
             // Now display bar-graph type plot for energy in total of 60 chunks.
             int chunks = 60;
             int chunkWidth = self.frame.size.width / chunks;
-            chunkSamples = (strongEndIdx - strongStartIdx) / chunks;
+            chunkSamples = (self.strongEndIdx - self.strongStartIdx) / chunks;
             
             
             maxEnergyValue = 0;
             for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
                 chunkEnergy = 0;
                 for (j=0; j<chunkSamples; j++) {
-                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]/10000;
+                    chunkEnergy += self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples] * self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]/10000;
                 }
                 maxEnergyValue = MAX(maxEnergyValue, chunkEnergy);
             }
@@ -188,7 +166,7 @@
             for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
                 chunkEnergy = 0;
                 for (j=0; j<chunkSamples; j++) {
-                    chunkEnergy += dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples] * dataBuffer[j + strongStartIdx + chunkIdx*chunkSamples]/10000;
+                    chunkEnergy += self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples] * self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]/10000;
                 }
                 
                 if (chunkIdx > 8 && chunkIdx < 51) {
@@ -238,8 +216,8 @@
             // Find all the correlation coefficients.
             for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
                 double corrSum = 0;
-                for (int dataIdx = 0; dataIdx < (decimatedEndIdx - delayIdx); dataIdx++) {
-                    corrSum += (dataBuffer[dataIdx] * dataBuffer[dataIdx + delayIdx]);
+                for (int dataIdx = 0; dataIdx < (self.decimatedEndIdx - delayIdx); dataIdx++) {
+                    corrSum += (self.dataBuffer[dataIdx] * self.dataBuffer[dataIdx + delayIdx]);
                 }
                 
                 Rxx[delayIdx] = corrSum;
@@ -328,8 +306,8 @@
             
             for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
                 double corrSum = 0;
-                for (int dataIdx = 0; dataIdx < (decimatedEndIdx - delayIdx); dataIdx++) {
-                    corrSum += (dataBuffer[dataIdx] * dataBuffer[dataIdx + delayIdx]);
+                for (int dataIdx = 0; dataIdx < (self.decimatedEndIdx - delayIdx); dataIdx++) {
+                    corrSum += (self.dataBuffer[dataIdx] * self.dataBuffer[dataIdx + delayIdx]);
                 }
                 
                 Rxx[delayIdx] = corrSum;
@@ -441,8 +419,8 @@
             
             for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
                 double corrSum = 0;
-                for (int dataIdx = 0; dataIdx < (decimatedEndIdx - delayIdx); dataIdx++) {
-                    corrSum += (dataBuffer[dataIdx] * dataBuffer[dataIdx + delayIdx]);
+                for (int dataIdx = 0; dataIdx < (self.decimatedEndIdx - delayIdx); dataIdx++) {
+                    corrSum += (self.dataBuffer[dataIdx] * self.dataBuffer[dataIdx + delayIdx]);
                 }
                 
                 Rxx[delayIdx] = corrSum;
@@ -517,10 +495,10 @@
             NSLog(@" ");
             
             // Now assign FFreq values so that they can be viewed in calling class
-            firstFFreq = formantFrequencies[1];
-            secondFFreq = formantFrequencies[2];
-            thirdFFreq = formantFrequencies[3];
-            fourthFFreq = formantFrequencies[4];
+            self.firstFFreq = formantFrequencies[1];
+            self.secondFFreq = formantFrequencies[2];
+            self.thirdFFreq = formantFrequencies[3];
+            self.fourthFFreq = formantFrequencies[4];
             
             // Now, we add an image to current view to plot location of first two formants
             CGRect backgroundRect = CGRectMake(0, 0, 300, 200);
@@ -596,13 +574,13 @@
     int chunkIdx;
     int j;
     
-    int chunkSize = dataBufferLength / 300;
+    int chunkSize = self.dataBufferLength / 300;
     
     maxEnergyValue = 0;
     for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
         chunkEnergy = 0;
         for (j=0; j<chunkSize; j++) {
-            chunkEnergy += dataBuffer[j + chunkIdx*chunkSize] * dataBuffer[j + chunkIdx*chunkSize]/1000;
+            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
         }
         maxEnergyValue = MAX(maxEnergyValue, chunkEnergy);
     }
@@ -610,29 +588,29 @@
     energyThreshold = maxEnergyValue / 10;
     
     // Find strong starting index.
-    strongStartIdx = 0;
+    self.strongStartIdx = 0;
     for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
         chunkEnergy = 0;
         for (j=0; j<chunkSize; j++) {
-            chunkEnergy += dataBuffer[j + chunkIdx*chunkSize] * dataBuffer[j + chunkIdx*chunkSize]/1000;
+            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
         }
         if (chunkEnergy > energyThreshold) {
-            strongStartIdx = chunkIdx * chunkSize;
-            strongStartIdx = MAX(0, strongStartIdx);
+            self.strongStartIdx = chunkIdx * chunkSize;
+            self.strongStartIdx = MAX(0, self.strongStartIdx);
             break;
         }
     }
     
     // Find strong ending index
-    strongEndIdx = dataBufferLength;
+    self.strongEndIdx = self.dataBufferLength;
     for (chunkIdx = 299; chunkIdx >= 0; chunkIdx--) {
         chunkEnergy = 0;
         for (j=0; j<chunkSize; j++) {
-            chunkEnergy += dataBuffer[j + chunkIdx*chunkSize] * dataBuffer[j + chunkIdx*chunkSize]/1000;
+            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
         }
         if (chunkEnergy > energyThreshold) {
-            strongEndIdx = chunkIdx * chunkSize + chunkSize - 1;
-            strongEndIdx = MIN(dataBufferLength, strongEndIdx);
+            self.strongEndIdx = chunkIdx * chunkSize + chunkSize - 1;
+            self.strongEndIdx = MIN(self.dataBufferLength, self.strongEndIdx);
             break;
         }
     }
@@ -641,20 +619,20 @@
 // The follosing function removes 15% from both ends of strong section of the buffer
 -(void) removeTails
 {
-    truncatedStartIdx = strongStartIdx + (strongEndIdx - strongStartIdx)*15/100;
-    truncatedEndIdx = strongEndIdx - (strongEndIdx - strongStartIdx)*15/100;
+    self.truncatedStartIdx = self.strongStartIdx + (self.strongEndIdx - self.strongStartIdx)*15/100;
+    self.truncatedEndIdx = self.strongEndIdx - (self.strongEndIdx - self.strongStartIdx)*15/100;
 }
 
-// Following function decimates the DataBuffer by factor of 4 and sets the value of decimatedEndIdx
+// Following function decimates the DataBuffer by factor of 4 and sets the value of self.decimatedEndIdx
 -(void) decimateDataBuffer
 {
     int dumidx;
     
-    for (dumidx=0; dumidx < (truncatedEndIdx - truncatedStartIdx)/4; dumidx++) {
-        dataBuffer[dumidx] = dataBuffer[4*dumidx + truncatedStartIdx];
+    for (dumidx=0; dumidx < (self.truncatedEndIdx - self.truncatedStartIdx)/4; dumidx++) {
+        self.dataBuffer[dumidx] = self.dataBuffer[4*dumidx + self.truncatedStartIdx];
     }
     
-    decimatedEndIdx = dumidx - 1;
+    self.decimatedEndIdx = dumidx - 1;
 }
 
 // Following function implement Laguerre root finding algorithm. It uses a lot of
