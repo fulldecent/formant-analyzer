@@ -16,6 +16,15 @@
  */
 - (void)loadData:(NSData *)int16Samples;
 
+
+// HACK FUNCTIONS
+
+- (NSRange)strongSignalRange;
+- (NSRange)truncateRangeTails:(NSRange)range;
+
+
+///// THE FUNCTIONS WITH CALLBACKS THAT YOU ARE /SUPPOSED/ TO USE
+
 /**
  * Reduce horizontal resolution of signal for plotting, returns NO on error
  * @param int16Samples A data stream of raw audio samples

@@ -1,36 +1,39 @@
 PODS:
-  - AFNetworking (2.5.0):
-    - AFNetworking/NSURLConnection (= 2.5.0)
-    - AFNetworking/NSURLSession (= 2.5.0)
-    - AFNetworking/Reachability (= 2.5.0)
-    - AFNetworking/Security (= 2.5.0)
-    - AFNetworking/Serialization (= 2.5.0)
-    - AFNetworking/UIKit (= 2.5.0)
-  - AFNetworking/NSURLConnection (2.5.0):
+  - AFNetworking (2.5.3):
+    - AFNetworking/NSURLConnection (= 2.5.3)
+    - AFNetworking/NSURLSession (= 2.5.3)
+    - AFNetworking/Reachability (= 2.5.3)
+    - AFNetworking/Security (= 2.5.3)
+    - AFNetworking/Serialization (= 2.5.3)
+    - AFNetworking/UIKit (= 2.5.3)
+  - AFNetworking/NSURLConnection (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/NSURLSession (2.5.0):
+  - AFNetworking/NSURLSession (2.5.3):
     - AFNetworking/Reachability
     - AFNetworking/Security
     - AFNetworking/Serialization
-  - AFNetworking/Reachability (2.5.0)
-  - AFNetworking/Security (2.5.0)
-  - AFNetworking/Serialization (2.5.0)
-  - AFNetworking/UIKit (2.5.0):
+  - AFNetworking/Reachability (2.5.3)
+  - AFNetworking/Security (2.5.3)
+  - AFNetworking/Serialization (2.5.3)
+  - AFNetworking/UIKit (2.5.3):
     - AFNetworking/NSURLConnection
     - AFNetworking/NSURLSession
-  - FSLineChart (0.1.5)
+  - FDSoundActivatedRecorder (0.9.0)
+  - FSLineChart (0.1.7)
   - TOWebViewController (2.0.14)
 
 DEPENDENCIES:
   - AFNetworking
+  - FDSoundActivatedRecorder
   - FSLineChart
   - TOWebViewController
 
 SPEC CHECKSUMS:
-  AFNetworking: 0f54cb5d16ce38c1b76948faffb8d5fb705021c7
-  FSLineChart: bdb57f0486e440f61b9efd7c75e35ec29ed2cfa8
-  TOWebViewController: d3eee5342e5f8508cc87107c96544f5dff01b802
+  AFNetworking: e1d86c2a96bb5d2e7408da36149806706ee122fe
+  FDSoundActivatedRecorder: bd8e3ebc877779320a4e2e0d28b3ef983b54be56
+  FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
+  TOWebViewController: 2cfd0032d781cabd88a0995fbca9692c11f0797e
 
-COCOAPODS: 0.36.0.beta.1
+COCOAPODS: 0.36.1

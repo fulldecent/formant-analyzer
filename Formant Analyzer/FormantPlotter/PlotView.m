@@ -42,12 +42,23 @@
     self.dataBuffer = databuffer;
     self.dataBufferLength = length;
     
-    NSData *data = [NSData dataWithBytes:databuffer length:length];
+    NSData *data = [NSData dataWithBytes:databuffer length:length * sizeof(short int)];
     self.speechAnalyzer = [[SpeechAnalyzer alloc] init];
     [self.speechAnalyzer loadData:data];
 }
 
-// Main processing and display routine. 
+// Gets pointer to the start of audio data and the length of the buffer.
+- (void)getData:(NSData *)data
+{
+    self.dataBufferLength = data.length / sizeof(short int);
+    self.dataBuffer = malloc(data.length);
+    [data getBytes:self.dataBuffer length:data.length];
+
+    self.speechAnalyzer = [[SpeechAnalyzer alloc] init];
+    [self.speechAnalyzer loadData:data];
+}
+
+// Main processing and display routine.
 - (void)drawRect:(CGRect)rect
 {
     UIColor *mycolor;
@@ -501,8 +512,7 @@
             self.fourthFFreq = formantFrequencies[4];
             
             // Now, we add an image to current view to plot location of first two formants
-            CGRect backgroundRect = CGRectMake(0, 0, 300, 200);
-            backgroundRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+            CGRect backgroundRect = backgroundRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
             UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
             
             [backgroundImageView setImage:[UIImage imageNamed:@"vowelPlotBackground.png"]];
@@ -561,70 +571,30 @@
     }
 }
 
-// The following function removes silence on both ends of speech buffer. We divide 
+// Removes silence on both ends of speech buffer. We divide
 // the given buffer into 300 chunks and compute energy in each chunk. 
 // Then maximum of the chunk energies is computed.
 // Only those chunks are part of strong speech segment 
 // which have at least 10% energy of the maximum chunk energy.
 
--(void) removeSilence
-{    
-    int chunkEnergy, energyThreshold;
-    int maxEnergyValue;
-    int chunkIdx;
-    int j;
-    
-    int chunkSize = self.dataBufferLength / 300;
-    
-    maxEnergyValue = 0;
-    for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
-        chunkEnergy = 0;
-        for (j=0; j<chunkSize; j++) {
-            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
-        }
-        maxEnergyValue = MAX(maxEnergyValue, chunkEnergy);
-    }
-    
-    energyThreshold = maxEnergyValue / 10;
-    
-    // Find strong starting index.
-    self.strongStartIdx = 0;
-    for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
-        chunkEnergy = 0;
-        for (j=0; j<chunkSize; j++) {
-            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
-        }
-        if (chunkEnergy > energyThreshold) {
-            self.strongStartIdx = chunkIdx * chunkSize;
-            self.strongStartIdx = MAX(0, self.strongStartIdx);
-            break;
-        }
-    }
-    
-    // Find strong ending index
-    self.strongEndIdx = self.dataBufferLength;
-    for (chunkIdx = 299; chunkIdx >= 0; chunkIdx--) {
-        chunkEnergy = 0;
-        for (j=0; j<chunkSize; j++) {
-            chunkEnergy += self.dataBuffer[j + chunkIdx*chunkSize] * self.dataBuffer[j + chunkIdx*chunkSize]/1000;
-        }
-        if (chunkEnergy > energyThreshold) {
-            self.strongEndIdx = chunkIdx * chunkSize + chunkSize - 1;
-            self.strongEndIdx = MIN(self.dataBufferLength, self.strongEndIdx);
-            break;
-        }
-    }
-}
-
-// The follosing function removes 15% from both ends of strong section of the buffer
--(void) removeTails
+- (void)removeSilence
 {
-    self.truncatedStartIdx = self.strongStartIdx + (self.strongEndIdx - self.strongStartIdx)*15/100;
-    self.truncatedEndIdx = self.strongEndIdx - (self.strongEndIdx - self.strongStartIdx)*15/100;
+    NSRange strongRange = [self.speechAnalyzer strongSignalRange];
+    self.strongStartIdx = strongRange.location;
+    self.strongEndIdx = strongRange.location + strongRange.length;
 }
 
-// Following function decimates the DataBuffer by factor of 4 and sets the value of self.decimatedEndIdx
--(void) decimateDataBuffer
+// Removes 15% from both ends of strong section of the buffer
+- (void)removeTails
+{
+    NSRange strongRange = [self.speechAnalyzer strongSignalRange];
+    NSRange truncated = [self.speechAnalyzer truncateRangeTails:strongRange];
+    self.truncatedStartIdx = truncated.location;
+    self.truncatedEndIdx = truncated.location + truncated.length;
+}
+
+// Decimates the DataBuffer by factor of 4 and sets the value of self.decimatedEndIdx
+- (void)decimateDataBuffer
 {
     int dumidx;
     

@@ -23,6 +23,7 @@
 @interface PlotView : UIView
 
 - (void)getData:(short int *)databuffer withLength:(int)length;
+- (void)getData:(NSData *)data;
 - (void)setDisplayIdentifier:(int)displayidentifier;
 
 // Write four getter functions manually for four formant frequencies.
@@ -31,7 +32,8 @@
 @property (nonatomic, readonly) double thirdFFreq;
 @property (nonatomic, readonly) double fourthFFreq;
  
-@property (nonatomic) short int *dataBuffer; // Just a pointer. Actual buffer is in audioDeviceManager (live data) or
+@property (nonatomic) short int *dataBuffer; // 16 bit signed PCM
+                                             // Just a pointer. Actual buffer is in audioDeviceManager (live data) or
                                              // in firstViewController (1 of 7 stored audio files).
 @property (nonatomic) int dataBufferLength;  // How many samples of the buffer needs to be processed.
 @property (nonatomic) int strongStartIdx;    // Two indices in buffer representing strong section of signal.

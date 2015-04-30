@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B17" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CZ4-MO-1fc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CZ4-MO-1fc">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -31,7 +31,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" customClass="PlotView">
-                                <rect key="frame" x="0.0" y="136" width="320" height="354"/>
+                                <rect key="frame" x="0.0" y="100" width="320" height="390"/>
                                 <color key="backgroundColor" white="0.93795620440000005" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-am-4MW">
@@ -52,18 +52,6 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="30" minValue="30" maxValue="400" translatesAutoresizingMaskIntoConstraints="NO" id="A4x-X6-s6k">
-                                <rect key="frame" x="115" y="59" width="187" height="31"/>
-                                <connections>
-                                    <action selector="processThresholdSlider" destination="CZ4-MO-1fc" eventType="valueChanged" id="lPy-ny-cC5"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Sensitivity" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="kWa-hv-0Dl">
-                                <rect key="frame" x="20" y="64" width="77" height="20"/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="udF-wh-LHP">
                                 <rect key="frame" x="20" y="535" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -80,7 +68,7 @@
                                 </connections>
                             </button>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AkJ-0Q-cfC">
-                                <rect key="frame" x="20" y="96" width="280" height="29"/>
+                                <rect key="frame" x="20" y="60" width="280" height="29"/>
                                 <segments>
                                     <segment title="Sig"/>
                                     <segment title="Trim"/>
@@ -109,10 +97,8 @@
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="height" secondItem="kgD-9x-g17" secondAttribute="height" id="2N0-tX-B2r"/>
                             <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="udF-wh-LHP" secondAttribute="width" id="2d7-Pk-H9q"/>
                             <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="bJf-am-4MW" secondAttribute="width" id="4fc-KD-1Py"/>
-                            <constraint firstItem="kWa-hv-0Dl" firstAttribute="top" secondItem="8Qr-2e-rSY" secondAttribute="bottom" constant="12" id="B4M-yG-6wT"/>
-                            <constraint firstItem="kWa-hv-0Dl" firstAttribute="centerY" secondItem="A4x-X6-s6k" secondAttribute="centerY" id="BRo-Op-CVC"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="AkJ-0Q-cfC" secondAttribute="bottom" constant="12" id="Cth-P8-cZe"/>
-                            <constraint firstAttribute="trailing" secondItem="A4x-X6-s6k" secondAttribute="trailing" constant="20" id="Gkm-Lg-d8H"/>
+                            <constraint firstItem="AkJ-0Q-cfC" firstAttribute="top" secondItem="P33-9r-kcC" secondAttribute="bottom" constant="8" id="D6B-Xg-qhA"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="Vmo-Ug-nhx" secondAttribute="bottom" id="IwM-qN-krx"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="centerY" secondItem="P33-9r-kcC" secondAttribute="centerY" id="KOc-mP-aPu"/>
                             <constraint firstItem="0jX-nd-JdF" firstAttribute="top" secondItem="uAc-hW-WYY" secondAttribute="bottom" constant="12" id="KP8-OS-X6s"/>
@@ -120,7 +106,6 @@
                             <constraint firstAttribute="trailing" secondItem="AkJ-0Q-cfC" secondAttribute="trailing" constant="20" id="Mxk-Rq-yAW"/>
                             <constraint firstItem="kgD-9x-g17" firstAttribute="leading" secondItem="P33-9r-kcC" secondAttribute="trailing" constant="8" id="QLt-62-kQt"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="centerY" secondItem="kgD-9x-g17" secondAttribute="centerY" id="R4i-SL-VhT"/>
-                            <constraint firstItem="A4x-X6-s6k" firstAttribute="leading" secondItem="kWa-hv-0Dl" secondAttribute="trailing" constant="20" id="SMY-4p-S4x"/>
                             <constraint firstAttribute="trailing" secondItem="uAc-hW-WYY" secondAttribute="trailing" constant="20" id="UgX-TY-1tt"/>
                             <constraint firstItem="0jX-nd-JdF" firstAttribute="leading" secondItem="udF-wh-LHP" secondAttribute="trailing" constant="20" id="Uzh-jt-KhT"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="udF-wh-LHP" secondAttribute="bottom" constant="12" id="W0A-t3-PPD"/>
@@ -133,13 +118,11 @@
                             <constraint firstItem="bJf-am-4MW" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="iCk-j6-65L"/>
                             <constraint firstAttribute="centerX" secondItem="Vmo-Ug-nhx" secondAttribute="centerX" id="iWy-7h-y08"/>
                             <constraint firstAttribute="trailing" secondItem="0jX-nd-JdF" secondAttribute="trailing" constant="20" id="igh-6h-iyV"/>
-                            <constraint firstItem="kWa-hv-0Dl" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="k9m-P5-3vS"/>
                             <constraint firstItem="AkJ-0Q-cfC" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="mPX-1C-CS6"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="0jX-nd-JdF" secondAttribute="bottom" constant="12" id="qkG-Bi-zV2"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="height" secondItem="P33-9r-kcC" secondAttribute="height" id="sB6-sg-mLJ"/>
                             <constraint firstItem="bJf-am-4MW" firstAttribute="top" secondItem="zrQ-dr-T2a" secondAttribute="bottom" constant="12" id="u3q-ep-nLQ"/>
                             <constraint firstAttribute="trailing" secondItem="zrQ-dr-T2a" secondAttribute="trailing" id="uFY-y5-wkL"/>
-                            <constraint firstItem="AkJ-0Q-cfC" firstAttribute="top" secondItem="kWa-hv-0Dl" secondAttribute="bottom" constant="12" id="yBp-3o-hnh"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Rh5-kw-BCE"/>
@@ -151,10 +134,8 @@
                         <outlet property="inputSelector" destination="kgD-9x-g17" id="q9c-UM-eGr"/>
                         <outlet property="plotView" destination="zrQ-dr-T2a" id="Hqa-89-5wo"/>
                         <outlet property="secondFormantLabel" destination="uAc-hW-WYY" id="BIH-sc-sLo"/>
-                        <outlet property="sliderLabel" destination="kWa-hv-0Dl" id="Teg-Ti-9Jn"/>
                         <outlet property="statusLabel" destination="P33-9r-kcC" id="wOc-wh-IRk"/>
                         <outlet property="thirdFormantLabel" destination="udF-wh-LHP" id="tTk-Te-c3Z"/>
-                        <outlet property="thresholdSlider" destination="A4x-X6-s6k" id="FkV-Kf-5bW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qh2-T1-AhA" sceneMemberID="firstResponder"/>
