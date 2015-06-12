@@ -1,5 +1,3 @@
-NOTICE: Development on this project is on pause until CocoaPods releases full support for Swift. Then we will work to upgrade this project. See https://github.com/CocoaPods/CocoaPods/pull/2835
-
 FORMANT PLOTTER
 ------------------------
 
@@ -64,47 +62,7 @@ An image is placed on the background for the chart (you create an image to start
 The correct algorithm which takes the FFT results which were plotted above and creates the vowel plot is discussed in Formant Research above.
 
 Some potential next steps include:
-* use autocorrelation to increase trimming accuracy
+* Use autocorrelation to increase trimming accuracy
 * Windowing on the truncated sound buffer so that edge samples have an attenuated effect
 * Root polishing. The code has been written but commented out (please see PlotView.m). If we can test and refine this part, we will have better estimates of roots of LPC polynomials, and formant frequencies. We may not want VERY accurate estimates of formant frequencies and may not need root polishing.
 * Elimination of weak roots (far away from unit circle). They do not produce a peak in H(w) and should be ignored. I hope that if we reduce order of LPC, we may not see such weak roots. This should be investigated after reduction of LPC filter order.
-
-Do you have any other recommendations to proceed and increase accuracy?
-
-===============
-
-
-Hi Will,
-
-Here is a rough plan for what I want to do in this week.
-
-1. Removal of an error in previous code where old sound appears at right.
-2. Addition of a slider to control the detection threshold. Yesterday I tried to test the app in a crowded place and it was getting triggered by background noise.
-
-3. Saving of the captured sound sample (as raw buffer or wav file) on iPhone for offline processing using MATLAB. This will allow us to verify results of our future objective-C algorithms with MATLAB work.
-
-4. Intelligent header and trailer rejection, first on MATLAB and then on objective-C. We will pick central buffer of 1024 samples and only use those 1024 sample buffers around the central buffer which have strong correlation with the central buffer.
-
-I have already implemented first two items and a zip file with latest code is attached. I will be sending you an excel sheet shortly. Time to implement those was about 1.5 hours. I hope you will approve this time.
-
-At this moment, I can only think of the four items. Once these are done, I will take the central portion of spoken sound and apply linear prediction algorithm on it.
-
-Looking forward to hear from you,
-
-Akmal.
-
-=================
-
-Hi Will,
-
-Sorry to not mention the estimated time needed to complete task 3 and 4 in a previous message.
-
-It will take me about 2 hours to implement, test, and verify the functionality that saves captured sound files on iPhone.
-
-The MATLAB portion of algorithm that picks central region of spoken word will take about 1 hours. The objective-C version of that algorithm could take about 5 hours.
-
-Above times are only approximate times and it may take me less (or more) time.
-
-Looking forward to hear from you,
-
-Akmal.
