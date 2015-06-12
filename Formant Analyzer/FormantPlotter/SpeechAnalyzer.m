@@ -26,11 +26,11 @@
         return self.strongSignalRangeCached;
     }
     
-    int numChunks = 300;
-    int chunkEnergy, chunkEnergyThreshold;
-    int maxChunkEnergy = 0;
-    int startSample = 0, endSample = INT_MAX;
-    int chunkSize;
+    long numChunks = 300;
+    long chunkEnergy, chunkEnergyThreshold;
+    long maxChunkEnergy = 0;
+    long startSample = 0, endSample = INT_MAX;
+    long chunkSize;
     short int *dataBuffer = (short int*)self.int16Samples.bytes;
     chunkSize = self.int16Samples.length / sizeof(short int) / numChunks;
 
@@ -60,7 +60,7 @@
     
     // Find ending sample meeting minimum energy threshold
     endSample = self.int16Samples.length / sizeof(short int);
-    for (int chunkIdx = numChunks-1; chunkIdx >= 0; chunkIdx--) {
+    for (long chunkIdx = numChunks-1; chunkIdx >= 0; chunkIdx--) {
         chunkEnergy = 0;
         for (int chunkSampleIdx = 0; chunkSampleIdx < chunkSize; chunkSampleIdx++) {
             chunkEnergy += dataBuffer[chunkIdx * chunkSize + chunkSampleIdx] * dataBuffer[chunkIdx * chunkSize + chunkSampleIdx] / 1000;

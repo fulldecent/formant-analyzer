@@ -17,13 +17,12 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 
 @interface FirstViewController() <UIActionSheetDelegate, FDSoundActivatedRecorderDelegate>
 @property int processingDelayTimeCounter;
-@property int displayIdentifier;                      // What type of information (1 out of 5) is to be displayed in self.plotView.
+@property long displayIdentifier;                      // What type of information (1 out of 5) is to be displayed in self.plotView.
 @property NSTimer *masterTimer;                       // Timer to manage three phases of soud capturing process
 @property FDSoundActivatedRecorder *soundActivatedRecorder;
 
-@property short int *speechDataBuffer;                // Pointer to long sound buffer to be captured.
 @property BOOL speechIsFromMicrophone;                // Whether we are processing live speech or stored samples.
-@property int soundFileIdentifier;                    // Which stored file (1 out of 7) is being processed
+@property NSInteger soundFileIdentifier;              // Which stored file (1 out of 7) is being processed
 @property NSArray *soundFileBaseNames;                // Array of names of 7 stored sound files.
 
 - (void)processRawBuffer;
@@ -81,14 +80,12 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     NSString *filePath = [[NSBundle mainBundle] pathForResource:self.soundFileBaseNames[self.soundFileIdentifier] ofType:@"raw"];
     speechSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
     
-    [speechSegmentData getBytes:self.speechDataBuffer];
-    
     //NSLog(@"Length of speech segment NSData is %d",[speechSegmentData length]);
     NSLog(@"Current base file name is %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     
     [self.plotView setDisplayIdentifier:self.displayIdentifier];
     
-    [self.plotView  getData:self.speechDataBuffer withLength:[speechSegmentData length]/sizeof(short)];
+    [self.plotView getData:(short *)speechSegmentData.bytes withLength:speechSegmentData.length/sizeof(short)];
     [self.plotView setNeedsDisplay];
     
     if (self.displayIdentifier == 5) {
@@ -109,11 +106,6 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     
     self.displayIdentifier = 5;         // Starting display type is formant plot (last button).
     self.soundFileIdentifier = 0;        // Starting stored file to be processes is 'arm'.
-    
-    // Maximum length of captured speech segment is 1024000/44100 = 23.22 seconds.
-    // There are no checks to see if someone intentionally keeps on speaking loudly
-    // for a longer time. Such behaviour may cause a crash.    
-    self.speechDataBuffer = (short int *)(malloc(1024000 * sizeof(short int)));
     
     // Initial hidder/visible patter of the app.
     indicatorImageView.hidden = NO;
@@ -161,12 +153,6 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
         [statusLabel setText:self.soundFileBaseNames[self.soundFileIdentifier]];
         [self processRawBuffer];
     }
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    free(self.speechDataBuffer);
 }
 
 #pragma mark - FDSoundActivatedRecorderDelegate

@@ -37,7 +37,7 @@
 @implementation PlotView
 
 // Gets pointer to the start of audio data and the length of the buffer.
-- (void)getData:(short int *)databuffer withLength:(int)length
+- (void)getData:(short int *)databuffer withLength:(long)length
 {
     self.dataBuffer = databuffer;
     self.dataBufferLength = length;
@@ -63,7 +63,7 @@
 {
     UIColor *mycolor;
     CGPoint startPoint, endPoint;
-    int i, j, k, dummo, degIdx, chunkIdx, chunkSamples;
+    long i, j, k, dummo, degIdx, chunkIdx, chunkSamples;
     short int chunkMinValue, chunkMaxValue;
     
     int maxSampleValue;
@@ -95,7 +95,7 @@
             [self removeSilence];    // Remove dead silence on both ends of the buffer to get strong buffer
             
             chunkSamples = (self.strongEndIdx - self.strongStartIdx)/self.frame.size.width;
-            NSLog(@"Start/end indices before 15%% clipping are at %d and %d",self.strongStartIdx,self.strongEndIdx);
+            NSLog(@"Start/end indices before 15%% clipping are at %ld and %ld",self.strongStartIdx,self.strongEndIdx);
             
             maxSampleValue = 0;
             for (j = self.strongStartIdx;  j < self.strongEndIdx; j++) {
@@ -152,7 +152,7 @@
             [self removeSilence];
             [self removeTails];
             
-            NSLog(@"Start/end indices after  15%% clipping are at %d and %d\n",self.truncatedStartIdx,self.truncatedEndIdx);
+            NSLog(@"Start/end indices after  15%% clipping are at %ld and %ld\n",self.truncatedStartIdx,self.truncatedEndIdx);
             NSLog(@"\n");
             
             // Now display bar-graph type plot for energy in total of 60 chunks.
@@ -499,7 +499,7 @@
             
             // Now list first 8 sorted frequencies.
             for (dummo = 1; dummo <= 8; dummo++) {
-                NSLog(@"Format frequency for index %d is %5.0f",dummo, formantFrequencies[dummo]);
+                NSLog(@"Format frequency for index %ld is %5.0f",dummo, formantFrequencies[dummo]);
             }
             
             // Print a blank line

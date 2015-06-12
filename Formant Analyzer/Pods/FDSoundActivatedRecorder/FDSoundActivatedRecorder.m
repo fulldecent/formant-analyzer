@@ -48,7 +48,7 @@
 @property (nonatomic) AVAudioRecorder *audioRecorder;
 @property (nonatomic) NSMutableArray *listeningIntervals;
 @property (nonatomic) NSMutableArray *recordingIntervals;
-@property (nonatomic) NSInteger triggerCount;
+@property (nonatomic) int triggerCount;
 
 @property (nonatomic) BOOL isRecordingInProgress;
 @property (strong, nonatomic) NSTimer *intervalTimer;
@@ -83,8 +83,7 @@
     self.audioRecorder.delegate = self;
     self.audioRecorder.meteringEnabled = YES;
     if ([_audioRecorder prepareToRecord] == NO){
-        int errorCode = CFSwapInt32HostToBig ([error code]);
-        NSLog(@"Error: %@ [%4.4s])" , [error localizedDescription], (char*)&errorCode);
+        NSLog(@"Audio Recorder Error: %@)" , [error localizedDescription]);
     }
     return self;
 }
@@ -93,7 +92,6 @@
 {
     [self.audioRecorder stop];
     self.isRecordingInProgress = NO;
-    self.microphoneLevel = [NSNumber numberWithFloat:0];
     self.recordingBeginTime = 0;
     self.recordedDuration = 0;
     self.recordedFilePath = nil;
@@ -122,7 +120,7 @@
     self.recordedDuration = 0;
     self.recordedFilePath = nil;
     NSFileManager *fileManager = [NSFileManager defaultManager];
-    if ([fileManager fileExistsAtPath:[self.audioRecorder.url path] isDirectory:NO])
+    if ([fileManager fileExistsAtPath:[self.audioRecorder.url path] isDirectory:nil])
         [fileManager removeItemAtPath:[self.audioRecorder.url path] error:nil];
 }
 
@@ -142,8 +140,7 @@
     
     [self.audioRecorder updateMeters];
     float currentLevel = [self.audioRecorder averagePowerForChannel:0];
-    self.microphoneLevel = [NSNumber numberWithFloat:currentLevel/80+1];
-    NSLog(@"%2.2f %d %d %d %d", currentLevel, self.listeningIntervals.count, self.recordingIntervals.count, self.isRecordingInProgress, self.triggerCount);
+    NSLog(@"Mic volume: %2.2f listening intv %d recd intv %d recording? %d triggers %d", currentLevel/160+1, (int)self.listeningIntervals.count, (int)self.recordingIntervals.count, self.isRecordingInProgress, self.triggerCount);
 
     if (self.isRecordingInProgress) {
         NSNumber *recordingAverage = [self.recordingIntervals valueForKeyPath:@"@avg.self"];
@@ -250,7 +247,7 @@
         // make sure and handle this case appropriately
         NSLog(@"AVAssetExportSessionStatusFailed %@", exportSession.error.localizedDescription);
     } else {
-        NSLog(@"Export Session Status: %d", exportSession.status);
+        NSLog(@"Export Session Status: %ld", (long)exportSession.status);
     }
     return nil;
 }
