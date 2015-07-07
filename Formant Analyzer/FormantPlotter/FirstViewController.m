@@ -17,7 +17,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 
 @interface FirstViewController() <UIActionSheetDelegate, FDSoundActivatedRecorderDelegate>
 @property int processingDelayTimeCounter;
-@property long displayIdentifier;                      // What type of information (1 out of 5) is to be displayed in self.plotView.
+@property long displayIdentifier;                     // What type of information (1 out of 5) is to be displayed in self.plotView.
 @property NSTimer *masterTimer;                       // Timer to manage three phases of soud capturing process
 @property FDSoundActivatedRecorder *soundActivatedRecorder;
 
@@ -141,11 +141,12 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 {
     if (buttonIndex == 0) { // Live speech processing
         [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
-        [self.statusLabel setText:@"Waiting ..."];
         self.speechIsFromMicrophone = YES;
         indicatorImageView.hidden = NO;
-        [statusLabel setText:@"Waiting ..."];
+        [self.statusLabel setText:@"Waiting ..."];
+        [self.soundActivatedRecorder startListening];
     } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
+        [self.soundActivatedRecorder stopListeningAndKeepRecordingIfInProgress:NO];
         [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
         self.speechIsFromMicrophone = NO;
         indicatorImageView.hidden = YES;
@@ -155,41 +156,8 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     }
 }
 
-#pragma mark - FDSoundActivatedRecorderDelegate
-
-- (void)soundActivatedRecorderDidStartRecording:(FDSoundActivatedRecorder *)recorder
-{
-    NSLog(@"STARTED RECORDING");
-    [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
-    [statusLabel setText:@"Capturing sound"];
-}
-
-- (void)soundActivatedRecorderDidStopRecording:(FDSoundActivatedRecorder *)recorder andSavedSound:(BOOL)didSave
-{
-    NSLog(@"STOPPED RECORDING");
-    [indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
-    [statusLabel setText:@"Processing sound"];
-
-    NSData *speechSegmentData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
-    
-    [self.plotView setDisplayIdentifier:self.displayIdentifier];
-    [self.plotView getData:speechSegmentData];
-    [self.plotView setNeedsDisplay];
-    
-    if (self.displayIdentifier == 5) {
-        [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-    }
-    
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-        [indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
-        [statusLabel setText:@"Waiting ..."];
-        [self.soundActivatedRecorder startListening];
-    });
-}
-
 - (NSData *)readSoundFileSamples:(NSString *)filePath
 {
-    
     // Get raw PCM data from the track
     NSURL *assetURL = [NSURL fileURLWithPath:filePath];
     NSMutableData *data = [[NSMutableData alloc] init];
@@ -229,8 +197,43 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     }
     
     return data;
-
+    
 }
 
+#pragma mark - FDSoundActivatedRecorderDelegate
+
+- (void)soundActivatedRecorderDidStartRecording:(FDSoundActivatedRecorder *)recorder
+{
+    NSLog(@"STARTED RECORDING");
+    [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
+    [statusLabel setText:@"Capturing sound"];
+}
+
+- (void)soundActivatedRecorderDidStopRecording:(FDSoundActivatedRecorder *)recorder andSavedSound:(BOOL)didSave
+{
+    NSLog(@"STOPPED RECORDING");
+    [indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
+    
+    if (didSave) {
+        [statusLabel setText:@"Processing sound"];
+        NSData *speechSegmentData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
+        
+        [self.plotView setDisplayIdentifier:self.displayIdentifier];
+        [self.plotView getData:speechSegmentData];
+        [self.plotView setNeedsDisplay];
+        
+        if (self.displayIdentifier == 5) {
+            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
+        }
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
+            [indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
+            [statusLabel setText:@"Waiting ..."];
+            [self.soundActivatedRecorder startListening];
+        });
+    } else {
+        [statusLabel setText:@"Waiting ..."];
+    }
+}
 
 @end

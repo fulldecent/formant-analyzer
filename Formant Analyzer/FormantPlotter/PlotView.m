@@ -279,6 +279,9 @@
             CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
             
             for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
+                if (isnan(pCoeff[delayIdx])) {
+                    continue;
+                }
                 CGContextMoveToPoint(ctx, 10 + delayIdx * lineSpacing, 100);
                 CGContextAddLineToPoint(ctx, 10 + delayIdx * lineSpacing, 100 - pCoeff[delayIdx] * 95/maxCoeff);
                 CGContextStrokePath(ctx);
