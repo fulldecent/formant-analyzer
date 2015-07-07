@@ -38,7 +38,7 @@
 /* Detect if we're running iOS 7.0 or higher (With the new minimal UI) */
 #define MINIMAL_UI      ([[UIViewController class] instancesRespondToSelector:@selector(edgesForExtendedLayout)])
 /* Detect if we're running iOS 8.0 (With the new device rotation system) */
-#define NEW_ROTATIONS   ([[UIViewController class] instancesRespondToSelector:@selector(viewWillTransitionToSize:withTransitionCoordinator:)])
+#define NEW_ROTATIONS   ([[UIViewController class] instancesRespondToSelector:NSSelectorFromString(@"viewWillTransitionToSize:withTransitionCoordinator:")])
 
 /* The default blue tint color of iOS 7.0 */
 #define DEFAULT_BAR_TINT_COLOR [UIColor colorWithRed:0.0f green:110.0f/255.0f blue:1.0f alpha:1.0f]
@@ -224,7 +224,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (instancetype)initWithURL:(NSURL *)url
 {
-    if (self = [self init])
+    if (self = [super init])
         _url = [self cleanURL:url];
     
     return self;
@@ -249,6 +249,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 {
     //Direct ivar reference since we don't want to trigger their actions yet
     _showActionButton = YES;
+    _showDoneButton   = YES;
     _buttonSpacing    = (IPAD == NO) ? NAVIGATION_BUTTON_SPACING : NAVIGATION_BUTTON_SPACING_IPAD;
     _buttonWidth      = NAVIGATION_BUTTON_WIDTH;
     _showLoadingBar   = YES;
@@ -257,6 +258,9 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //Set the initial default style as full screen (But this can be easily overridden)
     self.modalPresentationStyle = UIModalPresentationFullScreen;
+
+    //Set the URL request
+    self.urlRequest = [[NSMutableURLRequest alloc] init];
 }
 
 - (void)loadView
@@ -448,7 +452,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         self.buttonsContainerView.tintColor = self.buttonTintColor;
     
     // Create the Done button
-    if (self.beingPresentedModally && !self.onTopOfNavigationControllerStack) {
+    if (self.showDoneButton && self.beingPresentedModally && !self.onTopOfNavigationControllerStack) {
         NSString *title = NSLocalizedStringFromTable(@"Done", @"TOWebViewControllerLocalizable", @"Modal Web View Controller Close");
         UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
         if (IPAD)
@@ -472,11 +476,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     if (self.navigationController) {
         if (IPAD == NO) { //iPhone
             if (self.beingPresentedModally == NO) { //being pushed onto a pre-existing stack, so
-                [self.navigationController setToolbarHidden:NO animated:animated];
+                [self.navigationController setToolbarHidden:self.navigationButtonsHidden animated:animated];
                 [self.navigationController setNavigationBarHidden:NO animated:animated];
             }
             else { //Being presented modally, so control the
-                self.navigationController.toolbarHidden = NO;
+                self.navigationController.toolbarHidden = self.navigationButtonsHidden;
             }
         }
         else {
@@ -490,7 +494,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //start loading the initial page
     if (self.url && self.webView.request == nil)
-        [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    {
+        [self.urlRequest setURL:self.url];
+        [self.webView loadRequest:self.urlRequest];
+    }
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -515,6 +522,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         return NO;
     
     return YES;
+}
+
+- (UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleDefault;
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
@@ -590,7 +602,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     if (self.webView.loading)
         [self.webView stopLoading];
     
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    [self.urlRequest setURL:self.url];
+    [self.webView loadRequest:self.urlRequest];
 }
 
 - (void)setLoadingBarTintColor:(UIColor *)loadingBarTintColor
@@ -795,11 +808,9 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         //it nullifies webView.request, which causes [webView reload] to stop working.
         //This checks to see if the webView request URL is nullified, and if so, tries to load
         //off our stored self.url property instead
-        NSURLRequest *request = self.webView.request;
         if (self.webView.request.URL.absoluteString.length == 0 && self.url)
         {
-            request = [NSURLRequest requestWithURL:self.url];
-            [self.webView loadRequest:request];
+            [self.webView loadRequest:self.urlRequest];
         }
         else {
             [self.webView reload];
@@ -1104,7 +1115,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 - (void)setLoadingProgress:(CGFloat)loadingProgress
 {
     // progress should be incremental only
-    if (loadingProgress > _loadingProgressState.loadingProgress || loadingProgress == 0)
+    if (loadingProgress > _loadingProgressState.loadingProgress)
     {
         _loadingProgressState.loadingProgress = loadingProgress;
         
@@ -1125,6 +1136,16 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
                     }];
                 }
             }];
+        }
+    }
+    else if (loadingProgress == 0)
+    {
+        _loadingProgressState.loadingProgress = loadingProgress;
+        if (self.showLoadingBar)
+        {
+            CGRect frame = self.loadingBarView.frame;
+            frame.origin.x = -CGRectGetWidth(self.loadingBarView.frame);
+            self.loadingBarView.frame = frame;
         }
     }
 }
@@ -1671,7 +1692,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         //if we were sufficiently scrolled from the top, make sure to line up to the middle, not the top
         if ((_webViewState.contentOffset.y + _webViewState.topEdgeInset) > FLT_EPSILON)
         {
-            if (UIInterfaceOrientationIsLandscape(self.interfaceOrientation)) {
+            
+            if(UIDeviceOrientationIsLandscape([UIDevice currentDevice].orientation)) {
                 translatedContentOffset.y += (CGRectGetHeight(self.webViewRotationSnapshot.frame)*0.5f) - (CGRectGetHeight(self.webView.frame)*0.5f);
             }
             else {

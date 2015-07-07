@@ -51,6 +51,11 @@
  */
 @property (nonatomic,strong)    NSURL *url;
 
+/** 
+ Get/set the request
+ */
+@property (nonatomic,strong)    NSMutableURLRequest *urlRequest;
+
 /**
  The web view used to display the HTML content. You can access it through this
  read-only property if you need to anything specific, such as having it execute arbitrary JS code.
@@ -96,6 +101,13 @@
  Default value is YES.
  */
 @property (nonatomic,assign)    BOOL showActionButton;
+
+/**
+ Shows the Done button when presented modally. When tapped, it dismisses the view controller.
+
+ Default value is YES.
+ */
+@property (nonatomic,assign)    BOOL showDoneButton;
 
 /**
  When web pages are loaded, the view controller's title property will be set to the page's

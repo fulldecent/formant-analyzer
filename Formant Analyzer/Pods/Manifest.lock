@@ -22,7 +22,7 @@ PODS:
     - AFNetworking/NSURLSession
   - FDSoundActivatedRecorder (0.9.0)
   - FSLineChart (0.1.7)
-  - TOWebViewController (2.0.14)
+  - TOWebViewController (2.0.17)
 
 DEPENDENCIES:
   - AFNetworking
@@ -34,6 +34,6 @@ SPEC CHECKSUMS:
   AFNetworking: 05edc0ac4c4c8cf57bcf4b84be5b0744b6d8e71e
   FDSoundActivatedRecorder: bd8e3ebc877779320a4e2e0d28b3ef983b54be56
   FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
-  TOWebViewController: 2cfd0032d781cabd88a0995fbca9692c11f0797e
+  TOWebViewController: aada427e7eba199bbaee77ddee3243c8172f4053
 
 COCOAPODS: 0.37.2
