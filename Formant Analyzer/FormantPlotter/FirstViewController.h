@@ -22,7 +22,9 @@
 
 // Third row
 @property (nonatomic) IBOutlet PlotView *plotView;
-@property (nonatomic) IBOutlet FSLineChart *lineChart;
+@property (nonatomic) IBOutlet FSLineChart *lineChartTopHalf;
+@property (nonatomic) IBOutlet FSLineChart *lineChartBottomHalf;
+@property (nonatomic) IBOutlet FSLineChart *lineChartFull;
 
 
 // Fourth row

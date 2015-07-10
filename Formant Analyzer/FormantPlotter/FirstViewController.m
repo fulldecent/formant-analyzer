@@ -40,7 +40,23 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 {
     self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
     self.plotView.hidden = YES;
-    self.lineChart.hidden = NO;
+    self.lineChartTopHalf.hidden = NO;
+    self.lineChartTopHalf.drawInnerGrid = NO;
+    self.lineChartTopHalf.axisLineWidth = 0;
+    self.lineChartTopHalf.margin = 0;
+    self.lineChartTopHalf.axisWidth = self.lineChartTopHalf.frame.size.width;
+    self.lineChartTopHalf.axisHeight = self.lineChartTopHalf.frame.size.height;
+    self.lineChartTopHalf.backgroundColor = [UIColor clearColor];
+    self.lineChartTopHalf.fillColor = [UIColor blueColor];
+    self.lineChartBottomHalf.hidden = NO;
+    self.lineChartBottomHalf.drawInnerGrid = NO;
+    self.lineChartBottomHalf.axisLineWidth = 0;
+    self.lineChartBottomHalf.margin = 0;
+    self.lineChartBottomHalf.axisWidth = self.lineChartTopHalf.frame.size.width;
+    self.lineChartBottomHalf.axisHeight = self.lineChartTopHalf.frame.size.height;
+    self.lineChartBottomHalf.backgroundColor = [UIColor clearColor];
+    self.lineChartBottomHalf.fillColor = [UIColor blueColor];
+    
     
     // data transform
     short int *dataBuffer = (short int*)self.speechData.bytes;
@@ -53,8 +69,8 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     NSMutableArray *plottableValuesLow = [NSMutableArray array];
     
     for (long chunkIdx=0; chunkIdx<400; chunkIdx++) {
-        long chunkMinValue = INFINITY;
-        long chunkMaxValue = -INFINITY;
+        long chunkMinValue = 0;
+        long chunkMaxValue = 0;
         for (long j=0; j<chunkSamples; j++) {
             long dataBufferIdx = j + strongStartIdx + chunkIdx*chunkSamples;
             chunkMinValue = MIN(chunkMinValue, dataBuffer[dataBufferIdx]);
@@ -70,8 +86,10 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     for (NSNumber *number in plottableValuesLow) {
         NSLog(@"%@", number);
     }
-    [self.lineChart setChartData:plottableValuesHigh];
-    
+    [self.lineChartTopHalf clearChartData];
+    [self.lineChartTopHalf setChartData:plottableValuesHigh];
+    [self.lineChartBottomHalf clearChartData];
+    [self.lineChartBottomHalf setChartData:plottableValuesLow];
 }
 
 
@@ -92,7 +110,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
-        self.lineChart.hidden = YES;
+        self.lineChartTopHalf.hidden = YES;
         
     }
 }
@@ -138,7 +156,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
-        self.lineChart.hidden = YES;
+        self.lineChartTopHalf.hidden = YES;
         
     }
     
@@ -282,7 +300,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
         } else {
             // TEMP HACK
             self.plotView.hidden = NO;
-            self.lineChart.hidden = YES;
+            self.lineChartTopHalf.hidden = YES;
             
         }
         
