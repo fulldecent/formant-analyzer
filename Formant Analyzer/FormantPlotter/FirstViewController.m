@@ -14,11 +14,11 @@
 #import <CoreMedia/CoreMedia.h>
 #import "SpeechAnalyzer.h"
 
-typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
+typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
 
 @interface FirstViewController() <UIActionSheetDelegate, FDSoundActivatedRecorderDelegate>
 @property int processingDelayTimeCounter;
-@property long displayIdentifier;                     // What type of information (1 out of 5) is to be displayed in self.plotView.
+@property GraphingModes displayIdentifier;            // What type of information is to be displayed in self.plotView.
 @property NSTimer *masterTimer;                       // Timer to manage three phases of soud capturing process
 @property FDSoundActivatedRecorder *soundActivatedRecorder;
 
@@ -38,8 +38,9 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 
 - (void)drawSignalPlot
 {
-    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
     self.plotView.hidden = YES;
+    self.lineChartFull.hidden = NO;
+    
     self.lineChartTopHalf.hidden = NO;
     self.lineChartTopHalf.drawInnerGrid = NO;
     self.lineChartTopHalf.axisLineWidth = 0;
@@ -57,39 +58,31 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     self.lineChartBottomHalf.backgroundColor = [UIColor clearColor];
     self.lineChartBottomHalf.fillColor = [UIColor blueColor];
     
-    
-    // data transform
-    short int *dataBuffer = (short int*)self.speechData.bytes;
-    
-    NSRange strongRange = [self.speechAnalyzer strongSignalRange];
-    long strongStartIdx = strongRange.location;
-    long strongEndIdx = strongRange.location + strongRange.length;
-    long chunkSamples = (strongEndIdx - strongStartIdx) / 400;
-    NSMutableArray *plottableValuesHigh = [NSMutableArray array];
+    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+    NSArray *plottableValuesHigh = [self.speechAnalyzer downsampleToSamples:400];
     NSMutableArray *plottableValuesLow = [NSMutableArray array];
-    
-    for (long chunkIdx=0; chunkIdx<400; chunkIdx++) {
-        long chunkMinValue = 0;
-        long chunkMaxValue = 0;
-        for (long j=0; j<chunkSamples; j++) {
-            long dataBufferIdx = j + strongStartIdx + chunkIdx*chunkSamples;
-            chunkMinValue = MIN(chunkMinValue, dataBuffer[dataBufferIdx]);
-            chunkMaxValue = MAX(chunkMaxValue, dataBuffer[dataBufferIdx]);
-        }
-        [plottableValuesHigh addObject:@(chunkMaxValue)];
-        [plottableValuesLow addObject:@(chunkMinValue)];
-    }
-    
     for (NSNumber *number in plottableValuesHigh) {
-        NSLog(@"%@", number);
-    }
-    for (NSNumber *number in plottableValuesLow) {
-        NSLog(@"%@", number);
+        [plottableValuesLow addObject:@(-number.doubleValue)];
     }
     [self.lineChartTopHalf clearChartData];
     [self.lineChartTopHalf setChartData:plottableValuesHigh];
     [self.lineChartBottomHalf clearChartData];
     [self.lineChartBottomHalf setChartData:plottableValuesLow];
+    
+    /* 
+     TODO: Here do trimming for vowel isolation, show tinted overlay
+    NSRange power = [self.speechAnalyzer strongSignalRange];
+    NSRange vowel = [self.speechAnalyzer truncateRangeTails:power];
+    double samples = self.speechAnalyzer.totalSamples.doubleValue;
+    CGRect powerFrame = CGRectMake(self.lineChartTopHalf.frame.origin.x + power.location/samples*self.lineChartTopHalf.frame.size.width,
+                                   self.lineChartTopHalf.frame.origin.y,
+                                   power.length/samples*self.lineChartTopHalf.frame.size.width,
+                                   self.lineChartTopHalf.frame.size.height);
+    
+    self.trimPower = [[UIView alloc] initWithFrame:powerFrame];
+    self.trimPower.backgroundColor = [UIColor colorWithHue:0.75 saturation:1 brightness:1 alpha:0.2];
+    [self.view addSubview:self.trimPower];
+    */
 }
 
 
@@ -98,20 +91,19 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
  */
 - (IBAction)graphingModeChanged:(UISegmentedControl *)sender
 {
-    self.displayIdentifier = sender.selectedSegmentIndex+1;
-    [self.plotView setDisplayIdentifier:self.displayIdentifier];
-    [self.plotView setNeedsDisplay];
-    
-    if ((GraphingModes)sender.selectedSegmentIndex == GraphingModeFrmnt)
-        [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-    
-    if ((GraphingModes)sender.selectedSegmentIndex == GraphingModeSig) {
+    self.displayIdentifier = sender.selectedSegmentIndex;
+    if (self.displayIdentifier == GraphingModeSig) {
         [self drawSignalPlot];
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
         self.lineChartTopHalf.hidden = YES;
+        self.lineChartBottomHalf.hidden = YES;
         
+        [self.plotView setDisplayIdentifier:self.displayIdentifier];
+        [self.plotView setNeedsDisplay];
+        if (self.displayIdentifier == GraphingModeFrmnt)
+            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
 }
 
@@ -137,29 +129,23 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 - (void)processRawBuffer
 {
     NSString *filePath = [[NSBundle mainBundle] pathForResource:self.soundFileBaseNames[self.soundFileIdentifier] ofType:@"raw"];
+    NSLog(@"Processing saved file %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     self.speechData = [[NSData alloc] initWithContentsOfFile:filePath];
-    
-    //NSLog(@"Length of speech segment NSData is %d",[speechSegmentData length]);
-    NSLog(@"Current base file name is %@",self.soundFileBaseNames[self.soundFileIdentifier]);
-    
-    [self.plotView setDisplayIdentifier:self.displayIdentifier];
-    
-    [self.plotView getData:(short *)self.speechData.bytes withLength:self.speechData.length/sizeof(short)];
-    [self.plotView setNeedsDisplay];
-    
-    if (self.displayIdentifier == 5) {
-        [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-    }
-    
-    if ((GraphingModes)self.displayIdentifier == GraphingModeSig) {
+
+    if (self.displayIdentifier == GraphingModeSig) {
         [self drawSignalPlot];
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
         self.lineChartTopHalf.hidden = YES;
+        self.lineChartBottomHalf.hidden = YES;
         
+        [self.plotView getData:(short *)self.speechData.bytes withLength:self.speechData.length/sizeof(short)];
+        [self.plotView setDisplayIdentifier:self.displayIdentifier];
+        [self.plotView setNeedsDisplay];
+        if (self.displayIdentifier == GraphingModeFrmnt)
+            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
-    
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -173,7 +159,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     self.processingDelayTimeCounter = 0;
     self.speechIsFromMicrophone = YES;
     
-    self.displayIdentifier = 5;         // Starting display type is formant plot (last button).
+    self.displayIdentifier = 0;         // Starting display type is formant plot (last button).
     self.soundFileIdentifier = 0;        // Starting stored file to be processes is 'arm'.
     
     // Initial hidder/visible patter of the app.
@@ -286,24 +272,22 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     if (didSave) {
         [self.statusLabel setText:@"Processing sound"];
         self.speechData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
-        
-        [self.plotView setDisplayIdentifier:self.displayIdentifier];
         [self.plotView getData:self.speechData];
-        [self.plotView setNeedsDisplay];
         
-        if (self.displayIdentifier == 5) {
-            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-        }
-        
-        if ((GraphingModes)self.displayIdentifier == GraphingModeSig) {
+        if (self.displayIdentifier == GraphingModeSig) {
             [self drawSignalPlot];
         } else {
             // TEMP HACK
             self.plotView.hidden = NO;
             self.lineChartTopHalf.hidden = YES;
+            self.lineChartBottomHalf.hidden = YES;
             
-        }
-        
+            [self.plotView getData:self.speechData];
+            [self.plotView setDisplayIdentifier:self.displayIdentifier];
+            [self.plotView setNeedsDisplay];
+            if (self.displayIdentifier == GraphingModeFrmnt)
+                [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
+        }        
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self.indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
@@ -311,7 +295,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
             [self.soundActivatedRecorder startListening];
         });
     } else {
-        [self.statusLabel setText:@"Waiting ..."];
+        [self.statusLabel setText:@"Retrying ..."];
     }
 }
 

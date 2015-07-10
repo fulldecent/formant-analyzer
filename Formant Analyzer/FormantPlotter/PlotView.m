@@ -85,7 +85,7 @@
     
     switch (self.displayIdentifier) {
             
-        case 1:
+        case 0:
         {
             // Here we show the speech segment. Since we have only 300 pixels horizontally,            
             // we divide the strong buffer into 300 chunks and find absolute maximum values
@@ -143,74 +143,8 @@
         }
             break;
             
-        case 2:
-        {
-            // Here we truncate 15% from head and tail to show central part of valid speech. 
-            // We do not plot maximum values of the waveform. Instead we plot a bar graph type
-            // display derived from energies in 60 chunks. Each bar is 5 pixel wide.
             
-            [self removeSilence];
-            [self removeTails];
-            
-            NSLog(@"Start/end indices after  15%% clipping are at %ld and %ld\n",self.truncatedStartIdx,self.truncatedEndIdx);
-            NSLog(@"\n");
-            
-            // Now display bar-graph type plot for energy in total of 60 chunks.
-            int chunks = 60;
-            int chunkWidth = self.frame.size.width / chunks;
-            chunkSamples = (self.strongEndIdx - self.strongStartIdx) / chunks;
-            
-            
-            maxEnergyValue = 0;
-            for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
-                chunkEnergy = 0;
-                for (j=0; j<chunkSamples; j++) {
-                    chunkEnergy += self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples] * self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]/10000;
-                }
-                maxEnergyValue = MAX(maxEnergyValue, chunkEnergy);
-            }
-            
-            if (maxEnergyValue == 0) {
-                maxEnergyValue = 1;
-            }
-            
-            for (chunkIdx=0; chunkIdx<chunks; chunkIdx++) {
-                chunkEnergy = 0;
-                for (j=0; j<chunkSamples; j++) {
-                    chunkEnergy += self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples] * self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]/10000;
-                }
-                
-                if (chunkIdx > 8 && chunkIdx < 51) {
-                    mycolor = [UIColor greenColor];
-                    CGContextSetLineWidth(ctx, 1.0);
-                    CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-                    CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-                    CGContextFillRect(ctx, CGRectMake(chunkIdx*chunkWidth, 100 - 95*chunkEnergy/maxEnergyValue, chunkWidth, 190*chunkEnergy/maxEnergyValue));
-                    CGContextStrokePath(ctx);
-                }
-                else
-                {
-                    mycolor = [UIColor grayColor];
-                    CGContextSetLineWidth(ctx, 1.0);
-                    CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-                    CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-                    CGContextFillRect(ctx, CGRectMake(chunkIdx*chunkWidth, 100 - 95*chunkEnergy/maxEnergyValue, chunkWidth, 190*chunkEnergy/maxEnergyValue));
-                    CGContextStrokePath(ctx);   
-                }
-            }
-            
-            // Now draw a black horizontal line at the center of the plot
-            mycolor = [UIColor blackColor];
-            
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetLineWidth(ctx, 1.0);
-            CGContextMoveToPoint(ctx, 0, 100);
-            CGContextAddLineToPoint(ctx, chunks * chunkWidth, 100);
-            CGContextStrokePath(ctx);
-        }
-            break;
-            
-        case 3:
+        case 1:
         {
             // Here we find linear prediction coefficients using an iterative procedure of Levinson 
             
@@ -301,7 +235,7 @@
         }
             break;
             
-        case 4:
+        case 2:
         {
             // Here we find frequency response of the LPC synthesis filter. It should have
             // peaks where formant frequencies are located.
@@ -417,7 +351,7 @@
         }
             break;
             
-        case 5:
+        case 3:
         {
             // Here we find complex roots from the LP filter to find formant frequencies. 
             // First find LPCoefficients by repeating a few blocks given above.

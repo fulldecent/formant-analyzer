@@ -23,6 +23,10 @@
     return retval;
 }
 
+- (NSNumber *)totalSamples
+{
+    return @(self.int16Samples.length / 2);
+}
 
 // Trim quiet parts at the ends of our signal.
 // Our signal is divided into 300 chunks, and energy is computed for each.
@@ -100,38 +104,70 @@
     return self;
 }
 
+
+
 - (void)loadData:(NSData *)int16Samples
 {
     self.int16Samples = int16Samples;
     self.strongSignalRangeCached = NSMakeRange(0, 0);
 }
 
-- (void)downsampleToSamples:(int)samples onCompletion:(void(^)(NSData *int16Samples))complete
+/**
+ * Reduce horizontal resolution of signal for plotting, returns NO on error
+ */
+- (NSArray *)downsampleToSamples:(int)samples
 {
-}
-
-- (void)computeTrimPointsOnCompletion:(void(^)(NSRange trimPoints))complete;
-{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSRange range = [self strongSignalRange];
-        range = [self truncateRangeTails:range];
-        complete(range);
-    });
-}
-
-- (void)findLpcCoefficientsOnCompletion:(void(^)(NSArray *coefficients))complete
-{
+    short int *dataBuffer = (short int*)self.int16Samples.bytes;
+    NSRange strongRange = [self strongSignalRange];
+    long strongStartIdx = strongRange.location;
+    long strongEndIdx = strongRange.location + strongRange.length;
+    long chunkSamples = (strongEndIdx - strongStartIdx) / 400;
+    NSMutableArray *plottableValuesHigh = [NSMutableArray array];
     
+    for (long chunkIdx=0; chunkIdx<400; chunkIdx++) {
+        long chunkMaxValue = 0;
+        for (long j=0; j<chunkSamples; j++) {
+            long dataBufferIdx = j + strongStartIdx + chunkIdx*chunkSamples;
+            chunkMaxValue = MAX(chunkMaxValue, dataBuffer[dataBufferIdx]);
+        }
+        [plottableValuesHigh addObject:@(chunkMaxValue)];
+    }
+    return plottableValuesHigh;
 }
 
-- (void)synthesizedFrequencyResponse:(void(^)(NSArray *response))complete
+/**
+ * Find start and finish points representing vowel signal in speech data
+ */
+- (NSRange)computeTrimPoints
 {
-    
+    NSRange range = [self strongSignalRange];
+    range = [self truncateRangeTails:range];
+    return range;
 }
 
-- (void)findFormants:(void(^)(NSArray *formants))complete
+/**
+ * Find LPC coefficients from the signal
+ */
+- (NSArray *)findLpcCoefficients
 {
-    
+    return nil;
+}
+
+/**
+ * Find the frequency response of the signal synthesized with above LPC coefficients
+ * calculated in 5 Hz intervals, amplitude is [0,1]
+ */
+- (NSArray *)synthesizedFrequencyResponse
+{
+    return nil;
+}
+
+/**
+ * Find the first several formant frequencies (in Hz)
+ */
+- (NSArray *)findFormants
+{
+    return nil;
 }
 
 

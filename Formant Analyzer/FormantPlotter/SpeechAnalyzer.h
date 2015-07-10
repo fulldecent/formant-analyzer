@@ -12,53 +12,45 @@
 
 + (SpeechAnalyzer *)analyzerWithData:(NSData *)int16Samples;
 
-// MAKE THIS PRIVATE
+- (NSNumber *)totalSamples;
 
+// MAKE THIS PRIVATE
 /** 
  * Load speech for processing
  * @param int16Samples A data stream of raw audio samples
  */
 - (void)loadData:(NSData *)int16Samples;
 
-
 // HACK FUNCTIONS
-
 - (NSRange)strongSignalRange;
 - (NSRange)truncateRangeTails:(NSRange)range;
 
 
-///// THE FUNCTIONS WITH CALLBACKS THAT YOU ARE /SUPPOSED/ TO USE
-
 /**
  * Reduce horizontal resolution of signal for plotting, returns NO on error
- * @param int16Samples A data stream of raw audio samples
- * @param complete Block will receive int16 sample data of the downsampled signal
  */
-- (void)downsampleToSamples:(int)samples onCompletion:(void(^)(NSData *int16Samples))complete;
+- (NSArray *)downsampleToSamples:(int)samples;
 
 /**
  * Find start and finish points representing vowel signal in speech data
- * @param complete Block will receive NSRange of sample points after trimming
  */
-- (void)computeTrimPointsOnCompletion:(void(^)(NSRange trimPoints))complete;
+- (NSRange)computeTrimPoints;
 
 /**
  * Find LPC coefficients from the signal
- * @param complete Block will receive NSArray of NSNumbers containing the coefs
  */
-- (void)findLpcCoefficientsOnCompletion:(void(^)(NSArray *coefficients))complete;
+- (NSArray *)findLpcCoefficients;
 
 /**
  * Find the frequency response of the signal synthesized with above LPC coefficients
  * calculated in 5 Hz intervals, amplitude is [0,1]
- * @param complete Block will receive NSArray of NSNumbers containing response
  */
-- (void)synthesizedFrequencyResponse:(void(^)(NSArray *response))complete;
+- (NSArray *)synthesizedFrequencyResponse;
 
 /**
  * Find the first several formant frequencies (in Hz)
- * @param complete Block will receive NSArray of NSNumbers containing response
  */
-- (void)findFormants:(void(^)(NSArray *formants))complete;
+- (NSArray *)findFormants;
+
 
 @end
