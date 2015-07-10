@@ -16,6 +16,14 @@
 
 @implementation SpeechAnalyzer
 
++ (SpeechAnalyzer *)analyzerWithData:(NSData *)int16Samples
+{
+    SpeechAnalyzer *retval = [[SpeechAnalyzer alloc] init];
+    [retval loadData:int16Samples];
+    return retval;
+}
+
+
 // Trim quiet parts at the ends of our signal.
 // Our signal is divided into 300 chunks, and energy is computed for each.
 // Leading and trailing chunks are excluded with 10dB less than the maximum energy.

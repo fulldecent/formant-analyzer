@@ -10,6 +10,10 @@
 
 @interface SpeechAnalyzer : NSObject
 
++ (SpeechAnalyzer *)analyzerWithData:(NSData *)int16Samples;
+
+// MAKE THIS PRIVATE
+
 /** 
  * Load speech for processing
  * @param int16Samples A data stream of raw audio samples

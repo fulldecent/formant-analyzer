@@ -12,6 +12,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 #import <AVFoundation/AVFoundation.h>
 #import <CoreMedia/CoreMedia.h>
+#import "SpeechAnalyzer.h"
 
 typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
 
@@ -25,6 +26,9 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 @property NSInteger soundFileIdentifier;              // Which stored file (1 out of 7) is being processed
 @property NSArray *soundFileBaseNames;                // Array of names of 7 stored sound files.
 
+@property SpeechAnalyzer *speechAnalyzer;
+@property NSData *speechData;
+
 - (void)processRawBuffer;
 - (void)displayFormantFrequencies;
 
@@ -32,14 +36,44 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 
 @implementation FirstViewController
 
-@synthesize indicatorImageView;
-@synthesize masterTimer;
-@synthesize statusLabel;
-@synthesize firstFormantLabel;
-@synthesize secondFormantLabel;
-@synthesize thirdFormantLabel;
-@synthesize fourthFormantLabel;
-@synthesize graphingMode;
+- (void)drawSignalPlot
+{
+    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+    self.plotView.hidden = YES;
+    self.lineChart.hidden = NO;
+    
+    // data transform
+    short int *dataBuffer = (short int*)self.speechData.bytes;
+    
+    NSRange strongRange = [self.speechAnalyzer strongSignalRange];
+    long strongStartIdx = strongRange.location;
+    long strongEndIdx = strongRange.location + strongRange.length;
+    long chunkSamples = (strongEndIdx - strongStartIdx) / 400;
+    NSMutableArray *plottableValuesHigh = [NSMutableArray array];
+    NSMutableArray *plottableValuesLow = [NSMutableArray array];
+    
+    for (long chunkIdx=0; chunkIdx<400; chunkIdx++) {
+        long chunkMinValue = INFINITY;
+        long chunkMaxValue = -INFINITY;
+        for (long j=0; j<chunkSamples; j++) {
+            long dataBufferIdx = j + strongStartIdx + chunkIdx*chunkSamples;
+            chunkMinValue = MIN(chunkMinValue, dataBuffer[dataBufferIdx]);
+            chunkMaxValue = MAX(chunkMaxValue, dataBuffer[dataBufferIdx]);
+        }
+        [plottableValuesHigh addObject:@(chunkMaxValue)];
+        [plottableValuesLow addObject:@(chunkMinValue)];
+    }
+    
+    for (NSNumber *number in plottableValuesHigh) {
+        NSLog(@"%@", number);
+    }
+    for (NSNumber *number in plottableValuesLow) {
+        NSLog(@"%@", number);
+    }
+    [self.lineChart setChartData:plottableValuesHigh];
+    
+}
+
 
 /** Update display for new view mode
  @param sender The UISegmentedControl which has chosen the new display mode
@@ -52,6 +86,15 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     
     if ((GraphingModes)sender.selectedSegmentIndex == GraphingModeFrmnt)
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
+    
+    if ((GraphingModes)sender.selectedSegmentIndex == GraphingModeSig) {
+        [self drawSignalPlot];
+    } else {
+        // TEMP HACK
+        self.plotView.hidden = NO;
+        self.lineChart.hidden = YES;
+        
+    }
 }
 
 // This function is called half a second after the formant plot is displayed. It creates four text
@@ -59,13 +102,13 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 - (void)displayFormantFrequencies
 {
     NSString *firstFLabel = [NSString stringWithFormat:@"Formant 1:%5.0f",[self.plotView firstFFreq]];
-    firstFormantLabel.text = firstFLabel;
+    self.firstFormantLabel.text = firstFLabel;
     NSString *secondFLabel = [NSString stringWithFormat:@"Formant 2:%5.0f",[self.plotView secondFFreq]];
-    secondFormantLabel.text = secondFLabel;
+    self.secondFormantLabel.text = secondFLabel;
     NSString *thirdFLabel = [NSString stringWithFormat:@"Formant 3:%5.0f",[self.plotView thirdFFreq]];
-    thirdFormantLabel.text = thirdFLabel;
+    self.thirdFormantLabel.text = thirdFLabel;
     NSString *fourthFLabel = [NSString stringWithFormat:@"Formant 4:%5.0f",[self.plotView fourthFFreq]];
-    fourthFormantLabel.text = fourthFLabel;
+    self.fourthFormantLabel.text = fourthFLabel;
 }
 
 // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
@@ -75,22 +118,30 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 // If we are looking at 5th plot type (formant frequencies), four text labels are updated with a delay of 0.5 sec
 - (void)processRawBuffer
 {
-    NSData *speechSegmentData;
-    
     NSString *filePath = [[NSBundle mainBundle] pathForResource:self.soundFileBaseNames[self.soundFileIdentifier] ofType:@"raw"];
-    speechSegmentData = [[NSData alloc] initWithContentsOfFile:filePath];
+    self.speechData = [[NSData alloc] initWithContentsOfFile:filePath];
     
     //NSLog(@"Length of speech segment NSData is %d",[speechSegmentData length]);
     NSLog(@"Current base file name is %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     
     [self.plotView setDisplayIdentifier:self.displayIdentifier];
     
-    [self.plotView getData:(short *)speechSegmentData.bytes withLength:speechSegmentData.length/sizeof(short)];
+    [self.plotView getData:(short *)self.speechData.bytes withLength:self.speechData.length/sizeof(short)];
     [self.plotView setNeedsDisplay];
     
     if (self.displayIdentifier == 5) {
         [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
+    
+    if ((GraphingModes)self.displayIdentifier == GraphingModeSig) {
+        [self drawSignalPlot];
+    } else {
+        // TEMP HACK
+        self.plotView.hidden = NO;
+        self.lineChart.hidden = YES;
+        
+    }
+    
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -108,12 +159,12 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     self.soundFileIdentifier = 0;        // Starting stored file to be processes is 'arm'.
     
     // Initial hidder/visible patter of the app.
-    indicatorImageView.hidden = NO;
+    self.indicatorImageView.hidden = NO;
     
     [self.plotView setNeedsDisplay];
     
     // Start master timer with tick time of 0.1 seconds.
-    masterTimer = nil;
+    self.masterTimer = nil;
     self.soundActivatedRecorder = [[FDSoundActivatedRecorder alloc] init];
     self.soundActivatedRecorder.delegate = self;
     [self.soundActivatedRecorder startListening];
@@ -142,16 +193,16 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
     if (buttonIndex == 0) { // Live speech processing
         [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
         self.speechIsFromMicrophone = YES;
-        indicatorImageView.hidden = NO;
+        self.indicatorImageView.hidden = NO;
         [self.statusLabel setText:@"Waiting ..."];
         [self.soundActivatedRecorder startListening];
     } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
         [self.soundActivatedRecorder stopListeningAndKeepRecordingIfInProgress:NO];
         [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
         self.speechIsFromMicrophone = NO;
-        indicatorImageView.hidden = YES;
+        self.indicatorImageView.hidden = YES;
         self.soundFileIdentifier = buttonIndex - 1;
-        [statusLabel setText:self.soundFileBaseNames[self.soundFileIdentifier]];
+        [self.statusLabel setText:self.soundFileBaseNames[self.soundFileIdentifier]];
         [self processRawBuffer];
     }
 }
@@ -205,34 +256,44 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeTrim, Gr
 - (void)soundActivatedRecorderDidStartRecording:(FDSoundActivatedRecorder *)recorder
 {
     NSLog(@"STARTED RECORDING");
-    [indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
-    [statusLabel setText:@"Capturing sound"];
+    [self.indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
+    [self.statusLabel setText:@"Capturing sound"];
 }
 
 - (void)soundActivatedRecorderDidStopRecording:(FDSoundActivatedRecorder *)recorder andSavedSound:(BOOL)didSave
 {
     NSLog(@"STOPPED RECORDING");
-    [indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
+    [self.indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
     
     if (didSave) {
-        [statusLabel setText:@"Processing sound"];
-        NSData *speechSegmentData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
+        [self.statusLabel setText:@"Processing sound"];
+        self.speechData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
         
         [self.plotView setDisplayIdentifier:self.displayIdentifier];
-        [self.plotView getData:speechSegmentData];
+        [self.plotView getData:self.speechData];
         [self.plotView setNeedsDisplay];
         
         if (self.displayIdentifier == 5) {
             [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
         }
         
+        if ((GraphingModes)self.displayIdentifier == GraphingModeSig) {
+            [self drawSignalPlot];
+        } else {
+            // TEMP HACK
+            self.plotView.hidden = NO;
+            self.lineChart.hidden = YES;
+            
+        }
+        
+        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
-            [statusLabel setText:@"Waiting ..."];
+            [self.indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
+            [self.statusLabel setText:@"Waiting ..."];
             [self.soundActivatedRecorder startListening];
         });
     } else {
-        [statusLabel setText:@"Waiting ..."];
+        [self.statusLabel setText:@"Waiting ..."];
     }
 }
 

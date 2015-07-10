@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CZ4-MO-1fc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="CZ4-MO-1fc">
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6246"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
     </dependencies>
     <scenes>
         <!--First-->
@@ -27,35 +26,39 @@
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="249" text="Status Message" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="P33-9r-kcC">
                                 <rect key="frame" x="58" y="22" width="152" height="30"/>
                                 <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="18"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" customClass="PlotView">
                                 <rect key="frame" x="0.0" y="100" width="320" height="390"/>
                                 <color key="backgroundColor" white="0.93795620440000005" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="H77-Va-cqM" customClass="FSLineChart">
+                                <rect key="frame" x="0.0" y="100" width="320" height="390"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-am-4MW">
                                 <rect key="frame" x="20" y="502" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="uAc-hW-WYY">
                                 <rect key="frame" x="170" y="502" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="0jX-nd-JdF">
                                 <rect key="frame" x="170" y="535" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="udF-wh-LHP">
                                 <rect key="frame" x="20" y="535" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kgD-9x-g17">
@@ -92,6 +95,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93725496530532837" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="width" secondItem="H77-Va-cqM" secondAttribute="width" id="0So-Q2-tjD"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="top" secondItem="fYR-7t-Gi2" secondAttribute="bottom" constant="2" id="1X6-8l-Hia"/>
                             <constraint firstAttribute="trailing" secondItem="kgD-9x-g17" secondAttribute="trailing" constant="20" id="1nc-d1-G1B"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="height" secondItem="kgD-9x-g17" secondAttribute="height" id="2N0-tX-B2r"/>
@@ -99,6 +103,7 @@
                             <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="bJf-am-4MW" secondAttribute="width" id="4fc-KD-1Py"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="AkJ-0Q-cfC" secondAttribute="bottom" constant="12" id="Cth-P8-cZe"/>
                             <constraint firstItem="AkJ-0Q-cfC" firstAttribute="top" secondItem="P33-9r-kcC" secondAttribute="bottom" constant="8" id="D6B-Xg-qhA"/>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="height" secondItem="H77-Va-cqM" secondAttribute="height" id="EYN-qf-iAF"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="Vmo-Ug-nhx" secondAttribute="bottom" id="IwM-qN-krx"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="centerY" secondItem="P33-9r-kcC" secondAttribute="centerY" id="KOc-mP-aPu"/>
                             <constraint firstItem="0jX-nd-JdF" firstAttribute="top" secondItem="uAc-hW-WYY" secondAttribute="bottom" constant="12" id="KP8-OS-X6s"/>
@@ -115,6 +120,8 @@
                             <constraint firstItem="udF-wh-LHP" firstAttribute="top" secondItem="bJf-am-4MW" secondAttribute="bottom" constant="12" id="bOO-7g-9WU"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="c7n-Uq-jBh"/>
                             <constraint firstItem="udF-wh-LHP" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="dRZ-xh-27T"/>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="H77-Va-cqM" secondAttribute="top" id="eyy-Pk-3LQ"/>
+                            <constraint firstItem="zrQ-dr-T2a" firstAttribute="leading" secondItem="H77-Va-cqM" secondAttribute="leading" id="hbV-YW-Mml"/>
                             <constraint firstItem="bJf-am-4MW" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="iCk-j6-65L"/>
                             <constraint firstAttribute="centerX" secondItem="Vmo-Ug-nhx" secondAttribute="centerX" id="iWy-7h-y08"/>
                             <constraint firstAttribute="trailing" secondItem="0jX-nd-JdF" secondAttribute="trailing" constant="20" id="igh-6h-iyV"/>
@@ -132,6 +139,7 @@
                         <outlet property="graphingMode" destination="AkJ-0Q-cfC" id="L1J-Qp-SGf"/>
                         <outlet property="indicatorImageView" destination="8Qr-2e-rSY" id="4kP-EA-kby"/>
                         <outlet property="inputSelector" destination="kgD-9x-g17" id="q9c-UM-eGr"/>
+                        <outlet property="lineChart" destination="H77-Va-cqM" id="4B3-7A-9T0"/>
                         <outlet property="plotView" destination="zrQ-dr-T2a" id="Hqa-89-5wo"/>
                         <outlet property="secondFormantLabel" destination="uAc-hW-WYY" id="BIH-sc-sLo"/>
                         <outlet property="statusLabel" destination="P33-9r-kcC" id="wOc-wh-IRk"/>

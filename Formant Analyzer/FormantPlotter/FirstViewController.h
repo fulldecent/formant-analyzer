@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "PlotView.h"
+#import <FSLineChart.h>
 
 @interface FirstViewController : UIViewController
 
@@ -21,6 +22,8 @@
 
 // Third row
 @property (nonatomic) IBOutlet PlotView *plotView;
+@property (nonatomic) IBOutlet FSLineChart *lineChart;
+
 
 // Fourth row
 @property (nonatomic) IBOutlet UILabel *firstFormantLabel;
