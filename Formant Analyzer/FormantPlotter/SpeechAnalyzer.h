@@ -21,6 +21,9 @@
  */
 - (void)loadData:(NSData *)int16Samples;
 
+// TMP private
+- (NSData *)int16SamplesDecimated;
+
 // HACK FUNCTIONS
 - (NSRange)strongSignalRange;
 - (NSRange)truncateRangeTails:(NSRange)range;
@@ -34,12 +37,12 @@
 /**
  * Find start and finish points representing vowel signal in speech data
  */
-- (NSRange)computeTrimPoints;
+- (NSRange)vowelRange;
 
 /**
  * Find LPC coefficients from the signal
  */
-- (NSArray *)findLpcCoefficients;
+- (NSArray *)lpcCoefficients;
 
 /**
  * Find the frequency response of the signal synthesized with above LPC coefficients

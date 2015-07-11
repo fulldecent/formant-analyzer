@@ -39,7 +39,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 - (void)drawSignalPlot
 {
     self.plotView.hidden = YES;
-    self.lineChartFull.hidden = NO;
+    self.lineChartFull.hidden = YES;
     
     self.lineChartTopHalf.hidden = NO;
     self.lineChartTopHalf.drawInnerGrid = NO;
@@ -85,6 +85,38 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     */
 }
 
+- (void)drawLPCPlot
+{
+    self.plotView.hidden = YES;
+    self.lineChartTopHalf.hidden = YES;
+    self.lineChartBottomHalf.hidden = YES;
+    
+    self.lineChartFull.hidden = NO;
+    self.lineChartFull.drawInnerGrid = YES;
+    self.lineChartFull.axisLineWidth = 1;
+    self.lineChartFull.margin = 0;
+    self.lineChartFull.axisWidth = self.lineChartTopHalf.frame.size.width;
+    self.lineChartFull.axisHeight = self.lineChartTopHalf.frame.size.height;
+    self.lineChartFull.backgroundColor = [UIColor clearColor];
+    self.lineChartFull.fillColor = [UIColor blueColor];
+    
+//TODO: dont need to reload data here!
+    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+    NSArray *lpcCoefficients = [self.speechAnalyzer lpcCoefficients];
+    NSMutableArray *plottableValues = [NSMutableArray array];
+    
+    for (NSNumber *coefficient in lpcCoefficients) {
+        if (isnan(((NSNumber *)coefficient).doubleValue)) {
+            [plottableValues addObject:@(0)];
+        } else {
+            [plottableValues addObject:coefficient];
+        }
+    }
+
+    [self.lineChartFull clearChartData];
+    [self.lineChartFull setChartData:plottableValues];
+}
+
 
 /** Update display for new view mode
  @param sender The UISegmentedControl which has chosen the new display mode
@@ -94,6 +126,8 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     self.displayIdentifier = sender.selectedSegmentIndex;
     if (self.displayIdentifier == GraphingModeSig) {
         [self drawSignalPlot];
+    } else if (self.displayIdentifier == GraphingModeLPC) {
+        [self drawLPCPlot];
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
@@ -134,13 +168,15 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 
     if (self.displayIdentifier == GraphingModeSig) {
         [self drawSignalPlot];
+    } else if (self.displayIdentifier == GraphingModeLPC) {
+        [self drawLPCPlot];
     } else {
         // TEMP HACK
         self.plotView.hidden = NO;
         self.lineChartTopHalf.hidden = YES;
         self.lineChartBottomHalf.hidden = YES;
         
-        [self.plotView getData:(short *)self.speechData.bytes withLength:self.speechData.length/sizeof(short)];
+        [self.plotView getData:self.speechData];
         [self.plotView setDisplayIdentifier:self.displayIdentifier];
         [self.plotView setNeedsDisplay];
         if (self.displayIdentifier == GraphingModeFrmnt)
@@ -272,10 +308,11 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     if (didSave) {
         [self.statusLabel setText:@"Processing sound"];
         self.speechData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
-        [self.plotView getData:self.speechData];
         
         if (self.displayIdentifier == GraphingModeSig) {
             [self drawSignalPlot];
+        } else if (self.displayIdentifier == GraphingModeLPC) {
+            [self drawLPCPlot];
         } else {
             // TEMP HACK
             self.plotView.hidden = NO;

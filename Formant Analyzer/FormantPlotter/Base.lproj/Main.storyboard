@@ -42,6 +42,10 @@
                                 <rect key="frame" x="0.0" y="295" width="320" height="195"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
+                            <view hidden="YES" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ERa-1E-mDS" userLabel="Line Chart Full" customClass="FSLineChart">
+                                <rect key="frame" x="0.0" y="100" width="320" height="390"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="tailTruncation" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="bJf-am-4MW">
                                 <rect key="frame" x="20" y="502" width="130" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -99,6 +103,7 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.93725496530532837" blue="0.92549026012420654" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
+                            <constraint firstItem="ERa-1E-mDS" firstAttribute="width" secondItem="zrQ-dr-T2a" secondAttribute="width" id="0RW-hc-Pjp"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="width" secondItem="H77-Va-cqM" secondAttribute="width" id="0So-Q2-tjD"/>
                             <constraint firstItem="Qpg-IJ-E0F" firstAttribute="top" secondItem="H77-Va-cqM" secondAttribute="bottom" id="13j-vY-5as"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="top" secondItem="fYR-7t-Gi2" secondAttribute="bottom" constant="2" id="1X6-8l-Hia"/>
@@ -110,6 +115,7 @@
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="AkJ-0Q-cfC" secondAttribute="bottom" constant="12" id="Cth-P8-cZe"/>
                             <constraint firstItem="AkJ-0Q-cfC" firstAttribute="top" secondItem="P33-9r-kcC" secondAttribute="bottom" constant="8" id="D6B-Xg-qhA"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="height" secondItem="H77-Va-cqM" secondAttribute="height" multiplier="2" id="EYN-qf-iAF"/>
+                            <constraint firstItem="ERa-1E-mDS" firstAttribute="leading" secondItem="H77-Va-cqM" secondAttribute="leading" id="HcR-1h-Gbn"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="Vmo-Ug-nhx" secondAttribute="bottom" id="IwM-qN-krx"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="centerY" secondItem="P33-9r-kcC" secondAttribute="centerY" id="KOc-mP-aPu"/>
                             <constraint firstItem="0jX-nd-JdF" firstAttribute="top" secondItem="uAc-hW-WYY" secondAttribute="bottom" constant="12" id="KP8-OS-X6s"/>
@@ -125,6 +131,7 @@
                             <constraint firstItem="uAc-hW-WYY" firstAttribute="width" secondItem="0jX-nd-JdF" secondAttribute="width" id="ZzZ-pa-SQA"/>
                             <constraint firstItem="udF-wh-LHP" firstAttribute="top" secondItem="bJf-am-4MW" secondAttribute="bottom" constant="12" id="bOO-7g-9WU"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" id="c7n-Uq-jBh"/>
+                            <constraint firstItem="ERa-1E-mDS" firstAttribute="top" secondItem="H77-Va-cqM" secondAttribute="top" id="ceD-y1-2Xf"/>
                             <constraint firstItem="udF-wh-LHP" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="dRZ-xh-27T"/>
                             <constraint firstItem="zrQ-dr-T2a" firstAttribute="top" secondItem="H77-Va-cqM" secondAttribute="top" id="eyy-Pk-3LQ"/>
                             <constraint firstItem="H77-Va-cqM" firstAttribute="leading" secondItem="Qpg-IJ-E0F" secondAttribute="leading" id="hVk-Su-jP5"/>
@@ -135,6 +142,7 @@
                             <constraint firstItem="AkJ-0Q-cfC" firstAttribute="leading" secondItem="2VE-Yg-loa" secondAttribute="leading" constant="20" id="mPX-1C-CS6"/>
                             <constraint firstItem="H77-Va-cqM" firstAttribute="width" secondItem="Qpg-IJ-E0F" secondAttribute="width" id="p82-2j-dog"/>
                             <constraint firstItem="uu7-se-EYk" firstAttribute="top" secondItem="0jX-nd-JdF" secondAttribute="bottom" constant="12" id="qkG-Bi-zV2"/>
+                            <constraint firstItem="ERa-1E-mDS" firstAttribute="height" secondItem="zrQ-dr-T2a" secondAttribute="height" id="rXZ-9a-8vs"/>
                             <constraint firstItem="8Qr-2e-rSY" firstAttribute="height" secondItem="P33-9r-kcC" secondAttribute="height" id="sB6-sg-mLJ"/>
                             <constraint firstItem="bJf-am-4MW" firstAttribute="top" secondItem="zrQ-dr-T2a" secondAttribute="bottom" constant="12" id="u3q-ep-nLQ"/>
                             <constraint firstAttribute="trailing" secondItem="zrQ-dr-T2a" secondAttribute="trailing" id="uFY-y5-wkL"/>
@@ -148,6 +156,7 @@
                         <outlet property="indicatorImageView" destination="8Qr-2e-rSY" id="4kP-EA-kby"/>
                         <outlet property="inputSelector" destination="kgD-9x-g17" id="q9c-UM-eGr"/>
                         <outlet property="lineChartBottomHalf" destination="Qpg-IJ-E0F" id="IRi-Ew-sXJ"/>
+                        <outlet property="lineChartFull" destination="ERa-1E-mDS" id="MKO-2l-BfQ"/>
                         <outlet property="lineChartTopHalf" destination="H77-Va-cqM" id="tM8-1e-aCS"/>
                         <outlet property="plotView" destination="zrQ-dr-T2a" id="Hqa-89-5wo"/>
                         <outlet property="secondFormantLabel" destination="uAc-hW-WYY" id="BIH-sc-sLo"/>

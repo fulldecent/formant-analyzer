@@ -22,7 +22,6 @@
 
 @interface PlotView : UIView
 
-- (void)getData:(short int *)databuffer withLength:(long)length;
 - (void)getData:(NSData *)data;
 - (void)setDisplayIdentifier:(long)displayidentifier;
 

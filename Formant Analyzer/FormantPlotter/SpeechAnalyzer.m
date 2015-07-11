@@ -8,8 +8,17 @@
 
 #import "SpeechAnalyzer.h"
 
+// A few constants to be used in LPC and Laguerre algorithms.
+#define ORDER 20
+#define EPS 2.0e-6
+#define EPSS 1.0e-7
+#define MR 8
+#define MT 10
+#define MAXIT (MT*MR)
+
 @interface SpeechAnalyzer()
 @property (nonatomic) NSData *int16Samples;
+@property (nonatomic) NSData *int16SamplesDecimated;
 @property (nonatomic) NSRange strongSignalRangeCached;
 - (NSRange)strongSignalRange;
 @end
@@ -21,6 +30,15 @@
     SpeechAnalyzer *retval = [[SpeechAnalyzer alloc] init];
     [retval loadData:int16Samples];
     return retval;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        self.strongSignalRangeCached = NSMakeRange(0, 0);
+    }
+    return self;
 }
 
 - (NSNumber *)totalSamples
@@ -95,16 +113,30 @@
     return NSMakeRange(newLocation, newLength);
 }
 
-- (id)init
+/*
+ * This takes the isolated vowel range of the sound signal and reduces the sampling rate.
+ * A simple, one-pass algorithm is used.
+ * Because sampling rate is 44.1kHz and human speech formants are < 5kHz, quality not needed here.
+ */
+- (NSData *)int16SamplesDecimated
 {
-    self = [super init];
-    if (self) {
-        self.strongSignalRangeCached = NSMakeRange(0, 0);
+    if (!_int16SamplesDecimated) {
+        int decimationFactor = 4; // input variable, 11025 Hz sample rate
+        short int *inputDataBuffer = (short int*)self.int16Samples.bytes;
+        NSRange vowelRange = [self vowelRange];
+        long vowelStartIdx = vowelRange.location;
+        long vowelEndIdx = vowelRange.location + vowelRange.length;
+        long outputSamples = (vowelEndIdx - vowelStartIdx) / decimationFactor;
+        
+        NSMutableData *workingData = [NSMutableData data];
+        long outputIndex;
+        for (outputIndex = 0; outputIndex < outputSamples; outputIndex++) {
+            [workingData appendBytes:&inputDataBuffer[4*outputIndex + vowelStartIdx] length:sizeof(short int)];
+        }
+        _int16SamplesDecimated = workingData;
     }
-    return self;
+    return _int16SamplesDecimated;
 }
-
-
 
 - (void)loadData:(NSData *)int16Samples
 {
@@ -118,7 +150,8 @@
 - (NSArray *)downsampleToSamples:(int)samples
 {
     short int *dataBuffer = (short int*)self.int16Samples.bytes;
-    NSRange strongRange = [self strongSignalRange];
+//    NSRange strongRange = [self strongSignalRange];
+    NSRange strongRange = NSMakeRange(0, self.totalSamples.doubleValue);
     long strongStartIdx = strongRange.location;
     long strongEndIdx = strongRange.location + strongRange.length;
     long chunkSamples = (strongEndIdx - strongStartIdx) / 400;
@@ -138,7 +171,7 @@
 /**
  * Find start and finish points representing vowel signal in speech data
  */
-- (NSRange)computeTrimPoints
+- (NSRange)vowelRange
 {
     NSRange range = [self strongSignalRange];
     range = [self truncateRangeTails:range];
@@ -146,11 +179,62 @@
 }
 
 /**
- * Find LPC coefficients from the signal
+ * Find linear prediction coefficients using an iterative procedure of Levinson
  */
-- (NSArray *)findLpcCoefficients
+- (NSArray *)lpcCoefficients
 {
-    return nil;
+    NSData *decimatedBufferData = self.int16SamplesDecimated;
+    short int *decimatedBuffer = (short int *)decimatedBufferData.bytes;
+    long decimatedBufferSamples = decimatedBufferData.length / sizeof(short int);
+    
+    // Find ORDER+1 autocorrelation coefficient
+    // TODO: make this an nsarray
+    NSMutableArray *Rxx = [NSMutableArray arrayWithCapacity:ORDER + 1];
+    NSMutableArray *pCoeff = [NSMutableArray arrayWithCapacity:ORDER + 1];
+    
+    // Find all the correlation coefficients.
+    for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
+        double corrSum = 0;
+        for (int dataIdx = 0; dataIdx < (decimatedBufferSamples - delayIdx); dataIdx++) {
+            corrSum += (double)decimatedBuffer[dataIdx] * decimatedBuffer[dataIdx + delayIdx];
+        }
+        Rxx[delayIdx] = @(corrSum);
+    }
+    
+    // Now solve for the predictor coefficients
+    double pError = ((NSNumber *)Rxx[0]).doubleValue;      // initialize error to total power
+    pCoeff[0] = @(1.0);                                    // first coefficient must be = 1
+    
+    // For each coefficient in turn
+    for (int k = 1 ; k <= ORDER ; k++) {
+        // find next reflection coeff from pCoeff[] and Rxx[]
+        double rcNum = 0;
+        for (int i = 1 ; i <= k ; i++) {
+            rcNum -= ((NSNumber *)pCoeff[k-i]).doubleValue * ((NSNumber *)Rxx[i]).doubleValue;
+        }
+        
+        pCoeff[k] = @(rcNum/pError);
+        
+        // perform recursion on pCoeff[]
+        for (int i = 1 ; i <= k/2 ; i++) {
+            double pci  = ((NSNumber *)pCoeff[i]).doubleValue + ((NSNumber *)pCoeff[k]).doubleValue * ((NSNumber *)pCoeff[k-i]).doubleValue;
+            double pcki = ((NSNumber *)pCoeff[k-i]).doubleValue + ((NSNumber *)pCoeff[k]).doubleValue * ((NSNumber *)pCoeff[i]).doubleValue;
+            pCoeff[i] = @(pci);
+            pCoeff[k-i] = @(pcki);
+        }
+        
+        // calculate residual error
+        pError = pError * (1.0 - ((NSNumber *)pCoeff[k]).doubleValue * ((NSNumber *)pCoeff[k]).doubleValue);
+    }
+    
+    // Now plot predictor coefficients. Thick lines are used to represent the LPC coefficients.
+    double maxCoeff = 0.0;
+    
+    for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
+        maxCoeff = MAX(maxCoeff, fabs(((NSNumber *)pCoeff[delayIdx]).doubleValue));
+    }
+    
+    return pCoeff;
 }
 
 /**

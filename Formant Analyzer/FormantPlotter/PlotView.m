@@ -37,17 +37,6 @@
 @implementation PlotView
 
 // Gets pointer to the start of audio data and the length of the buffer.
-- (void)getData:(short int *)databuffer withLength:(long)length
-{
-    self.dataBuffer = databuffer;
-    self.dataBufferLength = length;
-    
-    NSData *data = [NSData dataWithBytes:databuffer length:length * sizeof(short int)];
-    self.speechAnalyzer = [[SpeechAnalyzer alloc] init];
-    [self.speechAnalyzer loadData:data];
-}
-
-// Gets pointer to the start of audio data and the length of the buffer.
 - (void)getData:(NSData *)data
 {
     self.dataBufferLength = data.length / sizeof(short int);
@@ -63,11 +52,7 @@
 {
     UIColor *mycolor;
     CGPoint startPoint, endPoint;
-    long i, j, k, dummo, degIdx, chunkIdx, chunkSamples;
-    short int chunkMinValue, chunkMaxValue;
-    
-    int maxSampleValue;
-    int maxEnergyValue, chunkEnergy;
+    long i, j, k, dummo, degIdx, chunkIdx;
     
     // A few variable used in plotting of H(w).
     double omega, realHw, imagHw, maxFreqResp, minFreqResp, freqRespScale;
@@ -85,155 +70,9 @@
     
     switch (self.displayIdentifier) {
             
-        case 0:
-        {
-            // Here we show the speech segment. Since we have only 300 pixels horizontally,            
-            // we divide the strong buffer into 300 chunks and find absolute maximum values
-            // in each chunk. Only these values are plotted as it is not practical to display 
-            //hundreds of samples that get mapped to one pixel.
+        case 0: break;
             
-            [self removeSilence];    // Remove dead silence on both ends of the buffer to get strong buffer
-            
-            chunkSamples = (self.strongEndIdx - self.strongStartIdx)/self.frame.size.width;
-            NSLog(@"Start/end indices before 15%% clipping are at %ld and %ld",self.strongStartIdx,self.strongEndIdx);
-            
-            maxSampleValue = 0;
-            for (j = self.strongStartIdx;  j < self.strongEndIdx; j++) {
-                maxSampleValue = MAX(maxSampleValue, abs(self.dataBuffer[j]));
-            }
-            
-            mycolor = [UIColor greenColor];
-            CGContextSetLineWidth(ctx, 1.0);
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-            
-            startPoint = CGPointMake(0, 100);
-            CGContextMoveToPoint(ctx, startPoint.x, startPoint.y);
-            
-            for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
-                chunkMinValue = 32700;
-                chunkMaxValue = -32700;
-                for (j=0; j<chunkSamples; j++) {
-                    chunkMinValue = MIN(chunkMinValue, self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]);
-                    chunkMaxValue = MAX(chunkMaxValue, self.dataBuffer[j + self.strongStartIdx + chunkIdx*chunkSamples]);
-                }
-                
-                if (maxSampleValue == 0) {
-                    maxSampleValue = 1;
-                }
-                
-                endPoint = CGPointMake(chunkIdx, 100 + chunkMinValue*115/maxSampleValue);
-                CGContextMoveToPoint(ctx, startPoint.x, startPoint.y);
-                CGContextAddLineToPoint(ctx, endPoint.x, endPoint.y);
-                startPoint = endPoint;
-                endPoint = CGPointMake(chunkIdx, 100 + chunkMaxValue*115/maxSampleValue);
-                CGContextMoveToPoint(ctx, startPoint.x, startPoint.y);
-                CGContextAddLineToPoint(ctx, endPoint.x, endPoint.y);
-                CGContextStrokePath(ctx);
-            }
-            
-            // Now draw a black horizontal line at the center of the plot
-            mycolor = [UIColor blackColor];
-            
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetLineWidth(ctx, 1.0);
-            CGContextMoveToPoint(ctx, 0, 100);
-            CGContextAddLineToPoint(ctx, 320, 100);
-            CGContextStrokePath(ctx);
-        }
-            break;
-            
-            
-        case 1:
-        {
-            // Here we find linear prediction coefficients using an iterative procedure of Levinson 
-            
-            // First we find the truncating start and end indices. We do not appy any window function 
-            // to smooth out the sudden transition at the end of the chunk.
-            [self removeSilence];
-            [self removeTails];
-            [self decimateDataBuffer];
-            
-            // Find ORDER+1 autocorrelation coefficient
-            double *Rxx = (double *)(malloc((ORDER + 1) * sizeof(double)));
-            double *pCoeff = (double *)(malloc((ORDER + 1) * sizeof(double))); 
-            
-            // Find all the correlation coefficients.
-            for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
-                double corrSum = 0;
-                for (int dataIdx = 0; dataIdx < (self.decimatedEndIdx - delayIdx); dataIdx++) {
-                    corrSum += (self.dataBuffer[dataIdx] * self.dataBuffer[dataIdx + delayIdx]);
-                }
-                
-                Rxx[delayIdx] = corrSum;
-            }
-            
-            // Now solve for the predictor coefficiens.
-            double pError = Rxx[0];                             // initialise error to total power
-            pCoeff[0] = 1.0;                                    // first coefficient must be = 1
-            
-            // for each coefficient in turn
-            for (int k = 1 ; k <= ORDER ; k++) {
-                
-                // find next reflection coeff from pCoeff[] and Rxx[]
-                double rcNum = 0;
-                for (int i = 1 ; i <= k ; i++)
-                {
-                    rcNum -= pCoeff[k-i] * Rxx[i];
-                }
-                
-                pCoeff[k] = rcNum/pError;
-                
-                // perform recursion on pCoeff[]
-                for (int i = 1 ; i <= k/2 ; i++) {
-                    double pci  = pCoeff[i] + pCoeff[k] * pCoeff[k-i];
-                    double pcki = pCoeff[k-i] + pCoeff[k] * pCoeff[i];
-                    pCoeff[i] = pci;
-                    pCoeff[k-i] = pcki;
-                }
-                
-                // calculate residual error
-                pError = pError * (1.0 - pCoeff[k]*pCoeff[k]);
-            }
-            
-            // Now plot predictor coefficients. Thick lines are used to represent the LPC coefficients.
-            
-            double maxCoeff = 0.0;
-            
-            for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
-                maxCoeff = MAX(maxCoeff, fabs(pCoeff[delayIdx]));
-            }
-            
-            double lineSpacing = 280.0/ORDER;
-            
-            // Plot Rxx in the UIView window
-            mycolor = [UIColor blackColor];
-            CGContextSetLineWidth(ctx, 3.0);
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetFillColorWithColor(ctx, mycolor.CGColor);
-            
-            for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
-                if (isnan(pCoeff[delayIdx])) {
-                    continue;
-                }
-                CGContextMoveToPoint(ctx, 10 + delayIdx * lineSpacing, 100);
-                CGContextAddLineToPoint(ctx, 10 + delayIdx * lineSpacing, 100 - pCoeff[delayIdx] * 95/maxCoeff);
-                CGContextStrokePath(ctx);
-            }
-            
-            mycolor = [UIColor blueColor];
-            
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetLineWidth(ctx, 1.0);
-            CGContextMoveToPoint(ctx, 0, 100);
-            CGContextAddLineToPoint(ctx, 320, 100);
-            CGContextStrokePath(ctx);
-            
-            // Free two buffers started with malloc()
-            free(Rxx);
-            free(pCoeff);
-        }
-            break;
+        case 1: break;
             
         case 2:
         {
