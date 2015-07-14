@@ -36,6 +36,38 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 
 @implementation FirstViewController
 
+// TODO: remove speech data parameter
+- (void)showPlotForDisplayIdentifier:(GraphingModes)displayIdentifier withAnalyzer:(SpeechAnalyzer *)analyzer andSpeechData:(NSData *)data
+{
+    //UGLIEST HACK
+    FSLineChart *newChart = [[FSLineChart alloc] initWithFrame:self.lineChartFull.frame];
+    [self.lineChartFull removeFromSuperview];
+    [self.view addSubview:newChart];
+    self.lineChartFull = newChart;
+
+    if (displayIdentifier == GraphingModeSig) {
+        [self drawSignalPlot];
+    } else if (displayIdentifier == GraphingModeLPC) {
+        [self drawLPCPlot];
+    } else if (displayIdentifier == GraphingModeHW) {
+        [self drawHwPlot];
+    } else {
+        // TEMP HACK
+        [self.plotView getData:data];
+        self.plotView.hidden = NO;
+        self.lineChartTopHalf.hidden = YES;
+        self.lineChartBottomHalf.hidden = YES;
+        self.lineChartFull.hidden = YES;
+        
+        [self.plotView setDisplayIdentifier:self.displayIdentifier];
+        [self.plotView setNeedsDisplay];
+
+        // BIGGER HACK
+        if (self.displayIdentifier == GraphingModeFrmnt)
+            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
+    }
+}
+
 - (void)drawSignalPlot
 {
     self.plotView.hidden = YES;
@@ -58,7 +90,6 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     self.lineChartBottomHalf.backgroundColor = [UIColor clearColor];
     self.lineChartBottomHalf.fillColor = [UIColor blueColor];
     
-    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
     NSArray *plottableValuesHigh = [self.speechAnalyzer downsampleToSamples:400];
     NSMutableArray *plottableValuesLow = [NSMutableArray array];
     for (NSNumber *number in plottableValuesHigh) {
@@ -90,32 +121,98 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     self.plotView.hidden = YES;
     self.lineChartTopHalf.hidden = YES;
     self.lineChartBottomHalf.hidden = YES;
-    
     self.lineChartFull.hidden = NO;
-    self.lineChartFull.drawInnerGrid = YES;
+    
+    // Index label properties
+    self.lineChartFull.labelForIndex = ^(NSUInteger item) {
+        return [NSString stringWithFormat:@"%ld", (long)item];
+    };
+    
+    // Value label properties
+    self.lineChartFull.labelForValue = ^(CGFloat value) {
+        return [NSString stringWithFormat:@"%.02f", value];
+    };
+    self.lineChartFull.valueLabelPosition = ValueLabelLeft;
+    
+    // Number of visible step in the chart
+    self.lineChartFull.verticalGridStep = 3;
+    self.lineChartFull.horizontalGridStep = 20;
+    
+    // Margin of the chart
+    self.lineChartFull.margin = 40;
+    
+    self.lineChartFull.axisWidth = self.lineChartFull.frame.size.width - 2 * self.lineChartFull.margin;
+    self.lineChartFull.axisHeight = self.lineChartFull.frame.size.height - 2 * self.lineChartFull.margin;
+    
+    // Decoration parameters, let you pick the color of the line as well as the color of the axis
     self.lineChartFull.axisLineWidth = 1;
-    self.lineChartFull.margin = 0;
-    self.lineChartFull.axisWidth = self.lineChartTopHalf.frame.size.width;
-    self.lineChartFull.axisHeight = self.lineChartTopHalf.frame.size.height;
-    self.lineChartFull.backgroundColor = [UIColor clearColor];
+    
+    // Chart parameters
+    self.lineChartFull.color = [UIColor blackColor];
     self.lineChartFull.fillColor = [UIColor blueColor];
+    self.lineChartFull.backgroundColor = [UIColor clearColor];
     
-//TODO: dont need to reload data here!
-    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+    // Grid parameters
+    self.lineChartFull.drawInnerGrid = YES;
+    
+    
     NSArray *lpcCoefficients = [self.speechAnalyzer lpcCoefficients];
-    NSMutableArray *plottableValues = [NSMutableArray array];
-    
-    for (NSNumber *coefficient in lpcCoefficients) {
-        if (isnan(((NSNumber *)coefficient).doubleValue)) {
-            [plottableValues addObject:@(0)];
-        } else {
-            [plottableValues addObject:coefficient];
-        }
-    }
-
     [self.lineChartFull clearChartData];
-    [self.lineChartFull setChartData:plottableValues];
+    [self.lineChartFull setChartData:lpcCoefficients];
 }
+
+- (void)drawHwPlot
+{
+    self.plotView.hidden = YES;
+    self.lineChartTopHalf.hidden = YES;
+    self.lineChartBottomHalf.hidden = YES;
+    self.lineChartFull.hidden = NO;
+    
+    // Index label properties
+    self.lineChartFull.labelForIndex = ^(NSUInteger item) {
+        return [NSString stringWithFormat:@"%.0f kHz", (double)item/60];
+    };
+    
+    // Value label properties
+    self.lineChartFull.labelForValue = ^(CGFloat value) {
+        return [NSString stringWithFormat:@"%.02f", value];
+    };
+    self.lineChartFull.valueLabelPosition = ValueLabelLeft;
+    
+    // Number of visible step in the chart
+    self.lineChartFull.verticalGridStep = 3;
+    self.lineChartFull.horizontalGridStep = 5;
+    
+    // Margin of the chart
+    self.lineChartFull.margin = 40;
+    
+    self.lineChartFull.axisWidth = self.lineChartFull.frame.size.width - 2 * self.lineChartFull.margin;
+    self.lineChartFull.axisHeight = self.lineChartFull.frame.size.height - 2 * self.lineChartFull.margin;
+    
+    // Decoration parameters, let you pick the color of the line as well as the color of the axis
+    self.lineChartFull.axisLineWidth = 1;
+    
+    // Chart parameters
+    self.lineChartFull.color = [UIColor blackColor];
+    self.lineChartFull.fillColor = [UIColor blueColor];
+    self.lineChartFull.backgroundColor = [UIColor clearColor];
+    
+    // Grid parameters
+    self.lineChartFull.drawInnerGrid = YES;
+    
+    NSArray *synthesizedFrequencyResponse = [self.speechAnalyzer synthesizedFrequencyResponse];
+    [self.lineChartFull clearChartData];
+    [self.lineChartFull setChartData:synthesizedFrequencyResponse];
+}
+
+////////////////////////////////////////
+#define ORDER 20
+#define EPS 2.0e-6
+#define EPSS 1.0e-7
+#define MR 8
+#define MT 10
+#define MAXIT (MT*MR)
+
 
 
 /** Update display for new view mode
@@ -124,21 +221,19 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 - (IBAction)graphingModeChanged:(UISegmentedControl *)sender
 {
     self.displayIdentifier = sender.selectedSegmentIndex;
-    if (self.displayIdentifier == GraphingModeSig) {
-        [self drawSignalPlot];
-    } else if (self.displayIdentifier == GraphingModeLPC) {
-        [self drawLPCPlot];
-    } else {
-        // TEMP HACK
-        self.plotView.hidden = NO;
-        self.lineChartTopHalf.hidden = YES;
-        self.lineChartBottomHalf.hidden = YES;
-        
-        [self.plotView setDisplayIdentifier:self.displayIdentifier];
-        [self.plotView setNeedsDisplay];
-        if (self.displayIdentifier == GraphingModeFrmnt)
-            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-    }
+    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+}
+
+-(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+     } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
+     {
+         
+     }];
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
 }
 
 // This function is called half a second after the formant plot is displayed. It creates four text
@@ -165,23 +260,8 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     NSString *filePath = [[NSBundle mainBundle] pathForResource:self.soundFileBaseNames[self.soundFileIdentifier] ofType:@"raw"];
     NSLog(@"Processing saved file %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     self.speechData = [[NSData alloc] initWithContentsOfFile:filePath];
-
-    if (self.displayIdentifier == GraphingModeSig) {
-        [self drawSignalPlot];
-    } else if (self.displayIdentifier == GraphingModeLPC) {
-        [self drawLPCPlot];
-    } else {
-        // TEMP HACK
-        self.plotView.hidden = NO;
-        self.lineChartTopHalf.hidden = YES;
-        self.lineChartBottomHalf.hidden = YES;
-        
-        [self.plotView getData:self.speechData];
-        [self.plotView setDisplayIdentifier:self.displayIdentifier];
-        [self.plotView setNeedsDisplay];
-        if (self.displayIdentifier == GraphingModeFrmnt)
-            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-    }
+    self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -308,24 +388,9 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     if (didSave) {
         [self.statusLabel setText:@"Processing sound"];
         self.speechData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
-        
-        if (self.displayIdentifier == GraphingModeSig) {
-            [self drawSignalPlot];
-        } else if (self.displayIdentifier == GraphingModeLPC) {
-            [self drawLPCPlot];
-        } else {
-            // TEMP HACK
-            self.plotView.hidden = NO;
-            self.lineChartTopHalf.hidden = YES;
-            self.lineChartBottomHalf.hidden = YES;
-            
-            [self.plotView getData:self.speechData];
-            [self.plotView setDisplayIdentifier:self.displayIdentifier];
-            [self.plotView setNeedsDisplay];
-            if (self.displayIdentifier == GraphingModeFrmnt)
-                [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
-        }        
-        
+        self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
+        [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
             [self.indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
             [self.statusLabel setText:@"Waiting ..."];

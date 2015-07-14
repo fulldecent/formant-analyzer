@@ -9,7 +9,6 @@
 #import "PlotView.h"
 #import "SpeechAnalyzer.h"
 
-
 // A few constants to be used in LPC and Laguerre algorithms.
 #define ORDER 20
 #define EPS 2.0e-6
@@ -50,18 +49,10 @@
 // Main processing and display routine.
 - (void)drawRect:(CGRect)rect
 {
-    UIColor *mycolor;
-    CGPoint startPoint, endPoint;
-    long i, j, k, dummo, degIdx, chunkIdx;
-    
-    // A few variable used in plotting of H(w).
-    double omega, realHw, imagHw, maxFreqResp, minFreqResp, freqRespScale;
+    long i, j, dummo;
     
     double *formantFrequencies;
     double dummyFrequency;
-    
-    CGContextRef ctx = UIGraphicsGetCurrentContext();
-    CGFloat dashPattern[2];
     
     // Before drawing anything, remove old subviews to clear the plotView UIView window.
     for (UIView *view in self.subviews) {
@@ -74,121 +65,7 @@
             
         case 1: break;
             
-        case 2:
-        {
-            // Here we find frequency response of the LPC synthesis filter. It should have
-            // peaks where formant frequencies are located.
-            
-            // Following few blocks are being repeated from case 3: block. We could have
-            // made functions for these operatioins but a simpler duplication saves time.
-            
-            // First we find the truncating start and end indices
-            [self removeSilence];
-            [self removeTails];
-            [self decimateDataBuffer];
-            
-            // Find ORDER+1 autocorrelation coefficient
-            double *Rxx = (double *)(malloc((ORDER + 1) * sizeof(double)));
-            double *pCoeff = (double *)(malloc((ORDER + 1) * sizeof(double))); 
-            
-            for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
-                double corrSum = 0;
-                for (int dataIdx = 0; dataIdx < (self.decimatedEndIdx - delayIdx); dataIdx++) {
-                    corrSum += (self.dataBuffer[dataIdx] * self.dataBuffer[dataIdx + delayIdx]);
-                }
-                
-                Rxx[delayIdx] = corrSum;
-            }
-            
-            // Now solve for the predictor coefficiens.
-            double pError = Rxx[0];                             // initialise error to total power
-            pCoeff[0] = 1.0;                                    // first coefficient must be = 1
-            
-            // for each coefficient in turn
-            for (int k = 1 ; k <= ORDER ; k++) {
-                
-                // find next reflection coeff from pCoeff[] and Rxx[]
-                double rcNum = 0;
-                for (int i = 1 ; i <= k ; i++)
-                {
-                    rcNum -= pCoeff[k-i] * Rxx[i];
-                }
-                
-                pCoeff[k] = rcNum/pError;
-                
-                // perform recursion on pCoeff[]
-                for (int i = 1 ; i <= k/2 ; i++) {
-                    double pci  = pCoeff[i] + pCoeff[k] * pCoeff[k-i];
-                    double pcki = pCoeff[k-i] + pCoeff[k] * pCoeff[i];
-                    pCoeff[i] = pci;
-                    pCoeff[k-i] = pcki;
-                }
-                
-                // calculate residual error
-                pError = pError * (1.0 - pCoeff[k]*pCoeff[k]);                
-            }
-            
-            // Now we find frequency response of the inverse of the predictor filter   
-            
-            double *freqResponse = (double *)(malloc((300) * sizeof(double))); 
-            for (degIdx=0; degIdx < 300; degIdx++) {
-                omega = degIdx * M_PI / 330.0;
-                realHw = 1.0;
-                imagHw = 0.0;
-                
-                for (k = 1 ; k <= ORDER ; k++) {
-                    realHw = realHw + pCoeff[k] * cos(k * omega);
-                    imagHw = imagHw - pCoeff[k] * sin(k * omega);
-                }
-                
-                freqResponse[degIdx] = 20*log10(1.0 / sqrt(realHw * realHw + imagHw * imagHw));
-            }
-            
-            // Now plot the frequency response
-            maxFreqResp = -100.0;
-            minFreqResp = 100.0;
-            
-            for (degIdx = 0; degIdx < 300; degIdx++) {
-                maxFreqResp = MAX(maxFreqResp, freqResponse[degIdx]);
-                minFreqResp = MIN(minFreqResp, freqResponse[degIdx]);
-            }
-            
-            freqRespScale = 180.0 / (maxFreqResp - minFreqResp);
-            
-            mycolor = [UIColor blackColor];
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            CGContextSetLineWidth(ctx, 2.0);
-            startPoint = CGPointMake(0, 190 - freqRespScale * (freqResponse[0] - minFreqResp));
-            
-            for (chunkIdx=0; chunkIdx<300; chunkIdx++) {
-                endPoint = CGPointMake(chunkIdx, 190 - freqRespScale * (freqResponse[chunkIdx] - minFreqResp));
-                CGContextMoveToPoint(ctx, startPoint.x, startPoint.y);
-                CGContextAddLineToPoint(ctx, endPoint.x, endPoint.y);
-                startPoint = endPoint;
-            }
-            
-            CGContextStrokePath(ctx);
-            
-            // Draw four dashed vertical lines at 1kHz, 2kHz, 3kHz, and 4 kHz.
-            mycolor = [UIColor blueColor];
-            
-            dashPattern[0] = 3.0;
-            dashPattern[1] = 3.0;
-            CGContextSetLineDash(ctx, 0, dashPattern, 1);
-            CGContextSetStrokeColorWithColor(ctx, mycolor.CGColor);
-            for (k=1; k<5; k++) {
-                CGContextMoveToPoint(ctx, 60*k - 1, 0);
-                CGContextAddLineToPoint(ctx, 60*k - 1, 200);
-                CGContextStrokePath(ctx);
-            }
-            
-            // Free two buffers started with malloc()
-            free(Rxx);
-            free(pCoeff);
-            free(freqResponse);
-            
-        }
-            break;
+        case 2: break;
             
         case 3:
         {

@@ -188,7 +188,6 @@
     long decimatedBufferSamples = decimatedBufferData.length / sizeof(short int);
     
     // Find ORDER+1 autocorrelation coefficient
-    // TODO: make this an nsarray
     NSMutableArray *Rxx = [NSMutableArray arrayWithCapacity:ORDER + 1];
     NSMutableArray *pCoeff = [NSMutableArray arrayWithCapacity:ORDER + 1];
     
@@ -203,7 +202,7 @@
     
     // Now solve for the predictor coefficients
     double pError = ((NSNumber *)Rxx[0]).doubleValue;      // initialize error to total power
-    pCoeff[0] = @(1.0);                                    // first coefficient must be = 1
+    pCoeff[0] = @(1.0);                                    // first coefficient must be = 1 (perfect autocorrelation)
     
     // For each coefficient in turn
     for (int k = 1 ; k <= ORDER ; k++) {
@@ -227,11 +226,11 @@
         pError = pError * (1.0 - ((NSNumber *)pCoeff[k]).doubleValue * ((NSNumber *)pCoeff[k]).doubleValue);
     }
     
-    // Now plot predictor coefficients. Thick lines are used to represent the LPC coefficients.
-    double maxCoeff = 0.0;
-    
-    for (int delayIdx = 0; delayIdx <= ORDER; delayIdx++) {
-        maxCoeff = MAX(maxCoeff, fabs(((NSNumber *)pCoeff[delayIdx]).doubleValue));
+    // WE hack: fix for bad coefficients, undocumented
+    for (int i = 0; i <= ORDER; i++) {
+        if (isnan(((NSNumber *)pCoeff[i]).doubleValue)) {
+            pCoeff[i] = @(0);
+        }
     }
     
     return pCoeff;
@@ -243,7 +242,34 @@
  */
 - (NSArray *)synthesizedFrequencyResponse
 {
-    return nil;
+    double *pCoeff = (double *)(malloc((ORDER + 1) * sizeof(double)));
+    NSArray *lpcCoefficients = [self lpcCoefficients];
+    for (int i=0; i<=ORDER; i++) {
+        pCoeff[i] = ((NSNumber *)lpcCoefficients[i]).doubleValue;
+    }
+    
+    // Now we find frequency response of the inverse of the predictor filter
+    long degIdx, k;
+    
+    // A few variable used in plotting of H(w).
+    double omega, realHw, imagHw;
+    
+    NSMutableArray *freqResponse = [NSMutableArray arrayWithCapacity:300];
+    
+    for ( degIdx=0; degIdx < 300; degIdx++) {
+        omega = degIdx * M_PI / 330.0;
+        realHw = 1.0;
+        imagHw = 0.0;
+        
+        for (k = 1 ; k <= ORDER ; k++) {
+            realHw = realHw + pCoeff[k] * cos(k * omega);
+            imagHw = imagHw - pCoeff[k] * sin(k * omega);
+        }
+        
+        freqResponse[degIdx] = @(20*log10(1.0 / sqrt(realHw * realHw + imagHw * imagHw)));
+    }
+    
+    return freqResponse;
 }
 
 /**
