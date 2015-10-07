@@ -1,7 +1,7 @@
 //
 //  TOWebViewController.h
 //
-//  Copyright 2014 Timothy Oliver. All rights reserved.
+//  Copyright 2013-2015 Timothy Oliver. All rights reserved.
 //
 //  Features logic designed by Satoshi Asano (ninjinkun) for NJKWebViewProgress,
 //  also licensed under the MIT License. Re-implemented by Timothy Oliver.
@@ -108,6 +108,13 @@
  Default value is YES.
  */
 @property (nonatomic,assign)    BOOL showDoneButton;
+
+/** 
+ If desired, override the title of the system 'Done' button to this string.
+ 
+ Default value is nil.
+ */
+@property (nonatomic,copy)    NSString *doneButtonTitle;
 
 /**
  When web pages are loaded, the view controller's title property will be set to the page's

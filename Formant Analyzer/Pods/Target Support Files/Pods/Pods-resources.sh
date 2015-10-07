@@ -9,7 +9,7 @@ RESOURCES_TO_COPY=${PODS_ROOT}/resources-to-copy-${TARGETNAME}.txt
 XCASSET_FILES=()
 
 realpath() {
-  DIRECTORY=$(cd "${1%/*}" && pwd)
+  DIRECTORY="$(cd "${1%/*}" && pwd)"
   FILENAME="${1##*/}"
   echo "$DIRECTORY/$FILENAME"
 }
@@ -22,7 +22,7 @@ install_resource()
       ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .storyboard`.storyboardc" "${PODS_ROOT}/$1" --sdk "${SDKROOT}"
       ;;
     *.xib)
-        echo "ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib ${PODS_ROOT}/$1 --sdk ${SDKROOT}"
+      echo "ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib ${PODS_ROOT}/$1 --sdk ${SDKROOT}"
       ibtool --reference-external-strings-file --errors --warnings --notices --output-format human-readable-text --compile "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/`basename \"$1\" .xib`.nib" "${PODS_ROOT}/$1" --sdk "${SDKROOT}"
       ;;
     *.framework)
@@ -58,30 +58,16 @@ install_resource()
   esac
 }
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_resource "TOWebViewController/TOWebViewController/de.lproj"
-  install_resource "TOWebViewController/TOWebViewController/en.lproj"
-  install_resource "TOWebViewController/TOWebViewController/es.lproj"
-  install_resource "TOWebViewController/TOWebViewController/fr.lproj"
-  install_resource "TOWebViewController/TOWebViewController/ja.lproj"
-  install_resource "TOWebViewController/TOWebViewController/ko.lproj"
-  install_resource "TOWebViewController/TOWebViewController/pl.lproj"
-  install_resource "TOWebViewController/TOWebViewController/zh-Hans.lproj"
-  install_resource "TOWebViewController/TOWebViewController/zh-Hant.lproj"
+  install_resource "${BUILT_PRODUCTS_DIR}/TOWebViewControllerLocalizable.bundle"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_resource "TOWebViewController/TOWebViewController/de.lproj"
-  install_resource "TOWebViewController/TOWebViewController/en.lproj"
-  install_resource "TOWebViewController/TOWebViewController/es.lproj"
-  install_resource "TOWebViewController/TOWebViewController/fr.lproj"
-  install_resource "TOWebViewController/TOWebViewController/ja.lproj"
-  install_resource "TOWebViewController/TOWebViewController/ko.lproj"
-  install_resource "TOWebViewController/TOWebViewController/pl.lproj"
-  install_resource "TOWebViewController/TOWebViewController/zh-Hans.lproj"
-  install_resource "TOWebViewController/TOWebViewController/zh-Hant.lproj"
+  install_resource "${BUILT_PRODUCTS_DIR}/TOWebViewControllerLocalizable.bundle"
 fi
 
+mkdir -p "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 if [[ "${ACTION}" == "install" ]]; then
+  mkdir -p "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
   rsync -avr --copy-links --no-relative --exclude '*/.svn/*' --files-from="$RESOURCES_TO_COPY" / "${INSTALL_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}"
 fi
 rm -f "$RESOURCES_TO_COPY"

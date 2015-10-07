@@ -1,7 +1,7 @@
 //
 //  TOWebViewController.m
 //
-//  Copyright 2014 Timothy Oliver. All rights reserved.
+//  Copyright 2013-2015 Timothy Oliver. All rights reserved.
 //
 //  Features logic designed by Satoshi Asano (ninjinkun) for NJKWebViewProgress,
 //  also licensed under the MIT License. Re-implemented by Timothy Oliver.
@@ -146,7 +146,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 @property (nonatomic,strong) NSMutableDictionary *buttonThemeAttributes;
 
 /* Popover View Controller Handlers */
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 @property (nonatomic,strong) UIPopoverController *sharingPopoverController;
+#pragma GCC diagnostic pop
 
 /* See if we need to revert the toolbar to 'hidden' when we pop off a navigation controller. */
 @property (nonatomic,assign) BOOL hideToolbarOnClose;
@@ -266,7 +269,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 - (void)loadView
 {
     //Create the all-encompassing container view
-    UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
+    UIView *view = [[UIView alloc] initWithFrame:[UIScreen mainScreen].bounds];
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wdeprecated-declarations"
     view.backgroundColor = (self.hideWebViewBoundaries ? [UIColor whiteColor] : BACKGROUND_COLOR);
@@ -381,36 +384,39 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 {
     CGRect buttonFrame = CGRectZero;
     buttonFrame.size = NAVIGATION_BUTTON_SIZE;
-    
-    CGFloat width = (self.buttonWidth*3)+(self.buttonSpacing*2);
-    if (self.showActionButton)
-        width = (self.buttonWidth*4)+(self.buttonSpacing*3);
-    
+
     //set up the icons for the navigation bar
-    UIView *iconsContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, width, self.buttonWidth)];
+    UIView *iconsContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.buttonWidth)];
     iconsContainerView.backgroundColor = [UIColor clearColor];
-    
+
     //add the back button
     self.backButton.frame = buttonFrame;
     [iconsContainerView addSubview:self.backButton];
-    
+
     //add the forward button too, but keep it hidden for now
-    buttonFrame.origin.x = self.buttonWidth + self.buttonSpacing;
     self.forwardButton.frame = buttonFrame;
     [iconsContainerView addSubview:self.forwardButton];
-    buttonFrame.origin.x += (self.buttonWidth + self.buttonSpacing);
-    
+
     //add the reload button if the action button is hidden
     self.reloadStopButton.frame = buttonFrame;
     [iconsContainerView addSubview:self.reloadStopButton];
-    buttonFrame.origin.x += (self.buttonWidth + self.buttonSpacing);
-    
+
     //add the action button
     if (self.showActionButton) {
         self.actionButton.frame = buttonFrame;
         [iconsContainerView addSubview:self.actionButton];
     }
 
+    //layout buttons
+    NSUInteger count = iconsContainerView.subviews.count;
+    if(count){
+        CGRect newFrame = iconsContainerView.frame;
+        CGFloat newWidth = newFrame.size.width = (self.buttonWidth*count)+(self.buttonSpacing*count-1);
+        iconsContainerView.frame = newFrame;
+        [iconsContainerView.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger index, BOOL *stop) {
+            subview.center = CGPointMake((newWidth/count)*index + (self.buttonSpacing + self.buttonWidth)/2, subview.center.y);
+        }];
+    }
     return iconsContainerView;
 }
 
@@ -453,8 +459,19 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     // Create the Done button
     if (self.showDoneButton && self.beingPresentedModally && !self.onTopOfNavigationControllerStack) {
-        NSString *title = NSLocalizedStringFromTable(@"Done", @"TOWebViewControllerLocalizable", @"Modal Web View Controller Close");
-        UIBarButtonItem *doneButton = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStyleDone target:self action:@selector(doneButtonTapped:)];
+        UIBarButtonItem *doneButton = nil;
+        
+        if (self.doneButtonTitle) {
+            doneButton = [[UIBarButtonItem alloc] initWithTitle:self.doneButtonTitle style:UIBarButtonItemStyleDone
+                                                         target:self
+                                                         action:@selector(doneButtonTapped:)];
+        }
+        else {
+            doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+                                                                                        target:self
+                                                                                        action:@selector(doneButtonTapped:)];
+        }
+        
         if (IPAD)
             self.navigationItem.leftBarButtonItem = doneButton;
         else
@@ -491,7 +508,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //reset the gradient layer in case the bounds changed before display
     self.gradientLayer.frame = self.view.bounds;
-    
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
     //start loading the initial page
     if (self.url && self.webView.request == nil)
     {
@@ -831,7 +852,15 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 - (void)actionButtonTapped:(id)sender
 {
     // If we're on iOS 6 or above, we can use the super-duper activity view controller :)
-    if (NSClassFromString(@"UIActivityViewController"))
+    if (NSClassFromString(@"UIPresentationController")) {
+        NSArray *browserActivities = @[[TOActivitySafari new], [TOActivityChrome new]];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.url] applicationActivities:browserActivities];
+        activityViewController.modalPresentationStyle = UIModalPresentationPopover;
+        activityViewController.popoverPresentationController.sourceRect = self.actionButton.frame;
+        activityViewController.popoverPresentationController.sourceView = self.actionButton.superview;
+        [self presentViewController:activityViewController animated:YES completion:nil];
+    }
+    else if (NSClassFromString(@"UIActivityViewController"))
     {
         NSArray *browserActivities = @[[TOActivitySafari new], [TOActivityChrome new]];
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.url] applicationActivities:browserActivities];
@@ -851,14 +880,22 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
                 self.sharingPopoverController = nil;
             }
             
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+            
             //Create the sharing popover controller
             self.sharingPopoverController = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
             self.sharingPopoverController.delegate = self;
             [self.sharingPopoverController presentPopoverFromRect:self.actionButton.frame inView:self.actionButton.superview permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+
+#pragma GCC diagnostic pop
         }
     }
     else //We must be on iOS 5
     {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
+        
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                                  delegate:self
                                                         cancelButtonTitle:nil
@@ -889,13 +926,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         }
         
         //Add Twitter
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
         if ([TWTweetComposeViewController canSendTweet]) {
             [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Twitter", @"TOWebViewControllerLocalizable", @"Send a Tweet")];
             numberOfButtons++;
         }
-#pragma clang diagnostic pop
+
         
         //Add a cancel button if on iPhone
         if (IPAD == NO) {
@@ -906,6 +941,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         else {
             [actionSheet showFromRect:[(UIView *)sender frame] inView:[(UIView *)sender superview] animated:YES];
         }
+        
+        #pragma clang diagnostic pop
     }
 }
 
@@ -1643,26 +1680,25 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     if (translatedScale > self.webView.scrollView.maximumZoomScale)
         self.webView.scrollView.maximumZoomScale = translatedScale;
     
+    //Pull out the animation and attach a delegate so we can receive an event when it's finished, to clean it up properly
+    CABasicAnimation *anim = [[self.webView.scrollView.layer animationForKey:@"bounds"] mutableCopy];
     if (NEW_ROTATIONS == NO) {
         [self.webView.scrollView.layer removeAllAnimations];
         self.webView.scrollView.layer.speed = 9999.0f;
         [self.webView.scrollView setZoomScale:translatedScale animated:YES];
         
-        //Pull out the animation and attach a delegate so we can receive an event when it's finished, to clean it up properly
-        NSString *key = @"bounds";
-        CABasicAnimation *anim = [[self.webView.scrollView.layer animationForKey:key] mutableCopy];
         if (anim == nil) { //anim may be nil if the zoomScale wasn't sufficiently different to warrant an animation
-            [self animationDidStop:nil finished:YES];
+            [self animationDidStop:anim finished:YES];
             return;
         }
         
-        [self.webView.scrollView.layer removeAnimationForKey:key];
+        [self.webView.scrollView.layer removeAnimationForKey:@"bounds"];
         [anim setDelegate:self];
-        [self.webView.scrollView.layer addAnimation:anim forKey:key];
+        [self.webView.scrollView.layer addAnimation:anim forKey:@"bounds"];
     }
     else {
         [self.webView.scrollView setZoomScale:translatedScale animated:NO];
-        [self animationDidStop:nil finished:YES];
+        [self animationDidStop:anim finished:YES];
     }
 }
 
@@ -1670,7 +1706,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 {
     //when the rotation and animation is complete, FINALLY unhide the web view
     self.webView.hidden = NO;
-    
+
     CGSize contentSize = self.webView.scrollView.contentSize;
     CGPoint translatedContentOffset = _webViewState.contentOffset;
     
