@@ -174,6 +174,7 @@
 				D9F770DD1887426A0038839E /* Frameworks */,
 				D9F770DE1887426A0038839E /* Resources */,
 				339E53F4520943AAB7EF712D /* Copy Pods Resources */,
+				7E7BF4E1F0908018D1179DB2 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,7 +191,7 @@
 		D9F770D81887426A0038839E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "William Entriken";
 			};
 			buildConfigurationList = D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */;
@@ -266,6 +267,21 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		7E7BF4E1F0908018D1179DB2 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -321,6 +337,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -385,6 +402,7 @@
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -400,6 +418,7 @@
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

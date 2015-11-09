@@ -26,7 +26,6 @@
 @property (nonatomic) IBOutlet FSLineChart *lineChartBottomHalf;
 @property (nonatomic) IBOutlet FSLineChart *lineChartFull;
 
-
 // Fourth row
 @property (nonatomic) IBOutlet UILabel *firstFormantLabel;
 @property (nonatomic) IBOutlet UILabel *secondFormantLabel;
