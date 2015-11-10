@@ -14,8 +14,8 @@
 
 - (NSNumber *)totalSamples;
 
-// MAKE THIS PRIVATE
-/** 
+//TODO: make this private
+/**
  * Load speech for processing
  * @param int16Samples A data stream of raw audio samples
  */
@@ -51,9 +51,23 @@
 - (NSArray *)synthesizedFrequencyResponse;
 
 /**
- * Find the first several formant frequencies (in Hz)
+ * Finds the first four formants and cleans out negatives, and other problems
+ * Return is array of formants in Hz
  */
-- (NSArray *)findFormants;
+- (NSArray *)findCleanFormants;
 
+/**
+ * Heart of Laguerre algorithm. Solved the polynomial equation of a certain order.
+ * This functions is called repeatedly to find all the complex roots one by one.
+ */
++ (_Complex double)laguer:(_Complex double *)a currentOrder:(int)m;
+
+/**
+ * Following function implement Laguerre root finding algorithm. It uses a lot of
+ * complex variables and operations of complex variables. It does not implement
+ * root polishing so answers are not very accurate.
+ * Input: pCoeff
+ */
++ (double *)findFormants:(_Complex double*)a;
 
 @end

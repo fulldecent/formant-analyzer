@@ -39,12 +39,15 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 // TODO: remove speech data parameter
 - (void)showPlotForDisplayIdentifier:(GraphingModes)displayIdentifier withAnalyzer:(SpeechAnalyzer *)analyzer andSpeechData:(NSData *)data
 {
+    [self displayFormantFrequencies];
+
     //UGLIEST HACK
     FSLineChart *newChart = [[FSLineChart alloc] initWithFrame:self.lineChartFull.frame];
     [self.lineChartFull removeFromSuperview];
     [self.view addSubview:newChart];
     self.lineChartFull = newChart;
 
+    //TODO: these should each be separate view classes
     if (displayIdentifier == GraphingModeSig) {
         [self drawSignalPlot];
     } else if (displayIdentifier == GraphingModeLPC) {
@@ -53,18 +56,12 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
         [self drawHwPlot];
     } else {
         // TEMP HACK
-        [self.plotView getData:data];
+        self.plotView.formants = [self.speechAnalyzer findCleanFormants];
         self.plotView.hidden = NO;
         self.lineChartTopHalf.hidden = YES;
         self.lineChartBottomHalf.hidden = YES;
         self.lineChartFull.hidden = YES;
-        
-        [self.plotView setDisplayIdentifier:self.displayIdentifier];
         [self.plotView setNeedsDisplay];
-
-        // BIGGER HACK
-        if (self.displayIdentifier == GraphingModeFrmnt)
-            [self performSelector:@selector(displayFormantFrequencies) withObject:nil afterDelay:0.5];
     }
 }
 
@@ -240,13 +237,15 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 // labels and puts that below the standard vowel diagram.
 - (void)displayFormantFrequencies
 {
-    NSString *firstFLabel = [NSString stringWithFormat:@"Formant 1:%5.0f",[self.plotView firstFFreq]];
+    NSArray *formants = [self.speechAnalyzer findCleanFormants];
+    
+    NSString *firstFLabel = [NSString stringWithFormat:@"Formant 1:%5.0f",((NSNumber *)formants[0]).floatValue];
     self.firstFormantLabel.text = firstFLabel;
-    NSString *secondFLabel = [NSString stringWithFormat:@"Formant 2:%5.0f",[self.plotView secondFFreq]];
+    NSString *secondFLabel = [NSString stringWithFormat:@"Formant 2:%5.0f",((NSNumber *)formants[1]).floatValue];
     self.secondFormantLabel.text = secondFLabel;
-    NSString *thirdFLabel = [NSString stringWithFormat:@"Formant 3:%5.0f",[self.plotView thirdFFreq]];
+    NSString *thirdFLabel = [NSString stringWithFormat:@"Formant 3:%5.0f",((NSNumber *)formants[2]).floatValue];
     self.thirdFormantLabel.text = thirdFLabel;
-    NSString *fourthFLabel = [NSString stringWithFormat:@"Formant 4:%5.0f",[self.plotView fourthFFreq]];
+    NSString *fourthFLabel = [NSString stringWithFormat:@"Formant 4:%5.0f",((NSNumber *)formants[3]).floatValue];
     self.fourthFormantLabel.text = fourthFLabel;
 }
 
