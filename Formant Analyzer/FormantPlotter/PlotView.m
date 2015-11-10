@@ -25,7 +25,7 @@
     // Now, we add an image to current view to plot location of first two formants
     CGRect backgroundRect = backgroundRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
     UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
-    [backgroundImageView setImage:[UIImage imageNamed:@"vowelPlotBackground.png"]];
+    backgroundImageView.image = [UIImage imageNamed:@"vowelPlotBackground.png"];
     [self addSubview:backgroundImageView];
     
     // Choose the two formants we want to plot

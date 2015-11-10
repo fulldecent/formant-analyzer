@@ -36,12 +36,11 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 
 @implementation FirstViewController
 
-// TODO: remove speech data parameter
-- (void)showPlotForDisplayIdentifier:(GraphingModes)displayIdentifier withAnalyzer:(SpeechAnalyzer *)analyzer andSpeechData:(NSData *)data
+- (void)showPlotForDisplayIdentifier:(GraphingModes)displayIdentifier withAnalyzer:(SpeechAnalyzer *)analyzer
 {
     [self displayFormantFrequencies];
 
-    //UGLIEST HACK
+    //TODO: fix UGLIEST HACK
     FSLineChart *newChart = [[FSLineChart alloc] initWithFrame:self.lineChartFull.frame];
     [self.lineChartFull removeFromSuperview];
     [self.view addSubview:newChart];
@@ -55,7 +54,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     } else if (displayIdentifier == GraphingModeHW) {
         [self drawHwPlot];
     } else {
-        // TEMP HACK
+        //TODO: TEMP HACK
         self.plotView.formants = [self.speechAnalyzer findCleanFormants];
         self.plotView.hidden = NO;
         self.lineChartTopHalf.hidden = YES;
@@ -218,14 +217,14 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 - (IBAction)graphingModeChanged:(UISegmentedControl *)sender
 {
     self.displayIdentifier = sender.selectedSegmentIndex;
-    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer];
 }
 
 -(void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
 {
     [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
-         [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+         [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer];
      } completion:^(id<UIViewControllerTransitionCoordinatorContext> context)
      {
          
@@ -260,7 +259,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     NSLog(@"Processing saved file %@",self.soundFileBaseNames[self.soundFileIdentifier]);
     self.speechData = [[NSData alloc] initWithContentsOfFile:filePath];
     self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
-    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+    [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer];
 }
 
 // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
@@ -313,7 +312,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
         [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
         self.speechIsFromMicrophone = YES;
         self.indicatorImageView.hidden = NO;
-        [self.statusLabel setText:@"Waiting ..."];
+        self.statusLabel.text = @"Waiting ...";
         [self.soundActivatedRecorder startListening];
     } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
         [self.soundActivatedRecorder stopListeningAndKeepRecordingIfInProgress:NO];
@@ -321,7 +320,7 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
         self.speechIsFromMicrophone = NO;
         self.indicatorImageView.hidden = YES;
         self.soundFileIdentifier = buttonIndex - 1;
-        [self.statusLabel setText:self.soundFileBaseNames[self.soundFileIdentifier]];
+        self.statusLabel.text = self.soundFileBaseNames[self.soundFileIdentifier];
         [self processRawBuffer];
     }
 }
@@ -336,23 +335,22 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     const uint16_t bitDepth = 16; // 16 bit/sample/channel
     //const uint16_t channels = 1; // 2 channel/sample (stereo)
     
-    NSDictionary *opts = [NSDictionary dictionary];
+    NSDictionary *opts = @{};
     AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:assetURL options:opts];
     AVAssetReader *reader = [[AVAssetReader alloc] initWithAsset:asset error:NULL];
-    NSDictionary *settings = [NSDictionary dictionaryWithObjectsAndKeys:
-                              [NSNumber numberWithInt:kAudioFormatLinearPCM], AVFormatIDKey,
-                              [NSNumber numberWithFloat:(float)sampleRate], AVSampleRateKey,
-                              [NSNumber numberWithInt:bitDepth], AVLinearPCMBitDepthKey,
-                              [NSNumber numberWithBool:NO], AVLinearPCMIsNonInterleaved,
-                              [NSNumber numberWithBool:NO], AVLinearPCMIsFloatKey,
-                              [NSNumber numberWithBool:NO], AVLinearPCMIsBigEndianKey, nil];
+    NSDictionary *settings = @{AVFormatIDKey: [NSNumber numberWithInt:kAudioFormatLinearPCM],
+                              AVSampleRateKey: @((float)sampleRate),
+                              AVLinearPCMBitDepthKey: [NSNumber numberWithInt:bitDepth],
+                              AVLinearPCMIsNonInterleaved: @NO,
+                              AVLinearPCMIsFloatKey: @NO,
+                              AVLinearPCMIsBigEndianKey: @NO};
     
-    AVAssetReaderTrackOutput *output = [[AVAssetReaderTrackOutput alloc] initWithTrack:[[asset tracks] objectAtIndex:0] outputSettings:settings];
+    AVAssetReaderTrackOutput *output = [[AVAssetReaderTrackOutput alloc] initWithTrack:asset.tracks[0] outputSettings:settings];
     [reader addOutput:output];
     [reader startReading];
     
     // read the samples from the asset and append them subsequently
-    while ([reader status] != AVAssetReaderStatusCompleted) {
+    while (reader.status != AVAssetReaderStatusCompleted) {
         CMSampleBufferRef buffer = [output copyNextSampleBuffer];
         if (buffer == NULL) continue;
         
@@ -375,28 +373,28 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
 - (void)soundActivatedRecorderDidStartRecording:(FDSoundActivatedRecorder *)recorder
 {
     NSLog(@"STARTED RECORDING");
-    [self.indicatorImageView setImage:[UIImage imageNamed:@"blue_light.png"]];
-    [self.statusLabel setText:@"Capturing sound"];
+    self.indicatorImageView.image = [UIImage imageNamed:@"blue_light.png"];
+    self.statusLabel.text = @"Capturing sound";
 }
 
 - (void)soundActivatedRecorderDidStopRecording:(FDSoundActivatedRecorder *)recorder andSavedSound:(BOOL)didSave
 {
     NSLog(@"STOPPED RECORDING");
-    [self.indicatorImageView setImage:[UIImage imageNamed:@"red_light.png"]];
+    self.indicatorImageView.image = [UIImage imageNamed:@"red_light.png"];
     
     if (didSave) {
-        [self.statusLabel setText:@"Processing sound"];
+        self.statusLabel.text = @"Processing sound";
         self.speechData = [self readSoundFileSamples:self.soundActivatedRecorder.recordedFilePath];
         self.speechAnalyzer = [SpeechAnalyzer analyzerWithData:self.speechData];
-        [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer andSpeechData:self.speechData];
+        [self showPlotForDisplayIdentifier:self.displayIdentifier withAnalyzer:self.speechAnalyzer];
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
-            [self.indicatorImageView setImage:[UIImage imageNamed:@"green_light.png"]];
-            [self.statusLabel setText:@"Waiting ..."];
+            self.indicatorImageView.image = [UIImage imageNamed:@"green_light.png"];
+            self.statusLabel.text = @"Waiting ...";
             [self.soundActivatedRecorder startListening];
         });
     } else {
-        [self.statusLabel setText:@"Retrying ..."];
+        self.statusLabel.text = @"Retrying ...";
     }
 }
 

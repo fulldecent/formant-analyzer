@@ -14,13 +14,6 @@
 
 - (NSNumber *)totalSamples;
 
-//TODO: make this private
-/**
- * Load speech for processing
- * @param int16Samples A data stream of raw audio samples
- */
-- (void)loadData:(NSData *)int16Samples;
-
 // TMP private
 - (NSData *)int16SamplesDecimated;
 
