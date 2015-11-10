@@ -12,6 +12,7 @@
 		D96EF2761888D0C600C570C7 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2731888D0C600C570C7 /* green_light.png */; };
 		D96EF2771888D0C600C570C7 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2741888D0C600C570C7 /* red_light.png */; };
 		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
+		D9C00A101BF2B47D004D5200 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C00A0E1BF2B47D004D5200 /* Launch Screen.storyboard */; };
 		D9F770E41887426A0038839E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E31887426A0038839E /* Foundation.framework */; };
 		D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E51887426A0038839E /* CoreGraphics.framework */; };
 		D9F770E81887426A0038839E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E71887426A0038839E /* UIKit.framework */; };
@@ -41,6 +42,7 @@
 		D96EF2731888D0C600C570C7 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
 		D96EF2741888D0C600C570C7 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
 		D96EF2751888D0C600C570C7 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
+		D9C00A0F1BF2B47D004D5200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "FormantPlotter/Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D9F770E01887426A0038839E /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F770E31887426A0038839E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D9F770E51887426A0038839E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -128,6 +130,7 @@
 				D9F770F21887426A0038839E /* AppDelegate.h */,
 				D9F770F31887426A0038839E /* AppDelegate.m */,
 				D9F770F51887426A0038839E /* Main.storyboard */,
+				D9C00A0E1BF2B47D004D5200 /* Launch Screen.storyboard */,
 				D9F770FB1887426A0038839E /* FirstViewController.h */,
 				D9F770FC1887426A0038839E /* FirstViewController.m */,
 				D9F771011887426A0038839E /* Images.xcassets */,
@@ -220,6 +223,7 @@
 				D9F771021887426A0038839E /* Images.xcassets in Resources */,
 				D9F77136188744320038839E /* vowelPlotBackground.png in Resources */,
 				D96EF2771888D0C600C570C7 /* red_light.png in Resources */,
+				D9C00A101BF2B47D004D5200 /* Launch Screen.storyboard in Resources */,
 				D96EF2781888D0C600C570C7 /* blue_light.png in Resources */,
 				D9F770F71887426A0038839E /* Main.storyboard in Resources */,
 				D96EF2761888D0C600C570C7 /* green_light.png in Resources */,
@@ -300,6 +304,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		D9C00A0E1BF2B47D004D5200 /* Launch Screen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D9C00A0F1BF2B47D004D5200 /* Base */,
+			);
+			name = "Launch Screen.storyboard";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		D9F770EC1887426A0038839E /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -352,7 +365,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -385,7 +398,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
