@@ -16,7 +16,7 @@
 
 typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, GraphingModeHW, GraphingModeFrmnt} ;
 
-@interface FirstViewController() <UIActionSheetDelegate, FDSoundActivatedRecorderDelegate>
+@interface FirstViewController() <FDSoundActivatedRecorderDelegate>
 @property int processingDelayTimeCounter;
 @property GraphingModes displayIdentifier;            // What type of information is to be displayed in self.plotView.
 @property NSTimer *masterTimer;                       // Timer to manage three phases of soud capturing process
@@ -295,34 +295,42 @@ typedef NS_ENUM(NSInteger, GraphingModes) {GraphingModeSig, GraphingModeLPC, Gra
     [self presentViewController:[[UINavigationController alloc] initWithRootViewController:webViewController] animated:YES completion:nil];
 }
 
-- (IBAction)showInputSelectSheet:(id)sender
+- (IBAction)showInputSelectSheet:(UIButton *)sender
 {
-    UIActionSheet *inputChoice = [[UIActionSheet alloc] initWithTitle:@"Audio source" delegate:self cancelButtonTitle:nil destructiveButtonTitle:nil otherButtonTitles:nil];
-    [inputChoice addButtonWithTitle:@"Microphone"];
-    for (NSString *basename in self.soundFileBaseNames)
-        [inputChoice addButtonWithTitle:basename];
-    [inputChoice addButtonWithTitle:@"Cancel"];
-    inputChoice.cancelButtonIndex = inputChoice.numberOfButtons-1;
-    [inputChoice showFromTabBar:self.tabBarController.tabBar];
-}
-
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
-    if (buttonIndex == 0) { // Live speech processing
-        [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
-        self.speechIsFromMicrophone = YES;
-        self.indicatorImageView.hidden = NO;
-        self.statusLabel.text = @"Waiting ...";
-        [self.soundActivatedRecorder startListening];
-    } else if (buttonIndex < actionSheet.cancelButtonIndex) { // Saved file processing
-        [self.soundActivatedRecorder stopListeningAndKeepRecordingIfInProgress:NO];
-        [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
-        self.speechIsFromMicrophone = NO;
-        self.indicatorImageView.hidden = YES;
-        self.soundFileIdentifier = buttonIndex - 1;
-        self.statusLabel.text = self.soundFileBaseNames[self.soundFileIdentifier];
-        [self processRawBuffer];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Audio source"
+                                                                   message:@"Select the audio soucre to analyze"
+                                                            preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"Microphone"
+                                             style:UIAlertActionStyleDefault
+                                           handler:^(UIAlertAction * _Nonnull action) {
+                                               [self.inputSelector setTitle:@"Microphone" forState:UIControlStateNormal];
+                                               self.speechIsFromMicrophone = YES;
+                                               self.indicatorImageView.hidden = NO;
+                                               self.statusLabel.text = @"Waiting ...";
+                                               [self.soundActivatedRecorder startListening];
+                                           }]];
+    for (NSString *basename in self.soundFileBaseNames) {
+        [alert addAction:[UIAlertAction actionWithTitle:basename
+                                                  style:UIAlertActionStyleDefault
+                                                handler:^(UIAlertAction * _Nonnull action) {
+                                                    [self.soundActivatedRecorder stopListeningAndKeepRecordingIfInProgress:NO];
+                                                    [self.inputSelector setTitle:@"File" forState:UIControlStateNormal];
+                                                    self.speechIsFromMicrophone = NO;
+                                                    self.indicatorImageView.hidden = YES;
+                                                    self.soundFileIdentifier = [self.soundFileBaseNames indexOfObject:basename];
+                                                    self.statusLabel.text = self.soundFileBaseNames[self.soundFileIdentifier];
+                                                    [self processRawBuffer];
+                                                }]];
     }
+    [alert addAction:[UIAlertAction actionWithTitle:@"Cancel"
+                                              style:UIAlertActionStyleCancel
+                                            handler:nil]];
+
+    UIPopoverPresentationController *popPresenter = [alert popoverPresentationController];
+    popPresenter.sourceView = sender;
+    popPresenter.sourceRect = popPresenter.sourceView.bounds;
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 - (NSData *)readSoundFileSamples:(NSString *)filePath
