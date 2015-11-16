@@ -570,6 +570,7 @@
 				D97AEE181BF2BE97000E4DE4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */ = {
 			isa = XCConfigurationList;
