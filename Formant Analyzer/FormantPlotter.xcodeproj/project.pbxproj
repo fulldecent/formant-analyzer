@@ -14,6 +14,7 @@
 		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
 		D97AEE131BF2BE97000E4DE4 /* FormantPlotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */; };
 		D97AEE1B1BF2D870000E4DE4 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE1A1BF2D870000E4DE4 /* SnapshotHelper.swift */; };
+		D985DCC71BFBAD28008B777A /* FormantPlotterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985DCC61BFBAD28008B777A /* FormantPlotterTests.swift */; };
 		D9C00A101BF2B47D004D5200 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C00A0E1BF2B47D004D5200 /* Launch Screen.storyboard */; };
 		D9F770E41887426A0038839E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E31887426A0038839E /* Foundation.framework */; };
 		D9F770E61887426A0038839E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9F770E51887426A0038839E /* CoreGraphics.framework */; };
@@ -43,6 +44,13 @@
 			remoteGlobalIDString = D9F770DF1887426A0038839E;
 			remoteInfo = FormantPlotter;
 		};
+		D985DCC91BFBAD28008B777A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D9F770D81887426A0038839E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D9F770DF1887426A0038839E;
+			remoteInfo = FormantPlotter;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +66,10 @@
 		D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotterUITests.swift; sourceTree = "<group>"; };
 		D97AEE141BF2BE97000E4DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D97AEE1A1BF2D870000E4DE4 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		D985DCC41BFBAD28008B777A /* FormantPlotterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormantPlotterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		D985DCC61BFBAD28008B777A /* FormantPlotterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotterTests.swift; sourceTree = "<group>"; };
+		D985DCC81BFBAD28008B777A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D985DCCE1BFBB24F008B777A /* FormantPlotter-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Bridging-Header.h"; sourceTree = "<group>"; };
 		D9C00A0F1BF2B47D004D5200 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "FormantPlotter/Base.lproj/Launch Screen.storyboard"; sourceTree = "<group>"; };
 		D9F770E01887426A0038839E /* FormantPlotter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormantPlotter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9F770E31887426A0038839E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -88,6 +100,13 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		D97AEE0D1BF2BE96000E4DE4 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D985DCC11BFBAD28008B777A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -127,11 +146,22 @@
 			path = FormantPlotterUITests;
 			sourceTree = "<group>";
 		};
+		D985DCC51BFBAD28008B777A /* FormantPlotterTests */ = {
+			isa = PBXGroup;
+			children = (
+				D985DCC61BFBAD28008B777A /* FormantPlotterTests.swift */,
+				D985DCCE1BFBB24F008B777A /* FormantPlotter-Bridging-Header.h */,
+				D985DCC81BFBAD28008B777A /* Info.plist */,
+			);
+			path = FormantPlotterTests;
+			sourceTree = "<group>";
+		};
 		D9F770D71887426A0038839E = {
 			isa = PBXGroup;
 			children = (
 				D9F770E91887426A0038839E /* FormantPlotter */,
 				D97AEE111BF2BE97000E4DE4 /* FormantPlotterUITests */,
+				D985DCC51BFBAD28008B777A /* FormantPlotterTests */,
 				D9F770E21887426A0038839E /* Frameworks */,
 				D9F770E11887426A0038839E /* Products */,
 				73D7845520776FD710854778 /* Pods */,
@@ -143,6 +173,7 @@
 			children = (
 				D9F770E01887426A0038839E /* FormantPlotter.app */,
 				D97AEE101BF2BE97000E4DE4 /* FormantPlotterUITests.xctest */,
+				D985DCC41BFBAD28008B777A /* FormantPlotterTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -221,6 +252,24 @@
 			productReference = D97AEE101BF2BE97000E4DE4 /* FormantPlotterUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		D985DCC31BFBAD28008B777A /* FormantPlotterTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D985DCCD1BFBAD28008B777A /* Build configuration list for PBXNativeTarget "FormantPlotterTests" */;
+			buildPhases = (
+				D985DCC01BFBAD28008B777A /* Sources */,
+				D985DCC11BFBAD28008B777A /* Frameworks */,
+				D985DCC21BFBAD28008B777A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D985DCCA1BFBAD28008B777A /* PBXTargetDependency */,
+			);
+			name = FormantPlotterTests;
+			productName = FormantPlotterTests;
+			productReference = D985DCC41BFBAD28008B777A /* FormantPlotterTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		D9F770DF1887426A0038839E /* FormantPlotter */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D9F771181887426A0038839E /* Build configuration list for PBXNativeTarget "FormantPlotter" */;
@@ -255,6 +304,10 @@
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = D9F770DF1887426A0038839E;
 					};
+					D985DCC31BFBAD28008B777A = {
+						CreatedOnToolsVersion = 7.1.1;
+						TestTargetID = D9F770DF1887426A0038839E;
+					};
 				};
 			};
 			buildConfigurationList = D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */;
@@ -272,12 +325,20 @@
 			targets = (
 				D9F770DF1887426A0038839E /* FormantPlotter */,
 				D97AEE0F1BF2BE96000E4DE4 /* FormantPlotterUITests */,
+				D985DCC31BFBAD28008B777A /* FormantPlotterTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		D97AEE0E1BF2BE96000E4DE4 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D985DCC21BFBAD28008B777A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -366,6 +427,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		D985DCC01BFBAD28008B777A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D985DCC71BFBAD28008B777A /* FormantPlotterTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D9F770DC1887426A0038839E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -385,6 +454,11 @@
 			isa = PBXTargetDependency;
 			target = D9F770DF1887426A0038839E /* FormantPlotter */;
 			targetProxy = D97AEE151BF2BE97000E4DE4 /* PBXContainerItemProxy */;
+		};
+		D985DCCA1BFBAD28008B777A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D9F770DF1887426A0038839E /* FormantPlotter */;
+			targetProxy = D985DCC91BFBAD28008B777A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -454,6 +528,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_TARGET_NAME = FormantPlotter;
 				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+		D985DCCB1BFBAD28008B777A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = FormantPlotterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "FormantPlotterTests/FormantPlotter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormantPlotter.app/FormantPlotter";
+			};
+			name = Debug;
+		};
+		D985DCCC1BFBAD28008B777A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				INFOPLIST_FILE = FormantPlotterTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotterTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "FormantPlotterTests/FormantPlotter-Bridging-Header.h";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormantPlotter.app/FormantPlotter";
 			};
 			name = Release;
 		};
@@ -571,6 +687,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		D985DCCD1BFBAD28008B777A /* Build configuration list for PBXNativeTarget "FormantPlotterTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D985DCCB1BFBAD28008B777A /* Debug */,
+				D985DCCC1BFBAD28008B777A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		D9F770DB1887426A0038839E /* Build configuration list for PBXProject "FormantPlotter" */ = {
 			isa = XCConfigurationList;
