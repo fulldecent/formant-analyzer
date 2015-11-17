@@ -42,3 +42,4 @@ DerivedData
 /fastlane/screenshots/*/*-landscape_framed.png
 /fastlane/screenshots/*-*/
 
+FormantPlotter.app.dSYM.zip
