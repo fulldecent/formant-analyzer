@@ -12,6 +12,7 @@ recordings = {'arm', 'beat', 'bid', 'calm', 'cat', 'four', 'who'};
 for recording = recordings
     inFile = ['../Audio files/1-' recording{1} '.wav'];
     outFile = ['../Audio files/2-' recording{1} '.raw'];
+    fprintf('Converting %s\n',recording{1});
     convertAudioToRaw(inFile, outFile);
-	fprintf('Converted %s\n',recording{1});
+    fprintf('\n');
 end

@@ -21,4 +21,46 @@ Processing
 ==========
 
 Run the file `main.m` to convert WAV audio files from the `Input Sounds` to raw
-audio in this folder.
+audio in the `Audio files` folder.
+
+Program output should be as follows:
+
+>   Converting arm
+
+>   Saved 72704 samples
+
+>    
+
+>   Converting beat
+
+>   Saved 96667 samples
+
+>    
+
+>   Converting bid
+
+>   Saved 56832 samples
+
+>    
+
+>   Converting calm
+
+>   Saved 84992 samples
+
+>    
+
+>   Converting cat
+
+>   Saved 73728 samples
+
+>    
+
+>   Converting four
+
+>   Saved 74240 samples
+
+>    
+
+>   Converting who
+
+>   Saved 81920 samples

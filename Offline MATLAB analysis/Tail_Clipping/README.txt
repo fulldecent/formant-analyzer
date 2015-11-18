@@ -1,1 +1,0 @@
-This work was performed to see if tail clipping done MATLAB was giving the same set if indices as obtained by objective-C algorithms. The results indicated that both set of numbers were same, excetp for an offset of 1 due to MATLAB index starting at 1 and C index starting at 0

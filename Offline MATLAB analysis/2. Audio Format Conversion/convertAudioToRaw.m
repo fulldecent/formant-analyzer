@@ -7,7 +7,7 @@ function convertAudioToRaw(inputFileName, outputFileName)
     [speech_in,Fs] = audioread(inputFileName);
     speech_av = mean(speech_in');
 
-    %Resample to 44100 if Fs is different
+    % Resample to 44100 if Fs is different
     if (Fs ~= 44100)
         speech_av = resample(speech_av,44100/Fs);
     end
@@ -15,7 +15,8 @@ function convertAudioToRaw(inputFileName, outputFileName)
     max_val = max(abs(speech_av));
     speech_final = 10000 * speech_av / max_val;
 
-    a = fopen(outputFileName,'w');
-    fwrite(a,speech_final,'int16');
-    fclose(a);
+    fileId = fopen(outputFileName,'w');
+    fwrite(fileId, speech_final,'int16');
+    fclose(fileId);
+    fprintf('Saved %d samples\n',length(speech_final));
 end
