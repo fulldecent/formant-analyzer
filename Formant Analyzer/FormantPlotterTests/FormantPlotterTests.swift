@@ -43,20 +43,20 @@ class FormantPlotterTests: XCTestCase {
     }
     
     func testVowelRange() {
-        XCTAssertEqual(analyzerForBaseName("arm").vowelRange().location, 24405)
-        XCTAssertEqual(analyzerForBaseName("beat").vowelRange().location, 29961)
-        XCTAssertEqual(analyzerForBaseName("bid").vowelRange().location, 25146)
-        XCTAssertEqual(analyzerForBaseName("calm").vowelRange().location, 30662)
-        XCTAssertEqual(analyzerForBaseName("cat").vowelRange().location, 26092)
-        XCTAssertEqual(analyzerForBaseName("four").vowelRange().location, 34962)
-        XCTAssertEqual(analyzerForBaseName("who").vowelRange().location, 22331)
+        XCTAssertEqual(analyzerForBaseName("arm").vowelRange().location, 24407)
+        XCTAssertEqual(analyzerForBaseName("beat").vowelRange().location, 29963)
+        XCTAssertEqual(analyzerForBaseName("bid").vowelRange().location, 25147)
+        XCTAssertEqual(analyzerForBaseName("calm").vowelRange().location, 30664)
+        XCTAssertEqual(analyzerForBaseName("cat").vowelRange().location, 26093)
+        XCTAssertEqual(analyzerForBaseName("four").vowelRange().location, 34964)
+        XCTAssertEqual(analyzerForBaseName("who").vowelRange().location, 22332)
 
-        XCTAssertEqual(analyzerForBaseName("arm").vowelRange().length, 9993)
-        XCTAssertEqual(analyzerForBaseName("beat").vowelRange().length, 6085)
-        XCTAssertEqual(analyzerForBaseName("bid").vowelRange().length, 6217)
-        XCTAssertEqual(analyzerForBaseName("calm").vowelRange().length, 9706)
-        XCTAssertEqual(analyzerForBaseName("cat").vowelRange().length, 12004)
-        XCTAssertEqual(analyzerForBaseName("four").vowelRange().length, 9854)
-        XCTAssertEqual(analyzerForBaseName("who").vowelRange().length, 9936)
+        XCTAssertEqual(analyzerForBaseName("arm").vowelRange().length, 9994)
+        XCTAssertEqual(analyzerForBaseName("beat").vowelRange().length, 6086)
+        XCTAssertEqual(analyzerForBaseName("bid").vowelRange().length, 6219)
+        XCTAssertEqual(analyzerForBaseName("calm").vowelRange().length, 9707)
+        XCTAssertEqual(analyzerForBaseName("cat").vowelRange().length, 12006)
+        XCTAssertEqual(analyzerForBaseName("four").vowelRange().length, 9855)
+        XCTAssertEqual(analyzerForBaseName("who").vowelRange().length, 9938)
     }
 }

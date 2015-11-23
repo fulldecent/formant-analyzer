@@ -1,1 +1,0 @@
-This work was done prior to my study of Pratt. I wanted to see the effect of model length on the locaiton of formant frequencies.
