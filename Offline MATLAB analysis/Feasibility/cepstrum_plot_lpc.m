@@ -1,7 +1,26 @@
-load sounds
+%% Cepstrum plot
+%
+
+recordings = {'arm', 'beat', 'bid', 'calm', 'cat', 'four', 'who'};
+Fs = 44100;
+sounds = [];
+
+for recording = recordings
+    inFile = ['../Audio files/2-' recording{1} '.raw'];
+    base_file_name = recording{1};
+    fileId = fopen(inFile, 'r');
+    audioSamples = fread(fileId, 'int16');
+    fclose(fileId);
+
+    sounds = [sounds audioSamples'];
+    fprintf('Analyzing %s\n', base_file_name);
+    fprintf('\n')
+end
+
+
 FS = 44100;   % Sampling frequency
 seg_length = 4096;
-energy_threshold = 1;
+energy_threshold = intmax('int32');
 
 data_length = length(sounds);
 segments = floor(data_length/seg_length)
@@ -10,7 +29,7 @@ energy_flag_vector = zeros(1,segments);
 for seg_idx = 1:segments
     sound_seg = sounds((1 + (seg_idx - 1)*seg_length):(seg_idx * seg_length));
     energy = sum(sound_seg .* sound_seg);
-    if (energy > 1)
+    if (energy > energy_threshold)
         energy_flag_vector(seg_idx) = 1;
     end
 end
@@ -21,7 +40,7 @@ figure(1)
 subplot('position',[0.03 0.44 0.962 0.53])
 time_v = [1:length(sounds)]/FS;
 plot(time_v,sounds)
-axis([0 max(time_v) -1 1])
+axis([0 max(time_v) -intmax('int16') intmax('int16')])
 set(gca,'XTick',[1:13])
 set(gca,'YTick',[-1 -0.5 0 .5 1])
 grid on
