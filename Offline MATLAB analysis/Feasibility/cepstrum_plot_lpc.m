@@ -50,7 +50,6 @@ subplot('position',[0.03 0.01 0.962 0.32])
 plot(eroded_energy_flag_vector,'LineWidth',2)
 axis([0 length(energy_flag_vector) -0.1 1.2])
 grid on
-% print -dmeta energy_plot
 
 found_valid_flag = 0;
 subplot_idx = 1;
@@ -60,15 +59,15 @@ lpc_coeff = 50;
 cum_seg_cep = zeros(1,1+lpc_coeff);
 
 figure(2)
-subplot1 = subplot('position',[0.01 0.51 0.24 0.48])
-subplot2 = subplot('position',[0.26 0.51 0.24 0.48])
-subplot3 = subplot('position',[0.51 0.51 0.24 0.48])
-subplot4 = subplot('position',[0.76 0.51 0.24 0.48])
+subplot1 = subplot('position',[0.01 0.51 0.24 0.48]);
+subplot2 = subplot('position',[0.26 0.51 0.24 0.48]);
+subplot3 = subplot('position',[0.51 0.51 0.24 0.48]);
+subplot4 = subplot('position',[0.76 0.51 0.24 0.48]);
 
-subplot5 = subplot('position',[0.01 0.01 0.24 0.48])
-subplot6 = subplot('position',[0.26 0.01 0.24 0.48])
-subplot7 = subplot('position',[0.51 0.01 0.24 0.48])
-subplot8 = subplot('position',[0.76 0.01 0.24 0.48])
+subplot5 = subplot('position',[0.01 0.01 0.24 0.48]);
+subplot6 = subplot('position',[0.26 0.01 0.24 0.48]);
+subplot7 = subplot('position',[0.51 0.01 0.24 0.48]);
+subplot8 = subplot('position',[0.76 0.01 0.24 0.48]);
 
 figure(3)
 subplot('position',[0.07 0.04 0.92 0.95])
@@ -135,8 +134,5 @@ for seg_idx = 1:segments
 end
 
 figure(2)
-print -dmeta ARModel_plots
 
 figure(3)
-print -dmeta average_formant_cluster
-

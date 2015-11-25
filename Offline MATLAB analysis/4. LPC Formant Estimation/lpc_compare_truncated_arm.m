@@ -6,14 +6,18 @@
 clear all
 figure(1)
 
-load a_xcode_arm
+%load a_xcode_arm
+% dummy data
+a_xcode_arm = [1 2 4 8 16 32 64 128 256 512 1024 2048 4096];
+% WE 2015-11-24: I can't find this original file
+
 Fs = 44100;
 lpc_coeff = 64;
 
 base_file_name = 'who';
 
 % Sounds are loaded from a folder in the parent folder
-raw_file_name = ['../Sounds/' base_file_name '_raw_truncated'];
+raw_file_name = ['../Audio files/3-' base_file_name '-isolated.raw'];
 a = fopen(raw_file_name);
 speech_seg = fread(a,'int16');
 fclose(a);
@@ -61,12 +65,3 @@ axis tight
 grid on
 set(gca,'XTickLabel',[])
 set(gca,'YTickLabel',[])
-
-print -dmeta lpc_comparison_plots
-
-
-
-
-
-
-
