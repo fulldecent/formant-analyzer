@@ -12,6 +12,7 @@
 		D96EF2761888D0C600C570C7 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2731888D0C600C570C7 /* green_light.png */; };
 		D96EF2771888D0C600C570C7 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2741888D0C600C570C7 /* red_light.png */; };
 		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
+		D97399221C51702000BB2949 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97399211C51702000BB2949 /* FirstViewController.swift */; };
 		D97AEE131BF2BE97000E4DE4 /* FormantPlotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */; };
 		D97AEE1B1BF2D870000E4DE4 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE1A1BF2D870000E4DE4 /* SnapshotHelper.swift */; };
 		D985DCC71BFBAD28008B777A /* FormantPlotterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985DCC61BFBAD28008B777A /* FormantPlotterTests.swift */; };
@@ -23,7 +24,6 @@
 		D9F770F01887426A0038839E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770EF1887426A0038839E /* main.m */; };
 		D9F770F41887426A0038839E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770F31887426A0038839E /* AppDelegate.m */; };
 		D9F770F71887426A0038839E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9F770F51887426A0038839E /* Main.storyboard */; };
-		D9F770FD1887426A0038839E /* FirstViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F770FC1887426A0038839E /* FirstViewController.m */; };
 		D9F771021887426A0038839E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9F771011887426A0038839E /* Images.xcassets */; };
 		D9F771271887441E0038839E /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771201887441E0038839E /* arm.raw */; };
 		D9F771281887441E0038839E /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771211887441E0038839E /* beat.raw */; };
@@ -62,6 +62,8 @@
 		D96EF2731888D0C600C570C7 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
 		D96EF2741888D0C600C570C7 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
 		D96EF2751888D0C600C570C7 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
+		D97399201C51701F00BB2949 /* FormantPlotter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Bridging-Header.h"; sourceTree = "<group>"; };
+		D97399211C51702000BB2949 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D97AEE101BF2BE97000E4DE4 /* FormantPlotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormantPlotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotterUITests.swift; sourceTree = "<group>"; };
 		D97AEE141BF2BE97000E4DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,8 +84,6 @@
 		D9F770F21887426A0038839E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D9F770F31887426A0038839E /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D9F770F61887426A0038839E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		D9F770FB1887426A0038839E /* FirstViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FirstViewController.h; sourceTree = "<group>"; };
-		D9F770FC1887426A0038839E /* FirstViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FirstViewController.m; sourceTree = "<group>"; };
 		D9F771011887426A0038839E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D9F771081887426A0038839E /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D9F771201887441E0038839E /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
@@ -197,14 +197,14 @@
 				D9F770F31887426A0038839E /* AppDelegate.m */,
 				D9F770F51887426A0038839E /* Main.storyboard */,
 				D9C00A0E1BF2B47D004D5200 /* Launch Screen.storyboard */,
-				D9F770FB1887426A0038839E /* FirstViewController.h */,
-				D9F770FC1887426A0038839E /* FirstViewController.m */,
+				D97399211C51702000BB2949 /* FirstViewController.swift */,
 				D9F771011887426A0038839E /* Images.xcassets */,
 				D9F7713C188744AA0038839E /* PlotView.h */,
 				D9F7713D188744AA0038839E /* PlotView.m */,
 				D913401F1A6DB0D800E3C1C1 /* SpeechAnalyzer.h */,
 				D91340201A6DB0D800E3C1C1 /* SpeechAnalyzer.m */,
 				D9F770EA1887426A0038839E /* Supporting Files */,
+				D97399201C51701F00BB2949 /* FormantPlotter-Bridging-Header.h */,
 			);
 			path = FormantPlotter;
 			sourceTree = "<group>";
@@ -296,7 +296,7 @@
 		D9F770D81887426A0038839E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0710;
+				LastSwiftUpdateCheck = 0720;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "William Entriken";
 				TargetAttributes = {
@@ -442,7 +442,7 @@
 				D9F770F41887426A0038839E /* AppDelegate.m in Sources */,
 				D9F7713F188744AA0038839E /* PlotView.m in Sources */,
 				D91340211A6DB0D800E3C1C1 /* SpeechAnalyzer.m in Sources */,
-				D9F770FD1887426A0038839E /* FirstViewController.m in Sources */,
+				D97399221C51702000BB2949 /* FirstViewController.swift in Sources */,
 				D9F770F01887426A0038839E /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -651,12 +651,16 @@
 			baseConfigurationReference = 336AA01F784DDA24E0132B58 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FormantPlotter/FormantPlotter-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -666,12 +670,15 @@
 			baseConfigurationReference = 6BE0B6936CEE0F29F83920F5 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FormantPlotter/FormantPlotter-Prefix.pch";
 				INFOPLIST_FILE = "FormantPlotter/FormantPlotter-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FormantPlotter/FormantPlotter-Bridging-Header.h";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
