@@ -31,7 +31,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" customClass="PlotView">
+                            <view contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="zrQ-dr-T2a" userLabel="Formant Plot" customClass="FormantPlotView" customModule="FormantPlotter" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="100" width="320" height="390"/>
                                 <color key="backgroundColor" white="0.93795620440000005" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -152,6 +152,7 @@
                     <navigationItem key="navigationItem" id="Rh5-kw-BCE"/>
                     <connections>
                         <outlet property="firstFormantLabel" destination="bJf-am-4MW" id="Ocy-LX-xPB"/>
+                        <outlet property="formantPlot" destination="zrQ-dr-T2a" id="9ni-fs-GKc"/>
                         <outlet property="fourthFormantLabel" destination="0jX-nd-JdF" id="APb-Pq-l13"/>
                         <outlet property="graphingMode" destination="AkJ-0Q-cfC" id="L1J-Qp-SGf"/>
                         <outlet property="indicatorImageView" destination="8Qr-2e-rSY" id="4kP-EA-kby"/>
@@ -159,7 +160,6 @@
                         <outlet property="lineChartBottomHalf" destination="Qpg-IJ-E0F" id="IRi-Ew-sXJ"/>
                         <outlet property="lineChartFull" destination="ERa-1E-mDS" id="MKO-2l-BfQ"/>
                         <outlet property="lineChartTopHalf" destination="H77-Va-cqM" id="tM8-1e-aCS"/>
-                        <outlet property="plotView" destination="zrQ-dr-T2a" id="Hqa-89-5wo"/>
                         <outlet property="secondFormantLabel" destination="uAc-hW-WYY" id="BIH-sc-sLo"/>
                         <outlet property="statusLabel" destination="P33-9r-kcC" id="wOc-wh-IRk"/>
                         <outlet property="thirdFormantLabel" destination="udF-wh-LHP" id="tTk-Te-c3Z"/>

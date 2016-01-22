@@ -33,7 +33,7 @@ class FirstViewController: UIViewController {
     // Second row
     @IBOutlet var graphingMode: UISegmentedControl!
     // Third row
-    @IBOutlet var plotView: PlotView!
+    @IBOutlet var formantPlot: FormantPlotView!
     @IBOutlet var lineChartTopHalf: FSLineChart!
     @IBOutlet var lineChartBottomHalf: FSLineChart!
     @IBOutlet var lineChartFull: FSLineChart!
@@ -45,7 +45,6 @@ class FirstViewController: UIViewController {
     
     var processingDelayTimeCounter = 0
     
-    /// What type of information is to be displayed in self.plotView.
     var displayIdentifier: GraphingMode = .Signal
     
     lazy var soundActivatedRecorder: FDSoundActivatedRecorder = {
@@ -86,17 +85,17 @@ class FirstViewController: UIViewController {
             self.drawHwPlot()
         case .Formant:
             //TODO: TEMP HACK
-            self.plotView.formants = self.speechAnalyzer.findCleanFormants()
-            self.plotView.hidden = false
+            self.formantPlot.formants = self.speechAnalyzer.findCleanFormants() as! [Double]
+            self.formantPlot.hidden = false
             self.lineChartTopHalf.hidden = true
             self.lineChartBottomHalf.hidden = true
             self.lineChartFull.hidden = true
-            self.plotView.setNeedsDisplay()
+            self.formantPlot.setNeedsDisplay()
         }
     }
     
     func drawSignalPlot() {
-        self.plotView.hidden = true
+        self.formantPlot.hidden = true
         self.lineChartFull.hidden = true
         self.lineChartTopHalf.hidden = false
         self.lineChartTopHalf.drawInnerGrid = false
@@ -137,7 +136,7 @@ class FirstViewController: UIViewController {
     }
     
     func drawLPCPlot() {
-        self.plotView.hidden = true
+        self.formantPlot.hidden = true
         self.lineChartTopHalf.hidden = true
         self.lineChartBottomHalf.hidden = true
         self.lineChartFull.hidden = false
@@ -173,7 +172,7 @@ class FirstViewController: UIViewController {
     }
     
     func drawHwPlot() {
-        self.plotView.hidden = true
+        self.formantPlot.hidden = true
         self.lineChartTopHalf.hidden = true
         self.lineChartBottomHalf.hidden = true
         self.lineChartFull.hidden = false
@@ -240,7 +239,6 @@ class FirstViewController: UIViewController {
     }
     // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
     // binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view
-    // is shown in self.plotView.
     // If we are looking at 5th plot type (formant frequencies), four text labels are updated with a delay of 0.5 sec
     
     func processRawBuffer() {
@@ -298,7 +296,7 @@ class FirstViewController: UIViewController {
     //TODO should not be here!?
     /// Get raw PCM data from the track
     func readSoundFileSamples(filePath: String) -> NSData {
-        var retval = NSMutableData()
+        let retval = NSMutableData()
         let assetURL: NSURL = NSURL(fileURLWithPath: filePath)
         let asset = AVURLAsset(URL: assetURL)
         let track = asset.tracks[0]

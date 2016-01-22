@@ -14,6 +14,7 @@
 		D96EF2781888D0C600C570C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D96EF2751888D0C600C570C7 /* blue_light.png */; };
 		D97399221C51702000BB2949 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97399211C51702000BB2949 /* FirstViewController.swift */; };
 		D97399241C5188C400BB2949 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97399231C5188C400BB2949 /* AppDelegate.swift */; };
+		D97399621C518A0800BB2949 /* FormantPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97399611C518A0800BB2949 /* FormantPlotView.swift */; };
 		D97AEE131BF2BE97000E4DE4 /* FormantPlotterUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */; };
 		D97AEE1B1BF2D870000E4DE4 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D97AEE1A1BF2D870000E4DE4 /* SnapshotHelper.swift */; };
 		D985DCC71BFBAD28008B777A /* FormantPlotterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D985DCC61BFBAD28008B777A /* FormantPlotterTests.swift */; };
@@ -32,7 +33,6 @@
 		D9F7712C1887441E0038839E /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771251887441E0038839E /* four.raw */; };
 		D9F7712D1887441E0038839E /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9F771261887441E0038839E /* who.raw */; };
 		D9F77136188744320038839E /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9F77130188744320038839E /* vowelPlotBackground.png */; };
-		D9F7713F188744AA0038839E /* PlotView.m in Sources */ = {isa = PBXBuildFile; fileRef = D9F7713D188744AA0038839E /* PlotView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +64,7 @@
 		D97399201C51701F00BB2949 /* FormantPlotter-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FormantPlotter-Bridging-Header.h"; sourceTree = "<group>"; };
 		D97399211C51702000BB2949 /* FirstViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		D97399231C5188C400BB2949 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D97399611C518A0800BB2949 /* FormantPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormantPlotView.swift; sourceTree = "<group>"; };
 		D97AEE101BF2BE97000E4DE4 /* FormantPlotterUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormantPlotterUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D97AEE121BF2BE97000E4DE4 /* FormantPlotterUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotterUITests.swift; sourceTree = "<group>"; };
 		D97AEE141BF2BE97000E4DE4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -91,8 +92,6 @@
 		D9F771251887441E0038839E /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
 		D9F771261887441E0038839E /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
 		D9F77130188744320038839E /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
-		D9F7713C188744AA0038839E /* PlotView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlotView.h; sourceTree = "<group>"; };
-		D9F7713D188744AA0038839E /* PlotView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlotView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +194,7 @@
 				D97399231C5188C400BB2949 /* AppDelegate.swift */,
 				D97399211C51702000BB2949 /* FirstViewController.swift */,
 				D9F771011887426A0038839E /* Images.xcassets */,
-				D9F7713C188744AA0038839E /* PlotView.h */,
-				D9F7713D188744AA0038839E /* PlotView.m */,
+				D97399611C518A0800BB2949 /* FormantPlotView.swift */,
 				D913401F1A6DB0D800E3C1C1 /* SpeechAnalyzer.h */,
 				D91340201A6DB0D800E3C1C1 /* SpeechAnalyzer.m */,
 				D9F770EA1887426A0038839E /* Supporting Files */,
@@ -435,7 +433,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D97399241C5188C400BB2949 /* AppDelegate.swift in Sources */,
-				D9F7713F188744AA0038839E /* PlotView.m in Sources */,
+				D97399621C518A0800BB2949 /* FormantPlotView.swift in Sources */,
 				D91340211A6DB0D800E3C1C1 /* SpeechAnalyzer.m in Sources */,
 				D97399221C51702000BB2949 /* FirstViewController.swift in Sources */,
 			);
