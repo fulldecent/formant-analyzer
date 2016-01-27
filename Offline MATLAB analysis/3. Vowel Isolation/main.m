@@ -13,11 +13,11 @@ for recording = recordings
     fileId = fopen(inFile, 'r');
     audioSamples = fread(fileId, 'int16');
     fclose(fileId);
-
+        
     fprintf('Analyzing %s\n', base_file_name);
     [start, length] = isolateVowel(audioSamples);
+    fprintf('Vowel part: %d ... %d\n', start, start + len - 1);t
     fileId = fopen(outFile,'w');
     fwrite(fileId, audioSamples(start:start + length - 1), 'int16');
     fclose(fileId);
-    fprintf('\n')
 end

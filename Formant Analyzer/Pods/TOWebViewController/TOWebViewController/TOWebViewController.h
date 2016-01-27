@@ -1,11 +1,7 @@
 //
 //  TOWebViewController.h
 //
-//  Copyright 2013-2015 Timothy Oliver. All rights reserved.
-//
-//  Features logic designed by Satoshi Asano (ninjinkun) for NJKWebViewProgress,
-//  also licensed under the MIT License. Re-implemented by Timothy Oliver.
-//  https://github.com/ninjinkun/NJKWebViewProgress
+//  Copyright 2013-2016 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -95,6 +91,27 @@
 @property (nonatomic,assign)    BOOL navigationButtonsHidden;
 
 /**
+ An array of `UIBarButtonItem` objects that will be inserted alongside the default navigation
+ buttons.
+ 
+ These buttons will remain visible, even if `navigationButtonsHidden` is set to YES.
+ 
+ */
+@property (nonatomic,copy)      NSArray *applicationBarButtonItems;
+
+/**
+ Unlike `applicationBarButtonItems`, `UIBarButtonItem` objects placed set here
+ will ALWAYS remain on the left hand side of this controller's `UINavigationController`.
+ */
+@property (nonatomic, copy)   NSArray *applicationLeftBarButtonItems;
+
+/**
+ An array of `UIBarButtonItem` objects from `applicationBarButtonitems` that will
+ disabled until pages are completely loaded.
+ */
+@property (nonatomic,copy)      NSArray *loadCompletedApplicationBarButtonItems;
+
+/**
  Shows the iOS 'Activty' button, which when tapped, presents a series of actions the user may
  take, including copying the page URL, tweeting the URL, or switching to Safari or Chrome.
  
@@ -151,8 +168,15 @@
  */
 @property (nonatomic,copy)      BOOL (^shouldStartLoadRequestHandler)(NSURLRequest *request, UIWebViewNavigationType navigationType);
 
+/**
+An optional block that when set, will be triggered each time the web view has finished a load operation.
+*/
+@property (nonatomic,copy)      void (^didFinishLoadHandler)(UIWebView *webView);
+
 /** 
  This can be used to override the default tint color of the navigation button icons.
+ This property is mainly for iOS 6 and lower. Where possible, you should use iOS 7's proper color styling
+ system instead.
  */
 @property (nonatomic,strong)    UIColor *buttonTintColor;
 

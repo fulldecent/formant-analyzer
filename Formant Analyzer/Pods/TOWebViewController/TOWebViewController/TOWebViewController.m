@@ -1,11 +1,7 @@
 //
 //  TOWebViewController.m
 //
-//  Copyright 2013-2015 Timothy Oliver. All rights reserved.
-//
-//  Features logic designed by Satoshi Asano (ninjinkun) for NJKWebViewProgress,
-//  also licensed under the MIT License. Re-implemented by Timothy Oliver.
-//  https://github.com/ninjinkun/NJKWebViewProgress
+//  Copyright 2013-2016 Timothy Oliver. All rights reserved.
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
 //  of this software and associated documentation files (the "Software"), to
@@ -29,6 +25,9 @@
 #import "TOActivityChrome.h"
 #import "UIImage+TOWebViewControllerIcons.h"
 
+#import "NJKWebViewProgress.h"
+#import "NJKWebViewProgressView.h"
+
 #import <QuartzCore/QuartzCore.h>
 #import <MessageUI/MessageUI.h>
 #import <MessageUI/MFMailComposeViewController.h>
@@ -38,29 +37,20 @@
 /* Detect if we're running iOS 7.0 or higher (With the new minimal UI) */
 #define MINIMAL_UI      ([[UIViewController class] instancesRespondToSelector:@selector(edgesForExtendedLayout)])
 /* Detect if we're running iOS 8.0 (With the new device rotation system) */
-#define NEW_ROTATIONS   ([[UIViewController class] instancesRespondToSelector:NSSelectorFromString(@"viewWillTransitionToSize:withTransitionCoordinator:")])
+#define SIZE_CLASSES   ([[UIViewController class] instancesRespondToSelector:NSSelectorFromString(@"viewWillTransitionToSize:withTransitionCoordinator:")])
 
 /* The default blue tint color of iOS 7.0 */
 #define DEFAULT_BAR_TINT_COLOR [UIColor colorWithRed:0.0f green:110.0f/255.0f blue:1.0f alpha:1.0f]
 
-/* Detect which user idiom we're running on */
-#define IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
-
-/* Blank UIBarButtonItem creation */
-#define BLANK_BARBUTTONITEM [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil]
-
 /* View Controller Theming Properties */
-#define BACKGROUND_COLOR_MINIMAL    [UIColor colorWithRed:0.741f green:0.741 blue:0.76f alpha:1.0f]
+#define BACKGROUND_COLOR_MINIMAL    [UIColor whiteColor]
 #define BACKGROUND_COLOR_CLASSIC    [UIColor scrollViewTexturedBackgroundColor]
 #define BACKGROUND_COLOR            ((MINIMAL_UI) ? BACKGROUND_COLOR_MINIMAL : BACKGROUND_COLOR_CLASSIC)
 
 /* Navigation Bar Properties */
-#define NAVIGATION_BUTTON_WIDTH             31
-#define NAVIGATION_BUTTON_SIZE              CGSizeMake(31,31)
-#define NAVIGATION_BUTTON_SPACING           40
-#define NAVIGATION_BUTTON_SPACING_IPAD      20
 #define NAVIGATION_BAR_HEIGHT               (MINIMAL_UI ? 64.0f : 44.0f)
 #define NAVIGATION_TOGGLE_ANIM_TIME         0.3
+#define NAVIGATION_ICON_SPACING             25
 
 /* Toolbar Properties */
 #define TOOLBAR_HEIGHT      44.0f
@@ -68,29 +58,13 @@
 /* Hieght of the loading progress bar view */
 #define LOADING_BAR_HEIGHT          2
 
-/* Unique URL triggered when JavaScript reports page load is complete */
-NSString *kCompleteRPCURL = @"webviewprogress:///complete";
-
-/* Default load values to defer to during the load process */
-static const float kInitialProgressValue                = 0.1f;
-static const float kBeforeInteractiveMaxProgressValue   = 0.5f;
-static const float kAfterInteractiveMaxProgressValue    = 0.9f;
-
-#pragma mark -
-#pragma mark Loading Bar Private Interface
-@interface TOWebLoadingView : UIView
-@end
-
-@implementation TOWebLoadingView
-- (void)tintColorDidChange { self.backgroundColor = self.tintColor; }
-@end
-
 #pragma mark -
 #pragma mark Hidden Properties/Methods
 @interface TOWebViewController () <UIActionSheetDelegate,
                                    UIPopoverControllerDelegate,
                                    MFMailComposeViewControllerDelegate,
-                                   MFMessageComposeViewControllerDelegate>
+                                   MFMessageComposeViewControllerDelegate,
+                                   NJKWebViewProgressDelegate>
 {
     
     //The state of the UIWebView's scroll view before the rotation animation has started
@@ -104,39 +78,32 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         CGFloat    topEdgeInset;
         CGFloat    bottomEdgeInset;
     } _webViewState;
-    
-    //State tracking for load progress of current page
-    struct {
-        NSInteger   loadingCount;       //Number of requests concurrently being handled
-        NSInteger   maxLoadCount;       //Maximum number of load requests that was reached
-        BOOL        interactive;        //Load progress has reached the point where users may interact with the content
-        CGFloat     loadingProgress;    //Between 0.0 and 1.0, the load progress of the current page
-    } _loadingProgressState;
 }
 
 /* View controller presentation state tracking */
-@property (nonatomic,readonly) BOOL beingPresentedModally;              /* The controller was presented as a modal popup (eg, 'Done' button) */
-@property (nonatomic,readonly) BOOL onTopOfNavigationControllerStack;   /* We're in, and not the root of a UINavigationController (eg, 'Back' button)*/
+@property (nonatomic,readonly) BOOL compactPresentation;              /* In iOS 8 or above, whether we're being presented in 'iPhone mode' or not */
+@property (nonatomic,readonly) BOOL beingPresentedModally;            /* The controller was presented as a modal popup (eg, 'Done' button) */
+@property (nonatomic,readonly) BOOL onTopOfNavigationControllerStack; /* We're in, and not the root of a UINavigationController (eg, 'Back' button)*/
+@property (nonatomic,readonly) BOOL splitScreenEnabled;               /* Used to detect if the app is presented in split screen mode for performance reasons. */
 
 /* The main view components of the controller */
-@property (nonatomic,strong, readwrite) UIWebView *webView;                      /* The web view, where all the magic happens */
-@property (nonatomic,readonly) UINavigationBar *navigationBar;          /* Navigation bar shown along the top of the view */
-@property (nonatomic,readonly) UIToolbar *toolbar;                      /* Toolbar shown along the bottom */
-@property (nonatomic,strong)   TOWebLoadingView *loadingBarView;        /* The loading bar, displayed when a page is being loaded */
-@property (nonatomic,strong)   UIImageView *webViewRotationSnapshot;    /* A snapshot of the web view, shown when rotating */
+@property (nonatomic,strong, readwrite) UIWebView *webView;           /* The web view, where all the magic happens */
+@property (nonatomic,readonly) UINavigationBar *navigationBar;        /* Navigation bar shown along the top of the view */
+@property (nonatomic,readonly) UIToolbar *toolbar;                    /* Toolbar shown along the bottom */
+@property (nonatomic,strong)   UIImageView *webViewRotationSnapshot;  /* A snapshot of the web view, shown when rotating */
+@property (nonatomic,strong)   NJKWebViewProgressView *progressView;  /* A bar that tracks the load progress of the current page. */
 
-@property (nonatomic,strong) CAGradientLayer *gradientLayer;             /* Gradient effect for the background view behind the web view. */
+@property (nonatomic,strong) CAGradientLayer *gradientLayer;          /* Gradient effect for the background view behind the web view. */
 
 /* Navigation Buttons */
-@property (nonatomic,strong) UIButton *backButton;                       /* Moves the web view one page back */
-@property (nonatomic,strong) UIButton *forwardButton;                    /* Moves the web view one page forward */
-@property (nonatomic,strong) UIButton *reloadStopButton;                 /* Reload / Stop buttons */
-@property (nonatomic,strong) UIButton *actionButton;                     /* Shows the UIActivityViewController */
-@property (nonatomic,strong) UIView   *buttonsContainerView;              /* The container view that holds all of the navigation buttons. */
+@property (nonatomic,strong) UIBarButtonItem *backButton;             /* Moves the web view one page back */
+@property (nonatomic,strong) UIBarButtonItem *forwardButton;          /* Moves the web view one page forward */
+@property (nonatomic,strong) UIBarButtonItem *reloadStopButton;       /* Reload / Stop buttons */
+@property (nonatomic,strong) UIBarButtonItem *actionButton;           /* Shows the UIActivityViewController */
+@property (nonatomic,strong) UIBarButtonItem *doneButton;             /* The 'Done' button for modal contorllers */
 
-/* Button placement metrics */
-@property (nonatomic,assign) CGFloat buttonWidth;                        /* The size of each button */
-@property (nonatomic,assign) CGFloat buttonSpacing;                      /* The size of the gap between each button */
+/* Load Progress Manager */
+@property (nonatomic,strong) NJKWebViewProgress *progressManager;
 
 /* Images for the Reload/Stop button */
 @property (nonatomic,strong) UIImage *reloadIcon;
@@ -156,6 +123,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 /* See if we need to revert the navigation bar to 'hidden' when we pop from a navigation controller */
 @property (nonatomic,assign) BOOL hideNavBarOnClose;
 
+@property (nonatomic, assign) BOOL initialLoad;
+
 /* Perform all common setup steps */
 - (void)setup;
 
@@ -163,10 +132,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 /* Init and configure various sections of the controller */
 - (void)setUpNavigationButtons;
-- (UIView *)containerViewWithNavigationButtons;
 
 /* Review the current state of the web view and update the UI controls in the nav bar to match it */
 - (void)refreshButtonsState;
+- (void)layoutButtonsForCurrentSizeClass;
+- (void)showPlaceholderTitle;
 
 /* Event callbacks for button taps */
 - (void)backButtonTapped:(id)sender;
@@ -181,14 +151,6 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 - (void)openMailDialog;
 - (void)openMessageDialog;
 - (void)openTwitterDialog;
-
-/* Methods related to tracking load progress of current page */
-- (void)resetLoadProgress;
-- (void)startLoadProgress;
-- (void)incrementLoadProgress;
-- (void)finishLoadProgress;
-- (void)setLoadingProgress:(CGFloat)loadingProgress;
-- (void)handleLoadRequestCompletion; //Called each time a request successfully (or unsuccessfully) ends
 
 /* Methods to contain all of the functionality needed to properly animate the UIWebView rotating */
 - (CGRect)rectForVisibleRegionOfWebViewAnimatingToOrientation:(UIInterfaceOrientation)toInterfaceOrientation;
@@ -205,10 +167,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 // -------------------------------------------------------
 
-#pragma mark -
-#pragma mark Class Implementation
+#pragma mark - Class Implementation -
 @implementation TOWebViewController
 
+#pragma mark - Class Creation -
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
     if (self = [super initWithCoder:aDecoder])
@@ -238,6 +200,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     return [self initWithURL:[NSURL URLWithString:urlString]];
 }
 
+#pragma mark - Setup -
 - (NSURL *)cleanURL:(NSURL *)url
 {
     //If no URL scheme was supplied, defer back to HTTP.
@@ -253,11 +216,14 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     //Direct ivar reference since we don't want to trigger their actions yet
     _showActionButton = YES;
     _showDoneButton   = YES;
-    _buttonSpacing    = (IPAD == NO) ? NAVIGATION_BUTTON_SPACING : NAVIGATION_BUTTON_SPACING_IPAD;
-    _buttonWidth      = NAVIGATION_BUTTON_WIDTH;
     _showLoadingBar   = YES;
     _showUrlWhileLoading = YES;
     _showPageTitles   = YES;
+    _initialLoad      = YES;
+    
+    _progressManager = [[NJKWebViewProgress alloc] init];
+    _progressManager.webViewProxyDelegate = self;
+    _progressManager.progressDelegate = self;
     
     //Set the initial default style as full screen (But this can be easily overridden)
     self.modalPresentationStyle = UIModalPresentationFullScreen;
@@ -288,7 +254,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //Create the web view
     self.webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-    self.webView.delegate = self;
+    self.webView.delegate = self.progressManager;
     self.webView.autoresizingMask = UIViewAutoresizingFlexibleHeight | UIViewAutoresizingFlexibleWidth;
     self.webView.backgroundColor = [UIColor clearColor];
     self.webView.scalesPageToFit = YES;
@@ -296,35 +262,15 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     self.webView.opaque = YES;
     [self.view addSubview:self.webView];
 
-    //Set up the loading bar
-    CGFloat y = self.webView.scrollView.contentInset.top;
-    self.loadingBarView = [[TOWebLoadingView alloc] initWithFrame:CGRectMake(0, y, CGRectGetWidth(self.view.frame), LOADING_BAR_HEIGHT)];
-    self.loadingBarView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    if (self.loadingBarTintColor && [self.loadingBarView respondsToSelector:@selector(setTintColor:)])
-        self.loadingBarView.tintColor = self.loadingBarTintColor;
+    CGFloat progressBarHeight = 2.f;
+    CGRect navigationBarBounds = self.navigationController.navigationBar.bounds;
+    CGRect barFrame = CGRectMake(0, navigationBarBounds.size.height - progressBarHeight, navigationBarBounds.size.width, progressBarHeight);
+    self.progressView = [[NJKWebViewProgressView alloc] initWithFrame:barFrame];
+    self.progressView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin;
+    if (self.loadingBarTintColor)
+        self.progressView.progressBarView.backgroundColor = self.loadingBarTintColor;
     
-    //set the tint color for the loading bar
-    if (MINIMAL_UI && self.loadingBarTintColor == nil) {
-        if (self.navigationController && self.navigationController.view.window.tintColor)
-            self.loadingBarView.backgroundColor = self.navigationController.view.window.tintColor;
-        else if (self.view.window.tintColor)
-            self.loadingBarView.backgroundColor = self.view.window.tintColor;
-        else
-            self.loadingBarView.backgroundColor = DEFAULT_BAR_TINT_COLOR;
-    }
-    else if (self.loadingBarTintColor)
-        self.loadingBarView.backgroundColor = self.loadingBarTintColor;
-    else
-        self.loadingBarView.backgroundColor = DEFAULT_BAR_TINT_COLOR;
     
-    //set up a subtle gradient to add over the loading bar
-    if (MINIMAL_UI == NO) {
-        CAGradientLayer *loadingBarGradientLayer = [CAGradientLayer layer];
-        loadingBarGradientLayer.colors = @[(id)[[UIColor colorWithWhite:0.0f alpha:0.25f] CGColor],(id)[[UIColor colorWithWhite:0.0f alpha:0.0f] CGColor]];
-        loadingBarGradientLayer.frame = self.loadingBarView.bounds;
-        [self.loadingBarView.layer addSublayer:loadingBarGradientLayer];
-    }
-
     //only load the buttons if we need to
     if (self.navigationButtonsHidden == NO)
         [self setUpNavigationButtons];
@@ -332,102 +278,44 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (void)setUpNavigationButtons
 {
-    //set up the buttons for the navigation bar
-    CGRect buttonFrame = CGRectZero; buttonFrame.size = NAVIGATION_BUTTON_SIZE;
-    
-    UIButtonType buttonType = UIButtonTypeCustom;
-    if (MINIMAL_UI)
-        buttonType = UIButtonTypeSystem;
-    
     //set up the back button
-    UIImage *backButtonImage = [UIImage TOWebViewControllerIcon_backButtonWithAttributes:self.buttonThemeAttributes];
     if (self.backButton == nil) {
-        self.backButton = [UIButton buttonWithType:buttonType];
-        [self.backButton setFrame:buttonFrame];
-        [self.backButton setShowsTouchWhenHighlighted:YES];
+        UIImage *backButtonImage = [UIImage TOWebViewControllerIcon_backButtonWithAttributes:self.buttonThemeAttributes];
+        self.backButton = [[UIBarButtonItem alloc] initWithImage:backButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(backButtonTapped:)];
+        self.backButton.tintColor = self.buttonTintColor;
     }
-    [self.backButton setImage:backButtonImage forState:UIControlStateNormal];
     
-    //set up the forward button (Don't worry about the frame at this point as it will be hidden by default)
-    UIImage *forwardButtonImage = [UIImage TOWebViewControllerIcon_forwardButtonWithAttributes:self.buttonThemeAttributes];
+    //set up the forward button
     if (self.forwardButton == nil) {
-        self.forwardButton  = [UIButton buttonWithType:buttonType];
-        [self.forwardButton setFrame:buttonFrame];
-        [self.forwardButton setShowsTouchWhenHighlighted:YES];
+        UIImage *forwardButtonImage = [UIImage TOWebViewControllerIcon_forwardButtonWithAttributes:self.buttonThemeAttributes];
+        self.forwardButton  = [[UIBarButtonItem alloc] initWithImage:forwardButtonImage style:UIBarButtonItemStylePlain target:self action:@selector(forwardButtonTapped:)];
+        self.forwardButton.tintColor = self.buttonTintColor;
     }
-    [self.forwardButton setImage:forwardButtonImage forState:UIControlStateNormal];
     
     //set up the reload button
     if (self.reloadStopButton == nil) {
-        self.reloadStopButton = [UIButton buttonWithType:buttonType];
-        [self.reloadStopButton setFrame:buttonFrame];
-        [self.reloadStopButton setShowsTouchWhenHighlighted:YES];
+        self.reloadIcon = [UIImage TOWebViewControllerIcon_refreshButtonWithAttributes:self.buttonThemeAttributes];
+        self.stopIcon   = [UIImage TOWebViewControllerIcon_stopButtonWithAttributes:self.buttonThemeAttributes];
+        
+        self.reloadStopButton = [[UIBarButtonItem alloc] initWithImage:self.reloadIcon style:UIBarButtonItemStylePlain target:self action:@selector(reloadStopButtonTapped:)];
+        self.reloadStopButton.tintColor = self.buttonTintColor;
     }
-    
-    self.reloadIcon = [UIImage TOWebViewControllerIcon_refreshButtonWithAttributes:self.buttonThemeAttributes];
-    self.stopIcon   = [UIImage TOWebViewControllerIcon_stopButtonWithAttributes:self.buttonThemeAttributes];
-    [self.reloadStopButton setImage:self.reloadIcon forState:UIControlStateNormal];
     
     //if desired, show the action button
-    if (self.showActionButton) {
-        if (self.actionButton == nil) {
-            self.actionButton = [UIButton buttonWithType:buttonType];
-            [self.actionButton setFrame:buttonFrame];
-            [self.actionButton setShowsTouchWhenHighlighted:YES];
-        }
+    if (self.showActionButton && self.actionButton == nil) {
+        self.actionButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(actionButtonTapped:)];
+        self.actionButton.tintColor = self.buttonTintColor;
         
-        [self.actionButton setImage:[UIImage TOWebViewControllerIcon_actionButtonWithAttributes:self.buttonThemeAttributes] forState:UIControlStateNormal];
+        if (MINIMAL_UI) {
+            CGFloat topInset = -2.0f;
+            self.actionButton.imageInsets = UIEdgeInsetsMake(topInset, 0.0f, -topInset, 0.0f);
+        }
     }
-}
-
-- (UIView *)containerViewWithNavigationButtons
-{
-    CGRect buttonFrame = CGRectZero;
-    buttonFrame.size = NAVIGATION_BUTTON_SIZE;
-
-    //set up the icons for the navigation bar
-    UIView *iconsContainerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 0, self.buttonWidth)];
-    iconsContainerView.backgroundColor = [UIColor clearColor];
-
-    //add the back button
-    self.backButton.frame = buttonFrame;
-    [iconsContainerView addSubview:self.backButton];
-
-    //add the forward button too, but keep it hidden for now
-    self.forwardButton.frame = buttonFrame;
-    [iconsContainerView addSubview:self.forwardButton];
-
-    //add the reload button if the action button is hidden
-    self.reloadStopButton.frame = buttonFrame;
-    [iconsContainerView addSubview:self.reloadStopButton];
-
-    //add the action button
-    if (self.showActionButton) {
-        self.actionButton.frame = buttonFrame;
-        [iconsContainerView addSubview:self.actionButton];
-    }
-
-    //layout buttons
-    NSUInteger count = iconsContainerView.subviews.count;
-    if(count){
-        CGRect newFrame = iconsContainerView.frame;
-        CGFloat newWidth = newFrame.size.width = (self.buttonWidth*count)+(self.buttonSpacing*count-1);
-        iconsContainerView.frame = newFrame;
-        [iconsContainerView.subviews enumerateObjectsUsingBlock:^(UIView *subview, NSUInteger index, BOOL *stop) {
-            subview.center = CGPointMake((newWidth/count)*index + (self.buttonSpacing + self.buttonWidth)/2, subview.center.y);
-        }];
-    }
-    return iconsContainerView;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    if (self.navigationController) {
-        self.hideToolbarOnClose = self.navigationController.toolbarHidden;
-        self.hideNavBarOnClose  = self.navigationBar.hidden;
-    }
     
     //remove the shadow that lines the bottom of the webview
     if (MINIMAL_UI == NO) {
@@ -443,71 +331,48 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     if (self.hideWebViewBoundaries)
         self.gradientLayer.hidden = YES;
     
-    //create the buttons view and add them to either the navigation bar or toolbar
-    self.buttonsContainerView = [self containerViewWithNavigationButtons];
-    if (IPAD) {
-        self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:self.buttonsContainerView];
-    }
-    else {
-        NSArray *items = @[BLANK_BARBUTTONITEM, [[UIBarButtonItem alloc] initWithCustomView:self.buttonsContainerView], BLANK_BARBUTTONITEM];
-        self.toolbarItems = items;
-    }
-    
-    //override the tint color of the buttons, if desired.
-    if (MINIMAL_UI)
-        self.buttonsContainerView.tintColor = self.buttonTintColor;
-    
     // Create the Done button
     if (self.showDoneButton && self.beingPresentedModally && !self.onTopOfNavigationControllerStack) {
-        UIBarButtonItem *doneButton = nil;
-        
         if (self.doneButtonTitle) {
-            doneButton = [[UIBarButtonItem alloc] initWithTitle:self.doneButtonTitle style:UIBarButtonItemStyleDone
+            self.doneButton = [[UIBarButtonItem alloc] initWithTitle:self.doneButtonTitle style:UIBarButtonItemStyleDone
                                                          target:self
                                                          action:@selector(doneButtonTapped:)];
         }
         else {
-            doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
+            self.doneButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone
                                                                                         target:self
                                                                                         action:@selector(doneButtonTapped:)];
         }
         
-        if (IPAD)
-            self.navigationItem.leftBarButtonItem = doneButton;
-        else
-            self.navigationItem.rightBarButtonItem = doneButton;
+        self.doneButton.tintColor = self.buttonTintColor;
     }
-    
-    //Set the appropriate actions to the buttons
-    [self.backButton        addTarget:self action:@selector(backButtonTapped:)          forControlEvents:UIControlEventTouchUpInside];
-    [self.forwardButton     addTarget:self action:@selector(forwardButtonTapped:)       forControlEvents:UIControlEventTouchUpInside];
-    [self.reloadStopButton  addTarget:self action:@selector(reloadStopButtonTapped:)    forControlEvents:UIControlEventTouchUpInside];
-    [self.actionButton      addTarget:self action:@selector(actionButtonTapped:)        forControlEvents:UIControlEventTouchUpInside];
 }
 
+#pragma mark - View Presentation/Dismissal -
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    //see if we need to show the toolbar
+    //Show placehodler title until we work out the new one
+    [self showPlaceholderTitle];
+    
+    //Capture the present navigation controller state to restore at the end
     if (self.navigationController) {
-        if (IPAD == NO) { //iPhone
-            if (self.beingPresentedModally == NO) { //being pushed onto a pre-existing stack, so
-                [self.navigationController setToolbarHidden:self.navigationButtonsHidden animated:animated];
-                [self.navigationController setNavigationBarHidden:NO animated:animated];
-            }
-            else { //Being presented modally, so control the
-                self.navigationController.toolbarHidden = self.navigationButtonsHidden;
-            }
-        }
-        else {
-            [self.navigationController setNavigationBarHidden:NO animated:animated];
-            [self.navigationController setToolbarHidden:YES animated:animated];
-        }
+        self.hideToolbarOnClose = self.navigationController.toolbarHidden;
+        self.hideNavBarOnClose  = self.navigationBar.hidden;
     }
     
     //reset the gradient layer in case the bounds changed before display
     self.gradientLayer.frame = self.view.bounds;
+    
+    //Add the progress bar
+    [self.navigationController.navigationBar addSubview:self.progressView];
+    [self.progressView setProgress:0.0f];
+    
+    //Layout the buttons
+    [UIView performWithoutAnimation:^{
+        [self layoutButtonsForCurrentSizeClass];
+    }];
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -529,6 +394,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         [self.navigationController setToolbarHidden:self.hideToolbarOnClose animated:animated];
         [self.navigationController setNavigationBarHidden:self.hideNavBarOnClose animated:animated];
     }
+    
+    [self.progressView removeFromSuperview];
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -550,6 +417,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     return UIStatusBarStyleDefault;
 }
 
+#pragma mark - Screen Rotation Interface -
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation
 {
     if (self.webViewRotationSnapshot)
@@ -569,14 +437,6 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     //reset the gradient layer's frame to match the new bounds
     self.gradientLayer.frame = self.view.bounds;
     
-    //update the loading bar to match the proper bounds
-    self.loadingBarView.frame = ({
-        CGRect frame = self.loadingBarView.frame;
-        frame.origin.y = self.webView.scrollView.contentInset.top;
-        frame.origin.x = -CGRectGetWidth(self.loadingBarView.frame) + (CGRectGetWidth(self.view.bounds) * _loadingProgressState.loadingProgress);
-        frame;
-    });
-    
     //animate the web view snapshot into the proper place
     [self animateWebViewRotationToOrientation:toInterfaceOrientation withDuration:duration];
 }
@@ -588,6 +448,15 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 #pragma mark -
 #pragma mark State Tracking
+- (BOOL)compactPresentation
+{
+    if (SIZE_CLASSES) {
+        return (self.traitCollection.horizontalSizeClass == UIUserInterfaceSizeClassCompact);
+    }
+    
+    return (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad);
+}
+
 - (BOOL)beingPresentedModally
 {
     // Check if we have a parent navigation controller, it's being presented modally,
@@ -611,6 +480,157 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     return NO;
 }
 
+- (BOOL)splitScreenEnabled
+{
+    //View size
+    CGSize viewSize = self.view.frame.size;
+    NSInteger viewHeight = MAX(viewSize.width, viewSize.height);
+    NSInteger viewWidth = MIN(viewSize.width, viewSize.height);
+    
+    //Screen size
+    CGSize screenSize = [[UIScreen mainScreen] bounds].size;
+    NSInteger screenHeight = MAX(screenSize.width, screenSize.height);
+    NSInteger screenWidth = MIN(screenSize.width, screenSize.height);
+    
+    return !(viewHeight == screenHeight && viewWidth == screenWidth);
+}
+
+#pragma mark - View Layout/Transitions -
+- (void)layoutButtonsForCurrentSizeClass
+{
+    [self.navigationController setToolbarHidden:(!self.compactPresentation || self.navigationButtonsHidden) animated:NO];
+        
+    //Reset the lot
+    self.toolbarItems = nil;
+    self.navigationItem.leftBarButtonItems = nil;
+    self.navigationItem.rightBarButtonItems = nil;
+    self.navigationItem.leftItemsSupplementBackButton = NO;
+    
+    //If we've got explicitly set application items in the navigation bar, set them up before handling screen cases
+    if (self.applicationLeftBarButtonItems) {
+        self.navigationItem.leftBarButtonItems = self.applicationLeftBarButtonItems;
+        self.navigationItem.leftItemsSupplementBackButton = YES;
+    }
+
+    //Handle iPhone Layout
+    if (self.compactPresentation) {
+        
+        // Set up the Done button if presented modally
+        if (self.doneButton) {
+            self.navigationItem.rightBarButtonItem = self.doneButton;
+        }
+        
+        // If there are no navigation buttons, and only one auxiliary button, just place that
+        // opposite of the done button
+        if (self.navigationButtonsHidden && self.applicationBarButtonItems.count == 1) {
+            // place on the left or right depending on the type of presentation
+            if (self.beingPresentedModally) {
+                if (!self.applicationLeftBarButtonItems) {
+                    self.navigationItem.leftBarButtonItem = self.applicationBarButtonItems.firstObject;
+                }
+            }
+            else {
+                self.navigationItem.rightBarButtonItem = self.applicationBarButtonItems.firstObject;
+            }
+            
+            return;
+        }
+        
+        //Don't bother with laying out any other buttons if they're all disabled
+        if (self.navigationButtonsHidden && self.applicationBarButtonItems.count == 0) {
+            return;
+        }
+        
+        //Set up array of buttons
+        NSMutableArray *items = [NSMutableArray array];
+        
+        if (self.navigationButtonsHidden == NO) {
+            if (self.backButton)        { [items addObject:self.backButton]; }
+            if (self.forwardButton)     { [items addObject:self.forwardButton]; }
+            if (self.reloadStopButton)  { [items addObject:self.reloadStopButton]; }
+            
+            for (UIBarButtonItem *item in self.applicationBarButtonItems) {
+                [items addObject:item];
+            }
+            
+            if (self.actionButton)      { [items addObject:self.actionButton]; }
+        }
+        
+        UIBarButtonItem *(^flexibleSpace)() = ^{
+            return [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+        };
+        
+        BOOL lessThanFiveItems = items.count < 5;
+        
+        NSInteger index = 1;
+        NSInteger itemsCount = items.count-1;
+        for (NSInteger i = 0; i < itemsCount; i++) {
+            [items insertObject:flexibleSpace() atIndex:index];
+            index += 2;
+        }
+        
+        if (lessThanFiveItems) {
+            [items insertObject:flexibleSpace() atIndex:0];
+            [items addObject:flexibleSpace()];
+        }
+        
+        self.toolbarItems = items;
+        
+        return;
+    }
+    
+    //Handle iPad layout
+    BOOL modal = self.beingPresentedModally;
+    NSMutableArray *leftItems = self.applicationLeftBarButtonItems ? [NSMutableArray arrayWithArray:self.navigationItem.leftBarButtonItems] : [NSMutableArray array];
+    
+    NSMutableArray *rightItems = [NSMutableArray array];
+    UIBarButtonItem *fixedSpace = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
+    fixedSpace.width = NAVIGATION_ICON_SPACING;
+    
+    if (modal) {
+        if (self.backButton)        { [leftItems addObject:self.backButton];        [leftItems addObject:fixedSpace]; }
+        if (self.forwardButton)     { [leftItems addObject:self.forwardButton];     [leftItems addObject:fixedSpace]; }
+        if (self.reloadStopButton)  { [leftItems addObject:self.reloadStopButton];  [leftItems addObject:fixedSpace]; }
+        
+        if (self.doneButton)        { [rightItems addObject:self.doneButton];       [rightItems addObject:fixedSpace]; }
+        if (self.actionButton)      { [rightItems addObject:self.actionButton];     [rightItems addObject:fixedSpace]; }
+        
+        for (UIBarButtonItem *item in self.applicationBarButtonItems) {
+            [rightItems addObject:item];
+            [rightItems addObject:fixedSpace];
+        }
+    }
+    else {
+        [leftItems addObject:fixedSpace];
+        if (self.actionButton)      { [leftItems addObject:self.actionButton];      [leftItems addObject:fixedSpace]; }
+        
+        if (self.reloadStopButton)  { [rightItems addObject:self.reloadStopButton]; [rightItems addObject:fixedSpace]; }
+        if (self.forwardButton)     { [rightItems addObject:self.forwardButton];    [rightItems addObject:fixedSpace]; }
+        if (self.backButton)        { [rightItems addObject:self.backButton];       [rightItems addObject:fixedSpace]; }
+        
+        for (UIBarButtonItem *item in self.applicationBarButtonItems) {
+            [leftItems addObject:item];
+            [leftItems addObject:fixedSpace];
+        }
+    }
+    
+    self.navigationItem.leftBarButtonItems = leftItems;
+    self.navigationItem.leftItemsSupplementBackButton = YES;
+    self.navigationItem.rightBarButtonItems = rightItems;
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection
+{
+    [self layoutButtonsForCurrentSizeClass];
+}
+
+- (void)willTransitionToTraitCollection:(UITraitCollection *)newCollection withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator
+{
+    //Necessary to forcibly hide/show the toolbar at this point, or else the translucency will screw up.  :(
+    if (!self.navigationButtonsHidden)
+        self.navigationController.toolbarHidden = newCollection.horizontalSizeClass != UIUserInterfaceSizeClassCompact;
+}
+
 #pragma mark -
 #pragma mark Manual Property Accessors
 - (void)setUrl:(NSURL *)url
@@ -625,19 +645,21 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     [self.urlRequest setURL:self.url];
     [self.webView loadRequest:self.urlRequest];
+    
+    [self showPlaceholderTitle];
 }
 
 - (void)setLoadingBarTintColor:(UIColor *)loadingBarTintColor
 {
-    if (loadingBarTintColor == self.loadingBarTintColor)
+    if (loadingBarTintColor == _loadingBarTintColor) {
         return;
+    }
     
     _loadingBarTintColor = loadingBarTintColor;
     
-    self.loadingBarView.backgroundColor = self.loadingBarTintColor;
-    
-    if ([self.loadingBarView respondsToSelector:@selector(setTintColor:)])
-        self.loadingBarView.tintColor = self.loadingBarTintColor;
+    if (self.progressView) {
+        self.progressView.progressBarView.backgroundColor = _loadingBarTintColor;
+    }
 }
 
 - (UINavigationBar *)navigationBar
@@ -650,7 +672,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (UIToolbar *)toolbar
 {
-    if (IPAD)
+    if (!self.compactPresentation)
         return nil;
     
     if (self.navigationController)
@@ -666,28 +688,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     _navigationButtonsHidden = navigationButtonsHidden;
     
-    if (_navigationButtonsHidden == NO)
-    {
-        [self setUpNavigationButtons];
-        UIView *iconsContainerView = [self containerViewWithNavigationButtons];
-        if (IPAD) {
-            self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:iconsContainerView];
-        }
-        else {
-            NSArray *items = @[BLANK_BARBUTTONITEM, [[UIBarButtonItem alloc] initWithCustomView:iconsContainerView], BLANK_BARBUTTONITEM];
-            self.toolbarItems = items;
-        }
-    }
-    else
-    {
-        if (IPAD) {
-            self.navigationItem.rightBarButtonItem  = nil;
-        }
-        else {
-            self.navigationController.toolbarItems = nil;
-            self.navigationController.toolbarHidden = YES;
-        }
-            
+    if (_navigationButtonsHidden) {
         self.backButton = nil;
         self.forwardButton = nil;
         self.reloadIcon = nil;
@@ -695,6 +696,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         self.reloadStopButton = nil;
         self.actionButton = nil;
     }
+    else {
+        [self setUpNavigationButtons];
+    }
+    
+     [self layoutButtonsForCurrentSizeClass];
 }
 
 - (void)setButtonTintColor:(UIColor *)buttonTintColor
@@ -705,7 +711,11 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     _buttonTintColor = buttonTintColor;
     
     if (MINIMAL_UI) {
-        self.buttonsContainerView.tintColor = _buttonTintColor;
+        self.backButton.tintColor = _buttonTintColor;
+        self.forwardButton.tintColor = _buttonTintColor;
+        self.reloadStopButton.tintColor = _buttonTintColor;
+        self.actionButton.tintColor = _buttonTintColor;
+        self.doneButton.tintColor = _buttonTintColor;
     }
     else {
         if (self.buttonThemeAttributes == nil)
@@ -730,6 +740,42 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     [self setUpNavigationButtons];
 }
 
+- (void)setApplicationBarButtonItems:(NSArray *)applicationBarButtonItems
+{
+    if (applicationBarButtonItems == _applicationBarButtonItems)
+        return;
+    
+    _applicationBarButtonItems = applicationBarButtonItems;
+    
+    if (self.presentingViewController && self.compactPresentation) {
+        [self layoutButtonsForCurrentSizeClass];
+    }
+}
+
+- (void)setLoadCompletedApplicationBarButtonItems:(NSArray *)loadCompletedApplicationBarButtonItems
+{
+    if (loadCompletedApplicationBarButtonItems == _loadCompletedApplicationBarButtonItems)
+        return;
+    
+    _loadCompletedApplicationBarButtonItems = loadCompletedApplicationBarButtonItems;
+    
+    //Set disabled initially until we can confirm the load state of the web view
+    for (UIBarButtonItem *item in _loadCompletedApplicationBarButtonItems)
+        item.enabled = NO;
+    
+    [self refreshButtonsState];
+}
+
+- (void)setApplicationLeftBarButtonItems:(NSArray *)applicationLeftBarButtonItems
+{
+    if (applicationLeftBarButtonItems == _applicationLeftBarButtonItems) {
+        return;
+    }
+    
+    _applicationLeftBarButtonItems = applicationLeftBarButtonItems;
+    [self refreshButtonsState];
+}
+
 #pragma mark -
 #pragma mark WebView Delegate
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
@@ -742,63 +788,110 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //TODO: Implement TOModalWebViewController Delegate callback
     
-    //if the URL is the load completed notification from JavaScript
-    if ([request.URL.absoluteString isEqualToString:kCompleteRPCURL] || !shouldStart) {
-        [self finishLoadProgress];
-        return NO;
-    }
-    
-    //If the URL contrains a fragement jump (eg an anchor tag), check to see if it relates to the current page, or another
-    //If we're merely jumping around the same page, don't perform a new loading bar sequence
-    BOOL isFragmentJump = NO;
-    if (request.URL.fragment)
-    {
-        NSString *nonFragmentURL = [request.URL.absoluteString stringByReplacingOccurrencesOfString:[@"#" stringByAppendingString:request.URL.fragment] withString:@""];
-        isFragmentJump = [nonFragmentURL isEqualToString:webView.request.URL.absoluteString];
-    }
-    
-    BOOL isTopLevelNavigation = [request.mainDocumentURL isEqual:request.URL];
-    BOOL isHTTP = [request.URL.scheme isEqualToString:@"http"] || [request.URL.scheme isEqualToString:@"https"];
-    if (shouldStart && !isFragmentJump && isHTTP && isTopLevelNavigation && navigationType != UIWebViewNavigationTypeBackForward)
-    {
-        //Save the URL in the accessor property
-        _url = [request URL];
-        [self resetLoadProgress];
-    }
-    
     return shouldStart;
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView
 {
-    //increment the number of load requests started
-    _loadingProgressState.loadingCount++;
-    
-    //keep track if this is the highest number of concurrent requests
-    _loadingProgressState.maxLoadCount = MAX(_loadingProgressState.maxLoadCount, _loadingProgressState.loadingCount);
-    
-    //start tracking the load state
-    [self startLoadProgress];
+    //show that loading started in the status bar
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     
     //update the navigation bar buttons
     [self refreshButtonsState];
 }
 
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
-    [self handleLoadRequestCompletion];
-    [self refreshButtonsState];
-
-    //see if we can set the proper page title at this point
-    if (self.showPageTitles)
-        self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    if(self.didFinishLoadHandler){
+        self.didFinishLoadHandler(webView);
+    }
 }
 
-- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
+#pragma mark - Progress Delegate -
+-(void)webViewProgress:(NJKWebViewProgress *)webViewProgress updateProgress:(float)progress
 {
-    self.loadingBarView.alpha = 0.0f;
-    [self handleLoadRequestCompletion];
+    [self.progressView setProgress:progress animated:YES];
+    
+    //Query the webview to see what load state JavaScript perceives it at
+    NSString *readyState = [self.webView stringByEvaluatingJavaScriptFromString:@"document.readyState"];
+    
+    //interactive means the page has loaded sufficiently to allow user interaction now
+    BOOL interactive = [readyState isEqualToString:@"interactive"];
+    BOOL complete = [readyState isEqualToString:@"complete"];
+    if (interactive || complete)
+    {
+        //see if we can set the proper page title yet
+        if (self.showPageTitles) {
+            NSString *title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
+            
+            if (title.length)
+                self.title = title;
+        }
+        
+        //if we're matching the view BG to the web view, update the background colour now
+        if (self.hideWebViewBoundaries)
+            self.view.backgroundColor = [self webViewPageBackgroundColor];
+        
+        //finally, if the app desires it, disable the ability to tap and hold on links
+        if (self.disableContextualPopupMenu)
+            [self.webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
+    }
+    
     [self refreshButtonsState];
+}
+
+#pragma mark -
+#pragma mark UI State Handling
+- (void)refreshButtonsState
+{
+    //update the state for the back button
+    if (self.webView.canGoBack)
+        [self.backButton setEnabled:YES];
+    else
+        [self.backButton setEnabled:NO];
+    
+    //Forward button
+    if (self.webView.canGoForward)
+        [self.forwardButton setEnabled:YES];
+    else
+        [self.forwardButton setEnabled:NO];
+    
+    BOOL loaded = (self.progressManager.progress >= 1.0f - FLT_EPSILON);
+    
+    //Stop/Reload Button
+    if (!loaded) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+        self.reloadStopButton.image = self.stopIcon;
+    }
+    else {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        self.reloadStopButton.image = self.reloadIcon;
+    }
+    
+    //Any potential user-specified buttons
+    if (self.loadCompletedApplicationBarButtonItems) {
+        BOOL enabled = NO;
+        if (loaded && self.webView.request.URL.absoluteURL) {
+            enabled = YES;
+        }
+        
+        for (UIBarButtonItem *item in self.loadCompletedApplicationBarButtonItems) {
+            item.enabled = enabled;
+        }
+    }
+}
+
+- (void)showPlaceholderTitle
+{
+    //set the title to the URL until we load the page properly
+    if (self.url && self.showPageTitles && self.showUrlWhileLoading) {
+        NSString *url = [_url absoluteString];
+        url = [url stringByReplacingOccurrencesOfString:@"http://" withString:@""];
+        url = [url stringByReplacingOccurrencesOfString:@"https://" withString:@""];
+        self.title = url;
+    }
+    else if (self.showPageTitles) {
+        self.title = NSLocalizedStringFromTable(@"Loading...", @"TOWebViewControllerLocalizable", @"Loading...");
+    }
 }
 
 #pragma mark -
@@ -817,14 +910,12 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (void)reloadStopButtonTapped:(id)sender
 {
+    BOOL loaded = (self.progressManager.progress >= 1.0f - FLT_EPSILON);
+    
     //regardless of reloading, or stopping, halt the webview
     [self.webView stopLoading];
     
-    if (self.webView.isLoading) {
-        //if we were loading, hide the load bar for now
-        self.loadingBarView.alpha = 0.0f;
-    }
-    else {
+    if (loaded) {
         //In certain cases, if the connection drops out preload or midload,
         //it nullifies webView.request, which causes [webView reload] to stop working.
         //This checks to see if the webView request URL is nullified, and if so, tries to load
@@ -851,13 +942,16 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 #pragma mark Action Item Event Handlers
 - (void)actionButtonTapped:(id)sender
 {
+    //Do nothing if there is no url for action
+    if (!self.url) {
+        return;
+    }
     // If we're on iOS 6 or above, we can use the super-duper activity view controller :)
     if (NSClassFromString(@"UIPresentationController")) {
         NSArray *browserActivities = @[[TOActivitySafari new], [TOActivityChrome new]];
         UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[self.url] applicationActivities:browserActivities];
         activityViewController.modalPresentationStyle = UIModalPresentationPopover;
-        activityViewController.popoverPresentationController.sourceRect = self.actionButton.frame;
-        activityViewController.popoverPresentationController.sourceView = self.actionButton.superview;
+        activityViewController.popoverPresentationController.barButtonItem = self.actionButton;
         [self presentViewController:activityViewController animated:YES completion:nil];
     }
     else if (NSClassFromString(@"UIActivityViewController"))
@@ -886,13 +980,14 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
             //Create the sharing popover controller
             self.sharingPopoverController = [[UIPopoverController alloc] initWithContentViewController:activityViewController];
             self.sharingPopoverController.delegate = self;
-            [self.sharingPopoverController presentPopoverFromRect:self.actionButton.frame inView:self.actionButton.superview permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+            [self.sharingPopoverController presentPopoverFromBarButtonItem:self.actionButton permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 
 #pragma GCC diagnostic pop
         }
     }
     else //We must be on iOS 5
     {
+
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wdeprecated-declarations"
         
@@ -933,7 +1028,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
         
         //Add a cancel button if on iPhone
-        if (IPAD == NO) {
+        if (self.compactPresentation) {
             [actionSheet addButtonWithTitle:NSLocalizedStringFromTable(@"Cancel", @"TOWebViewControllerLocalizable", @"Cancel")];
             [actionSheet setCancelButtonIndex:numberOfButtons];
             [actionSheet showInView:self.view];
@@ -946,6 +1041,8 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     }
 }
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     //Handle whichever button was tapped
@@ -962,22 +1059,18 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
                 [self openMailDialog];
             else if ([MFMessageComposeViewController canSendText])
                 [self openMessageDialog];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+
             else if ([TWTweetComposeViewController canSendTweet])
                 [self openTwitterDialog];
-#pragma clang diagnostic pop
+
         }
             break;
         case 3: //SMS or Twitter
         {
             if ([MFMessageComposeViewController canSendText])
                 [self openMessageDialog];
-#pragma clang diagnostic push
-#pragma clang diagnostic ignored "-Wdeprecated-declarations"
             else if ([TWTweetComposeViewController canSendTweet])
                 [self openTwitterDialog];
-#pragma clang diagnostic pop
         }
             break;
         case 4: //Twitter (or Cancel)
@@ -987,12 +1080,16 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
             break;
     }
 }
+#pragma clang diagnostic pop
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
     //Once the popover controller is dismissed, we can release our own reference to it
     self.sharingPopoverController = nil;
 }
+#pragma clang diagnostic pop
 
 - (void)copyURLToClipboard
 {
@@ -1074,188 +1171,6 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     [tweetComposer addURL:self.url];
     [self presentViewController:tweetComposer animated:YES completion:nil];
 #pragma clang diagnostic pop
-}
-
-
-#pragma mark -
-#pragma mark Page Load Progress Tracking Handlers
-- (void)resetLoadProgress
-{
-    memset(&_loadingProgressState, 0, sizeof(_loadingProgressState));
-    [self setLoadingProgress:0.0f];
-}
-
-- (void)startLoadProgress
-{
-    if (self.webView.isLoading == NO)
-        return;
-    
-    //If we haven't started loading yet, set the progress to small, but visible value
-    if (_loadingProgressState.loadingProgress < kInitialProgressValue)
-    {
-        //reset the loading bar
-        CGRect frame = self.loadingBarView.frame;
-        frame.size.width = CGRectGetWidth(self.view.bounds);
-        frame.origin.x = -frame.size.width;
-        frame.origin.y = self.webView.scrollView.contentInset.top;
-        self.loadingBarView.frame = frame;
-        self.loadingBarView.alpha = 1.0f;
-        
-        //add the loading bar to the view
-        if (self.showLoadingBar)
-            [self.view insertSubview:self.loadingBarView aboveSubview:self.navigationBar];
-        
-        //kickstart the loading progress
-        [self setLoadingProgress:kInitialProgressValue];
-        
-        //show that loading started in the status bar
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        
-        //set the title to the URL until we load the page properly
-        if (self.showPageTitles && self.showUrlWhileLoading) {
-            NSString *url = [self.url absoluteString];
-            url = [url stringByReplacingOccurrencesOfString:@"http://" withString:@""];
-            url = [url stringByReplacingOccurrencesOfString:@"https://" withString:@""];
-            self.title = url;
-        } 
-        
-        if (self.reloadStopButton)
-            [self.reloadStopButton setImage:self.stopIcon forState:UIControlStateNormal];
-    }
-}
-
-- (void)incrementLoadProgress
-{
-    float progress          = _loadingProgressState.loadingProgress;
-    float maxProgress       = _loadingProgressState.interactive ? kAfterInteractiveMaxProgressValue : kBeforeInteractiveMaxProgressValue;
-    float remainingPercent  = (float)_loadingProgressState.loadingCount / (float)_loadingProgressState.maxLoadCount;
-    float increment         = (maxProgress - progress) * remainingPercent;
-    progress                = fmin((progress+increment), maxProgress);
-    
-    [self setLoadingProgress:progress];
-}
-
-- (void)finishLoadProgress
-{
-    //reset the load progress
-    [self refreshButtonsState];
-    [self setLoadingProgress:1.0f];
-    
-    //in case it didn't succeed yet, try setting the page title again
-    if (self.showPageTitles)
-        self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-    
-    if (self.reloadStopButton)
-        [self.reloadStopButton setImage:self.reloadIcon forState:UIControlStateNormal];
-}
-
-- (void)setLoadingProgress:(CGFloat)loadingProgress
-{
-    // progress should be incremental only
-    if (loadingProgress > _loadingProgressState.loadingProgress)
-    {
-        _loadingProgressState.loadingProgress = loadingProgress;
-        
-        //Update the loading bar progress to match
-        if (self.showLoadingBar)
-        {
-            CGRect frame = self.loadingBarView.frame;
-            frame.origin.x = -CGRectGetWidth(self.loadingBarView.frame) + (CGRectGetWidth(self.view.bounds) * _loadingProgressState.loadingProgress);
-            
-            [UIView animateWithDuration:0.2f delay:0.0f options:UIViewAnimationOptionCurveEaseOut animations:^{
-                self.loadingBarView.frame = frame;
-            } completion:^(BOOL finished) {
-                //once loading is complete, fade it out
-                if (loadingProgress >= 1.0f - FLT_EPSILON)
-                {
-                    [UIView animateWithDuration:0.2f animations:^{
-                        self.loadingBarView.alpha = 0.0f;
-                    }];
-                }
-            }];
-        }
-    }
-    else if (loadingProgress == 0)
-    {
-        _loadingProgressState.loadingProgress = loadingProgress;
-        if (self.showLoadingBar)
-        {
-            CGRect frame = self.loadingBarView.frame;
-            frame.origin.x = -CGRectGetWidth(self.loadingBarView.frame);
-            self.loadingBarView.frame = frame;
-        }
-    }
-}
-
-- (void)handleLoadRequestCompletion
-{
-    //decrement the number of concurrent requests
-    _loadingProgressState.loadingCount--;
-    
-    //update the progress bar
-    [self incrementLoadProgress];
-    
-    //Query the webview to see what load state JavaScript perceives it at
-    NSString *readyState = [self.webView stringByEvaluatingJavaScriptFromString:@"document.readyState"];
-    
-    //interactive means the page has loaded sufficiently to allow user interaction now
-    BOOL interactive = [readyState isEqualToString:@"interactive"];
-    if (interactive)
-    {
-        _loadingProgressState.interactive = YES;
-        
-        //if we're at the interactive state, attach a Javascript listener to inform us when the page has fully loaded
-        NSString *waitForCompleteJS = [NSString stringWithFormat:   @"window.addEventListener('load',function() { "
-                                       @"var iframe = document.createElement('iframe');"
-                                       @"iframe.style.display = 'none';"
-                                       @"iframe.src = '%@';"
-                                       @"document.body.appendChild(iframe);"
-                                       @"}, false);", kCompleteRPCURL];
-        
-        [self.webView stringByEvaluatingJavaScriptFromString:waitForCompleteJS];
-        
-        //see if we can set the proper page title yet
-        if (self.showPageTitles)
-            self.title = [self.webView stringByEvaluatingJavaScriptFromString:@"document.title"];
-        
-        //if we're matching the view BG to the web view, update the background colour now
-        if (self.hideWebViewBoundaries)
-            self.view.backgroundColor = [self webViewPageBackgroundColor];
-        
-        //finally, if the app desires it, disable the ability to tap and hold on links
-        if (self.disableContextualPopupMenu)
-            [self.webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
-    }
-    
-    BOOL isNotRedirect = self.url && [self.url isEqual:self.webView.request.URL];
-    BOOL complete = [readyState isEqualToString:@"complete"];
-    if (complete && isNotRedirect)
-        [self finishLoadProgress];
-}
-
-#pragma mark -
-#pragma mark Button State Handling
-- (void)refreshButtonsState
-{
-    //update the state for the back button
-    if (self.webView.canGoBack)
-        [self.backButton setEnabled:YES];
-    else
-        [self.backButton setEnabled:NO];
-    
-    if (self.webView.canGoForward)
-        [self.forwardButton setEnabled:YES];
-    else
-        [self.forwardButton setEnabled:NO];
-    
-    if (self.webView.isLoading) {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
-        [self.reloadStopButton setImage:self.stopIcon forState:UIControlStateNormal];
-    }
-    else {
-        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self.reloadStopButton setImage:self.reloadIcon forState:UIControlStateNormal];
-    }
 }
 
 #pragma mark -
@@ -1401,8 +1316,10 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
         {
             //set the content offset for the view to be rendered
             rect.origin = contentOffset;
-            if (contentOffset.y + heightInPortraitMode > contentSize.height )
+            if (contentOffset.y + heightInPortraitMode > contentSize.height) {
                 rect.origin.y = contentSize.height - heightInPortraitMode;
+                rect.origin.y = MAX(rect.origin.y, -self.webView.scrollView.contentInset.top);
+            }
             
             rect.size.width = webViewSize.width;
             rect.size.height = heightInPortraitMode; //make it as tall as it is wide
@@ -1448,8 +1365,13 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 /* Called outside of the animation block. All of the views are currently in their 'before' state. */
 - (void)setUpWebViewForRotationToOrientation:(UIInterfaceOrientation)toOrientation withDuration:(NSTimeInterval)duration
 {
+    // Don't perform this if split screen is active
+    if (self.splitScreenEnabled) {
+        return;
+    }
+    
     // form sheet style controllers' bounds don't change, so none of this is necessary
-    if (IPAD && self.modalPresentationStyle == UIModalPresentationFormSheet)
+    if (!self.compactPresentation && self.modalPresentationStyle == UIModalPresentationFormSheet)
         return;
     
     //if there's already a snapshot in place (shouldn't be possible), just in case, remove it
@@ -1475,10 +1397,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     CGRect  renderBounds            = [self rectForVisibleRegionOfWebViewAnimatingToOrientation:toOrientation];
     
     //generate a snapshot of the webview that we can animate more smoothly
-    CGFloat scale = 1.0f;
-    if (UIInterfaceOrientationIsLandscape(toOrientation))
-        scale = 0.0f;
-    
+    CGFloat scale = 1.75f;
     UIGraphicsBeginImageContextWithOptions(renderBounds.size, YES, scale);
     {
         CGContextRef context = UIGraphicsGetCurrentContext();
@@ -1574,7 +1493,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //UPDATE: Looks like it's no longer necessary in iOS 8! :)
     
-    if (NEW_ROTATIONS == NO) {
+    if (SIZE_CLASSES == NO) {
         //This animation must be complete by the time the view rotation animation is complete, else we'll have incorrect bounds data. This will speed it up to near instant.
         self.webView.scrollView.layer.speed = 9999.0f;
         
@@ -1590,8 +1509,13 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 /* Called within the animation block. All views will be set to their 'destination' state. */
 - (void)animateWebViewRotationToOrientation:(UIInterfaceOrientation)toOrientation withDuration:(NSTimeInterval)duration
 {
-    /// form sheet style controllers' bounds don't change, so implemeting this is rather pointless
-    if (IPAD && self.modalPresentationStyle == UIModalPresentationFormSheet)
+    //Don't bother when split screen is active
+    if (self.splitScreenEnabled) {
+        return;
+    }
+    
+    // form sheet style controllers' bounds don't change, so implemeting this is rather pointless
+    if (!self.compactPresentation && self.modalPresentationStyle == UIModalPresentationFormSheet)
         return;
     
     //remove all animations presently applied to the web view
@@ -1662,8 +1586,13 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
 
 - (void)restoreWebViewFromRotationFromOrientation:(UIInterfaceOrientation)fromOrientation
 {
+    // Don't perform this if split screen is active
+    if (self.splitScreenEnabled) {
+        return;
+    }
+    
     /// form sheet style controllers' bounds don't change, so implemeting this isn't required
-    if (IPAD && self.modalPresentationStyle == UIModalPresentationFormSheet)
+    if (!self.compactPresentation && self.modalPresentationStyle == UIModalPresentationFormSheet)
         return;
     
     //Side Note: When a UIWebView has just had its bounds change, its minimumZoomScale and maximumZoomScale become completely (almost arbitrarily) different.
@@ -1682,7 +1611,7 @@ static const float kAfterInteractiveMaxProgressValue    = 0.9f;
     
     //Pull out the animation and attach a delegate so we can receive an event when it's finished, to clean it up properly
     CABasicAnimation *anim = [[self.webView.scrollView.layer animationForKey:@"bounds"] mutableCopy];
-    if (NEW_ROTATIONS == NO) {
+    if (SIZE_CLASSES == NO) {
         [self.webView.scrollView.layer removeAllAnimations];
         self.webView.scrollView.layer.speed = 9999.0f;
         [self.webView.scrollView setZoomScale:translatedScale animated:YES];

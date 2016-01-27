@@ -303,9 +303,6 @@
     CGFloat maxBound = [self maxVerticalBound];
     
     CGFloat scale = _axisHeight / (maxBound - minBound);
-    if (isinf(scale)) {
-        scale = 0;
-    }
     
     UIBezierPath *noPath = [self getLinePath:0 withSmoothing:_bezierSmoothing close:NO];
     UIBezierPath *path = [self getLinePath:scale withSmoothing:_bezierSmoothing close:NO];

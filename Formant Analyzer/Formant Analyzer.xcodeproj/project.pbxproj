@@ -1,0 +1,656 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		572F23486EE71360E895C76C /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */; };
+		D92E8FC31C55944800F73A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FC21C55944800F73A8A /* AppDelegate.swift */; };
+		D92E8FCA1C55944800F73A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FC91C55944800F73A8A /* Assets.xcassets */; };
+		D92E8FCD1C55944800F73A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FCB1C55944800F73A8A /* LaunchScreen.storyboard */; };
+		D92E8FD81C55944800F73A8A /* Formant_AnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FD71C55944800F73A8A /* Formant_AnalyzerTests.swift */; };
+		D92E8FF11C55946400F73A8A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FF01C55946400F73A8A /* ViewController.swift */; };
+		D92E8FF31C55949E00F73A8A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FF21C55949E00F73A8A /* Main.storyboard */; };
+		D92E8FF71C5594DE00F73A8A /* FormantPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FF61C5594DE00F73A8A /* FormantPlotView.swift */; };
+		D92E8FF91C5594F600F73A8A /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FF81C5594F600F73A8A /* Complex.swift */; };
+		D92E8FFB1C55950400F73A8A /* SpeechAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FFA1C55950400F73A8A /* SpeechAnalyzer.swift */; };
+		D92E90041C55952900F73A8A /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FFD1C55952900F73A8A /* arm.raw */; };
+		D92E90051C55952900F73A8A /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FFE1C55952900F73A8A /* beat.raw */; };
+		D92E90061C55952900F73A8A /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FFF1C55952900F73A8A /* bid.raw */; };
+		D92E90071C55952900F73A8A /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E90001C55952900F73A8A /* calm.raw */; };
+		D92E90081C55952900F73A8A /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E90011C55952900F73A8A /* cat.raw */; };
+		D92E90091C55952900F73A8A /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E90021C55952900F73A8A /* four.raw */; };
+		D92E900A1C55952900F73A8A /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = D92E90031C55952900F73A8A /* who.raw */; };
+		D92E900F1C55953700F73A8A /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D92E900B1C55953700F73A8A /* vowelPlotBackground.png */; };
+		D92E90101C55953700F73A8A /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D92E900C1C55953700F73A8A /* green_light.png */; };
+		D92E90111C55953700F73A8A /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D92E900D1C55953700F73A8A /* red_light.png */; };
+		D92E90121C55953700F73A8A /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D92E900E1C55953700F73A8A /* blue_light.png */; };
+		D92E90141C5595A700F73A8A /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E90131C5595A700F73A8A /* SpeechAnalyzerTests.swift */; };
+		D92E90161C5595C500F73A8A /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E90151C5595C500F73A8A /* SnapshotHelper.swift */; };
+		D92E90181C5595D500F73A8A /* Formant_AnalyzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E90171C5595D500F73A8A /* Formant_AnalyzerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D92E8FD41C55944800F73A8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D92E8FB71C55944800F73A8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D92E8FBE1C55944800F73A8A;
+			remoteInfo = "Formant Analyzer";
+		};
+		D92E8FDF1C55944800F73A8A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D92E8FB71C55944800F73A8A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D92E8FBE1C55944800F73A8A;
+			remoteInfo = "Formant Analyzer";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
+		92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92E8FBF1C55944800F73A8A /* Formant Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formant Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92E8FC21C55944800F73A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D92E8FC91C55944800F73A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D92E8FCC1C55944800F73A8A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D92E8FCE1C55944800F73A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D92E8FD31C55944800F73A8A /* Formant AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92E8FD71C55944800F73A8A /* Formant_AnalyzerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formant_AnalyzerTests.swift; sourceTree = "<group>"; };
+		D92E8FD91C55944800F73A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D92E8FDE1C55944800F73A8A /* Formant AnalyzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D92E8FE41C55944800F73A8A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D92E8FF01C55946400F73A8A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		D92E8FF21C55949E00F73A8A /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		D92E8FF61C5594DE00F73A8A /* FormantPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormantPlotView.swift; sourceTree = "<group>"; };
+		D92E8FF81C5594F600F73A8A /* Complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complex.swift; sourceTree = "<group>"; };
+		D92E8FFA1C55950400F73A8A /* SpeechAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzer.swift; sourceTree = "<group>"; };
+		D92E8FFD1C55952900F73A8A /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
+		D92E8FFE1C55952900F73A8A /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
+		D92E8FFF1C55952900F73A8A /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
+		D92E90001C55952900F73A8A /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
+		D92E90011C55952900F73A8A /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
+		D92E90021C55952900F73A8A /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
+		D92E90031C55952900F73A8A /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
+		D92E900B1C55953700F73A8A /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
+		D92E900C1C55953700F73A8A /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
+		D92E900D1C55953700F73A8A /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
+		D92E900E1C55953700F73A8A /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
+		D92E90131C5595A700F73A8A /* SpeechAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzerTests.swift; sourceTree = "<group>"; };
+		D92E90151C5595C500F73A8A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		D92E90171C5595D500F73A8A /* Formant_AnalyzerUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formant_AnalyzerUITests.swift; sourceTree = "<group>"; };
+		FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D92E8FBC1C55944800F73A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				572F23486EE71360E895C76C /* Pods_Formant_Analyzer.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FD01C55944800F73A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FDB1C55944800F73A8A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22E8674315E3D381D442277D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */,
+				625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D92E8FB61C55944800F73A8A = {
+			isa = PBXGroup;
+			children = (
+				D92E8FC11C55944800F73A8A /* Formant Analyzer */,
+				D92E8FD61C55944800F73A8A /* Formant AnalyzerTests */,
+				D92E8FE11C55944800F73A8A /* Formant AnalyzerUITests */,
+				D92E8FC01C55944800F73A8A /* Products */,
+				22E8674315E3D381D442277D /* Pods */,
+				DEA98C2F670334374932EFD1 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D92E8FC01C55944800F73A8A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D92E8FBF1C55944800F73A8A /* Formant Analyzer.app */,
+				D92E8FD31C55944800F73A8A /* Formant AnalyzerTests.xctest */,
+				D92E8FDE1C55944800F73A8A /* Formant AnalyzerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D92E8FC11C55944800F73A8A /* Formant Analyzer */ = {
+			isa = PBXGroup;
+			children = (
+				D92E8FC21C55944800F73A8A /* AppDelegate.swift */,
+				D92E8FF01C55946400F73A8A /* ViewController.swift */,
+				D92E8FF61C5594DE00F73A8A /* FormantPlotView.swift */,
+				D92E8FF81C5594F600F73A8A /* Complex.swift */,
+				D92E8FFA1C55950400F73A8A /* SpeechAnalyzer.swift */,
+				D92E8FF21C55949E00F73A8A /* Main.storyboard */,
+				D92E8FCB1C55944800F73A8A /* LaunchScreen.storyboard */,
+				D92E8FC91C55944800F73A8A /* Assets.xcassets */,
+				D92E8FFC1C55951700F73A8A /* Media */,
+				D92E8FCE1C55944800F73A8A /* Info.plist */,
+			);
+			path = "Formant Analyzer";
+			sourceTree = "<group>";
+		};
+		D92E8FD61C55944800F73A8A /* Formant AnalyzerTests */ = {
+			isa = PBXGroup;
+			children = (
+				D92E8FD71C55944800F73A8A /* Formant_AnalyzerTests.swift */,
+				D92E90131C5595A700F73A8A /* SpeechAnalyzerTests.swift */,
+				D92E8FD91C55944800F73A8A /* Info.plist */,
+			);
+			path = "Formant AnalyzerTests";
+			sourceTree = "<group>";
+		};
+		D92E8FE11C55944800F73A8A /* Formant AnalyzerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				D92E90151C5595C500F73A8A /* SnapshotHelper.swift */,
+				D92E90171C5595D500F73A8A /* Formant_AnalyzerUITests.swift */,
+				D92E8FE41C55944800F73A8A /* Info.plist */,
+			);
+			path = "Formant AnalyzerUITests";
+			sourceTree = "<group>";
+		};
+		D92E8FFC1C55951700F73A8A /* Media */ = {
+			isa = PBXGroup;
+			children = (
+				D92E900B1C55953700F73A8A /* vowelPlotBackground.png */,
+				D92E900C1C55953700F73A8A /* green_light.png */,
+				D92E900D1C55953700F73A8A /* red_light.png */,
+				D92E900E1C55953700F73A8A /* blue_light.png */,
+				D92E8FFD1C55952900F73A8A /* arm.raw */,
+				D92E8FFE1C55952900F73A8A /* beat.raw */,
+				D92E8FFF1C55952900F73A8A /* bid.raw */,
+				D92E90001C55952900F73A8A /* calm.raw */,
+				D92E90011C55952900F73A8A /* cat.raw */,
+				D92E90021C55952900F73A8A /* four.raw */,
+				D92E90031C55952900F73A8A /* who.raw */,
+			);
+			name = Media;
+			sourceTree = "<group>";
+		};
+		DEA98C2F670334374932EFD1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D92E8FBE1C55944800F73A8A /* Formant Analyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D92E8FE71C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant Analyzer" */;
+			buildPhases = (
+				E28EA34988CBBBF2A0BF72E0 /* Check Pods Manifest.lock */,
+				D92E8FBB1C55944800F73A8A /* Sources */,
+				D92E8FBC1C55944800F73A8A /* Frameworks */,
+				D92E8FBD1C55944800F73A8A /* Resources */,
+				6A1428E7A80275E47CAE7E01 /* Embed Pods Frameworks */,
+				BA2B2C8590E35ED7EADB2761 /* Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Formant Analyzer";
+			productName = "Formant Analyzer";
+			productReference = D92E8FBF1C55944800F73A8A /* Formant Analyzer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D92E8FD21C55944800F73A8A /* Formant AnalyzerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D92E8FEA1C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */;
+			buildPhases = (
+				D92E8FCF1C55944800F73A8A /* Sources */,
+				D92E8FD01C55944800F73A8A /* Frameworks */,
+				D92E8FD11C55944800F73A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D92E8FD51C55944800F73A8A /* PBXTargetDependency */,
+			);
+			name = "Formant AnalyzerTests";
+			productName = "Formant AnalyzerTests";
+			productReference = D92E8FD31C55944800F73A8A /* Formant AnalyzerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		D92E8FDD1C55944800F73A8A /* Formant AnalyzerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D92E8FED1C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */;
+			buildPhases = (
+				D92E8FDA1C55944800F73A8A /* Sources */,
+				D92E8FDB1C55944800F73A8A /* Frameworks */,
+				D92E8FDC1C55944800F73A8A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D92E8FE01C55944800F73A8A /* PBXTargetDependency */,
+			);
+			name = "Formant AnalyzerUITests";
+			productName = "Formant AnalyzerUITests";
+			productReference = D92E8FDE1C55944800F73A8A /* Formant AnalyzerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D92E8FB71C55944800F73A8A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0720;
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = "William Entriken";
+				TargetAttributes = {
+					D92E8FBE1C55944800F73A8A = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = 8Q693ZG5RN;
+					};
+					D92E8FD21C55944800F73A8A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = D92E8FBE1C55944800F73A8A;
+					};
+					D92E8FDD1C55944800F73A8A = {
+						CreatedOnToolsVersion = 7.2;
+						TestTargetID = D92E8FBE1C55944800F73A8A;
+					};
+				};
+			};
+			buildConfigurationList = D92E8FBA1C55944800F73A8A /* Build configuration list for PBXProject "Formant Analyzer" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D92E8FB61C55944800F73A8A;
+			productRefGroup = D92E8FC01C55944800F73A8A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D92E8FBE1C55944800F73A8A /* Formant Analyzer */,
+				D92E8FD21C55944800F73A8A /* Formant AnalyzerTests */,
+				D92E8FDD1C55944800F73A8A /* Formant AnalyzerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D92E8FBD1C55944800F73A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92E90061C55952900F73A8A /* bid.raw in Resources */,
+				D92E8FF31C55949E00F73A8A /* Main.storyboard in Resources */,
+				D92E900F1C55953700F73A8A /* vowelPlotBackground.png in Resources */,
+				D92E8FCD1C55944800F73A8A /* LaunchScreen.storyboard in Resources */,
+				D92E90121C55953700F73A8A /* blue_light.png in Resources */,
+				D92E900A1C55952900F73A8A /* who.raw in Resources */,
+				D92E90111C55953700F73A8A /* red_light.png in Resources */,
+				D92E90051C55952900F73A8A /* beat.raw in Resources */,
+				D92E90101C55953700F73A8A /* green_light.png in Resources */,
+				D92E90071C55952900F73A8A /* calm.raw in Resources */,
+				D92E8FCA1C55944800F73A8A /* Assets.xcassets in Resources */,
+				D92E90041C55952900F73A8A /* arm.raw in Resources */,
+				D92E90091C55952900F73A8A /* four.raw in Resources */,
+				D92E90081C55952900F73A8A /* cat.raw in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FD11C55944800F73A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FDC1C55944800F73A8A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6A1428E7A80275E47CAE7E01 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BA2B2C8590E35ED7EADB2761 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E28EA34988CBBBF2A0BF72E0 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D92E8FBB1C55944800F73A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92E8FF91C5594F600F73A8A /* Complex.swift in Sources */,
+				D92E8FF11C55946400F73A8A /* ViewController.swift in Sources */,
+				D92E8FF71C5594DE00F73A8A /* FormantPlotView.swift in Sources */,
+				D92E8FC31C55944800F73A8A /* AppDelegate.swift in Sources */,
+				D92E8FFB1C55950400F73A8A /* SpeechAnalyzer.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FCF1C55944800F73A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92E8FD81C55944800F73A8A /* Formant_AnalyzerTests.swift in Sources */,
+				D92E90141C5595A700F73A8A /* SpeechAnalyzerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D92E8FDA1C55944800F73A8A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D92E90181C5595D500F73A8A /* Formant_AnalyzerUITests.swift in Sources */,
+				D92E90161C5595C500F73A8A /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D92E8FD51C55944800F73A8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D92E8FBE1C55944800F73A8A /* Formant Analyzer */;
+			targetProxy = D92E8FD41C55944800F73A8A /* PBXContainerItemProxy */;
+		};
+		D92E8FE01C55944800F73A8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D92E8FBE1C55944800F73A8A /* Formant Analyzer */;
+			targetProxy = D92E8FDF1C55944800F73A8A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D92E8FCB1C55944800F73A8A /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D92E8FCC1C55944800F73A8A /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D92E8FE51C55944800F73A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D92E8FE61C55944800F73A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D92E8FE81C55944800F73A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		D92E8FE91C55944800F73A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		D92E8FEB1C55944800F73A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Formant AnalyzerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Formant Analyzer.app/Formant Analyzer";
+			};
+			name = Debug;
+		};
+		D92E8FEC1C55944800F73A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Formant AnalyzerTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Formant Analyzer.app/Formant Analyzer";
+			};
+			name = Release;
+		};
+		D92E8FEE1C55944800F73A8A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Formant AnalyzerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Formant Analyzer";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		D92E8FEF1C55944800F73A8A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Formant AnalyzerUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Formant Analyzer";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D92E8FBA1C55944800F73A8A /* Build configuration list for PBXProject "Formant Analyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D92E8FE51C55944800F73A8A /* Debug */,
+				D92E8FE61C55944800F73A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D92E8FE71C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant Analyzer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D92E8FE81C55944800F73A8A /* Debug */,
+				D92E8FE91C55944800F73A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D92E8FEA1C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D92E8FEB1C55944800F73A8A /* Debug */,
+				D92E8FEC1C55944800F73A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D92E8FED1C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D92E8FEE1C55944800F73A8A /* Debug */,
+				D92E8FEF1C55944800F73A8A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D92E8FB71C55944800F73A8A /* Project object */;
+}

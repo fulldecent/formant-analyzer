@@ -1,5 +1,9 @@
-platform :ios, '7.0'
-pod 'AFNetworking'
-pod 'TOWebViewController'
-pod 'FSLineChart'
-pod 'FDSoundActivatedRecorder'
+platform :ios, '8.0'
+use_frameworks!
+
+target "Formant Analyzer" do
+	pod 'AFNetworking'
+	pod 'TOWebViewController'
+	pod 'FSLineChart'
+	pod 'FDSoundActivatedRecorder'
+end

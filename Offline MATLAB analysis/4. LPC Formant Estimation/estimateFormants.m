@@ -16,9 +16,15 @@ for recording = recordings
     fileId = fopen(inFile, 'r');
     audioSamples = fread(fileId, 'int16');
     fclose(fileId);
+    
+    fprintf('Analyzing %s\n', base_file_name);
 
     % Perform the LPC estimation
     [a,e] = lpc(audioSamples, LPC_COEFF);
+    s = sprintf('%0.6f,', a(1:20));
+    s = s(1:end-1);
+    fprintf('%s\n', s);
+    
     fprintf(1,'LPC error for %s is %0.f\n', base_file_name, e);
 
     % Plot format frequencies for just this segment
