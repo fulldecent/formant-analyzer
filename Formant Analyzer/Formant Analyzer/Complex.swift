@@ -1,5 +1,5 @@
 // https://github.com/dankogai/swift-complex
-// ONE MOFIDICATION: USE IMPORT FOUNDATION INSTEAD OF MACRO, DELETE CGFLOAT STUFF AND MACROS
+// ONE MOFIDICATION: ADD UIKIT IMPORT
 //
 //  complex.swift
 //  complex
@@ -7,8 +7,12 @@
 //  Created by Dan Kogai on 6/12/14.
 //  Copyright (c) 2014 Dan Kogai. All rights reserved.
 //
-import Foundation
-
+#if os(Linux)
+    import Glibc
+#else
+    import Foundation
+    import UIKit
+#endif
 ///
 /// ArithmeticType: Minimum requirement for `T` of `Complex<T>`.
 ///
@@ -21,6 +25,9 @@ public protocol ArithmeticType: AbsoluteValuable, Equatable, Comparable, Hashabl
     init(_: Float)
     init(_: Self)
     // CGFloat if !os(Linux)
+    #if !os(Linux)
+    init(_: CGFloat)
+    #endif
     // Operators (predefined)
     prefix func + (_: Self)->Self
     prefix func - (_: Self)->Self
@@ -96,15 +103,20 @@ public struct Complex<T:ArithmeticType> : Equatable, CustomStringConvertible, Ha
     /// .hashValue -- conforms to Hashable
     public var hashValue:Int {
         let bits = sizeof(Int) * 4
-        let mask = bits == 16 ? 0xffff : 0xffffFFFF
+        let mask = bits == 16 ? 0xffff : 0x7fffFFFF
         // Apply different strategies by types.
         // this is ugly but you can't go like 're is RealType'
         // or implement separately at extension Complex where T:RealType
         //
         // take the most significant halves and join for floating-point
-        if re is Double || re is Float || re is Float80 {
+        if re is Double || re is Float {
             return (re.hashValue & ~mask) | (im.hashValue >> bits)
         }
+        #if !os(Linux)
+            if re is CGFloat {
+                return (re.hashValue & ~mask) | (im.hashValue >> bits)
+            }
+        #endif
         // take the least significant halves and join for integer
         if re is Int || re is Int64 || re is Int32 || re is Int16 || re is Int8 {
             return (re.hashValue << bits) | (im.hashValue & mask)
@@ -146,6 +158,18 @@ extension RealType {
     public typealias Real = Double
     //typealias PKG = Foundation
     // math functions - needs extension for each struct
+    #if os(Linux)
+    public static func cos(x:Self)->    Self { return Self(Glibc.cos(Real(x))) }
+    public static func cosh(x:Self)->   Self { return Self(Glibc.cosh(Real(x))) }
+    public static func exp(x:Self)->    Self { return Self(Glibc.exp(Real(x))) }
+    public static func log(x:Self)->    Self { return Self(Glibc.log(Real(x))) }
+    public static func sin(x:Self)->    Self { return Self(Glibc.sin(Real(x))) }
+    public static func sinh(x:Self)->   Self { return Self(Glibc.sinh(Real(x))) }
+    public static func sqrt(x:Self)->   Self { return Self(Glibc.sqrt(Real(x))) }
+    public static func hypot(x:Self, _ y:Self)->Self { return Self(Glibc.hypot(Real(x), Real(y))) }
+    public static func atan2(y:Self, _ x:Self)->Self { return Self(Glibc.atan2(Real(y), Real(x))) }
+    public static func pow(x:Self, _ y:Self)->  Self { return Self(Glibc.pow(Real(x), Real(y))) }
+    #else
     public static func cos(x:Self)->    Self { return Self(Foundation.cos(Real(x))) }
     public static func cosh(x:Self)->   Self { return Self(Foundation.cosh(Real(x))) }
     public static func exp(x:Self)->    Self { return Self(Foundation.exp(Real(x))) }
@@ -156,6 +180,7 @@ extension RealType {
     public static func hypot(x:Self, _ y:Self)->Self { return Self(Foundation.hypot(Real(x), Real(y))) }
     public static func atan2(y:Self, _ x:Self)->Self { return Self(Foundation.atan2(Real(y), Real(x))) }
     public static func pow(x:Self, _ y:Self)->  Self { return Self(Foundation.pow(Real(x), Real(y))) }
+    #endif
 }
 
 // Double is default since floating-point literals are Double by default
@@ -176,6 +201,18 @@ extension Float : RealType {
     //
     // Deliberately not via protocol extension
     //
+    #if os(Linux)
+    public static func cos(x:Float)->Float  { return Glibc.cosf(x) }
+    public static func cosh(x:Float)->Float { return Glibc.coshf(x) }
+    public static func exp(x:Float)->Float  { return Glibc.expf(x) }
+    public static func log(x:Float)->Float  { return Glibc.logf(x) }
+    public static func sin(x:Float)->Float  { return Glibc.sinf(x) }
+    public static func sinh(x:Float)->Float { return Glibc.sinhf(x) }
+    public static func sqrt(x:Float)->Float { return Glibc.sqrtf(x) }
+    public static func hypot(x:Float, _ y:Float)->Float { return Glibc.hypotf(x, y) }
+    public static func atan2(y:Float, _ x:Float)->Float { return Glibc.atan2f(y, x) }
+    public static func pow(x:Float, _ y:Float)->Float   { return Glibc.powf(x, y) }
+    #else
     public static func cos(x:Float)->Float  { return Foundation.cosf(x) }
     public static func cosh(x:Float)->Float { return Foundation.coshf(x) }
     public static func exp(x:Float)->Float  { return Foundation.expf(x) }
@@ -186,6 +223,7 @@ extension Float : RealType {
     public static func hypot(x:Float, _ y:Float)->Float { return Foundation.hypotf(x, y) }
     public static func atan2(y:Float, _ x:Float)->Float { return Foundation.atan2f(y, x) }
     public static func pow(x:Float, _ y:Float)->Float   { return Foundation.powf(x, y) }
+    #endif
     public static var EPSILON:Float = 0x1p-23
     // The following values are for convenience, not really needed for protocol conformance.
     public static var PI = Float(Double.PI)
@@ -449,7 +487,50 @@ public typealias ComplexDouble  = Complex<Double>
 public typealias ComplexFloat   = Complex<Float>
 public typealias Complex64      = Complex<Double>
 public typealias Complex32      = Complex<Float>
-
+/// CGFloat if !os(Linux)
+#if !os(Linux)
+    extension CGFloat : RealType {
+        public init(_ value:CGFloat) {
+            self = value
+        }
+        public init?<U:ArithmeticType>(_ x:U) {
+            switch x {
+            case let s as CGFloat:  self.init(s)
+            case let d as Double:   self.init(d)
+            case let f as Float:    self.init(f)
+            case let i as Int:      self.init(i)
+            default:
+                return nil
+            }
+        }
+        //
+        public static var EPSILON = CGFloat(Double.EPSILON)
+        // The following values are for convenience, not really needed for protocol conformance.
+        public static var PI = CGFloat(Double.PI)
+        public static var π = PI
+        public static var E =  CGFloat(Double.E)
+        public static var LN2 = CGFloat(Double.LN2)
+        public static var LOG2E = CGFloat(Double.LOG2E)
+        public static var LN10 = CGFloat(Double.LN10)
+        public static var LOG10E = CGFloat(Double.LOG10E)
+        public static var SQRT2 = CGFloat(Double.SQRT2)
+        public static var SQRT1_2 = CGFloat(Double.SQRT1_2)
+    }
+    extension Complex {
+        /// - paramater p: CGPoint
+        /// - returns: `Complex<CGFloat>`
+        public init(_ p:CGPoint) {
+            self.init(T(p.x), T(p.y))
+        }
+        /// - returns: `Complex<Float>(self)`
+        public var asComplexCGFloat:Complex<CGFloat> { return Complex<CGFloat>(self) }
+        /// - returns: `CGPoint(x:self.re, y:self.im)`
+        public var asCGPoint:CGPoint {
+            return CGPoint(x:CGFloat(re)!, y:CGFloat(im)!)
+        }
+    }
+    public typealias ComplexCGFloat = Complex<CGFloat>
+#endif
 //
 // Type that supports the % operator
 //
