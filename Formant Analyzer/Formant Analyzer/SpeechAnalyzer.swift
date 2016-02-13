@@ -9,17 +9,10 @@
 import Foundation
 
 class SpeechAnalyzer {
-    // A few constants to be used in LPC and Laguerre algorithms.
-
-//FIXME: make friendlier names for these
-
-    /// Formant model length
-    private let ORDER = 20
-    
     /// Individual audio samples
     let samples: [Int16]
     
-    /// The rates in Hz
+    /// The rate in Hz
     let sampleRate: Int
     
     /// Human formants are < 5 kHz so we do not need signal information above 10 kHz
@@ -27,15 +20,17 @@ class SpeechAnalyzer {
         return self.sampleRate / 10000
     }()
     
-    private lazy var strongPart: Range<Int> = {
+    /// The part of `samples` which has a strong signal
+    lazy var strongPart: Range<Int> = {
         return SpeechAnalyzer.findStrongPartOfSignal(self.samples, withChunks: 300, sensitivity: 0.1)
     }()
     
-    /// The part of the audio which is a vowel utterance
+    /// The part of `samples` which is a vowel utterance
     lazy var vowelPart: Range<Int> = {
         return SpeechAnalyzer.truncateTailsOfRange(self.strongPart, portion: 0.15)
     }()
     
+    /// The vowel part of `samples` decimated by `decimationFactor`
     private lazy var vowelSamplesDecimated: [Int16] = {
         let range = self.vowelPart
         return SpeechAnalyzer.decimateSamples(self.samples[range], withStride: self.decimationFactor)
@@ -62,6 +57,34 @@ class SpeechAnalyzer {
         let formants = SpeechAnalyzer.findFormants(complexPolynomial, sampleRate: self.sampleRate/self.decimationFactor)
         return SpeechAnalyzer.filterSpeechFormants(formants)
     }()
+    
+    /// Reduce horizontal resolution of `strongPart` of `signal` for plotting
+    func downsampleStrongPartToSamples(newSampleCount: Int) -> [Int16] {
+        let chunkSize = self.strongPart.count / newSampleCount
+        var chunkMaxElements = [Int16]()
+        
+        // Find the chunk with the most energy and set energy threshold
+        for chunkStart in self.strongPart.startIndex.stride(through: self.strongPart.endIndex.advancedBy(-chunkSize), by: chunkSize) {
+            let range = (chunkStart..<chunkStart+chunkSize)
+            let maxValue = self.samples[range].maxElement()!
+            chunkMaxElements.append(maxValue)
+        }
+        return chunkMaxElements
+    }
+    
+    /// Reduce horizontal resolution of `signal` for plotting
+    func downsampleToSamples(newSampleCount: Int) -> [Int16] {
+        let chunkSize = self.samples.count / newSampleCount
+        var chunkMaxElements = [Int16]()
+        
+        // Find the chunk with the most energy and set energy threshold
+        for chunkStart in self.samples.startIndex.stride(through: self.samples.endIndex.advancedBy(-chunkSize), by: chunkSize) {
+            let range = (chunkStart..<chunkStart+chunkSize)
+            let maxValue = self.samples[range].maxElement()!
+            chunkMaxElements.append(maxValue)
+        }
+        return chunkMaxElements
+    }
 
     /// Creates an analyzer with given 16-bit PCM samples
     init(int16Samples data: NSData, withFrequency rate: Int) {
@@ -119,20 +142,6 @@ class SpeechAnalyzer {
     class func decimateSamples<T: CollectionType where T.Index: Strideable>(samples: T, withStride stride: T.Index.Stride) -> Array<T.Generator.Element> {
         let selectedSamples = samples.startIndex.stride(to: samples.endIndex, by: stride)
         return selectedSamples.map({samples[$0]})
-    }
-    
-    /// Reduce horizontal resolution of signal for plotting
-    func downsampleStrongPartToSamples(newSampleCount: Int) -> [Int16] {
-        let chunkSize = self.samples.count / newSampleCount
-        var chunkMaxElements = [Int16]()
-        
-        // Find the chunk with the most energy and set energy threshold
-        for chunkStart in self.strongPart.startIndex.stride(through: self.strongPart.endIndex.advancedBy(-chunkSize), by: chunkSize) {
-            let range = (chunkStart..<chunkStart+chunkSize)
-            let maxValue = self.samples[range].maxElement()!
-            chunkMaxElements.append(maxValue)
-        }
-        return chunkMaxElements
     }
     
     /// Estimate LPC polynomial coefficients from the signal
@@ -342,6 +351,11 @@ class SpeechAnalyzer {
                 done = true
             }()
         }
+        
+        for _ in editedFormants.count.stride(through: 4, by: 1) {
+            editedFormants.append(9999.0)
+        }
+        
         return editedFormants
     }
 }
