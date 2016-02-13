@@ -38,9 +38,7 @@ class FirstViewController: UIViewController {
     @IBOutlet var secondFormantLabel: UILabel!
     @IBOutlet var thirdFormantLabel: UILabel!
     @IBOutlet var fourthFormantLabel: UILabel!
-    
-    var processingDelayTimeCounter = 0
-    
+        
     var displayIdentifier: GraphingMode = .Signal
     
     lazy var soundActivatedRecorder: FDSoundActivatedRecorder = {
@@ -70,6 +68,7 @@ class FirstViewController: UIViewController {
         self.lineChartFull.removeFromSuperview()
         self.view!.addSubview(newChart)
         self.lineChartFull = newChart
+        self.formantPlot.hidden = true
         
         //TODO: these should each be separate view classes
         switch displayIdentifier {
@@ -91,7 +90,8 @@ class FirstViewController: UIViewController {
     }
     
     func drawSignalPlot() {
-        self.formantPlot.hidden = true
+        let plottableValuesHigh: [Double] = self.speechAnalyzer.downsampleToSamples(400).map{max(0,Double($0))}
+        let plottableValuesLow: [Double] = plottableValuesHigh.map({-$0})
         self.lineChartFull.hidden = true
         self.lineChartTopHalf.hidden = false
         self.lineChartTopHalf.drawInnerGrid = false
@@ -101,6 +101,8 @@ class FirstViewController: UIViewController {
         self.lineChartTopHalf.axisHeight = self.lineChartTopHalf.frame.size.height
         self.lineChartTopHalf.backgroundColor = UIColor.clearColor()
         self.lineChartTopHalf.fillColor = UIColor.blueColor()
+        self.lineChartTopHalf.clearChartData()
+        self.lineChartTopHalf.setChartData(plottableValuesHigh)
         self.lineChartBottomHalf.hidden = false
         self.lineChartBottomHalf.drawInnerGrid = false
         self.lineChartBottomHalf.axisLineWidth = 0
@@ -109,26 +111,28 @@ class FirstViewController: UIViewController {
         self.lineChartBottomHalf.axisHeight = self.lineChartTopHalf.frame.size.height
         self.lineChartBottomHalf.backgroundColor = UIColor.clearColor()
         self.lineChartBottomHalf.fillColor = UIColor.blueColor()
-        let plottableValuesHigh: [Double] = self.speechAnalyzer.downsampleStrongPartToSamples(400).map{max(0,Double($0))}
-        let plottableValuesLow: [Double] = plottableValuesHigh.map({-$0})
-        self.lineChartTopHalf.clearChartData()
-        self.lineChartTopHalf.setChartData(plottableValuesHigh)
         self.lineChartBottomHalf.clearChartData()
         self.lineChartBottomHalf.setChartData(plottableValuesLow)
-        /*
-        TODO: Here do trimming for vowel isolation, show tinted overlay
-        NSRange power = [self.speechAnalyzer strongSignalRange];
-        NSRange vowel = [self.speechAnalyzer truncateRangeTails:power];
-        double samples = self.speechAnalyzer.totalSamples.doubleValue;
-        CGRect powerFrame = CGRectMake(self.lineChartTopHalf.frame.origin.x + power.location/samples*self.lineChartTopHalf.frame.size.width,
-        self.lineChartTopHalf.frame.origin.y,
-        power.length/samples*self.lineChartTopHalf.frame.size.width,
-        self.lineChartTopHalf.frame.size.height);
         
-        self.trimPower = [[UIView alloc] initWithFrame:powerFrame];
-        self.trimPower.backgroundColor = [UIColor colorWithHue:0.75 saturation:1 brightness:1 alpha:0.2];
-        [self.view addSubview:self.trimPower];
-        */
+        self.lineChartTopHalf.subviews.forEach({$0.removeFromSuperview()})
+        
+        let strongRect = CGRect(
+            x: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.strongPart.first!) / CGFloat(self.speechAnalyzer.samples.count),
+            y: 0,
+            width: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.strongPart.count) / CGFloat(self.speechAnalyzer.samples.count),
+            height: self.lineChartTopHalf.frame.size.height * 2)
+        let strongBox = UIView(frame: strongRect)
+        strongBox.backgroundColor = UIColor(hue: 60.0/255.0, saturation: 180.0/255.0, brightness: 92.0/255.0, alpha: 0.2)
+        self.lineChartTopHalf.insertSubview(strongBox, atIndex: 0)
+
+        let vowelRect = CGRect(
+            x: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.vowelPart.first!) / CGFloat(self.speechAnalyzer.samples.count),
+            y: self.lineChartTopHalf.frame.size.height * 0.05,
+            width: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.vowelPart.count) / CGFloat(self.speechAnalyzer.samples.count),
+            height: self.lineChartTopHalf.frame.size.height * 1.9)
+        let vowelBox = UIView(frame: vowelRect)
+        vowelBox.backgroundColor = UIColor(hue: 130.0/255.0, saturation: 180.0/255.0, brightness: 92.0/255.0, alpha: 0.2)
+        self.lineChartTopHalf.insertSubview(vowelBox, atIndex: 0)
     }
     
     func drawLPCPlot() {
@@ -203,10 +207,6 @@ class FirstViewController: UIViewController {
         self.lineChartFull.setChartData(synthesizedFrequencyResponse)
     }
     
-    /** Update display for new view mode
-     @param sender The UISegmentedControl which has chosen the new display mode
-     */
-    
     @IBAction func graphingModeChanged(sender: UISegmentedControl) {
         self.displayIdentifier = GraphingMode(rawValue: sender.selectedSegmentIndex)!
         self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
@@ -219,8 +219,6 @@ class FirstViewController: UIViewController {
         })
         super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
     }
-    // This function is called half a second after the formant plot is displayed. It creates four text
-    // labels and puts that below the standard vowel diagram.
     
     func displayFormantFrequencies() {
         var formants: [Double] = self.speechAnalyzer.formants
@@ -233,10 +231,7 @@ class FirstViewController: UIViewController {
         let fourthFLabel = String(format: "Formant 4:%5.0f", formants[3])
         self.fourthFormantLabel.text = fourthFLabel
     }
-    // Depending upon which stored speech segment is to be processed, the following function loads the appropriate
-    // binary data file from the main bundle of the app. The loaded data is put into rawBuffer and appropriate view
-    // If we are looking at 5th plot type (formant frequencies), four text labels are updated with a delay of 0.5 sec
-    
+
     func processRawBuffer() {
         let fileURL = NSBundle.mainBundle().URLForResource(self.soundFileBaseNames[self.soundFileIdentifier], withExtension: "raw")!
         NSLog("Processing saved file %@", self.soundFileBaseNames[self.soundFileIdentifier])
@@ -244,15 +239,15 @@ class FirstViewController: UIViewController {
         self.speechAnalyzer = SpeechAnalyzer(int16Samples: speechData, withFrequency: 44100)
         self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
     }
-    // Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
     
+    /// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicatorImageView.image = UIImage(named: "green_light.png")
         self.inputSelector.setTitle("Microphone", forState: .Normal)
         self.speechIsFromMicrophone = true
         self.indicatorImageView.hidden = false
-        self.statusLabel.text = "Waiting ..."
+        self.statusLabel.text = "Listening ..."
         self.soundActivatedRecorder.startListening()
     }
     
@@ -289,7 +284,6 @@ class FirstViewController: UIViewController {
         self.presentViewController(alert, animated: true, completion: nil)
     }
     
-    //TODO should not be here!?
     /// Get raw PCM data from the track
     func readSoundFileSamples(filePath: String) -> NSData {
         let retval = NSMutableData()
@@ -341,7 +335,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
             self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {() -> Void in
                 self.indicatorImageView.image = UIImage(named: "green_light.png")
-                self.statusLabel.text = "Waiting ..."
+                self.statusLabel.text = "Listening ..."
                 self.soundActivatedRecorder.startListening()
             })
         }

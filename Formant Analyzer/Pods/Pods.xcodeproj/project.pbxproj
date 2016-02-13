@@ -133,9 +133,9 @@
 		1950B7AFEDCFC7F2858AEDCF5F065FD9 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		197C2CC9B759F0F03368B03733F83B8F /* TOWebViewControllerLocalizable.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TOWebViewControllerLocalizable.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer-umbrella.h"; sourceTree = "<group>"; };
-		1B9E72DAF80159876514C82798BB8D2B /* zh-hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-hant.lproj"; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/zh-hant.lproj"; sourceTree = "<group>"; };
 		228565E69F77A8987372047F4D16E471 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F7DB53AFAFC3B251B292BBE9AD2BB0 /* FDSoundActivatedRecorder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-umbrella.h"; sourceTree = "<group>"; };
+		24A469A619C6EBF1D1F79DC53858FB03 /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ru.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ru.lproj"; sourceTree = "<group>"; };
 		25410B17D846010CB198F3CF585F115E /* UIProgressView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIProgressView+AFNetworking.h"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.h"; sourceTree = "<group>"; };
 		25DF0C4C9EA6529C6F93C6E21A20E778 /* Pods-Formant Analyzer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer-acknowledgements.plist"; sourceTree = "<group>"; };
 		25EF59D57C912F9AE548492F278CE28F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/SystemConfiguration.framework; sourceTree = DEVELOPER_DIR; };
@@ -148,26 +148,27 @@
 		34FBC167F9A29009BDFF8CF7DFF11F3F /* TOWebViewController.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOWebViewController.h; path = TOWebViewController/TOWebViewController.h; sourceTree = "<group>"; };
 		36053425108253EB151BFDE58F702B0B /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
 		40065705F16F6B38BDAF6AC57FC379A3 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
-		46B09FBE723B285E31C3D6D40C14F3FB /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = uk.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/uk.lproj"; sourceTree = "<group>"; };
-		47E9F02D1CC8920B5055EF87A6309459 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fr.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/fr.lproj"; sourceTree = "<group>"; };
+		4731F7FABF3F435C09FFA301A4B8A01F /* uk.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = uk.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/uk.lproj"; sourceTree = "<group>"; };
+		48888232382A831654BE97E4F8A9B833 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = it.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/it.lproj"; sourceTree = "<group>"; };
+		488FE523E22829208CD2CA93FA5A48DA /* zh-hant.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-hant.lproj"; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/zh-hant.lproj"; sourceTree = "<group>"; };
 		4CCC5A1D37E0BF5BAAF65C64C1B15BF6 /* TOWebViewController.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = TOWebViewController.xcconfig; sourceTree = "<group>"; };
 		4FB6B5C03F185BE52658496506A44E9D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/MobileCoreServices.framework; sourceTree = DEVELOPER_DIR; };
 		5137A2423A04D154330961D171366B20 /* TOWebViewController-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TOWebViewController-umbrella.h"; sourceTree = "<group>"; };
 		514B043E9D3055C0824E19E8446CAC0D /* FSLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
 		53F61B3975183F755FD9E34A3B1C63B5 /* TOWebViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOWebViewController.m; path = TOWebViewController/TOWebViewController.m; sourceTree = "<group>"; };
 		566F12559D39A9CB166B83909CC02211 /* NJKWebViewProgressView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NJKWebViewProgressView.h; path = TOWebViewController/NJKWebViewProgress/NJKWebViewProgressView.h; sourceTree = "<group>"; };
+		57CE05C263036725B54D1E65EC443A42 /* zh-hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-hans.lproj"; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/zh-hans.lproj"; sourceTree = "<group>"; };
 		58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
-		5B580ABF5DE19E2253673F543ECCD86E /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ko.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ko.lproj"; sourceTree = "<group>"; };
 		5C06B368B405418D7877C302732313EA /* FSLineChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSLineChart-dummy.m"; sourceTree = "<group>"; };
 		5C0A3882E01F311E6CCF7F20510036D2 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB30CFE17E762F3DA53E8340305C6E3 /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
+		5EED9948421613C1991E66F41264FF9B /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = pl.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/pl.lproj"; sourceTree = "<group>"; };
 		5FF8F909B77F1119AF51DE8E40EE53E8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		603D6E8533C7200B10E22DA3715C35F9 /* Pods-Formant Analyzer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer-acknowledgements.markdown"; sourceTree = "<group>"; };
 		69167805984C4B79B9A0F4247887D3A7 /* TOWebViewController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TOWebViewController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B1389E6541F4988FEF94163451A2FA6 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = de.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/de.lproj"; sourceTree = "<group>"; };
 		6CA70A9C398F961814038E531A8BCFAD /* AFAutoPurgingImageCache.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFAutoPurgingImageCache.h; path = "UIKit+AFNetworking/AFAutoPurgingImageCache.h"; sourceTree = "<group>"; };
+		6E550F63EEBE0EECFFB1D5852F7431C6 /* de.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = de.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/de.lproj"; sourceTree = "<group>"; };
 		6F89F6634A2FE723D39E29EA0E55271E /* AFNetworking-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-umbrella.h"; sourceTree = "<group>"; };
-		714932361989CE3026C9DD8B88EDCBFE /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = es.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/es.lproj"; sourceTree = "<group>"; };
 		7290A2205F879DF88A1584911E16B02A /* Pods-Formant Analyzer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-frameworks.sh"; sourceTree = "<group>"; };
 		736B758FC86FEDE25BFAE84D892EE597 /* UIActivityIndicatorView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIActivityIndicatorView+AFNetworking.h"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.h"; sourceTree = "<group>"; };
 		73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer-dummy.m"; sourceTree = "<group>"; };
@@ -176,19 +177,18 @@
 		786E3ED05FBED68D87049326E23A9F60 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		7896C2EA164AD12386235D3A14F3151B /* FDSoundActivatedRecorder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-prefix.pch"; sourceTree = "<group>"; };
 		7BAA4B95CD9171131D26788D8498D70D /* FSLineChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-prefix.pch"; sourceTree = "<group>"; };
+		7CB3788C64830094569F2E1810A257F3 /* es.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = es.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/es.lproj"; sourceTree = "<group>"; };
 		7CBC80ABE3C3D0BEC4E1D22FFE796A6D /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		83149EA8AB96227A2AAE9913887B88E9 /* TOActivityChrome.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOActivityChrome.m; path = TOWebViewController/TOActivityChrome.m; sourceTree = "<group>"; };
 		864B65BBB9689EB7B4A55CBDB362AA4E /* AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworking.h; path = AFNetworking/AFNetworking.h; sourceTree = "<group>"; };
 		87D457B6343DBF416E83C856CFBADE07 /* TOWebViewController-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "TOWebViewController-prefix.pch"; sourceTree = "<group>"; };
 		882E6A0F995D8F38D6F1343CAEDA7CEA /* AFImageDownloader.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFImageDownloader.m; path = "UIKit+AFNetworking/AFImageDownloader.m"; sourceTree = "<group>"; };
 		8AD9494BDC51934A07159CB99909FA20 /* FSLineChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.xcconfig; sourceTree = "<group>"; };
-		8BE92E3D529A8F892CA798231E18D208 /* zh-hans.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = "zh-hans.lproj"; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/zh-hans.lproj"; sourceTree = "<group>"; };
 		8D30FD25074C8DC080087E1B86E31CF5 /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		8DD68FA3538B514882F615F225274BBD /* NJKWebViewProgressView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgressView.m; path = TOWebViewController/NJKWebViewProgress/NJKWebViewProgressView.m; sourceTree = "<group>"; };
 		8FC1FCAA5B276CAE7C091F5DB2E2B5D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		90E93F4DAC08E427BD7DEF5E9298942E /* UIImage+TOWebViewControllerIcons.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+TOWebViewControllerIcons.h"; path = "TOWebViewController/UIImage+TOWebViewControllerIcons.h"; sourceTree = "<group>"; };
 		9590931553E9DC233928F075B729B829 /* AFURLResponseSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLResponseSerialization.h; path = AFNetworking/AFURLResponseSerialization.h; sourceTree = "<group>"; };
-		9CDA322ACF0771EE674170CE491DD48E /* pl.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = pl.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/pl.lproj"; sourceTree = "<group>"; };
 		9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		A15F37FDA1BF21A78613EDE181FB1B27 /* AFNetworking.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AFNetworking.xcconfig; sourceTree = "<group>"; };
 		A41D4E3C3E2F0528B7BE5B9695D6417C /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AFNetworking.modulemap; sourceTree = "<group>"; };
@@ -200,27 +200,26 @@
 		B538D076D98586559D6E9016134E5CF8 /* Pods-Formant Analyzer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-resources.sh"; sourceTree = "<group>"; };
 		B5F0A3C09E2C56FFA28BEE7065D2489D /* UIActivityIndicatorView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIActivityIndicatorView+AFNetworking.m"; path = "UIKit+AFNetworking/UIActivityIndicatorView+AFNetworking.m"; sourceTree = "<group>"; };
 		B6CD09DB87B528A0E170CD84799DA854 /* UIImage+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+AFNetworking.h"; path = "UIKit+AFNetworking/UIImage+AFNetworking.h"; sourceTree = "<group>"; };
-		B7A626649F4F21E95FB8A4932AC2801B /* ru.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ru.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ru.lproj"; sourceTree = "<group>"; };
 		B8FDD0AA4BECF301B211B4A90933037B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		BB4F9ED4F6DF02DECAB273A59BDC8E7A /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImageView+AFNetworking.h"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		BC098166AC26BDECCAB829FFBA0D7096 /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
-		BC71DDBC9D84A4CD1E84C2E986ED60A9 /* it.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = it.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/it.lproj"; sourceTree = "<group>"; };
+		BE2DC898DFCE8E7FA58C42FF1B899697 /* fr.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = fr.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/fr.lproj"; sourceTree = "<group>"; };
 		BE886DF83B599D54389CB9CD2B3AB8FB /* AFNetworkActivityIndicatorManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkActivityIndicatorManager.m; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.m"; sourceTree = "<group>"; };
-		C57A19032F7D782E7935F873891C17CE /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/en.lproj"; sourceTree = "<group>"; };
+		C16CDF97E24B437EC556522015C3F11D /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ja.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ja.lproj"; sourceTree = "<group>"; };
 		C992B5EE88EFE1BAACBD1A1F7275867C /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		CDEB07299FA6329AB62E0B9E6EEF50E6 /* TOActivitySafari.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOActivitySafari.h; path = TOWebViewController/TOActivitySafari.h; sourceTree = "<group>"; };
 		CE0A458A3151B37F3E786DB331391834 /* TOActivityChrome.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = TOActivityChrome.h; path = TOWebViewController/TOActivityChrome.h; sourceTree = "<group>"; };
 		CEF20AF631EEA2BC36EF690573A94A2D /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FSLineChart.modulemap; sourceTree = "<group>"; };
 		CFEAF553357294BF779561E858D975A2 /* TOWebViewController.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TOWebViewController.modulemap; sourceTree = "<group>"; };
 		D2B81E220FC8FB4B521766C155401B7A /* Pods-Formant Analyzer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Formant Analyzer.modulemap"; sourceTree = "<group>"; };
+		D721E2DA0FE0EE7B826D3626CE80FBFE /* ko.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ko.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ko.lproj"; sourceTree = "<group>"; };
 		DA3A9D5A6DE6F94B93DDD50C0D3528E6 /* AFURLResponseSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLResponseSerialization.m; path = AFNetworking/AFURLResponseSerialization.m; sourceTree = "<group>"; };
 		DCFFD7D0A0283847C9B2D8F87E2A0601 /* FSLineChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-umbrella.h"; sourceTree = "<group>"; };
 		DE627DB7A91FC587950F094AE96C97B3 /* AFURLRequestSerialization.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFURLRequestSerialization.h; path = AFNetworking/AFURLRequestSerialization.h; sourceTree = "<group>"; };
 		E1EA67DABDB99CAA0046D4998349CFC4 /* NJKWebViewProgress.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = NJKWebViewProgress.m; path = TOWebViewController/NJKWebViewProgress/NJKWebViewProgress.m; sourceTree = "<group>"; };
 		E286FA293E017806AE7BCEC15D0E466C /* FDSoundActivatedRecorder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = FDSoundActivatedRecorder.h; sourceTree = "<group>"; };
 		E31034918FE1C3FCA9231F750FA17A6D /* TOActivitySafari.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TOActivitySafari.m; path = TOWebViewController/TOActivitySafari.m; sourceTree = "<group>"; };
-		E4A86AB437EAAC362E724B9C44F38DC2 /* ja.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = ja.lproj; path = "../../../../../../users/fulldecent/desktop/formant analyzer/pods/towebviewcontroller/towebviewcontroller/ja.lproj"; sourceTree = "<group>"; };
 		E635B907522FA0942AE48F0B9E8B2D5E /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImageView+AFNetworking.m"; path = "UIKit+AFNetworking/UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
 		EB373D8E5A2763CF450A75E1C7955800 /* AFNetworkActivityIndicatorManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFNetworkActivityIndicatorManager.h; path = "UIKit+AFNetworking/AFNetworkActivityIndicatorManager.h"; sourceTree = "<group>"; };
 		EBD57B80FD8E0D542BC7D9566ADBFAE2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
@@ -233,6 +232,7 @@
 		FAB517AC4DD9DA10F7DFDCB2E6423649 /* FDSoundActivatedRecorder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FDSoundActivatedRecorder-dummy.m"; sourceTree = "<group>"; };
 		FB5941A1F758A1AAD17221439A23AA52 /* UIRefreshControl+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIRefreshControl+AFNetworking.h"; path = "UIKit+AFNetworking/UIRefreshControl+AFNetworking.h"; sourceTree = "<group>"; };
 		FC0BC7637AEDDB5E3A29B893C3B9113F /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFHTTPSessionManager.h; path = AFNetworking/AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		FCDF81A7C245E594176FD08F220226F2 /* en.lproj */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; name = en.lproj; path = "../../../../../../../users/fulldecent/developer/formant-analyzer/formant analyzer/pods/towebviewcontroller/towebviewcontroller/en.lproj"; sourceTree = "<group>"; };
 		FF298278B36A24C0CB5506924F50FBEB /* UIImage+TOWebViewControllerIcons.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+TOWebViewControllerIcons.m"; path = "TOWebViewController/UIImage+TOWebViewControllerIcons.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -354,6 +354,25 @@
 			name = UIKit;
 			sourceTree = "<group>";
 		};
+		2280119720499381F9555672773B13A6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6E550F63EEBE0EECFFB1D5852F7431C6 /* de.lproj */,
+				FCDF81A7C245E594176FD08F220226F2 /* en.lproj */,
+				7CB3788C64830094569F2E1810A257F3 /* es.lproj */,
+				BE2DC898DFCE8E7FA58C42FF1B899697 /* fr.lproj */,
+				48888232382A831654BE97E4F8A9B833 /* it.lproj */,
+				C16CDF97E24B437EC556522015C3F11D /* ja.lproj */,
+				D721E2DA0FE0EE7B826D3626CE80FBFE /* ko.lproj */,
+				5EED9948421613C1991E66F41264FF9B /* pl.lproj */,
+				24A469A619C6EBF1D1F79DC53858FB03 /* ru.lproj */,
+				4731F7FABF3F435C09FFA301A4B8A01F /* uk.lproj */,
+				57CE05C263036725B54D1E65EC443A42 /* zh-hans.lproj */,
+				488FE523E22829208CD2CA93FA5A48DA /* zh-hant.lproj */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		2A6F4DE55336761BF61F4B4CF679A55E /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -400,7 +419,7 @@
 				53F61B3975183F755FD9E34A3B1C63B5 /* TOWebViewController.m */,
 				90E93F4DAC08E427BD7DEF5E9298942E /* UIImage+TOWebViewControllerIcons.h */,
 				FF298278B36A24C0CB5506924F50FBEB /* UIImage+TOWebViewControllerIcons.m */,
-				5F6ED8412C080184F6E846A77CAE6590 /* Resources */,
+				2280119720499381F9555672773B13A6 /* Resources */,
 			);
 			name = Core;
 			sourceTree = "<group>";
@@ -432,25 +451,6 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FSLineChart";
-			sourceTree = "<group>";
-		};
-		5F6ED8412C080184F6E846A77CAE6590 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				6B1389E6541F4988FEF94163451A2FA6 /* de.lproj */,
-				C57A19032F7D782E7935F873891C17CE /* en.lproj */,
-				714932361989CE3026C9DD8B88EDCBFE /* es.lproj */,
-				47E9F02D1CC8920B5055EF87A6309459 /* fr.lproj */,
-				BC71DDBC9D84A4CD1E84C2E986ED60A9 /* it.lproj */,
-				E4A86AB437EAAC362E724B9C44F38DC2 /* ja.lproj */,
-				5B580ABF5DE19E2253673F543ECCD86E /* ko.lproj */,
-				9CDA322ACF0771EE674170CE491DD48E /* pl.lproj */,
-				B7A626649F4F21E95FB8A4932AC2801B /* ru.lproj */,
-				46B09FBE723B285E31C3D6D40C14F3FB /* uk.lproj */,
-				8BE92E3D529A8F892CA798231E18D208 /* zh-hans.lproj */,
-				1B9E72DAF80159876514C82798BB8D2B /* zh-hant.lproj */,
-			);
-			name = Resources;
 			sourceTree = "<group>";
 		};
 		5FA303E07E7F1DDC7400D01DEC248588 /* Support Files */ = {
