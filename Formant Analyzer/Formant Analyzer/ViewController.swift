@@ -271,7 +271,7 @@ class FirstViewController: UIViewController {
         for basename: String in self.soundFileBaseNames {
             alert.addAction(UIAlertAction(title: basename, style: .Default, handler: {
                 (action: UIAlertAction) -> Void in
-                self.soundActivatedRecorder.stopListeningAndKeepRecordingIfInProgress(false)
+                self.soundActivatedRecorder.abort()
                 self.inputSelector.setTitle("File", forState: .Normal)
                 self.speechIsFromMicrophone = false
                 self.indicatorImageView.hidden = true
@@ -285,9 +285,8 @@ class FirstViewController: UIViewController {
     }
     
     /// Get raw PCM data from the track
-    func readSoundFileSamples(filePath: String) -> NSData {
+    func readSoundFileSamples(assetURL: NSURL) -> NSData {
         let retval = NSMutableData()
-        let assetURL: NSURL = NSURL(fileURLWithPath: filePath)
         let asset = AVURLAsset(URL: assetURL)
         let track = asset.tracks[0]
         let reader = try! AVAssetReader(asset: asset)
@@ -319,31 +318,41 @@ class FirstViewController: UIViewController {
 }
 
 extension FirstViewController: FDSoundActivatedRecorderDelegate {
-    func soundActivatedRecorderDidStartRecording(recorder: FDSoundActivatedRecorder!) {
+    func soundActivatedRecorderDidStartRecording(recorder: FDSoundActivatedRecorder) {
         NSLog("STARTED RECORDING")
         self.indicatorImageView.image = UIImage(named: "blue_light.png")
         self.statusLabel.text = "Capturing sound"
     }
-    
-    func soundActivatedRecorderDidStopRecording(recorder: FDSoundActivatedRecorder!, andSavedSound didSave: Bool) {
+
+    func soundActivatedRecorderDidFinishRecording(recorder: FDSoundActivatedRecorder, andSaved file: NSURL) {
         NSLog("STOPPED RECORDING")
         self.indicatorImageView.image = UIImage(named: "red_light.png")
-        if didSave {
-            self.statusLabel.text = "Processing sound"
-            self.speechData = self.readSoundFileSamples(self.soundActivatedRecorder.recordedFilePath)
-            self.speechAnalyzer = SpeechAnalyzer(int16Samples: self.speechData, withFrequency: 44100)
-            self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {() -> Void in
-                self.indicatorImageView.image = UIImage(named: "green_light.png")
-                self.statusLabel.text = "Listening ..."
-                self.soundActivatedRecorder.startListening()
-            })
+        self.statusLabel.text = "Processing sound"
+        self.speechData = self.readSoundFileSamples(file)
+        self.speechAnalyzer = SpeechAnalyzer(int16Samples: self.speechData, withFrequency: 44100)
+        self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {
+            self.indicatorImageView.image = UIImage(named: "green_light.png")
+            self.statusLabel.text = "Listening ..."
+            self.soundActivatedRecorder.startListening()
+        })
+    }
+    
+    func soundActivatedRecorderDidAbort(recorder: FDSoundActivatedRecorder) {
+        NSLog("STOPPED RECORDING")
+        self.indicatorImageView.image = UIImage(named: "red_light.png")
+        self.statusLabel.text = "Retrying ..."
+        if self.speechIsFromMicrophone {
+            self.soundActivatedRecorder.startListening()
         }
-        else {
-            self.statusLabel.text = "Retrying ..."
-            if self.speechIsFromMicrophone {
-                self.soundActivatedRecorder.startListening()
-            }
+    }
+    
+    func soundActivatedRecorderDidTimeOut(recorder: FDSoundActivatedRecorder) {
+        NSLog("STOPPED RECORDING")
+        self.indicatorImageView.image = UIImage(named: "red_light.png")
+        self.statusLabel.text = "Retrying ..."
+        if self.speechIsFromMicrophone {
+            self.soundActivatedRecorder.startListening()
         }
     }
 }
