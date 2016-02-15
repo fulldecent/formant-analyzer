@@ -61,39 +61,33 @@ class FirstViewController: UIViewController {
     var speechData = NSData()
     
     func showPlotForDisplayIdentifier(displayIdentifier: GraphingMode, withAnalyzer analyzer: SpeechAnalyzer) {
-        displayFormantFrequencies()
-        
-        //TODO: fix UGLIEST HACK
-        let newChart: FSLineChart = FSLineChart(frame: self.lineChartFull.frame)
-        self.lineChartFull.removeFromSuperview()
-        self.view!.addSubview(newChart)
-        self.lineChartFull = newChart
         self.formantPlot.hidden = true
+        self.lineChartTopHalf.hidden = true
+        self.lineChartBottomHalf.hidden = true
+        self.lineChartFull.hidden = true
         
-        //TODO: these should each be separate view classes
         switch displayIdentifier {
         case .Signal:
             self.drawSignalPlot()
+            self.lineChartTopHalf.hidden = false
+            self.lineChartBottomHalf.hidden = false
         case .LPC:
             self.drawLPCPlot()
+            self.lineChartFull.hidden = false
         case .FrequencyResponse:
             self.drawHwPlot()
+            self.lineChartFull.hidden = false
         case .Formant:
-            //TODO: TEMP HACK
-            self.formantPlot.formants = self.speechAnalyzer.formants //TODO this linke crashes
-            self.formantPlot.hidden = false
-            self.lineChartTopHalf.hidden = true
-            self.lineChartBottomHalf.hidden = true
-            self.lineChartFull.hidden = true
+            self.formantPlot.formants = self.speechAnalyzer.formants
             self.formantPlot.setNeedsDisplay()
+            self.formantPlot.hidden = false
         }
     }
     
+    //TODO: Should be a separate view class
     func drawSignalPlot() {
         let plottableValuesHigh: [Double] = self.speechAnalyzer.downsampleToSamples(400).map{max(0,Double($0))}
         let plottableValuesLow: [Double] = plottableValuesHigh.map({-$0})
-        self.lineChartFull.hidden = true
-        self.lineChartTopHalf.hidden = false
         self.lineChartTopHalf.drawInnerGrid = false
         self.lineChartTopHalf.axisLineWidth = 0
         self.lineChartTopHalf.margin = 0
@@ -103,7 +97,6 @@ class FirstViewController: UIViewController {
         self.lineChartTopHalf.fillColor = UIColor.blueColor()
         self.lineChartTopHalf.clearChartData()
         self.lineChartTopHalf.setChartData(plottableValuesHigh)
-        self.lineChartBottomHalf.hidden = false
         self.lineChartBottomHalf.drawInnerGrid = false
         self.lineChartBottomHalf.axisLineWidth = 0
         self.lineChartBottomHalf.margin = 0
@@ -115,6 +108,7 @@ class FirstViewController: UIViewController {
         self.lineChartBottomHalf.setChartData(plottableValuesLow)
         
         self.lineChartTopHalf.subviews.forEach({$0.removeFromSuperview()})
+        self.lineChartBottomHalf.subviews.forEach({$0.removeFromSuperview()})
         
         let strongRect = CGRect(
             x: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.strongPart.first!) / CGFloat(self.speechAnalyzer.samples.count),
@@ -135,11 +129,8 @@ class FirstViewController: UIViewController {
         self.lineChartTopHalf.insertSubview(vowelBox, atIndex: 0)
     }
     
+    //TODO: Should be a separate view class
     func drawLPCPlot() {
-        self.formantPlot.hidden = true
-        self.lineChartTopHalf.hidden = true
-        self.lineChartBottomHalf.hidden = true
-        self.lineChartFull.hidden = false
         // Index label properties
         self.lineChartFull.labelForIndex = {
             (item: UInt) -> String in
@@ -171,11 +162,8 @@ class FirstViewController: UIViewController {
         self.lineChartFull.setChartData(lpcCoefficients)
     }
     
+    //TODO: Should be a separate view class
     func drawHwPlot() {
-        self.formantPlot.hidden = true
-        self.lineChartTopHalf.hidden = true
-        self.lineChartBottomHalf.hidden = true
-        self.lineChartFull.hidden = false
         // Index label properties
         self.lineChartFull.labelForIndex = {
             (item: UInt) -> String in
@@ -237,6 +225,7 @@ class FirstViewController: UIViewController {
         NSLog("Processing saved file %@", self.soundFileBaseNames[self.soundFileIdentifier])
         speechData = NSData(contentsOfURL: fileURL)!
         self.speechAnalyzer = SpeechAnalyzer(int16Samples: speechData, withFrequency: 44100)
+        displayFormantFrequencies()
         self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
     }
     
@@ -319,40 +308,49 @@ class FirstViewController: UIViewController {
 
 extension FirstViewController: FDSoundActivatedRecorderDelegate {
     func soundActivatedRecorderDidStartRecording(recorder: FDSoundActivatedRecorder) {
-        NSLog("STARTED RECORDING")
-        self.indicatorImageView.image = UIImage(named: "blue_light.png")
-        self.statusLabel.text = "Capturing sound"
+        dispatch_async(dispatch_get_main_queue(),{
+            NSLog("STARTED RECORDING")
+            self.indicatorImageView.image = UIImage(named: "blue_light.png")
+            self.statusLabel.text = "Capturing sound"
+        })
     }
 
     func soundActivatedRecorderDidFinishRecording(recorder: FDSoundActivatedRecorder, andSaved file: NSURL) {
-        NSLog("STOPPED RECORDING")
-        self.indicatorImageView.image = UIImage(named: "red_light.png")
-        self.statusLabel.text = "Processing sound"
-        self.speechData = self.readSoundFileSamples(file)
-        self.speechAnalyzer = SpeechAnalyzer(int16Samples: self.speechData, withFrequency: 44100)
-        self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {
-            self.indicatorImageView.image = UIImage(named: "green_light.png")
-            self.statusLabel.text = "Listening ..."
-            self.soundActivatedRecorder.startListening()
+        dispatch_async(dispatch_get_main_queue(),{
+            NSLog("STOPPED RECORDING")
+            self.indicatorImageView.image = UIImage(named: "red_light.png")
+            self.statusLabel.text = "Processing sound"
+            self.speechData = self.readSoundFileSamples(file)
+            self.speechAnalyzer = SpeechAnalyzer(int16Samples: self.speechData, withFrequency: 44100)
+            self.displayFormantFrequencies()
+            self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
+            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {
+                self.indicatorImageView.image = UIImage(named: "green_light.png")
+                self.statusLabel.text = "Listening ..."
+                self.soundActivatedRecorder.startListening()
+            })
         })
     }
     
     func soundActivatedRecorderDidAbort(recorder: FDSoundActivatedRecorder) {
-        NSLog("STOPPED RECORDING")
-        self.indicatorImageView.image = UIImage(named: "red_light.png")
-        self.statusLabel.text = "Retrying ..."
-        if self.speechIsFromMicrophone {
-            self.soundActivatedRecorder.startListening()
-        }
+        dispatch_async(dispatch_get_main_queue(),{
+            NSLog("STOPPED RECORDING")
+            self.indicatorImageView.image = UIImage(named: "red_light.png")
+            self.statusLabel.text = "Retrying ..."
+            if self.speechIsFromMicrophone {
+                self.soundActivatedRecorder.startListening()
+            }
+        })
     }
     
     func soundActivatedRecorderDidTimeOut(recorder: FDSoundActivatedRecorder) {
-        NSLog("STOPPED RECORDING")
-        self.indicatorImageView.image = UIImage(named: "red_light.png")
-        self.statusLabel.text = "Retrying ..."
-        if self.speechIsFromMicrophone {
-            self.soundActivatedRecorder.startListening()
-        }
+        dispatch_async(dispatch_get_main_queue(),{
+            NSLog("STOPPED RECORDING")
+            self.indicatorImageView.image = UIImage(named: "red_light.png")
+            self.statusLabel.text = "Retrying ..."
+            if self.speechIsFromMicrophone {
+                self.soundActivatedRecorder.startListening()
+            }
+        })
     }
 }
