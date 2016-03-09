@@ -241,6 +241,7 @@ class FirstViewController: UIViewController {
         self.speechIsFromMicrophone = true
         self.indicatorImageView.hidden = false
         self.statusLabel.text = "Listening ..."
+        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
         self.soundActivatedRecorder.startListening()
     }
     
