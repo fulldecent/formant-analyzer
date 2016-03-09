@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		572F23486EE71360E895C76C /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */; };
+		66E8FD8F0FE9024F946A3FB0 /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA78B48659962509DA501C60 /* Pods_Formant_Analyzer.framework */; };
 		D92E8FC31C55944800F73A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D92E8FC21C55944800F73A8A /* AppDelegate.swift */; };
 		D92E8FCA1C55944800F73A8A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FC91C55944800F73A8A /* Assets.xcassets */; };
 		D92E8FCD1C55944800F73A8A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D92E8FCB1C55944800F73A8A /* LaunchScreen.storyboard */; };
@@ -51,8 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
-		92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		859D075DEB03DE85B4D0C63D /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		D92E8FBF1C55944800F73A8A /* Formant Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formant Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D92E8FC21C55944800F73A8A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D92E8FC91C55944800F73A8A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -82,7 +81,8 @@
 		D92E90131C5595A700F73A8A /* SpeechAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzerTests.swift; sourceTree = "<group>"; };
 		D92E90151C5595C500F73A8A /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		D92E90171C5595D500F73A8A /* Formant_AnalyzerUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formant_AnalyzerUITests.swift; sourceTree = "<group>"; };
-		FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
+		E93A8C2513BA7776DC978568 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
+		FA78B48659962509DA501C60 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				572F23486EE71360E895C76C /* Pods_Formant_Analyzer.framework in Frameworks */,
+				66E8FD8F0FE9024F946A3FB0 /* Pods_Formant_Analyzer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -111,11 +111,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22E8674315E3D381D442277D /* Pods */ = {
+		2BF8560BFB062FD11BA2532E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */,
-				625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */,
+				FA78B48659962509DA501C60 /* Pods_Formant_Analyzer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4DEC73C6059F4212A76BC2E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E93A8C2513BA7776DC978568 /* Pods-Formant Analyzer.debug.xcconfig */,
+				859D075DEB03DE85B4D0C63D /* Pods-Formant Analyzer.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -127,8 +135,8 @@
 				D92E8FD61C55944800F73A8A /* Formant AnalyzerTests */,
 				D92E8FE11C55944800F73A8A /* Formant AnalyzerUITests */,
 				D92E8FC01C55944800F73A8A /* Products */,
-				22E8674315E3D381D442277D /* Pods */,
-				DEA98C2F670334374932EFD1 /* Frameworks */,
+				4DEC73C6059F4212A76BC2E5 /* Pods */,
+				2BF8560BFB062FD11BA2532E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -197,14 +205,6 @@
 			name = Media;
 			sourceTree = "<group>";
 		};
-		DEA98C2F670334374932EFD1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				92F8318F6F3CCF02392B2C57 /* Pods_Formant_Analyzer.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -212,12 +212,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D92E8FE71C55944800F73A8A /* Build configuration list for PBXNativeTarget "Formant Analyzer" */;
 			buildPhases = (
-				E28EA34988CBBBF2A0BF72E0 /* Check Pods Manifest.lock */,
+				414D7419046CF640D6ED5608 /* 📦 Check Pods Manifest.lock */,
 				D92E8FBB1C55944800F73A8A /* Sources */,
 				D92E8FBC1C55944800F73A8A /* Frameworks */,
 				D92E8FBD1C55944800F73A8A /* Resources */,
-				6A1428E7A80275E47CAE7E01 /* Embed Pods Frameworks */,
-				BA2B2C8590E35ED7EADB2761 /* Copy Pods Resources */,
+				2288F3489D2DB396387F5F47 /* 📦 Embed Pods Frameworks */,
+				A9F4BBC54767F90B5A2D90E7 /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -347,14 +347,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6A1428E7A80275E47CAE7E01 /* Embed Pods Frameworks */ = {
+		2288F3489D2DB396387F5F47 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -362,34 +362,34 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BA2B2C8590E35ED7EADB2761 /* Copy Pods Resources */ = {
+		414D7419046CF640D6ED5608 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		E28EA34988CBBBF2A0BF72E0 /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A9F4BBC54767F90B5A2D90E7 /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -537,10 +537,18 @@
 		};
 		D92E8FE81C55944800F73A8A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FA86CD397F1EAD40AA92843F /* Pods-Formant Analyzer.debug.xcconfig */;
+			baseConfigurationReference = E93A8C2513BA7776DC978568 /* Pods-Formant Analyzer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder\"",
+					"\"$CONFIGURATION_BUILD_DIR/FSLineChart\"",
+					"\"$CONFIGURATION_BUILD_DIR/TOWebViewController\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -551,10 +559,18 @@
 		};
 		D92E8FE91C55944800F73A8A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 625BAC68594BCCD0AEBA0BC6 /* Pods-Formant Analyzer.release.xcconfig */;
+			baseConfigurationReference = 859D075DEB03DE85B4D0C63D /* Pods-Formant Analyzer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$CONFIGURATION_BUILD_DIR/AFNetworking\"",
+					"\"$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder\"",
+					"\"$CONFIGURATION_BUILD_DIR/FSLineChart\"",
+					"\"$CONFIGURATION_BUILD_DIR/TOWebViewController\"",
+					"$(SRCROOT)/**",
+				);
 				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

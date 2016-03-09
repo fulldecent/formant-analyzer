@@ -84,14 +84,14 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-Formant Analyzer/AFNetworking.framework"
-  install_framework "Pods-Formant Analyzer/FDSoundActivatedRecorder.framework"
-  install_framework "Pods-Formant Analyzer/FSLineChart.framework"
-  install_framework "Pods-Formant Analyzer/TOWebViewController.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder/FDSoundActivatedRecorder.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/FSLineChart/FSLineChart.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/TOWebViewController/TOWebViewController.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-Formant Analyzer/AFNetworking.framework"
-  install_framework "Pods-Formant Analyzer/FDSoundActivatedRecorder.framework"
-  install_framework "Pods-Formant Analyzer/FSLineChart.framework"
-  install_framework "Pods-Formant Analyzer/TOWebViewController.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder/FDSoundActivatedRecorder.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/FSLineChart/FSLineChart.framework"
+  install_framework "$CONFIGURATION_BUILD_DIR/TOWebViewController/TOWebViewController.framework"
 fi

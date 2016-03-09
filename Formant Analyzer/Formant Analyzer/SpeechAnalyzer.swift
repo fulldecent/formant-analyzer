@@ -74,6 +74,12 @@ class SpeechAnalyzer {
     
     /// Reduce horizontal resolution of `signal` for plotting
     func downsampleToSamples(newSampleCount: Int) -> [Int16] {
+        guard newSampleCount > 0 else {
+            return []
+        }
+        guard newSampleCount < self.samples.count else {
+            return self.samples
+        }
         let chunkSize = self.samples.count / newSampleCount
         var chunkMaxElements = [Int16]()
         
