@@ -86,6 +86,10 @@ class FirstViewController: UIViewController {
     
     //TODO: Should be a separate view class
     func drawSignalPlot() {
+        guard speechAnalyzer.samples.count > 0 else {
+            return
+        }
+        
         let plottableValuesHigh: [Double] = self.speechAnalyzer.downsampleToSamples(400).map{max(0,Double($0))}
         let plottableValuesLow: [Double] = plottableValuesHigh.map({-$0})
         self.lineChartTopHalf.drawInnerGrid = false

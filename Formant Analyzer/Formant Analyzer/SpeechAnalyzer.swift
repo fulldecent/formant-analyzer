@@ -115,7 +115,7 @@ class SpeechAnalyzer {
         var maxChunkEnergy: Double = 0
         
         guard chunkSize > 0 else {
-            return 0...0
+            return 0..<0
         }
 
         // Find the chunk with the most energy and set energy threshold
