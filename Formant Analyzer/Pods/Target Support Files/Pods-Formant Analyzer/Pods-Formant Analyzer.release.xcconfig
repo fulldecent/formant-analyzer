@@ -1,8 +1,10 @@
 EMBEDDED_CONTENT_CONTAINS_SWIFT = YES
-FRAMEWORK_SEARCH_PATHS = $(inherited) "$CONFIGURATION_BUILD_DIR/AFNetworking" "$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder" "$CONFIGURATION_BUILD_DIR/FSLineChart" "$CONFIGURATION_BUILD_DIR/TOWebViewController"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$PODS_CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder" "$PODS_CONFIGURATION_BUILD_DIR/FSLineChart"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -iquote "$CONFIGURATION_BUILD_DIR/AFNetworking/AFNetworking.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder/FDSoundActivatedRecorder.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/FSLineChart/FSLineChart.framework/Headers" -iquote "$CONFIGURATION_BUILD_DIR/TOWebViewController/TOWebViewController.framework/Headers"
-OTHER_LDFLAGS = $(inherited) -framework "AFNetworking" -framework "FDSoundActivatedRecorder" -framework "FSLineChart" -framework "TOWebViewController"
+OTHER_CFLAGS = $(inherited) -iquote "$PODS_CONFIGURATION_BUILD_DIR/FDSoundActivatedRecorder/FDSoundActivatedRecorder.framework/Headers" -iquote "$PODS_CONFIGURATION_BUILD_DIR/FSLineChart/FSLineChart.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "FDSoundActivatedRecorder" -framework "FSLineChart"
 OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
+PODS_BUILD_DIR = $BUILD_DIR
+PODS_CONFIGURATION_BUILD_DIR = $PODS_BUILD_DIR/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_ROOT = ${SRCROOT}/Pods

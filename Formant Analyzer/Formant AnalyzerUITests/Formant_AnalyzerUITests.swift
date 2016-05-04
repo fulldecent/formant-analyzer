@@ -17,12 +17,12 @@ class Formant_AnalyzerUITests: XCTestCase {
         continueAfterFailure = false
         
         let app = XCUIApplication()
-        setLanguage(app)
+        setupSnapshot(app)
         app.launch()
         
         app.buttons["Microphone"].tap()
         app.sheets["Audio source"].collectionViews.buttons["arm"].tap()
-}
+    }
     
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.

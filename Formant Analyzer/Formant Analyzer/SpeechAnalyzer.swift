@@ -141,7 +141,7 @@ class SpeechAnalyzer {
     class func truncateTailsOfRange(range: Range<Int>, portion: Double) -> Range<Int> {
         let start = range.startIndex + Int(portion * Double(range.count))
         let end = range.endIndex - Int(portion * Double(range.count))
-        return Range(start: start, end: end)
+        return start ..< end
     }
 
     /// Select the first of every `stride` items from `samples`

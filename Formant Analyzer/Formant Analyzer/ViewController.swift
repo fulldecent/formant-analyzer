@@ -6,13 +6,12 @@
 //  Copyright © 2016 William Entriken. All rights reserved.
 //
 
-import Foundation
 import UIKit
 import AVKit
 import AVFoundation
 import FSLineChart
 import FDSoundActivatedRecorder
-import TOWebViewController
+import SafariServices
 
 enum GraphingMode: Int {
     case Signal
@@ -241,15 +240,20 @@ class FirstViewController: UIViewController {
         self.speechIsFromMicrophone = true
         self.indicatorImageView.hidden = false
         self.statusLabel.text = "Listening ..."
-        try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
         self.soundActivatedRecorder.startListening()
     }
     
     @IBAction func showHelp() {
-        let url: NSURL = NSURL(string: "https://fulldecent.github.io/formant-analyzer/")!
-        let webViewController: TOWebViewController = TOWebViewController(URL: url)
-        webViewController.showActionButton = false
-        self.presentViewController(UINavigationController(rootViewController: webViewController), animated: true, completion: { _ in })
+        let url = NSURL(string: "https://fulldecent.github.io/formant-analyzer/")!
+
+        if #available(iOS 9.0, *) {
+            let svc = SFSafariViewController(URL: url, entersReaderIfAvailable: true)
+            svc.delegate = self
+            self.presentViewController(svc, animated: true, completion: nil)
+        } else {
+            UIApplication.sharedApplication().openURL(url)
+        }
     }
     
     @IBAction func showInputSelectSheet(sender: UIButton) {
@@ -357,5 +361,13 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
                 self.soundActivatedRecorder.startListening()
             }
         })
+    }
+}
+
+@available(iOS 9.0, *)
+extension FirstViewController: SFSafariViewControllerDelegate {
+    func safariViewControllerDidFinish(controller: SFSafariViewController)
+    {
+        controller.dismissViewControllerAnimated(true, completion: nil)
     }
 }

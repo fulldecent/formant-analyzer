@@ -1,37 +1,15 @@
 PODS:
-  - AFNetworking (3.0.4):
-    - AFNetworking/NSURLSession (= 3.0.4)
-    - AFNetworking/Reachability (= 3.0.4)
-    - AFNetworking/Security (= 3.0.4)
-    - AFNetworking/Serialization (= 3.0.4)
-    - AFNetworking/UIKit (= 3.0.4)
-  - AFNetworking/NSURLSession (3.0.4):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.0.4)
-  - AFNetworking/Security (3.0.4)
-  - AFNetworking/Serialization (3.0.4)
-  - AFNetworking/UIKit (3.0.4):
-    - AFNetworking/NSURLSession
-  - FDSoundActivatedRecorder (1.0.3)
+  - FDSoundActivatedRecorder (1.0.4)
   - FSLineChart (0.1.7)
-  - TOWebViewController (2.2.3):
-    - TOWebViewController/Core (= 2.2.3)
-  - TOWebViewController/Core (2.2.3)
 
 DEPENDENCIES:
-  - AFNetworking
   - FDSoundActivatedRecorder
   - FSLineChart
-  - TOWebViewController
 
 SPEC CHECKSUMS:
-  AFNetworking: a0075feb321559dc78d9d85b55d11caa19eabb93
-  FDSoundActivatedRecorder: d45092055ca5db75cf1c4016e51d8e861f62612e
+  FDSoundActivatedRecorder: 69eb08757fbe40540a2dceaf1be1b62881a567c6
   FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
-  TOWebViewController: ca47b9aeefe66acb3353d197dc8270338540b116
 
-PODFILE CHECKSUM: 9cd36e1e5e9f8d224bfd2c8ceebe6cc9c3d6592f
+PODFILE CHECKSUM: f0e0a1e4f479527ec2ad23dd123b9c4558fff7ae
 
-COCOAPODS: 1.0.0.beta.5
+COCOAPODS: 1.0.0.rc.1
