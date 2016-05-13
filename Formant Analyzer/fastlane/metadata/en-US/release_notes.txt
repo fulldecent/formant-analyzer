@@ -1,5 +1,1 @@
- * New formant plot with full size on ALL iOS devices
- * Back / forward buttons in the help viewer
- * Faster processing
-
-For anyone researching speech topics or interested in the project. I just want to let you know this is an open source project and you are welcome to visit our GitHub page (from Help link inside the app). All help and feedback is much appreciated!
+Fixes microphone recording issue
