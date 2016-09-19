@@ -8,13 +8,9 @@
 
 import XCTest
 
-func delay(delay:Double, closure:()->()) {
-    dispatch_after(
-        dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(delay * Double(NSEC_PER_SEC))
-        ),
-        dispatch_get_main_queue(), closure)
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
 }
 
 class Formant_AnalyzerUITests: XCTestCase {
@@ -44,7 +40,7 @@ class Formant_AnalyzerUITests: XCTestCase {
         delay(0.5) {
             snapshot("1Sig", waitForLoadingIndicator:true)
         }
-        self.waitForExpectationsWithTimeout(2, handler: nil)
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
     
     func testLpc() {
@@ -53,16 +49,16 @@ class Formant_AnalyzerUITests: XCTestCase {
         delay(0.5) {
             snapshot("2Lpc", waitForLoadingIndicator:true)
         }
-        self.waitForExpectationsWithTimeout(2, handler: nil)
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testHw() {
         let app = XCUIApplication()
-        app.segmentedControls.buttons.elementBoundByIndex(2).tap()
+        app.segmentedControls.buttons.element(boundBy: 2).tap()
         delay(0.5) {
             snapshot("3Hw", waitForLoadingIndicator:true)
         }
-        self.waitForExpectationsWithTimeout(2, handler: nil)
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
 
     func testFrmnt() {
@@ -71,6 +67,6 @@ class Formant_AnalyzerUITests: XCTestCase {
         delay(0.5) {
             snapshot("4Frmnt", waitForLoadingIndicator:true)
         }
-        self.waitForExpectationsWithTimeout(2, handler: nil)
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
 }

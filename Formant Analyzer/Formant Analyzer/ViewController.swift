@@ -14,10 +14,10 @@ import FDSoundActivatedRecorder
 import SafariServices
 
 enum GraphingMode: Int {
-    case Signal
-    case LPC
-    case FrequencyResponse
-    case Formant
+    case signal
+    case lpc
+    case frequencyResponse
+    case formant
 }
 
 class FirstViewController: UIViewController {
@@ -38,7 +38,7 @@ class FirstViewController: UIViewController {
     @IBOutlet var thirdFormantLabel: UILabel!
     @IBOutlet var fourthFormantLabel: UILabel!
         
-    var displayIdentifier: GraphingMode = .Signal
+    var displayIdentifier: GraphingMode = .signal
     
     lazy var soundActivatedRecorder: FDSoundActivatedRecorder = {
         let retval = FDSoundActivatedRecorder()
@@ -55,31 +55,31 @@ class FirstViewController: UIViewController {
     /// Array of names of 7 stored sound files.
     var soundFileBaseNames = ["arm", "beat", "bid", "calm", "cat", "four", "who"]
     
-    var speechAnalyzer = SpeechAnalyzer(int16Samples: NSData(), withFrequency: 44100)
+    var speechAnalyzer = SpeechAnalyzer(int16Samples: Data(), withFrequency: 44100)
     
-    var speechData = NSData()
+    var speechData = Data()
     
-    func showPlotForDisplayIdentifier(displayIdentifier: GraphingMode, withAnalyzer analyzer: SpeechAnalyzer) {
-        self.formantPlot.hidden = true
-        self.lineChartTopHalf.hidden = true
-        self.lineChartBottomHalf.hidden = true
-        self.lineChartFull.hidden = true
+    func showPlotForDisplayIdentifier(_ displayIdentifier: GraphingMode, withAnalyzer analyzer: SpeechAnalyzer) {
+        self.formantPlot.isHidden = true
+        self.lineChartTopHalf.isHidden = true
+        self.lineChartBottomHalf.isHidden = true
+        self.lineChartFull.isHidden = true
         
         switch displayIdentifier {
-        case .Signal:
+        case .signal:
             self.drawSignalPlot()
-            self.lineChartTopHalf.hidden = false
-            self.lineChartBottomHalf.hidden = false
-        case .LPC:
+            self.lineChartTopHalf.isHidden = false
+            self.lineChartBottomHalf.isHidden = false
+        case .lpc:
             self.drawLPCPlot()
-            self.lineChartFull.hidden = false
-        case .FrequencyResponse:
+            self.lineChartFull.isHidden = false
+        case .frequencyResponse:
             self.drawHwPlot()
-            self.lineChartFull.hidden = false
-        case .Formant:
+            self.lineChartFull.isHidden = false
+        case .formant:
             self.formantPlot.formants = self.speechAnalyzer.formants
             self.formantPlot.setNeedsDisplay()
-            self.formantPlot.hidden = false
+            self.formantPlot.isHidden = false
         }
     }
     
@@ -96,18 +96,18 @@ class FirstViewController: UIViewController {
         self.lineChartTopHalf.margin = 0
         self.lineChartTopHalf.axisWidth = self.lineChartTopHalf.frame.size.width
         self.lineChartTopHalf.axisHeight = self.lineChartTopHalf.frame.size.height
-        self.lineChartTopHalf.backgroundColor = UIColor.clearColor()
-        self.lineChartTopHalf.fillColor = UIColor.blueColor()
-        self.lineChartTopHalf.clearChartData()
+        self.lineChartTopHalf.backgroundColor = UIColor.clear
+        self.lineChartTopHalf.fillColor = UIColor.blue
+        self.lineChartTopHalf.clearData()
         self.lineChartTopHalf.setChartData(plottableValuesHigh)
         self.lineChartBottomHalf.drawInnerGrid = false
         self.lineChartBottomHalf.axisLineWidth = 0
         self.lineChartBottomHalf.margin = 0
         self.lineChartBottomHalf.axisWidth = self.lineChartTopHalf.frame.size.width
         self.lineChartBottomHalf.axisHeight = self.lineChartTopHalf.frame.size.height
-        self.lineChartBottomHalf.backgroundColor = UIColor.clearColor()
-        self.lineChartBottomHalf.fillColor = UIColor.blueColor()
-        self.lineChartBottomHalf.clearChartData()
+        self.lineChartBottomHalf.backgroundColor = UIColor.clear
+        self.lineChartBottomHalf.fillColor = UIColor.blue
+        self.lineChartBottomHalf.clearData()
         self.lineChartBottomHalf.setChartData(plottableValuesLow)
         
         self.lineChartTopHalf.subviews.forEach({$0.removeFromSuperview()})
@@ -120,7 +120,7 @@ class FirstViewController: UIViewController {
             height: self.lineChartTopHalf.frame.size.height * 2)
         let strongBox = UIView(frame: strongRect)
         strongBox.backgroundColor = UIColor(hue: 60.0/255.0, saturation: 180.0/255.0, brightness: 92.0/255.0, alpha: 0.2)
-        self.lineChartTopHalf.insertSubview(strongBox, atIndex: 0)
+        self.lineChartTopHalf.insertSubview(strongBox, at: 0)
 
         let vowelRect = CGRect(
             x: CGFloat(self.lineChartTopHalf.frame.size.width) * CGFloat(self.speechAnalyzer.vowelPart.first!) / CGFloat(self.speechAnalyzer.samples.count),
@@ -129,7 +129,7 @@ class FirstViewController: UIViewController {
             height: self.lineChartTopHalf.frame.size.height * 1.9)
         let vowelBox = UIView(frame: vowelRect)
         vowelBox.backgroundColor = UIColor(hue: 130.0/255.0, saturation: 180.0/255.0, brightness: 92.0/255.0, alpha: 0.2)
-        self.lineChartTopHalf.insertSubview(vowelBox, atIndex: 0)
+        self.lineChartTopHalf.insertSubview(vowelBox, at: 0)
     }
     
     //TODO: Should be a separate view class
@@ -144,7 +144,7 @@ class FirstViewController: UIViewController {
             (value: CGFloat) -> String in
             return String(format: "%.02f", value)
         }
-        self.lineChartFull.valueLabelPosition = .Left
+        self.lineChartFull.valueLabelPosition = .left
         // Number of visible step in the chart
         self.lineChartFull.verticalGridStep = 3
         self.lineChartFull.horizontalGridStep = 20
@@ -155,13 +155,13 @@ class FirstViewController: UIViewController {
         // Decoration parameters, let you pick the color of the line as well as the color of the axis
         self.lineChartFull.axisLineWidth = 1
         // Chart parameters
-        self.lineChartFull.color = UIColor.blackColor()
-        self.lineChartFull.fillColor = UIColor.blueColor()
-        self.lineChartFull.backgroundColor = UIColor.clearColor()
+        self.lineChartFull.color = UIColor.black
+        self.lineChartFull.fillColor = UIColor.blue
+        self.lineChartFull.backgroundColor = UIColor.clear
         // Grid parameters
         self.lineChartFull.drawInnerGrid = true
         let lpcCoefficients: [Double] = self.speechAnalyzer.estimatedLpcCoefficients
-        self.lineChartFull.clearChartData()
+        self.lineChartFull.clearData()
         self.lineChartFull.setChartData(lpcCoefficients)
     }
     
@@ -177,7 +177,7 @@ class FirstViewController: UIViewController {
             (value: CGFloat) -> String in
             return String(format: "%.02f", value)
         }
-        self.lineChartFull.valueLabelPosition = .Left
+        self.lineChartFull.valueLabelPosition = .left
         // Number of visible step in the chart
         self.lineChartFull.verticalGridStep = 3
         self.lineChartFull.horizontalGridStep = 5
@@ -188,27 +188,27 @@ class FirstViewController: UIViewController {
         // Decoration parameters, let you pick the color of the line as well as the color of the axis
         self.lineChartFull.axisLineWidth = 1
         // Chart parameters
-        self.lineChartFull.color = UIColor.blackColor()
-        self.lineChartFull.fillColor = UIColor.blueColor()
-        self.lineChartFull.backgroundColor = UIColor.clearColor()
+        self.lineChartFull.color = UIColor.black
+        self.lineChartFull.fillColor = UIColor.blue
+        self.lineChartFull.backgroundColor = UIColor.clear
         // Grid parameters
         self.lineChartFull.drawInnerGrid = true
         let synthesizedFrequencyResponse: [Double] = self.speechAnalyzer.synthesizedFrequencyResponse
-        self.lineChartFull.clearChartData()
+        self.lineChartFull.clearData()
         self.lineChartFull.setChartData(synthesizedFrequencyResponse)
     }
     
-    @IBAction func graphingModeChanged(sender: UISegmentedControl) {
+    @IBAction func graphingModeChanged(_ sender: UISegmentedControl) {
         self.displayIdentifier = GraphingMode(rawValue: sender.selectedSegmentIndex)!
         self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
     }
     
-    override func viewWillTransitionToSize(size: CGSize, withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        coordinator.animateAlongsideTransition({(context: UIViewControllerTransitionCoordinatorContext) -> Void in
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: {(context: UIViewControllerTransitionCoordinatorContext) -> Void in
             self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
             }, completion: {(context: UIViewControllerTransitionCoordinatorContext) -> Void in
         })
-        super.viewWillTransitionToSize(size, withTransitionCoordinator: coordinator)
+        super.viewWillTransition(to: size, with: coordinator)
     }
     
     func displayFormantFrequencies() {
@@ -224,9 +224,9 @@ class FirstViewController: UIViewController {
     }
 
     func processRawBuffer() {
-        let fileURL = NSBundle.mainBundle().URLForResource(self.soundFileBaseNames[self.soundFileIdentifier], withExtension: "raw")!
+        let fileURL = Bundle.main.url(forResource: self.soundFileBaseNames[self.soundFileIdentifier], withExtension: "raw")!
         NSLog("Processing saved file %@", self.soundFileBaseNames[self.soundFileIdentifier])
-        speechData = NSData(contentsOfURL: fileURL)!
+        speechData = try! Data(contentsOf: fileURL)
         self.speechAnalyzer = SpeechAnalyzer(int16Samples: speechData, withFrequency: 44100)
         displayFormantFrequencies()
         self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
@@ -236,60 +236,60 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicatorImageView.image = UIImage(named: "green_light.png")
-        self.inputSelector.setTitle("Microphone", forState: .Normal)
+        self.inputSelector.setTitle("Microphone", for: UIControlState())
         self.speechIsFromMicrophone = true
-        self.indicatorImageView.hidden = false
+        self.indicatorImageView.isHidden = false
         self.statusLabel.text = "Listening ..."
         _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
         self.soundActivatedRecorder.startListening()
     }
     
     @IBAction func showHelp() {
-        let url = NSURL(string: "https://fulldecent.github.io/formant-analyzer/")!
+        let url = URL(string: "https://fulldecent.github.io/formant-analyzer/")!
 
         if #available(iOS 9.0, *) {
-            let svc = SFSafariViewController(URL: url, entersReaderIfAvailable: true)
+            let svc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
             svc.delegate = self
-            self.presentViewController(svc, animated: true, completion: nil)
+            self.present(svc, animated: true, completion: nil)
         } else {
-            UIApplication.sharedApplication().openURL(url)
+            UIApplication.shared.openURL(url)
         }
     }
     
-    @IBAction func showInputSelectSheet(sender: UIButton) {
-        let alert: UIAlertController = UIAlertController(title: "Audio source", message: "Select the audio soucre to analyze", preferredStyle: .ActionSheet)
-        alert.addAction(UIAlertAction(title: "Microphone", style: .Default, handler: {
+    @IBAction func showInputSelectSheet(_ sender: UIButton) {
+        let alert: UIAlertController = UIAlertController(title: "Audio source", message: "Select the audio soucre to analyze", preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Microphone", style: .default, handler: {
             (action: UIAlertAction) -> Void in
-            self.inputSelector.setTitle("Microphone", forState: .Normal)
+            self.inputSelector.setTitle("Microphone", for: UIControlState())
             self.speechIsFromMicrophone = true
-            self.indicatorImageView.hidden = false
+            self.indicatorImageView.isHidden = false
             self.statusLabel.text = "Waiting ..."
             self.soundActivatedRecorder.startListening()
         }))
         for basename: String in self.soundFileBaseNames {
-            alert.addAction(UIAlertAction(title: basename, style: .Default, handler: {
+            alert.addAction(UIAlertAction(title: basename, style: .default, handler: {
                 (action: UIAlertAction) -> Void in
                 self.soundActivatedRecorder.abort()
-                self.inputSelector.setTitle("File", forState: .Normal)
+                self.inputSelector.setTitle("File", for: UIControlState())
                 self.speechIsFromMicrophone = false
-                self.indicatorImageView.hidden = true
-                self.soundFileIdentifier = self.soundFileBaseNames.indexOf(basename)!
+                self.indicatorImageView.isHidden = true
+                self.soundFileIdentifier = self.soundFileBaseNames.index(of: basename)!
                 self.statusLabel.text = self.soundFileBaseNames[self.soundFileIdentifier]
                 self.processRawBuffer()
             }))
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        self.presentViewController(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     /// Get raw PCM data from the track
-    func readSoundFileSamples(assetURL: NSURL) -> NSData {
+    func readSoundFileSamples(_ assetURL: URL) -> Data {
         let retval = NSMutableData()
-        let asset = AVURLAsset(URL: assetURL)
+        let asset = AVURLAsset(url: assetURL)
         let track = asset.tracks[0]
         let reader = try! AVAssetReader(asset: asset)
         let settings: [String: NSNumber] = [
-            AVFormatIDKey: Int(kAudioFormatLinearPCM),
+            AVFormatIDKey: NSNumber(integerLiteral: Int(kAudioFormatLinearPCM)),
             AVSampleRateKey: 16000.0,
             AVLinearPCMBitDepthKey: 16,
             AVLinearPCMIsNonInterleaved: 0,
@@ -297,10 +297,10 @@ class FirstViewController: UIViewController {
             AVLinearPCMIsBigEndianKey: 0
         ]
         let output = AVAssetReaderTrackOutput(track: track, outputSettings: settings)
-        reader.addOutput(output)
+        reader.add(output)
         reader.startReading()
         // read the samples from the asset and append them subsequently
-        while reader.status != .Completed {
+        while reader.status != .completed {
             guard let buffer = output.copyNextSampleBuffer() else {
                 continue
             }
@@ -309,23 +309,27 @@ class FirstViewController: UIViewController {
             let outBytes = NSMutableData(length: size)!
             CMBlockBufferCopyDataBytes(blockBuffer, 0, size, outBytes.mutableBytes)
             CMSampleBufferInvalidate(buffer)
-            retval.appendData(outBytes)
+            retval.append(outBytes as Data)
         }
-        return retval
+        return retval as Data
     }
 }
 
 extension FirstViewController: FDSoundActivatedRecorderDelegate {
+    /// A recording was successfully captured
+    public func soundActivatedRecorderDidFinishRecording(recorder: FDSoundActivatedRecorder, andSaved file: NSURL) {
+    }
+
     func soundActivatedRecorderDidStartRecording(recorder: FDSoundActivatedRecorder) {
-        dispatch_async(dispatch_get_main_queue(),{
+        DispatchQueue.main.async(execute: {
             NSLog("STARTED RECORDING")
             self.indicatorImageView.image = UIImage(named: "blue_light.png")
             self.statusLabel.text = "Capturing sound"
         })
     }
 
-    func soundActivatedRecorderDidFinishRecording(recorder: FDSoundActivatedRecorder, andSaved file: NSURL) {
-        dispatch_async(dispatch_get_main_queue(),{
+    func soundActivatedRecorderDidFinishRecording(_ recorder: FDSoundActivatedRecorder, andSaved file: URL) {
+        DispatchQueue.main.async(execute: {
             NSLog("STOPPED RECORDING")
             self.indicatorImageView.image = UIImage(named: "red_light.png")
             self.statusLabel.text = "Processing sound"
@@ -333,7 +337,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
             self.speechAnalyzer = SpeechAnalyzer(int16Samples: self.speechData, withFrequency: 44100)
             self.displayFormantFrequencies()
             self.showPlotForDisplayIdentifier(self.displayIdentifier, withAnalyzer: self.speechAnalyzer)
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(NSEC_PER_SEC) / 2), dispatch_get_main_queue(), {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(NSEC_PER_SEC) / 2) / Double(NSEC_PER_SEC), execute: {
                 self.indicatorImageView.image = UIImage(named: "green_light.png")
                 self.statusLabel.text = "Listening ..."
                 self.soundActivatedRecorder.startListening()
@@ -342,7 +346,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
     }
     
     func soundActivatedRecorderDidAbort(recorder: FDSoundActivatedRecorder) {
-        dispatch_async(dispatch_get_main_queue(),{
+        DispatchQueue.main.async(execute: {
             NSLog("STOPPED RECORDING")
             self.indicatorImageView.image = UIImage(named: "red_light.png")
             self.statusLabel.text = "Retrying ..."
@@ -353,7 +357,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
     }
     
     func soundActivatedRecorderDidTimeOut(recorder: FDSoundActivatedRecorder) {
-        dispatch_async(dispatch_get_main_queue(),{
+        DispatchQueue.main.async(execute: {
             NSLog("STOPPED RECORDING")
             self.indicatorImageView.image = UIImage(named: "red_light.png")
             self.statusLabel.text = "Retrying ..."
@@ -366,8 +370,8 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
 
 @available(iOS 9.0, *)
 extension FirstViewController: SFSafariViewControllerDelegate {
-    func safariViewControllerDidFinish(controller: SFSafariViewController)
+    func safariViewControllerDidFinish(_ controller: SFSafariViewController)
     {
-        controller.dismissViewControllerAnimated(true, completion: nil)
+        controller.dismiss(animated: true, completion: nil)
     }
 }

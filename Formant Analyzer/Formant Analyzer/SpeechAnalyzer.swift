@@ -21,19 +21,19 @@ class SpeechAnalyzer {
     }()
     
     /// The part of `samples` which has a strong signal
-    lazy var strongPart: Range<Int> = {
+    lazy var strongPart: CountableRange<Int> = {
         return SpeechAnalyzer.findStrongPartOfSignal(self.samples, withChunks: 300, sensitivity: 0.1)
     }()
     
     /// The part of `samples` which is a vowel utterance
-    lazy var vowelPart: Range<Int> = {
-        return SpeechAnalyzer.truncateTailsOfRange(self.strongPart, portion: 0.15)
+    lazy var vowelPart: CountableRange<Int> = {
+        return self.strongPart.truncatedTails(byPortion: 0.15)
     }()
     
     /// The vowel part of `samples` decimated by `decimationFactor`
-    private lazy var vowelSamplesDecimated: [Int16] = {
+    fileprivate lazy var vowelSamplesDecimated: [Int16] = {
         let range = self.vowelPart
-        return SpeechAnalyzer.decimateSamples(self.samples[range], withStride: self.decimationFactor)
+        return self.samples[range].decimated(by: self.decimationFactor)
     }()
     
     /// Linear prediction coefficients of the vowel signal
@@ -45,7 +45,7 @@ class SpeechAnalyzer {
     ///
     /// - Returns: the response at frequencies 0, 5, ... Hz, the first index (identity) is 1.0
     lazy var synthesizedFrequencyResponse: [Double] = {
-        let frequencies = Array(0.stride(to: self.sampleRate/self.decimationFactor/2, by: 15))
+        let frequencies = Array(stride(from: 0, to: self.sampleRate/self.decimationFactor/2, by: 15))
         return SpeechAnalyzer.synthesizeResponseForLPC(self.estimatedLpcCoefficients, withRate: self.sampleRate/self.decimationFactor, atFrequencies:frequencies)
     }()
     
@@ -59,21 +59,21 @@ class SpeechAnalyzer {
     }()
     
     /// Reduce horizontal resolution of `strongPart` of `signal` for plotting
-    func downsampleStrongPartToSamples(newSampleCount: Int) -> [Int16] {
+    func downsampleStrongPartToSamples(_ newSampleCount: Int) -> [Int16] {
         let chunkSize = self.strongPart.count / newSampleCount
         var chunkMaxElements = [Int16]()
         
         // Find the chunk with the most energy and set energy threshold
-        for chunkStart in self.strongPart.startIndex.stride(through: self.strongPart.endIndex.advancedBy(-chunkSize), by: chunkSize) {
+        for chunkStart in stride(from: self.strongPart.lowerBound, through: self.strongPart.upperBound.advanced(by: -chunkSize), by: chunkSize) {
             let range = (chunkStart..<chunkStart+chunkSize)
-            let maxValue = self.samples[range].maxElement()!
+            let maxValue = self.samples[range].max()!
             chunkMaxElements.append(maxValue)
         }
         return chunkMaxElements
     }
     
     /// Reduce horizontal resolution of `signal` for plotting
-    func downsampleToSamples(newSampleCount: Int) -> [Int16] {
+    func downsampleToSamples(_ newSampleCount: Int) -> [Int16] {
         guard newSampleCount > 0 else {
             return []
         }
@@ -84,18 +84,18 @@ class SpeechAnalyzer {
         var chunkMaxElements = [Int16]()
         
         // Find the chunk with the most energy and set energy threshold
-        for chunkStart in self.samples.startIndex.stride(through: self.samples.endIndex.advancedBy(-chunkSize), by: chunkSize) {
+        for chunkStart in stride(from: self.samples.startIndex, through: self.samples.endIndex.advanced(by: -chunkSize), by: chunkSize) {
             let range = (chunkStart..<chunkStart+chunkSize)
-            let maxValue = self.samples[range].maxElement()!
+            let maxValue = self.samples[range].max()!
             chunkMaxElements.append(maxValue)
         }
         return chunkMaxElements
     }
 
     /// Creates an analyzer with given 16-bit PCM samples
-    init(int16Samples data: NSData, withFrequency rate: Int) {
-        let bytesPointer = UnsafePointer<Int16>(data.bytes)
-        let bufferPointer = UnsafeBufferPointer(start: bytesPointer, count: data.length / sizeof(Int16))
+    init(int16Samples data: Data, withFrequency rate: Int) {
+        let bytesPointer = (data as NSData).bytes.bindMemory(to: Int16.self, capacity: data.count)
+        let bufferPointer = UnsafeBufferPointer(start: bytesPointer, count: data.count / MemoryLayout<Int16>.size)
         samples = [Int16](bufferPointer)
         sampleRate = rate
     }
@@ -109,7 +109,7 @@ class SpeechAnalyzer {
     /// Considers `numChunks` parts of the signal and trims ends with signal strength not greater than a `factor` of the maximum signal strength
     ///
     /// - Returns the range of the selected signal from the selected chunks
-    class func findStrongPartOfSignal(signal: [Int16], withChunks numChunks: Int, sensitivity factor: Double) -> Range<Int> {
+    class func findStrongPartOfSignal(_ signal: [Int16], withChunks numChunks: Int, sensitivity factor: Double) -> CountableRange<Int> {
         let chunkSize = signal.count / numChunks
         var chunkEnergies = [Double]()
         var maxChunkEnergy: Double = 0
@@ -119,16 +119,16 @@ class SpeechAnalyzer {
         }
 
         // Find the chunk with the most energy and set energy threshold
-        for chunkStart in signal.startIndex.stride(through: signal.endIndex.advancedBy(-chunkSize), by: chunkSize) {
+        for chunkStart in stride(from: signal.startIndex, through: signal.endIndex.advanced(by: -chunkSize), by: chunkSize) {
             let range = (chunkStart..<chunkStart+chunkSize)
-            let chunkEnergy = signal[range].reduce(0, combine: {$0 + Double($1)*Double($1)})
+            let chunkEnergy = signal[range].reduce(0, {$0 + Double($1)*Double($1)})
             maxChunkEnergy = max(maxChunkEnergy, chunkEnergy)
             chunkEnergies.append(chunkEnergy)
         }
-        let firstSelectedChunk = chunkEnergies.indexOf {$0 > maxChunkEnergy * factor} ?? 0
+        let firstSelectedChunk = chunkEnergies.index {$0 > maxChunkEnergy * factor} ?? 0
         let lastSelectedChunk: Int
         // http://stackoverflow.com/a/33153621/300224
-        if let reverseIndex = chunkEnergies.reverse().indexOf({$0 > maxChunkEnergy * factor}) {
+        if let reverseIndex = chunkEnergies.reversed().index(where: {$0 > maxChunkEnergy * factor}) {
             lastSelectedChunk = reverseIndex.base - 1
         } else {
             lastSelectedChunk = chunkEnergies.endIndex - 1
@@ -138,29 +138,23 @@ class SpeechAnalyzer {
     
     /// Shrink range by `portion` of its length from each size
     /// - Parameter portion a fraction in the range 0...0.5
-    class func truncateTailsOfRange(range: Range<Int>, portion: Double) -> Range<Int> {
-        let start = range.startIndex + Int(portion * Double(range.count))
-        let end = range.endIndex - Int(portion * Double(range.count))
+    class func truncateTailsOfRange(_ range: Range<Int>, portion: Double) -> CountableRange<Int> {
+        let start = range.lowerBound + Int(portion * Double(range.count))
+        let end = range.upperBound - Int(portion * Double(range.count))
         return start ..< end
     }
 
-    /// Select the first of every `stride` items from `samples`
-    class func decimateSamples<T: CollectionType where T.Index: Strideable>(samples: T, withStride stride: T.Index.Stride) -> Array<T.Generator.Element> {
-        let selectedSamples = samples.startIndex.stride(to: samples.endIndex, by: stride)
-        return selectedSamples.map({samples[$0]})
-    }
-    
     /// Estimate LPC polynomial coefficients from the signal
     /// Uses the Levinson-Durbin recursion algorithm
     /// - Returns: `modelLength` + 1 autocorrelation coefficients for an all-pole model
     /// the first coefficient is 1.0 for perfect autocorrelation with zero offset
-    class func estimateLpcCoefficients(samples samples: [Int16], sampleRate rate: Int, modelLength: Int) -> [Double] {
+    class func estimateLpcCoefficients(samples: [Int16], sampleRate rate: Int, modelLength: Int) -> [Double] {
         var correlations = [Double]()
         var coefficients = [Double]()
         var modelError: Double
         
         guard samples.count > modelLength else {
-            return [Double](count: modelLength + 1, repeatedValue: 1)
+            return [Double](repeating: 1, count: modelLength + 1)
         }
         
         for delay in 0 ... modelLength {
@@ -185,7 +179,7 @@ class SpeechAnalyzer {
             coefficients.append(rcNum / modelError)
             
             // Perform recursion on coefficients
-            for i in 1.stride(through: delay/2, by: 1) {
+            for i in stride(from: 1, through: delay/2, by: 1) {
                 let pci = coefficients[i] + coefficients[delay] * coefficients[delay - i]
                 let pcki = coefficients[delay - i] + coefficients[delay] * coefficients[i]
                 coefficients[i] = pci
@@ -204,13 +198,13 @@ class SpeechAnalyzer {
     /// - Parameter samplingRate: the sampling frequency in Hz
     /// - Parameter frequencies: the frequencies whose response you'd like to know
     /// - Returns: a response from 0 to 1 for each frequency you are interrogating
-    class func synthesizeResponseForLPC(coefficients: [Double], withRate samplingRate:Int, atFrequencies frequencies:[Int]) -> [Double] {
+    class func synthesizeResponseForLPC(_ coefficients: [Double], withRate samplingRate:Int, atFrequencies frequencies:[Int]) -> [Double] {
         var retval = [Double]()
         // Calculate frequency response of the inverse of the predictor filter
         for frequency in frequencies {
             let radians = Double(frequency) / Double(samplingRate) * M_PI * 2
             var response: Complex<Double> = 0.0 + 0.0.i
-            for (index, coefficient) in coefficients.enumerate() {
+            for (index, coefficient) in coefficients.enumerated() {
                 response += Complex<Double>(abs: coefficient, arg:Double(index) * radians)
             }
             retval.append(20 * log10(1.0 / response.abs))
@@ -222,7 +216,7 @@ class SpeechAnalyzer {
     /// Call this method repeatedly to find all the complex roots one by one
     /// Algorithm from Numerical Recipes in C by Press/Teutkolsky/Vetterling/Flannery
     ///
-    class func laguerreRoot(polynomial: [Complex<Double>], initialGuess guess: Complex<Double> = 0.0 + 0.0.i) -> Complex<Double> {
+    class func laguerreRoot(_ polynomial: [Complex<Double>], initialGuess guess: Complex<Double> = 0.0 + 0.0.i) -> Complex<Double> {
         let m = polynomial.count - 1
         
         let MR = 8
@@ -243,7 +237,7 @@ class SpeechAnalyzer {
             d = 0.0 + 0.0.i
             f = 0.0 + 0.0.i
             abx = x.abs
-            for j in (m-1).stride(through: 0, by: -1) {
+            for j in stride(from: (m-1), through: 0, by: -1) {
                 // efficient computation of 1st and 2nd derivatives of polynomials
                 // f is P``/2
                 f = x * f + d
@@ -287,7 +281,7 @@ class SpeechAnalyzer {
     /// - Parameter polynomial: coefficients of the input polynomial
     /// - Note: Does not implement root polishing, so accuracy may be impacted
     /// - Note: May include duplicated roots/formants
-    class func findFormants(polynomial: [Complex<Double>], sampleRate rate: Int) -> [Double] {
+    class func findFormants(_ polynomial: [Complex<Double>], sampleRate rate: Int) -> [Double] {
         /// Laguerre imaginary noise gate
         let EPS = 2.0e-6
 
@@ -295,7 +289,7 @@ class SpeechAnalyzer {
         var deflatedPolynomial = polynomial
         let modelOrder = polynomial.count - 1
         
-        for j in modelOrder.stride(through: 1, by: -1) {
+        for j in stride(from: modelOrder, through: 1, by: -1) {
             var root = SpeechAnalyzer.laguerreRoot(deflatedPolynomial)
             
             // If imaginary part is very small, ignore it
@@ -306,7 +300,7 @@ class SpeechAnalyzer {
             
             // Perform forward deflation. Divide by the factor of the root found above
             var b = deflatedPolynomial[j]
-            for jj in (j-1).stride(through: 0, by: -1) {
+            for jj in stride(from: (j-1), through: 0, by: -1) {
                 let c = deflatedPolynomial[jj]
                 deflatedPolynomial[jj] = b
                 b = root * b + c
@@ -318,13 +312,13 @@ class SpeechAnalyzer {
         
         // Find real frequencies corresponding to all roots
         let formantFrequencies = polishedRoots.map({$0.arg * Double(rate) / M_PI / 2})
-        return formantFrequencies.sort()
+        return formantFrequencies.sorted()
     }
 
     /// Finds the first four formants and cleans out negatives, and other problems
     ///
     /// - Returns: Formants in Hz
-    class func filterSpeechFormants(formants: [Double]) -> [Double] {
+    class func filterSpeechFormants(_ formants: [Double]) -> [Double] {
         /// Human minimum format ability in Hz
         let MIN_FORMANT = 50.0
         
@@ -336,21 +330,21 @@ class SpeechAnalyzer {
         /// Formants closer than this will be merged into one, in Hz
         let MIN_DISTANCE = 10.0
         
-        var editedFormants = formants.sort().flatMap({$0 >= MIN_FORMANT && $0 <= MAX_FORMANT ? $0 : nil})
+        var editedFormants = formants.sorted().flatMap({$0 >= MIN_FORMANT && $0 <= MAX_FORMANT ? $0 : nil})
         var done = false
         while !done {
             {
-                for (index, formantA) in editedFormants.enumerate() {
+                for (index, formantA) in editedFormants.enumerated() {
                     guard index < editedFormants.count - 1 else {
                         continue
                     }
-                    let formantB = editedFormants[index.successor()]
+                    let formantB = editedFormants[(index + 1)]
                     if abs(formantA - formantB) < MIN_DISTANCE {
                         let newFormant = (formantA + formantB) / 2
-                        editedFormants.removeAtIndex(editedFormants.indexOf(formantA)!)
-                        editedFormants.removeAtIndex(editedFormants.indexOf(formantB)!)
+                        editedFormants.remove(at: editedFormants.index(of: formantA)!)
+                        editedFormants.remove(at: editedFormants.index(of: formantB)!)
                         editedFormants.append(newFormant)
-                        editedFormants = editedFormants.sort()
+                        editedFormants = editedFormants.sorted()
                         return
                     }
                 }
@@ -358,10 +352,28 @@ class SpeechAnalyzer {
             }()
         }
         
-        for _ in editedFormants.count.stride(through: 4, by: 1) {
+        for _ in stride(from: editedFormants.count, through: 4, by: 1) {
             editedFormants.append(9999.0)
         }
         
         return editedFormants
+    }
+}
+
+extension CountableRange where Bound.Stride == Int {
+    /// Shrink range by `portion` of its length from each size
+    /// - Parameter portion a fraction in the range 0...0.5
+    func truncatedTails(byPortion portion: Double) -> CountableRange<Bound> {
+        let start = self.lowerBound.advanced(by: Int(portion * Double(self.count)))
+        let end = self.lowerBound.advanced(by: Int(portion * (1 - Double(self.count))))
+        return start ..< end
+    }
+}
+
+extension ArraySlice {
+    /// Select the first of every `stride` items from `samples`
+    func decimated(by stride: Int) -> Array<Iterator.Element> {
+        let selectedSamples = Swift.stride(from: self.startIndex, to: self.endIndex, by: stride)
+        return selectedSamples.map({self[$0]})
     }
 }

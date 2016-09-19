@@ -47,7 +47,7 @@ class SpeechAnalyzerTests: XCTestCase {
     }
     
     func testFindStrongPartOfSignal() {
-        let testData: [String: Range<Int>] = [
+        let testData: [String: CountableRange<Int>] = [
             "arm": 22265 ... 36542,
             "beat": 28659 ... 37352,
             "bid": 23815 ... 32697,
@@ -66,7 +66,7 @@ class SpeechAnalyzerTests: XCTestCase {
     }
     
     func testTruncateTailsOfRange() {
-        let testData: [(String, Range<Int>, Range<Int>)] = [
+        let testData: [(String, CountableRange<Int>, CountableRange<Int>)] = [
             ("arm",  22265 ... 36542, 24407 ... 34400),
             ("beat", 28659 ... 37352, 29963 ... 36048),
             ("bid",  23815 ... 32697, 25147 ... 31365),
@@ -86,7 +86,7 @@ class SpeechAnalyzerTests: XCTestCase {
     }
     
     func testVowelRange() {
-        let testData: [(String, Range<Int>)] = [
+        let testData: [(String, CountableRange<Int>)] = [
             ("arm",  24407 ... 34400),
             ("beat", 29963 ... 36048),
             ("bid",  25147 ... 31365),

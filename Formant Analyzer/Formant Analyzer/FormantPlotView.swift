@@ -13,13 +13,13 @@ class FormantPlotView: UIView {
     var formants = [Double]()
 
     /// The main display routine
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         for view in self.subviews {
             view.removeFromSuperview()
         }
         
         // Now, we add an image to current view to plot location of first two formants
-        let backgroundRect = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height)
+        let backgroundRect = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         let backgroundImageView = UIImageView(frame: backgroundRect)
         backgroundImageView.image = UIImage(named: "vowelPlotBackground.png")
         self.addSubview(backgroundImageView)
@@ -39,9 +39,9 @@ class FormantPlotView: UIView {
         let plottingY = (1.00 - 0.134) - logPart * (0.414 - 0.134)
 
         // Now translate into coordinate system of this image view
-        let markerRect: CGRect = CGRectMake(self.frame.size.width * CGFloat(plottingX) - 7.5, self.frame.size.height * CGFloat(plottingY) - 7.5, 15.0, 15.0)
+        let markerRect: CGRect = CGRect(x: self.frame.size.width * CGFloat(plottingX) - 7.5, y: self.frame.size.height * CGFloat(plottingY) - 7.5, width: 15.0, height: 15.0)
         let markerImageView: UIImageView = UIImageView(frame: markerRect)
-        markerImageView.backgroundColor = UIColor.blackColor()
+        markerImageView.backgroundColor = UIColor.black
         self.addSubview(markerImageView)
 
         // If `f2` is too close to `f1`, use `f3` for vertical axis.
@@ -49,9 +49,9 @@ class FormantPlotView: UIView {
             let plottingFmtY = self.formants[2]
             let logPart = log(plottingFmtY) / log(2.0) - log(500.0) / log(2.0)
             let plottingY = (1.00 - 0.134) - logPart * (0.414 - 0.134)
-            let markerRect: CGRect = CGRectMake(self.frame.size.width * CGFloat(plottingX) - 7.5, self.frame.size.height * CGFloat(plottingY) - 7.5, 15.0, 15.0)
+            let markerRect: CGRect = CGRect(x: self.frame.size.width * CGFloat(plottingX) - 7.5, y: self.frame.size.height * CGFloat(plottingY) - 7.5, width: 15.0, height: 15.0)
             let markerImageView: UIImageView = UIImageView(frame: markerRect)
-            markerImageView.backgroundColor = UIColor.grayColor()
+            markerImageView.backgroundColor = UIColor.gray
             self.addSubview(markerImageView)
         }
     }
