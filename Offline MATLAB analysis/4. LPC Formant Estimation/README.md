@@ -18,7 +18,9 @@ Algorithm Description
 
 And the chosen constants are given as:
 
--   `LPC_COEFF` = 50;
+-   `LPC_COEFF` = 10;
+
+Source for model length choice is based on https://www.mathworks.com/examples/signal/mw/signal-ex82230229-formant-estimation-with-lpc-coefficients
 
 **Warning: MATLAB documentation for the **`LPC`** function notes that windowing
 is implicitly implied. However, this might be a problem because our input is a

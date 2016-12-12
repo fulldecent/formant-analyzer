@@ -1,5 +1,5 @@
 PODS:
-  - FDSoundActivatedRecorder (1.0.6)
+  - FDSoundActivatedRecorder (2.0.0)
   - FSLineChart (0.1.7)
 
 DEPENDENCIES:
@@ -7,9 +7,9 @@ DEPENDENCIES:
   - FSLineChart
 
 SPEC CHECKSUMS:
-  FDSoundActivatedRecorder: 672b9c5a6814dd6ff37c8803f4d143d3fab0c666
+  FDSoundActivatedRecorder: ca6311381f8ce4412678de3ddbea9422911caff9
   FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
 
 PODFILE CHECKSUM: f0e0a1e4f479527ec2ad23dd123b9c4558fff7ae
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.1.1

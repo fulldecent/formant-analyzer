@@ -320,7 +320,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
     public func soundActivatedRecorderDidFinishRecording(recorder: FDSoundActivatedRecorder, andSaved file: NSURL) {
     }
 
-    func soundActivatedRecorderDidStartRecording(recorder: FDSoundActivatedRecorder) {
+    func soundActivatedRecorderDidStartRecording(_ recorder: FDSoundActivatedRecorder) {
         DispatchQueue.main.async(execute: {
             NSLog("STARTED RECORDING")
             self.indicatorImageView.image = UIImage(named: "blue_light.png")
@@ -345,7 +345,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
         })
     }
     
-    func soundActivatedRecorderDidAbort(recorder: FDSoundActivatedRecorder) {
+    func soundActivatedRecorderDidAbort(_ recorder: FDSoundActivatedRecorder) {
         DispatchQueue.main.async(execute: {
             NSLog("STOPPED RECORDING")
             self.indicatorImageView.image = UIImage(named: "red_light.png")
@@ -356,7 +356,7 @@ extension FirstViewController: FDSoundActivatedRecorderDelegate {
         })
     }
     
-    func soundActivatedRecorderDidTimeOut(recorder: FDSoundActivatedRecorder) {
+    func soundActivatedRecorderDidTimeOut(_ recorder: FDSoundActivatedRecorder) {
         DispatchQueue.main.async(execute: {
             NSLog("STOPPED RECORDING")
             self.indicatorImageView.image = UIImage(named: "red_light.png")

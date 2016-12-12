@@ -3,7 +3,7 @@
 % Then it applies LPC modeling to find the formant frequencies.
 %
 
-LPC_COEFF = 50;
+LPC_COEFF = 10;
 
 recordings = {'arm', 'beat', 'bid', 'calm', 'cat', 'four', 'who'};
 index = 1;
@@ -16,15 +16,15 @@ for recording = recordings
     fileId = fopen(inFile, 'r');
     audioSamples = fread(fileId, 'int16');
     fclose(fileId);
-    
+
     fprintf('Analyzing %s\n', base_file_name);
 
     % Perform the LPC estimation
     [a,e] = lpc(audioSamples, LPC_COEFF);
-    s = sprintf('%0.6f,', a(1:20));
+    s = sprintf('%0.6f,', a(1:LPC_COEFF));
     s = s(1:end-1);
     fprintf('%s\n', s);
-    
+
     fprintf(1,'LPC error for %s is %0.f\n', base_file_name, e);
 
     % Plot format frequencies for just this segment
@@ -32,7 +32,7 @@ for recording = recordings
     r = r(imag(r) > 0);
     ffreq = sort(atan2(imag(r), real(r)) * Fs / (2*pi));
     fprintf(1, 'First five format frequencies are: ');
-    fprintf('%0.f ',ffreq(1:5));
+    fprintf('%0.f ',ffreq(1:min(5,length(ffreq))));
     fprintf('\n');
 
 

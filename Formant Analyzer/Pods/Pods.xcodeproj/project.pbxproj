@@ -7,36 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		086D4D912F7FF87AF505241ECFC0315F /* Pods-Formant Analyzer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		08F93BE9AC3624471B5EC1946DAD5C14 /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */; };
-		25598A16EACC5DFFAA1BFEAA9203B302 /* FSLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F1065837E651665E521C70B9956DD04C /* FSLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		30638C4F578B8EA71CDD190A929F95E8 /* FDSoundActivatedRecorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		4059DA9227074C794472870BB16B2FCC /* UIColor+FSPalette.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		566513BB36194AB4D3E3C3746E4410E2 /* FDSoundActivatedRecorder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */; };
-		56D776891C4EBD4E85445946A742BD21 /* FSLineChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		598058721A0EDF1525E7206BF620D43D /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */; };
-		7A4B8FB8E97FB2F79D649B0BC4B2E0D6 /* FSLineChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */; };
-		866EC88DFBAFE4AA0F247DD60A7F93CE /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */; };
-		8EFD38B5DD08D0B25EF07E92C491D52F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		A9652306D8E5F1E418BCEC8F3448B1E5 /* Pods-Formant Analyzer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */; };
-		B2A0C9D647411D307ED941CDFA17D726 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		D053E43D21FCCD2DAF8B7AB705EC009E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		0324E5EF2BC3991C25C01E22740F3C23 /* FSLineChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		686FA72C432E49F500A8235E87069019 /* FDSoundActivatedRecorder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */; };
+		7BE1936C0B567666CEE1900A29E6BB06 /* Pods-Formant Analyzer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8CCC02F1FB711E2339B4EBE02F613EE5 /* Pods-Formant Analyzer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */; };
+		993C61FF46A4288F0DCB2CB7A8D5D328 /* FDSoundActivatedRecorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		A97DC2E83ABB58080AF5491ACEDA5717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		AD5681307560DC6583E47930833596B2 /* FSLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F1065837E651665E521C70B9956DD04C /* FSLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B197787A06F2B4124BC1FF82F6975F2F /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */; };
+		B21AB3AE52E7785617772C4A119C6F09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		C067EBA06C173899461FCD29623F7662 /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */; };
+		C0F7388159B48FE00EC70346DC660373 /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */; };
+		E7D02745D202B5B2967D24897874AA6C /* FSLineChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */; };
+		F63588FD2497FE9097D70054AB4494EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		FC5DE94578765F701B6E09EA3D9DB1F1 /* UIColor+FSPalette.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6CB913C6DBCEBF66AAFC2CE94E015E31 /* PBXContainerItemProxy */ = {
+		4B966149430F6330B765B033F62027A4 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 341D8AD17636421C0D9356B690437AC1;
-			remoteInfo = FDSoundActivatedRecorder;
-		};
-		BE35B0EA71D258734325758EC87544CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 6218FE2B70B49A1A96C5DBEEF8395802;
+			remoteGlobalIDString = 809463219ED0A00088BB0753D65348EB;
 			remoteInfo = FSLineChart;
+		};
+		638CB628A88CFA98FD5488C6E03AC8B5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 59E0D988D3DD3BF9F634CE63134333CC;
+			remoteInfo = FDSoundActivatedRecorder;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -44,59 +44,59 @@
 		085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.xcconfig; sourceTree = "<group>"; };
 		13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FDSoundActivatedRecorder-dummy.m"; sourceTree = "<group>"; };
 		1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer-umbrella.h"; sourceTree = "<group>"; };
-		1BB514F02DE0DE09ABF7CC139AFBE36E /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FSLineChart.modulemap; sourceTree = "<group>"; };
+		1BB514F02DE0DE09ABF7CC139AFBE36E /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FSLineChart.modulemap; sourceTree = "<group>"; };
 		25DF0C4C9EA6529C6F93C6E21A20E778 /* Pods-Formant Analyzer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer-acknowledgements.plist"; sourceTree = "<group>"; };
 		2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
 		30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FDSoundActivatedRecorder.swift; path = FDSoundActivatedRecorder/FDSoundActivatedRecorder/FDSoundActivatedRecorder.swift; sourceTree = "<group>"; };
 		37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSLineChart.m; path = FSLineChart/FSLineChart/FSLineChart.m; sourceTree = "<group>"; };
-		39D26CD5E75001219256273550AAA107 /* FDSoundActivatedRecorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FDSoundActivatedRecorder.modulemap; sourceTree = "<group>"; };
+		39D26CD5E75001219256273550AAA107 /* FDSoundActivatedRecorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = FDSoundActivatedRecorder.modulemap; sourceTree = "<group>"; };
 		58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		603D6E8533C7200B10E22DA3715C35F9 /* Pods-Formant Analyzer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer-acknowledgements.markdown"; sourceTree = "<group>"; };
 		7290A2205F879DF88A1584911E16B02A /* Pods-Formant Analyzer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-frameworks.sh"; sourceTree = "<group>"; };
 		73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer-dummy.m"; sourceTree = "<group>"; };
-		7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDSoundActivatedRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FDSoundActivatedRecorder.framework; path = FDSoundActivatedRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A2731A36D3C4023183F6A04424A0A4E /* FSLineChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-prefix.pch"; sourceTree = "<group>"; };
-		7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formant_Analyzer.framework; path = "Pods-Formant Analyzer.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
 		867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FSPalette.m"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.m"; sourceTree = "<group>"; };
 		86998DBA8CAEA66548E889FE4C13E103 /* FDSoundActivatedRecorder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-prefix.pch"; sourceTree = "<group>"; };
 		8A7610DB5404B5FAC60C73B0EFE19020 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8FC1FCAA5B276CAE7C091F5DB2E2B5D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-umbrella.h"; sourceTree = "<group>"; };
 		9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 		B538D076D98586559D6E9016134E5CF8 /* Pods-Formant Analyzer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-resources.sh"; sourceTree = "<group>"; };
 		B8ABB4DD6C941B58768B571402DAA2C2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSLineChart-dummy.m"; sourceTree = "<group>"; };
 		C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-umbrella.h"; sourceTree = "<group>"; };
-		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D2B81E220FC8FB4B521766C155401B7A /* Pods-Formant Analyzer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Formant Analyzer.modulemap"; sourceTree = "<group>"; };
-		E36DE9D641F5C98E1C0C7D96B5033FB8 /* FSLineChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSLineChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		D2B81E220FC8FB4B521766C155401B7A /* Pods-Formant Analyzer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Formant Analyzer.modulemap"; sourceTree = "<group>"; };
+		E36DE9D641F5C98E1C0C7D96B5033FB8 /* FSLineChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSLineChart.framework; path = FSLineChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FDSoundActivatedRecorder.xcconfig; sourceTree = "<group>"; };
 		F1065837E651665E521C70B9956DD04C /* FSLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		035C9D1BBDD5D47FF9A4072D16804A30 /* Frameworks */ = {
+		3340F2364FAD640A31E15E34C2447F04 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8EFD38B5DD08D0B25EF07E92C491D52F /* Foundation.framework in Frameworks */,
+				A97DC2E83ABB58080AF5491ACEDA5717 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		2C49FA488E1344B33C614B866B376B05 /* Frameworks */ = {
+		891D54BBA9376385506A1CA99E1EEF48 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D053E43D21FCCD2DAF8B7AB705EC009E /* Foundation.framework in Frameworks */,
+				B21AB3AE52E7785617772C4A119C6F09 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8098EBC8B7E6CFCB936D8E5A41961940 /* Frameworks */ = {
+		8BB40A9AC5A8EF080C4F494BA2F7FC0B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B2A0C9D647411D307ED941CDFA17D726 /* Foundation.framework in Frameworks */,
+				F63588FD2497FE9097D70054AB4494EE /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,14 +121,6 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
 		7484101ADCE0C15E8A12CCEDFA951656 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +133,14 @@
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FDSoundActivatedRecorder";
+			sourceTree = "<group>";
+		};
+		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
+			);
+			name = iOS;
 			sourceTree = "<group>";
 		};
 		7DB346D0F39D3F0E887471402A8071AB = {
@@ -175,7 +175,7 @@
 		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				3DCAB2B7CDE207B3958B6CB957FCC758 /* iOS */,
+				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -186,6 +186,7 @@
 				30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */,
 				7484101ADCE0C15E8A12CCEDFA951656 /* Support Files */,
 			);
+			name = FDSoundActivatedRecorder;
 			path = FDSoundActivatedRecorder;
 			sourceTree = "<group>";
 		};
@@ -221,48 +222,68 @@
 				867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */,
 				CD5ED7B61551A6B505AF388628EAA803 /* Support Files */,
 			);
+			name = FSLineChart;
 			path = FSLineChart;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		4474D4FF1C88DF4DBC17A7E7371E102A /* Headers */ = {
+		00F649B88EF8E58DA127C1561C27C1D8 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				56D776891C4EBD4E85445946A742BD21 /* FSLineChart-umbrella.h in Headers */,
-				25598A16EACC5DFFAA1BFEAA9203B302 /* FSLineChart.h in Headers */,
-				4059DA9227074C794472870BB16B2FCC /* UIColor+FSPalette.h in Headers */,
+				993C61FF46A4288F0DCB2CB7A8D5D328 /* FDSoundActivatedRecorder-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		ACF643F752BA8F96D17C4FA5CCB9FADD /* Headers */ = {
+		95DE14B8D24D9BB482AE7F43145F1510 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				086D4D912F7FF87AF505241ECFC0315F /* Pods-Formant Analyzer-umbrella.h in Headers */,
+				0324E5EF2BC3991C25C01E22740F3C23 /* FSLineChart-umbrella.h in Headers */,
+				AD5681307560DC6583E47930833596B2 /* FSLineChart.h in Headers */,
+				FC5DE94578765F701B6E09EA3D9DB1F1 /* UIColor+FSPalette.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C08BDB3879B56819D960CFBC7A452C63 /* Headers */ = {
+		DCF456C2C214EAC8B6946C612FC2413E /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				30638C4F578B8EA71CDD190A929F95E8 /* FDSoundActivatedRecorder-umbrella.h in Headers */,
+				7BE1936C0B567666CEE1900A29E6BB06 /* Pods-Formant Analyzer-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		341D8AD17636421C0D9356B690437AC1 /* FDSoundActivatedRecorder */ = {
+		35027DB69F4DE451424D7EC473F110C7 /* Pods-Formant Analyzer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 844314B0594033F968AA9F7C4B6A8E64 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */;
+			buildConfigurationList = BA57196364B972CDA68871A271136E8F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */;
 			buildPhases = (
-				A5C177C37EADFE1169060F91F4152267 /* Sources */,
-				8098EBC8B7E6CFCB936D8E5A41961940 /* Frameworks */,
-				C08BDB3879B56819D960CFBC7A452C63 /* Headers */,
+				6B914E3F36E8E458F0EED928F0378CF3 /* Sources */,
+				8BB40A9AC5A8EF080C4F494BA2F7FC0B /* Frameworks */,
+				DCF456C2C214EAC8B6946C612FC2413E /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				0CF8D6416126584D8405AA2CAE47B14B /* PBXTargetDependency */,
+				3C9857CD37B9590D7537BDE0AF6F1070 /* PBXTargetDependency */,
+			);
+			name = "Pods-Formant Analyzer";
+			productName = "Pods-Formant Analyzer";
+			productReference = 7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7085F609C1072C6D07D99798F837791 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */;
+			buildPhases = (
+				A99781A312DEE33D10E50C304F8D1FA1 /* Sources */,
+				891D54BBA9376385506A1CA99E1EEF48 /* Frameworks */,
+				00F649B88EF8E58DA127C1561C27C1D8 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -273,32 +294,13 @@
 			productReference = 7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		61A953FBD19CB8953E2FAA5EDD7C0AE5 /* Pods-Formant Analyzer */ = {
+		809463219ED0A00088BB0753D65348EB /* FSLineChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = CDABCA8455BEAB75D40FA8E0A0129C2E /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */;
+			buildConfigurationList = 407EC161763408383D6DF8D997BC827F /* Build configuration list for PBXNativeTarget "FSLineChart" */;
 			buildPhases = (
-				1D021EE99CB3BB5EDCD22D18F86B0F1E /* Sources */,
-				035C9D1BBDD5D47FF9A4072D16804A30 /* Frameworks */,
-				ACF643F752BA8F96D17C4FA5CCB9FADD /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				D11935AE54310C9530B536EA48C73098 /* PBXTargetDependency */,
-				818FF0A7D7701B9704B4275349C4631D /* PBXTargetDependency */,
-			);
-			name = "Pods-Formant Analyzer";
-			productName = "Pods-Formant Analyzer";
-			productReference = 7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		6218FE2B70B49A1A96C5DBEEF8395802 /* FSLineChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B01FF397CE6B9AEAAD7F0F08011AAD5F /* Build configuration list for PBXNativeTarget "FSLineChart" */;
-			buildPhases = (
-				11DCA90CF8D3DE2757FF3EB13D7539A5 /* Sources */,
-				2C49FA488E1344B33C614B866B376B05 /* Frameworks */,
-				4474D4FF1C88DF4DBC17A7E7371E102A /* Headers */,
+				F4D5E8DFAC0A5E3FE2F0039F334A6472 /* Sources */,
+				3340F2364FAD640A31E15E34C2447F04 /* Frameworks */,
+				95DE14B8D24D9BB482AE7F43145F1510 /* Headers */,
 			);
 			buildRules = (
 			);
@@ -330,55 +332,55 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				341D8AD17636421C0D9356B690437AC1 /* FDSoundActivatedRecorder */,
-				6218FE2B70B49A1A96C5DBEEF8395802 /* FSLineChart */,
-				61A953FBD19CB8953E2FAA5EDD7C0AE5 /* Pods-Formant Analyzer */,
+				59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */,
+				809463219ED0A00088BB0753D65348EB /* FSLineChart */,
+				35027DB69F4DE451424D7EC473F110C7 /* Pods-Formant Analyzer */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		11DCA90CF8D3DE2757FF3EB13D7539A5 /* Sources */ = {
+		6B914E3F36E8E458F0EED928F0378CF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A4B8FB8E97FB2F79D649B0BC4B2E0D6 /* FSLineChart-dummy.m in Sources */,
-				08F93BE9AC3624471B5EC1946DAD5C14 /* FSLineChart.m in Sources */,
-				866EC88DFBAFE4AA0F247DD60A7F93CE /* UIColor+FSPalette.m in Sources */,
+				8CCC02F1FB711E2339B4EBE02F613EE5 /* Pods-Formant Analyzer-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		1D021EE99CB3BB5EDCD22D18F86B0F1E /* Sources */ = {
+		A99781A312DEE33D10E50C304F8D1FA1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A9652306D8E5F1E418BCEC8F3448B1E5 /* Pods-Formant Analyzer-dummy.m in Sources */,
+				686FA72C432E49F500A8235E87069019 /* FDSoundActivatedRecorder-dummy.m in Sources */,
+				C067EBA06C173899461FCD29623F7662 /* FDSoundActivatedRecorder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A5C177C37EADFE1169060F91F4152267 /* Sources */ = {
+		F4D5E8DFAC0A5E3FE2F0039F334A6472 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				566513BB36194AB4D3E3C3746E4410E2 /* FDSoundActivatedRecorder-dummy.m in Sources */,
-				598058721A0EDF1525E7206BF620D43D /* FDSoundActivatedRecorder.swift in Sources */,
+				E7D02745D202B5B2967D24897874AA6C /* FSLineChart-dummy.m in Sources */,
+				B197787A06F2B4124BC1FF82F6975F2F /* FSLineChart.m in Sources */,
+				C0F7388159B48FE00EC70346DC660373 /* UIColor+FSPalette.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		818FF0A7D7701B9704B4275349C4631D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FSLineChart;
-			target = 6218FE2B70B49A1A96C5DBEEF8395802 /* FSLineChart */;
-			targetProxy = BE35B0EA71D258734325758EC87544CA /* PBXContainerItemProxy */;
-		};
-		D11935AE54310C9530B536EA48C73098 /* PBXTargetDependency */ = {
+		0CF8D6416126584D8405AA2CAE47B14B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FDSoundActivatedRecorder;
-			target = 341D8AD17636421C0D9356B690437AC1 /* FDSoundActivatedRecorder */;
-			targetProxy = 6CB913C6DBCEBF66AAFC2CE94E015E31 /* PBXContainerItemProxy */;
+			target = 59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */;
+			targetProxy = 638CB628A88CFA98FD5488C6E03AC8B5 /* PBXContainerItemProxy */;
+		};
+		3C9857CD37B9590D7537BDE0AF6F1070 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSLineChart;
+			target = 809463219ED0A00088BB0753D65348EB /* FSLineChart */;
+			targetProxy = 4B966149430F6330B765B033F62027A4 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -427,7 +429,7 @@
 			};
 			name = Debug;
 		};
-		266E0F3EE7BD2E018C27E1C510E01449 /* Debug */ = {
+		0D7D557608C121517D54FF2325C9362B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */;
 			buildSettings = {
@@ -463,38 +465,37 @@
 			};
 			name = Debug;
 		};
-		2EFDFA4D9C72D5161FB073F97B02FC18 /* Debug */ = {
+		2A7CF976BCBBCAFD70E3EC53F00C7FB5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
+			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FDSoundActivatedRecorder;
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = FSLineChart;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Debug;
+			name = Release;
 		};
 		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
 			isa = XCBuildConfiguration;
@@ -536,9 +537,9 @@
 			};
 			name = Release;
 		};
-		73AF3866F5A37C630AC5B7E9217B99D8 /* Debug */ = {
+		6AB739E921F66BD0617FFE06470391BF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
+			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -551,16 +552,17 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FSLineChart;
+				PRODUCT_NAME = FDSoundActivatedRecorder;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
@@ -568,9 +570,9 @@
 			};
 			name = Debug;
 		};
-		7536FE03E3683B6BAE77ACDE75C37692 /* Release */ = {
+		8D9FD3778EE0230E4482A7A69181AF7C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
+			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -583,14 +585,14 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FSLineChart;
+				PRODUCT_NAME = FDSoundActivatedRecorder;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -600,7 +602,7 @@
 			};
 			name = Release;
 		};
-		D363B7369A235B4283844B1B6487FA55 /* Release */ = {
+		E12A3F6A5670690B2E0A248938831D33 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */;
 			buildSettings = {
@@ -635,29 +637,29 @@
 			};
 			name = Release;
 		};
-		E879A2C37FB7B8E7CF1F325D681D2529 /* Release */ = {
+		FA84D3176C287D41186B43951BBD0ED4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
+			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FDSoundActivatedRecorder;
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_NAME = FSLineChart;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
@@ -665,7 +667,7 @@
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
-			name = Release;
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
@@ -679,29 +681,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		844314B0594033F968AA9F7C4B6A8E64 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */ = {
+		407EC161763408383D6DF8D997BC827F /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2EFDFA4D9C72D5161FB073F97B02FC18 /* Debug */,
-				E879A2C37FB7B8E7CF1F325D681D2529 /* Release */,
+				FA84D3176C287D41186B43951BBD0ED4 /* Debug */,
+				2A7CF976BCBBCAFD70E3EC53F00C7FB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B01FF397CE6B9AEAAD7F0F08011AAD5F /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
+		BA57196364B972CDA68871A271136E8F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				73AF3866F5A37C630AC5B7E9217B99D8 /* Debug */,
-				7536FE03E3683B6BAE77ACDE75C37692 /* Release */,
+				0D7D557608C121517D54FF2325C9362B /* Debug */,
+				E12A3F6A5670690B2E0A248938831D33 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CDABCA8455BEAB75D40FA8E0A0129C2E /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */ = {
+		F7085F609C1072C6D07D99798F837791 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				266E0F3EE7BD2E018C27E1C510E01449 /* Debug */,
-				D363B7369A235B4283844B1B6487FA55 /* Release */,
+				6AB739E921F66BD0617FFE06470391BF /* Debug */,
+				8D9FD3778EE0230E4482A7A69181AF7C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

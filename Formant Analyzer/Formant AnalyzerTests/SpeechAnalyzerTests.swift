@@ -21,10 +21,10 @@ class SpeechAnalyzerTests: XCTestCase {
 
     var analyzers: [String: SpeechAnalyzer] = {
         var retval = [String: SpeechAnalyzer]()
-        for file in NSBundle.mainBundle().URLsForResourcesWithExtension("raw", subdirectory: nil)! {
-            let baseName = file.URLByDeletingPathExtension!.lastPathComponent!
-            let speechData = NSData(contentsOfURL: file)!
-            let analyzer = SpeechAnalyzer(int16Samples: speechData, withFrequency: 44100)
+        for file in Bundle.main.urls(forResourcesWithExtension: "raw", subdirectory: nil)! {
+            let baseName = file.deletingPathExtension().lastPathComponent
+            let speechData = NSData(contentsOf: file)!
+            let analyzer = SpeechAnalyzer(int16Samples: speechData as Data, withFrequency: 44100)
             retval[baseName] = analyzer
         }
         return retval
@@ -47,67 +47,66 @@ class SpeechAnalyzerTests: XCTestCase {
     }
     
     func testFindStrongPartOfSignal() {
-        let testData: [String: CountableRange<Int>] = [
-            "arm": 22265 ... 36542,
-            "beat": 28659 ... 37352,
-            "bid": 23815 ... 32697,
-            "calm": 28584 ... 42450,
-            "cat": 23521 ... 40670,
-            "four": 32852 ... 46930,
-            "who": 20203 ... 34398
+        let testData = [
+            // This is MATLAB results all minus one (MATLAB uses 1-indexing for arrays, Swift uses 0)
+            ("arm",  22264 ..< 36542),
+            ("beat", 28658 ..< 37352),
+            ("bid",  23814 ..< 32697),
+            ("calm", 28583 ..< 42450),
+            ("cat",  23520 ..< 40670),
+            ("four", 32851 ..< 46930),
+            ("who",  20202 ..< 34398)
         ]
         for (file, expectedResult) in testData {
             let samples = analyzers[file]!.samples
             let strongPart = SpeechAnalyzer.findStrongPartOfSignal(samples, withChunks: 300, sensitivity: 0.1)
             print("Testing \(file)")
-            XCTAssertEqual(strongPart.startIndex, expectedResult.startIndex - 1) // Matlab uses array indicies starting with 1
+            XCTAssertEqual(strongPart.startIndex, expectedResult.startIndex)
             XCTAssertEqual(strongPart.count, expectedResult.count)
         }
     }
     
     func testTruncateTailsOfRange() {
-        let testData: [(String, CountableRange<Int>, CountableRange<Int>)] = [
-            ("arm",  22265 ... 36542, 24407 ... 34400),
-            ("beat", 28659 ... 37352, 29963 ... 36048),
-            ("bid",  23815 ... 32697, 25147 ... 31365),
-            ("calm", 28584 ... 42450, 30664 ... 40370),
-            ("cat",  23521 ... 40670, 26094 ... 38097),
-            ("four", 32852 ... 46930, 34964 ... 44818),
-            ("who",  20203 ... 34398, 22332 ... 32269)
+        let testData = [
+            // This is MATLAB results all minus one (MATLAB uses 1-indexing for arrays, Swift uses 0)
+            ("arm",  22264 ..< 36542, 24406 ..< 34400),
+            ("beat", 28658 ..< 37352, 29962 ..< 36048),
+            ("bid",  23814 ..< 32697, 25146 ..< 31365),
+            ("calm", 28583 ..< 42450, 30663 ..< 40370),
+            ("cat",  23520 ..< 40670, 26093 ..< 38098),
+            ("four", 32851 ..< 46930, 34963 ..< 44818),
+            ("who",  20202 ..< 34398, 22331 ..< 32269)
         ]
         for (file, input, expectedResult) in testData {
             print("Testing \(file)")
-            let result = SpeechAnalyzer.truncateTailsOfRange(input, portion: 0.15)
-            XCTAssert(abs(expectedResult.startIndex - result.startIndex) < 3)
-            XCTAssert(abs(expectedResult.count - result.count) < 3)
-            //XCTAssertEqual(result.startIndex, expectedResult.startIndex - 1) // Matlab uses array indicies starting with 1
-            //XCTAssertEqual(result.count, expectedResult.count)
+            let result = input.truncatedTails(byPortion: 0.15)
+            XCTAssertEqual(result.startIndex, expectedResult.startIndex)
+            XCTAssertEqual(result.count, expectedResult.count)
         }
     }
     
     func testVowelRange() {
         let testData: [(String, CountableRange<Int>)] = [
-            ("arm",  24407 ... 34400),
-            ("beat", 29963 ... 36048),
-            ("bid",  25147 ... 31365),
-            ("calm", 30664 ... 40370),
-            ("cat",  26094 ... 38097),
-            ("four", 34964 ... 44818),
-            ("who",  22332 ... 32269)
+            // This is MATLAB results all minus one (MATLAB uses 1-indexing for arrays, Swift uses 0)
+            ("arm",  24406 ..< 34400),
+            ("beat", 29962 ..< 36048),
+            ("bid",  25146 ..< 31365),
+            ("calm", 30663 ..< 40370),
+            ("cat",  26093 ..< 38098),
+            ("four", 34963 ..< 44818),
+            ("who",  22331 ..< 32269)
         ]
         for (file, expectedResult) in testData {
             print("Testing \(file)")
             let result = analyzers[file]!.vowelPart
-            XCTAssert(abs(expectedResult.startIndex - result.startIndex) < 3)
-            XCTAssert(abs(expectedResult.count - result.count) < 3)
-            //XCTAssertEqual(result.startIndex, expectedResult.startIndex - 1) // Matlab uses array indicies starting with 1
-            //XCTAssertEqual(result.count, expectedResult.count)
+            XCTAssertEqual(result.startIndex, expectedResult.startIndex)
+            XCTAssertEqual(result.count, expectedResult.count)
         }
     }
     
     func testEstimateLpcCoefficients() {
         let testData: [(String, [Double])] = [
-            ("arm",  [1.000000,-1.919368,0.619068,0.233535,0.148104,0.170560,-0.004071,-0.209700,-0.135552,0.053624,0.029470,-0.063285,0.007528,0.104894,0.045091,-0.055311,-0.021498,0.044832,-0.007362,-0.048691])
+            ("arm",  [1.000000,-1.999524,0.743812,0.248833,0.135208,0.152699,-0.069143,-0.285817,-0.113623,0.189982])
         ]
         for (file, expectedResult) in testData {
             print("Testing \(file)")
@@ -119,4 +118,13 @@ class SpeechAnalyzerTests: XCTestCase {
         }
     }
  
+    /// Make sure nothing crashes when input data is empty
+    func testZeroData() {
+        
+    }
+    
+    
+    
+    
+    
 }

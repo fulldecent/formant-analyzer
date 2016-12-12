@@ -45,7 +45,6 @@ This saves the isolations to files with names starting with `3-`.
 
 Program output should be as follows:
 
-
  > Analyzing arm
 
  > Strong part: 22265 ..< 36543
@@ -74,7 +73,7 @@ Program output should be as follows:
 
  > Strong part: 23521 ..< 40671
 
- > Vowel part: 26094 ..< 38098
+ > Vowel part: 26094 ..< 38099
 
  > Analyzing four
 
@@ -87,3 +86,4 @@ Program output should be as follows:
  > Strong part: 20203 ..< 34399
 
  > Vowel part: 22332 ..< 32270
+ 

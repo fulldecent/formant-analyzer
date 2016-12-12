@@ -38,7 +38,7 @@ class SpeechAnalyzer {
     
     /// Linear prediction coefficients of the vowel signal
     lazy var estimatedLpcCoefficients: [Double] = {
-        return SpeechAnalyzer.estimateLpcCoefficients(samples: self.vowelSamplesDecimated, sampleRate: self.sampleRate/self.decimationFactor, modelLength: 20)
+        return SpeechAnalyzer.estimateLpcCoefficients(samples: self.vowelSamplesDecimated, sampleRate: self.sampleRate/self.decimationFactor, modelLength: 10)
     }()
     
     /// Synthesize the frequency response for the estimated LPC coefficients
@@ -136,14 +136,6 @@ class SpeechAnalyzer {
         return firstSelectedChunk * chunkSize ..< (lastSelectedChunk + 1) * chunkSize
     }
     
-    /// Shrink range by `portion` of its length from each size
-    /// - Parameter portion a fraction in the range 0...0.5
-    class func truncateTailsOfRange(_ range: Range<Int>, portion: Double) -> CountableRange<Int> {
-        let start = range.lowerBound + Int(portion * Double(range.count))
-        let end = range.upperBound - Int(portion * Double(range.count))
-        return start ..< end
-    }
-
     /// Estimate LPC polynomial coefficients from the signal
     /// Uses the Levinson-Durbin recursion algorithm
     /// - Returns: `modelLength` + 1 autocorrelation coefficients for an all-pole model
@@ -360,12 +352,13 @@ class SpeechAnalyzer {
     }
 }
 
+// Must be able to represent an empty range
 extension CountableRange where Bound.Stride == Int {
     /// Shrink range by `portion` of its length from each size
     /// - Parameter portion a fraction in the range 0...0.5
     func truncatedTails(byPortion portion: Double) -> CountableRange<Bound> {
-        let start = self.lowerBound.advanced(by: Int(portion * Double(self.count)))
-        let end = self.lowerBound.advanced(by: Int(portion * (1 - Double(self.count))))
+        let start = self.lowerBound.advanced(by: Int((portion * Double(self.count)).rounded()))
+        let end = self.lowerBound.advanced(by: Int(((1 - portion) * Double(self.count)).rounded()))
         return start ..< end
     }
 }

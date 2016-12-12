@@ -6,7 +6,6 @@ function [start, len] = truncateTailsOfRange(startIn, lenIn)
 
     PORTION = 0.15;
 
-    amountToTrim = round(lenIn * PORTION);
-    start = startIn + amountToTrim;
-    len = lenIn - amountToTrim * 2;
+    start = startIn + round(lenIn * PORTION);
+    len = round(lenIn * (1.0 - PORTION)) + startIn - start;
 end
