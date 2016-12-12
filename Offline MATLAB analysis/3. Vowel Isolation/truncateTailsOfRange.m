@@ -1,4 +1,4 @@
-function [start, len] = findStrongPartOfSignal(startIn, lenIn)
+function [start, len] = truncateTailsOfRange(startIn, lenIn)
 % TRUNCATETAILSOFRANGE Will remove a fractional portion of ends of a range
 %
 % With a given range of start and length, the PORTION will be removed from

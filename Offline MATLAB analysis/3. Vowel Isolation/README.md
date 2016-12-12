@@ -26,8 +26,7 @@ And the chosen constants are given as:
 -   `TRIM_FACTOR` = 0.15;
 
 **Warning: The results of this algorithm should be off by one compared to the
-iOS project because Matlab counts indices starting with 1 but Objective-C and
-Swift count starting with 0.**
+iOS project because Matlab counts indices starting with 1 but Swift counts starting with 0.**
 
 Analysis
 ========
@@ -46,58 +45,45 @@ This saves the isolations to files with names starting with `3-`.
 
 Program output should be as follows:
 
->   Analyzing arm
 
->   Energy envelope start: 22265, length 14278
+ > Analyzing arm
 
->   Vowel isolation start: 24407, length 9994
+ > Strong part: 22265 ..< 36543
 
->    
+ > Vowel part: 24407 ..< 34401
 
->   Analyzing beat
+ > Analyzing beat
 
->   Energy envelope start: 28659, length 8694
+ > Strong part: 28659 ..< 37353
 
->   Vowel isolation start: 29963, length 6086
+ > Vowel part: 29963 ..< 36049
 
->    
+ > Analyzing bid
 
->   Analyzing bid
+ > Strong part: 23815 ..< 32698
 
->   Energy envelope start: 23815, length 8883
+ > Vowel part: 25147 ..< 31366
 
->   Vowel isolation start: 25147, length 6219
+ > Analyzing calm
 
->    
+ > Strong part: 28584 ..< 42451
 
->   Analyzing calm
+ > Vowel part: 30664 ..< 40371
 
->   Energy envelope start: 28584, length 13867
+ > Analyzing cat
 
->   Vowel isolation start: 30664, length 9707
+ > Strong part: 23521 ..< 40671
 
->    
+ > Vowel part: 26094 ..< 38098
 
->   Analyzing cat
+ > Analyzing four
 
->   Energy envelope start: 23521, length 17150
+ > Strong part: 32852 ..< 46931
 
->   Vowel isolation start: 26093, length 12006
+ > Vowel part: 34964 ..< 44819
 
->    
+ > Analyzing who
 
->   Analyzing four
+ > Strong part: 20203 ..< 34399
 
->   Energy envelope start: 32852, length 14079
-
->   Vowel isolation start: 34964, length 9855
-
->    
-
->   Analyzing who
-
->   Energy envelope start: 20203, length 14196
-
->   Vowel isolation start: 22332, length 9938
-
- 
+ > Vowel part: 22332 ..< 32270

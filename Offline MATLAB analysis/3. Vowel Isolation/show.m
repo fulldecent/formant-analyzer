@@ -17,7 +17,7 @@ for recording = recordings
     fclose(fileId);
 
     fprintf('Analyzing %s\n', base_file_name);
-    [start, len] = isolateVowel(audioSamples);
+    [start, length_] = isolateVowel(audioSamples);
 
     % Plot the waveform in a wide window
     fig1 = figure(1);
@@ -31,9 +31,9 @@ for recording = recordings
     % Show the isolation
     hold on;
     selector = [1:length(audioSamples)];
-    band = 10000 * (selector >= start & selector <= start+len);
+    band = 10000 * (selector >= start & selector <= start+length_);
     plot(band, 'Color', 'r');
-    band = -10000 * (selector >= start & selector <= start+len);
+    band = -10000 * (selector >= start & selector <= start+length_);
     plot(band, 'Color', 'r');
     hold off;
     
