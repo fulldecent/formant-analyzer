@@ -120,11 +120,8 @@ class SpeechAnalyzerTests: XCTestCase {
  
     /// Make sure nothing crashes when input data is empty
     func testZeroData() {
-        
+        let speechData = Data()
+        let analyzer = SpeechAnalyzer(int16Samples: speechData as Data, withFrequency: 44100)
+        let result = analyzer.estimatedLpcCoefficients
     }
-    
-    
-    
-    
-    
 }
