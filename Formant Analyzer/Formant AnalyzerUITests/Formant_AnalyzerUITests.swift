@@ -37,7 +37,7 @@ class Formant_AnalyzerUITests: XCTestCase {
     func testSig() {
         let app = XCUIApplication()
         app.buttons["Sig"].tap()
-        delay(0.5) {
+        delay(1.5) {
             snapshot("1Sig", waitForLoadingIndicator:true)
         }
         self.waitForExpectations(timeout: 2, handler: nil)
@@ -46,7 +46,7 @@ class Formant_AnalyzerUITests: XCTestCase {
     func testLpc() {
         let app = XCUIApplication()
         app.buttons["LPC"].tap()
-        delay(0.5) {
+        delay(1.5) {
             snapshot("2Lpc", waitForLoadingIndicator:true)
         }
         self.waitForExpectations(timeout: 2, handler: nil)
@@ -55,7 +55,7 @@ class Formant_AnalyzerUITests: XCTestCase {
     func testHw() {
         let app = XCUIApplication()
         app.segmentedControls.buttons.element(boundBy: 2).tap()
-        delay(0.5) {
+        delay(1.5) {
             snapshot("3Hw", waitForLoadingIndicator:true)
         }
         self.waitForExpectations(timeout: 2, handler: nil)
@@ -64,7 +64,7 @@ class Formant_AnalyzerUITests: XCTestCase {
     func testFrmnt() {
         let app = XCUIApplication()
         app.buttons["Frmnt"].tap()
-        delay(0.5) {
+        delay(1.5) {
             snapshot("4Frmnt", waitForLoadingIndicator:true)
         }
         self.waitForExpectations(timeout: 2, handler: nil)

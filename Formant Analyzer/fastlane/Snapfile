@@ -10,6 +10,12 @@
 #   "iPad Pro"
 # ])
 
+devices([
+  "iPhone 7",
+  "iPad Pro"  
+]
+)
+
 languages([
   "en-US"
 ])

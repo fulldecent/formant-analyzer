@@ -177,6 +177,9 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
         exportAudioMixInputParameters.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.0, timeRange: fadeOutTimeRange)
         exportAudioMix.inputParameters = [exportAudioMixInputParameters]
         
+        let presets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
+        
+        
         // Configure AVAssetExportSession which sets audio format
         let exportSession = AVAssetExportSession(asset: avAsset, presetName: AVAssetExportPresetAppleM4A)!
         exportSession.outputURL = trimmedAudioFileURL
