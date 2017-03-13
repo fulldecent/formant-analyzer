@@ -1,6 +1,8 @@
 FORMANT PLOTTER
 ------------------------
 
+Buy on the App Store: https://itunes.apple.com/us/app/formant-analyzer/id799183655?mt=8&uo=4&at=11l6hc&ct=fnd
+
 This is an iOS project to analyze formants. The user speaks and the formant is plotted on the screen immediately. It is designed for speaking a single vowel syllable. It will try to isolate the vowel sound from any surrounding consonants if it can.
 
 <img src="http://i.imgur.com/PnmTS53.png">
