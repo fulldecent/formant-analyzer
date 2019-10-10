@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FDSoundActivatedRecorder",
+        "repositoryURL": "https://github.com/fulldecent/FDSoundActivatedRecorder.git",
+        "state": {
+          "branch": "master",
+          "revision": "f95134e138bc2772b964a7adc7dc93fb6215e5be",
+          "version": null
+        }
+      }
+    ]
+  },
+  "version": 1
+}

@@ -3,302 +3,206 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0324E5EF2BC3991C25C01E22740F3C23 /* FSLineChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		686FA72C432E49F500A8235E87069019 /* FDSoundActivatedRecorder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */; };
-		7BE1936C0B567666CEE1900A29E6BB06 /* Pods-Formant Analyzer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8CCC02F1FB711E2339B4EBE02F613EE5 /* Pods-Formant Analyzer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */; };
-		993C61FF46A4288F0DCB2CB7A8D5D328 /* FDSoundActivatedRecorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		A97DC2E83ABB58080AF5491ACEDA5717 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		AD5681307560DC6583E47930833596B2 /* FSLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = F1065837E651665E521C70B9956DD04C /* FSLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B197787A06F2B4124BC1FF82F6975F2F /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */; };
-		B21AB3AE52E7785617772C4A119C6F09 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		C067EBA06C173899461FCD29623F7662 /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */; };
-		C0F7388159B48FE00EC70346DC660373 /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */; };
-		E7D02745D202B5B2967D24897874AA6C /* FSLineChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */; };
-		F63588FD2497FE9097D70054AB4494EE /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		FC5DE94578765F701B6E09EA3D9DB1F1 /* UIColor+FSPalette.h in Headers */ = {isa = PBXBuildFile; fileRef = 2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0DC46313E6C6CB859A5FE0AD5F755E7C /* FSLineChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7A8E14246DE286145505B16EC9C937CC /* FSLineChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1765CE19E47B56723BB7B13DADC0DF0E /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 1CA39339D829F660169CBB81503C4950 /* FSLineChart.m */; };
+		3BD0E5E248592E3CBBF1F627689B757C /* FSLineChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A13E2368C4CCFC5339CD515D7542FB2C /* FSLineChart-dummy.m */; };
+		3E3B09A8C1CA7DC2E84D344F23030587 /* FSLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D6816C76001B40B5EF88EDBFDB070B6 /* FSLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		58EBD1776260EA214453998FFE353F4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		926DA67DACA62E05A3AC393026EF27BF /* UIColor+FSPalette.h in Headers */ = {isa = PBXBuildFile; fileRef = E7CE9E63C4FD58D2AC0B00A205AAA5D1 /* UIColor+FSPalette.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96CEEE08C2946D9B0E187C80FE96BB6B /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = 00C9DC1365D19A87B12093A809A752CD /* UIColor+FSPalette.m */; };
+		C1C3E6A7A87E1C7D4F2DB786458C89B3 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		C429C29B054C88DBC50F7227025B77C7 /* Pods-Formant Analyzer-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE8FD1D3EDF2CAA7B0DED5ADED7F47A /* Pods-Formant Analyzer-dummy.m */; };
+		F8A9E7F25180C9329B02DFA14AC8A639 /* Pods-Formant Analyzer-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 0F13CCA1355693A5450554E714D545DF /* Pods-Formant Analyzer-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4B966149430F6330B765B033F62027A4 /* PBXContainerItemProxy */ = {
+		FD8A379508E631F60DE8814EF5857D8E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 809463219ED0A00088BB0753D65348EB;
+			remoteGlobalIDString = 063012662B52B5217821A59061152E8E;
 			remoteInfo = FSLineChart;
-		};
-		638CB628A88CFA98FD5488C6E03AC8B5 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 59E0D988D3DD3BF9F634CE63134333CC;
-			remoteInfo = FDSoundActivatedRecorder;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.xcconfig; sourceTree = "<group>"; };
-		13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FDSoundActivatedRecorder-dummy.m"; sourceTree = "<group>"; };
-		1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer-umbrella.h"; sourceTree = "<group>"; };
-		1BB514F02DE0DE09ABF7CC139AFBE36E /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FSLineChart.modulemap; sourceTree = "<group>"; };
-		25DF0C4C9EA6529C6F93C6E21A20E778 /* Pods-Formant Analyzer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer-acknowledgements.plist"; sourceTree = "<group>"; };
-		2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
-		30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FDSoundActivatedRecorder.swift; path = FDSoundActivatedRecorder/FDSoundActivatedRecorder/FDSoundActivatedRecorder.swift; sourceTree = "<group>"; };
-		37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSLineChart.m; path = FSLineChart/FSLineChart/FSLineChart.m; sourceTree = "<group>"; };
-		39D26CD5E75001219256273550AAA107 /* FDSoundActivatedRecorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = FDSoundActivatedRecorder.modulemap; sourceTree = "<group>"; };
-		58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
-		603D6E8533C7200B10E22DA3715C35F9 /* Pods-Formant Analyzer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer-acknowledgements.markdown"; sourceTree = "<group>"; };
-		7290A2205F879DF88A1584911E16B02A /* Pods-Formant Analyzer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-frameworks.sh"; sourceTree = "<group>"; };
-		73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer-dummy.m"; sourceTree = "<group>"; };
-		7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDSoundActivatedRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A2731A36D3C4023183F6A04424A0A4E /* FSLineChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-prefix.pch"; sourceTree = "<group>"; };
-		7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FSPalette.m"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.m"; sourceTree = "<group>"; };
-		86998DBA8CAEA66548E889FE4C13E103 /* FDSoundActivatedRecorder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-prefix.pch"; sourceTree = "<group>"; };
-		8A7610DB5404B5FAC60C73B0EFE19020 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8FC1FCAA5B276CAE7C091F5DB2E2B5D3 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-umbrella.h"; sourceTree = "<group>"; };
-		9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
-		B538D076D98586559D6E9016134E5CF8 /* Pods-Formant Analyzer-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-resources.sh"; sourceTree = "<group>"; };
-		B8ABB4DD6C941B58768B571402DAA2C2 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSLineChart-dummy.m"; sourceTree = "<group>"; };
-		C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-umbrella.h"; sourceTree = "<group>"; };
-		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D2B81E220FC8FB4B521766C155401B7A /* Pods-Formant Analyzer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Formant Analyzer.modulemap"; sourceTree = "<group>"; };
-		E36DE9D641F5C98E1C0C7D96B5033FB8 /* FSLineChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FSLineChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FDSoundActivatedRecorder.xcconfig; sourceTree = "<group>"; };
-		F1065837E651665E521C70B9956DD04C /* FSLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
+		00C9DC1365D19A87B12093A809A752CD /* UIColor+FSPalette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FSPalette.m"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.m"; sourceTree = "<group>"; };
+		0F13CCA1355693A5450554E714D545DF /* Pods-Formant Analyzer-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer-umbrella.h"; sourceTree = "<group>"; };
+		17E03789F80AEF5285C13184DB492242 /* Pods-Formant Analyzer-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer-frameworks.sh"; sourceTree = "<group>"; };
+		1CA39339D829F660169CBB81503C4950 /* FSLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSLineChart.m; path = FSLineChart/FSLineChart/FSLineChart.m; sourceTree = "<group>"; };
+		1DFE5B1B13777B622AB198FC04BCA81C /* Pods-Formant Analyzer-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer-acknowledgements.plist"; sourceTree = "<group>"; };
+		258CDE3303AC800F00CAE40F1312083E /* FSLineChart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.xcconfig; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		67EA21BF20CE514B1E84583AA9BAE5E6 /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSLineChart.modulemap; sourceTree = "<group>"; };
+		71697829ADA8D7DD5B282217CD8E7A50 /* FSLineChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-prefix.pch"; sourceTree = "<group>"; };
+		781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSLineChart.framework; path = FSLineChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		79D27E48D6276C246C883F76FC1D9396 /* Pods-Formant Analyzer-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer-Info.plist"; sourceTree = "<group>"; };
+		7A8E14246DE286145505B16EC9C937CC /* FSLineChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-umbrella.h"; sourceTree = "<group>"; };
+		82931F70AB5630148961662E95385792 /* Pods-Formant Analyzer-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer-acknowledgements.markdown"; sourceTree = "<group>"; };
+		8D2216BBC4F96533E43342F0E61F86AC /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
+		8D6816C76001B40B5EF88EDBFDB070B6 /* FSLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A0DEB7E678FC8B266FC74594E51CA6C1 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formant_Analyzer.framework; path = "Pods-Formant Analyzer.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A13E2368C4CCFC5339CD515D7542FB2C /* FSLineChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSLineChart-dummy.m"; sourceTree = "<group>"; };
+		C5A712BF12AFD3F595A69BE23A7F1DCB /* Pods-Formant Analyzer.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formant Analyzer.modulemap"; sourceTree = "<group>"; };
+		E7CE9E63C4FD58D2AC0B00A205AAA5D1 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
+		E9D87517E2FA00485253BE4E166758AC /* FSLineChart-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FSLineChart-Info.plist"; sourceTree = "<group>"; };
+		F2F376FCC54E7BF5FAD55C21186BA8DE /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
+		FCE8FD1D3EDF2CAA7B0DED5ADED7F47A /* Pods-Formant Analyzer-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer-dummy.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3340F2364FAD640A31E15E34C2447F04 /* Frameworks */ = {
+		90D1A1347D53C19CFB11C2ABCEEE9EB9 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A97DC2E83ABB58080AF5491ACEDA5717 /* Foundation.framework in Frameworks */,
+				58EBD1776260EA214453998FFE353F4A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		891D54BBA9376385506A1CA99E1EEF48 /* Frameworks */ = {
+		9BAC797E79E156C4E5A88F2DD7592199 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B21AB3AE52E7785617772C4A119C6F09 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8BB40A9AC5A8EF080C4F494BA2F7FC0B /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F63588FD2497FE9097D70054AB4494EE /* Foundation.framework in Frameworks */,
+				C1C3E6A7A87E1C7D4F2DB786458C89B3 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		22F62812866C3081F55E3873C235A69E /* Products */ = {
+		5B31D0477BE2CF41AFB59BAEA0908B7A /* Pods-Formant Analyzer */ = {
 			isa = PBXGroup;
 			children = (
-				7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */,
-				E36DE9D641F5C98E1C0C7D96B5033FB8 /* FSLineChart.framework */,
-				7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		3770CFEF3BAF746D501748726E6489F2 /* Targets Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				9ED478721C9EA445310917CC98D7CDCD /* Pods-Formant Analyzer */,
-			);
-			name = "Targets Support Files";
-			sourceTree = "<group>";
-		};
-		7484101ADCE0C15E8A12CCEDFA951656 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				39D26CD5E75001219256273550AAA107 /* FDSoundActivatedRecorder.modulemap */,
-				E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */,
-				13396C88DBDA131E411136352B22637D /* FDSoundActivatedRecorder-dummy.m */,
-				86998DBA8CAEA66548E889FE4C13E103 /* FDSoundActivatedRecorder-prefix.pch */,
-				C6CE3F5ED1085DA1ADB90EBAB4F5A874 /* FDSoundActivatedRecorder-umbrella.h */,
-				B8ABB4DD6C941B58768B571402DAA2C2 /* Info.plist */,
-			);
-			name = "Support Files";
-			path = "../Target Support Files/FDSoundActivatedRecorder";
-			sourceTree = "<group>";
-		};
-		7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */ = {
-			isa = PBXGroup;
-			children = (
-				CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */,
-			);
-			name = iOS;
-			sourceTree = "<group>";
-		};
-		7DB346D0F39D3F0E887471402A8071AB = {
-			isa = PBXGroup;
-			children = (
-				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
-				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				E20E53CD99DF06BB6DFD194B8374C1CF /* Pods */,
-				22F62812866C3081F55E3873C235A69E /* Products */,
-				3770CFEF3BAF746D501748726E6489F2 /* Targets Support Files */,
-			);
-			sourceTree = "<group>";
-		};
-		9ED478721C9EA445310917CC98D7CDCD /* Pods-Formant Analyzer */ = {
-			isa = PBXGroup;
-			children = (
-				8FC1FCAA5B276CAE7C091F5DB2E2B5D3 /* Info.plist */,
-				D2B81E220FC8FB4B521766C155401B7A /* Pods-Formant Analyzer.modulemap */,
-				603D6E8533C7200B10E22DA3715C35F9 /* Pods-Formant Analyzer-acknowledgements.markdown */,
-				25DF0C4C9EA6529C6F93C6E21A20E778 /* Pods-Formant Analyzer-acknowledgements.plist */,
-				73F354228B12C06094901C046257EC6B /* Pods-Formant Analyzer-dummy.m */,
-				7290A2205F879DF88A1584911E16B02A /* Pods-Formant Analyzer-frameworks.sh */,
-				B538D076D98586559D6E9016134E5CF8 /* Pods-Formant Analyzer-resources.sh */,
-				1A0904FE062AC98021D5BFFAAC459FAB /* Pods-Formant Analyzer-umbrella.h */,
-				9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */,
-				58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */,
+				C5A712BF12AFD3F595A69BE23A7F1DCB /* Pods-Formant Analyzer.modulemap */,
+				82931F70AB5630148961662E95385792 /* Pods-Formant Analyzer-acknowledgements.markdown */,
+				1DFE5B1B13777B622AB198FC04BCA81C /* Pods-Formant Analyzer-acknowledgements.plist */,
+				FCE8FD1D3EDF2CAA7B0DED5ADED7F47A /* Pods-Formant Analyzer-dummy.m */,
+				17E03789F80AEF5285C13184DB492242 /* Pods-Formant Analyzer-frameworks.sh */,
+				79D27E48D6276C246C883F76FC1D9396 /* Pods-Formant Analyzer-Info.plist */,
+				0F13CCA1355693A5450554E714D545DF /* Pods-Formant Analyzer-umbrella.h */,
+				F2F376FCC54E7BF5FAD55C21186BA8DE /* Pods-Formant Analyzer.debug.xcconfig */,
+				8D2216BBC4F96533E43342F0E61F86AC /* Pods-Formant Analyzer.release.xcconfig */,
 			);
 			name = "Pods-Formant Analyzer";
 			path = "Target Support Files/Pods-Formant Analyzer";
 			sourceTree = "<group>";
 		};
-		BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */ = {
+		8060C28B2D654A2C2CEA043135EBC048 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				7531C8F8DE19F1AA3C8A7AC97A91DC29 /* iOS */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		C4D6E693A73BBCDC86190FBD1972044E /* FDSoundActivatedRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				30B1D0AB771C2FEC067A5DEC4FB4B069 /* FDSoundActivatedRecorder.swift */,
-				7484101ADCE0C15E8A12CCEDFA951656 /* Support Files */,
-			);
-			path = FDSoundActivatedRecorder;
-			sourceTree = "<group>";
-		};
-		CD5ED7B61551A6B505AF388628EAA803 /* Support Files */ = {
-			isa = PBXGroup;
-			children = (
-				1BB514F02DE0DE09ABF7CC139AFBE36E /* FSLineChart.modulemap */,
-				085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */,
-				BB96FA14F42848A9C9E00606BB958BFA /* FSLineChart-dummy.m */,
-				7A2731A36D3C4023183F6A04424A0A4E /* FSLineChart-prefix.pch */,
-				9B5114039A78A5706BB2CE65895A4A97 /* FSLineChart-umbrella.h */,
-				8A7610DB5404B5FAC60C73B0EFE19020 /* Info.plist */,
+				67EA21BF20CE514B1E84583AA9BAE5E6 /* FSLineChart.modulemap */,
+				258CDE3303AC800F00CAE40F1312083E /* FSLineChart.xcconfig */,
+				A13E2368C4CCFC5339CD515D7542FB2C /* FSLineChart-dummy.m */,
+				E9D87517E2FA00485253BE4E166758AC /* FSLineChart-Info.plist */,
+				71697829ADA8D7DD5B282217CD8E7A50 /* FSLineChart-prefix.pch */,
+				7A8E14246DE286145505B16EC9C937CC /* FSLineChart-umbrella.h */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/FSLineChart";
 			sourceTree = "<group>";
 		};
-		E20E53CD99DF06BB6DFD194B8374C1CF /* Pods */ = {
+		A50D740112928709C49BEB6E6C4099FE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C4D6E693A73BBCDC86190FBD1972044E /* FDSoundActivatedRecorder */,
-				FFB6B40496E6974990272927713DE674 /* FSLineChart */,
+				DE06AB85366D17836896A70F42C20731 /* FSLineChart */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		FFB6B40496E6974990272927713DE674 /* FSLineChart */ = {
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				F1065837E651665E521C70B9956DD04C /* FSLineChart.h */,
-				37C8EA81CCCD08697C2219D3102884A9 /* FSLineChart.m */,
-				2B6A7193B317F5CE8674A177028DED41 /* UIColor+FSPalette.h */,
-				867855A71DC087A31476167D083C6ACC /* UIColor+FSPalette.m */,
-				CD5ED7B61551A6B505AF388628EAA803 /* Support Files */,
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
 			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C60CFF3624B08F42B01ABE6FE229374D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				5B31D0477BE2CF41AFB59BAEA0908B7A /* Pods-Formant Analyzer */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				A50D740112928709C49BEB6E6C4099FE /* Pods */,
+				F4915ACEB412FDEC5EA1A230FE6C735E /* Products */,
+				C60CFF3624B08F42B01ABE6FE229374D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DE06AB85366D17836896A70F42C20731 /* FSLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				8D6816C76001B40B5EF88EDBFDB070B6 /* FSLineChart.h */,
+				1CA39339D829F660169CBB81503C4950 /* FSLineChart.m */,
+				E7CE9E63C4FD58D2AC0B00A205AAA5D1 /* UIColor+FSPalette.h */,
+				00C9DC1365D19A87B12093A809A752CD /* UIColor+FSPalette.m */,
+				8060C28B2D654A2C2CEA043135EBC048 /* Support Files */,
+			);
+			name = FSLineChart;
 			path = FSLineChart;
+			sourceTree = "<group>";
+		};
+		F4915ACEB412FDEC5EA1A230FE6C735E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */,
+				A0DEB7E678FC8B266FC74594E51CA6C1 /* Pods_Formant_Analyzer.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		00F649B88EF8E58DA127C1561C27C1D8 /* Headers */ = {
+		5C5DE8AB4A545711CBC0ABA50DFF6AF6 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				993C61FF46A4288F0DCB2CB7A8D5D328 /* FDSoundActivatedRecorder-umbrella.h in Headers */,
+				F8A9E7F25180C9329B02DFA14AC8A639 /* Pods-Formant Analyzer-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95DE14B8D24D9BB482AE7F43145F1510 /* Headers */ = {
+		F5ED7A81E3FCDB0C0824F78D43F56158 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0324E5EF2BC3991C25C01E22740F3C23 /* FSLineChart-umbrella.h in Headers */,
-				AD5681307560DC6583E47930833596B2 /* FSLineChart.h in Headers */,
-				FC5DE94578765F701B6E09EA3D9DB1F1 /* UIColor+FSPalette.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DCF456C2C214EAC8B6946C612FC2413E /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7BE1936C0B567666CEE1900A29E6BB06 /* Pods-Formant Analyzer-umbrella.h in Headers */,
+				0DC46313E6C6CB859A5FE0AD5F755E7C /* FSLineChart-umbrella.h in Headers */,
+				3E3B09A8C1CA7DC2E84D344F23030587 /* FSLineChart.h in Headers */,
+				926DA67DACA62E05A3AC393026EF27BF /* UIColor+FSPalette.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		35027DB69F4DE451424D7EC473F110C7 /* Pods-Formant Analyzer */ = {
+		063012662B52B5217821A59061152E8E /* FSLineChart */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = BA57196364B972CDA68871A271136E8F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */;
+			buildConfigurationList = BE609BAFEBCDDBE2DAE8051D127CCF53 /* Build configuration list for PBXNativeTarget "FSLineChart" */;
 			buildPhases = (
-				6B914E3F36E8E458F0EED928F0378CF3 /* Sources */,
-				8BB40A9AC5A8EF080C4F494BA2F7FC0B /* Frameworks */,
-				DCF456C2C214EAC8B6946C612FC2413E /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				0CF8D6416126584D8405AA2CAE47B14B /* PBXTargetDependency */,
-				3C9857CD37B9590D7537BDE0AF6F1070 /* PBXTargetDependency */,
-			);
-			name = "Pods-Formant Analyzer";
-			productName = "Pods-Formant Analyzer";
-			productReference = 7E6E033A735D8D96ED83CD5CBC223966 /* Pods_Formant_Analyzer.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F7085F609C1072C6D07D99798F837791 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */;
-			buildPhases = (
-				A99781A312DEE33D10E50C304F8D1FA1 /* Sources */,
-				891D54BBA9376385506A1CA99E1EEF48 /* Frameworks */,
-				00F649B88EF8E58DA127C1561C27C1D8 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = FDSoundActivatedRecorder;
-			productName = FDSoundActivatedRecorder;
-			productReference = 7667D9EA4C5768D17BE96DCBD8E5C676 /* FDSoundActivatedRecorder.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		809463219ED0A00088BB0753D65348EB /* FSLineChart */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 407EC161763408383D6DF8D997BC827F /* Build configuration list for PBXNativeTarget "FSLineChart" */;
-			buildPhases = (
-				F4D5E8DFAC0A5E3FE2F0039F334A6472 /* Sources */,
-				3340F2364FAD640A31E15E34C2447F04 /* Frameworks */,
-				95DE14B8D24D9BB482AE7F43145F1510 /* Headers */,
+				F5ED7A81E3FCDB0C0824F78D43F56158 /* Headers */,
+				759969E94C5994621D4202DF67100EF9 /* Sources */,
+				90D1A1347D53C19CFB11C2ABCEEE9EB9 /* Frameworks */,
+				289DF54302E9A4D51298D749DED1F56D /* Resources */,
 			);
 			buildRules = (
 			);
@@ -306,104 +210,158 @@
 			);
 			name = FSLineChart;
 			productName = FSLineChart;
-			productReference = E36DE9D641F5C98E1C0C7D96B5033FB8 /* FSLineChart.framework */;
+			productReference = 781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		41EF3A41D16402E0B11CD96BCBA483FD /* Pods-Formant Analyzer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 425FC46E8042248DD27D5F896A73972D /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */;
+			buildPhases = (
+				5C5DE8AB4A545711CBC0ABA50DFF6AF6 /* Headers */,
+				027FC34EA198184F5B8DC5DF27514D08 /* Sources */,
+				9BAC797E79E156C4E5A88F2DD7592199 /* Frameworks */,
+				15B6164124C66341A453B334B8B4B897 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C52B53139225CA299C6A283D2DE31DF3 /* PBXTargetDependency */,
+			);
+			name = "Pods-Formant Analyzer";
+			productName = "Pods-Formant Analyzer";
+			productReference = A0DEB7E678FC8B266FC74594E51CA6C1 /* Pods_Formant_Analyzer.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D41D8CD98F00B204E9800998ECF8427E /* Project object */ = {
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1110;
-				TargetAttributes = {
-					59E0D988D3DD3BF9F634CE63134333CC = {
-						LastSwiftMigration = 1110;
-					};
-				};
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
 			};
-			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 11.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
-				Base,
 			);
-			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
-			productRefGroup = 22F62812866C3081F55E3873C235A69E /* Products */;
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = F4915ACEB412FDEC5EA1A230FE6C735E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */,
-				809463219ED0A00088BB0753D65348EB /* FSLineChart */,
-				35027DB69F4DE451424D7EC473F110C7 /* Pods-Formant Analyzer */,
+				063012662B52B5217821A59061152E8E /* FSLineChart */,
+				41EF3A41D16402E0B11CD96BCBA483FD /* Pods-Formant Analyzer */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		15B6164124C66341A453B334B8B4B897 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		289DF54302E9A4D51298D749DED1F56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		6B914E3F36E8E458F0EED928F0378CF3 /* Sources */ = {
+		027FC34EA198184F5B8DC5DF27514D08 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8CCC02F1FB711E2339B4EBE02F613EE5 /* Pods-Formant Analyzer-dummy.m in Sources */,
+				C429C29B054C88DBC50F7227025B77C7 /* Pods-Formant Analyzer-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A99781A312DEE33D10E50C304F8D1FA1 /* Sources */ = {
+		759969E94C5994621D4202DF67100EF9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				686FA72C432E49F500A8235E87069019 /* FDSoundActivatedRecorder-dummy.m in Sources */,
-				C067EBA06C173899461FCD29623F7662 /* FDSoundActivatedRecorder.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F4D5E8DFAC0A5E3FE2F0039F334A6472 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				E7D02745D202B5B2967D24897874AA6C /* FSLineChart-dummy.m in Sources */,
-				B197787A06F2B4124BC1FF82F6975F2F /* FSLineChart.m in Sources */,
-				C0F7388159B48FE00EC70346DC660373 /* UIColor+FSPalette.m in Sources */,
+				3BD0E5E248592E3CBBF1F627689B757C /* FSLineChart-dummy.m in Sources */,
+				1765CE19E47B56723BB7B13DADC0DF0E /* FSLineChart.m in Sources */,
+				96CEEE08C2946D9B0E187C80FE96BB6B /* UIColor+FSPalette.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		0CF8D6416126584D8405AA2CAE47B14B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FDSoundActivatedRecorder;
-			target = 59E0D988D3DD3BF9F634CE63134333CC /* FDSoundActivatedRecorder */;
-			targetProxy = 638CB628A88CFA98FD5488C6E03AC8B5 /* PBXContainerItemProxy */;
-		};
-		3C9857CD37B9590D7537BDE0AF6F1070 /* PBXTargetDependency */ = {
+		C52B53139225CA299C6A283D2DE31DF3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FSLineChart;
-			target = 809463219ED0A00088BB0753D65348EB /* FSLineChart */;
-			targetProxy = 4B966149430F6330B765B033F62027A4 /* PBXContainerItemProxy */;
+			target = 063012662B52B5217821A59061152E8E /* FSLineChart */;
+			targetProxy = FD8A379508E631F60DE8814EF5857D8E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		015A368F878AC3E2CEAE21DDE8026304 /* Debug */ = {
+		4B2D8411430F39271C1DD7CE19535A9A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F2F376FCC54E7BF5FAD55C21186BA8DE /* Pods-Formant Analyzer.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		4BE66A09A74FD25164AAB3C2645B9B93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -411,17 +369,113 @@
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
 				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+		7D38E1EC6B15BC179C38EFCB45B18B6B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 258CDE3303AC800F00CAE40F1312083E /* FSLineChart.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/FSLineChart-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				PRODUCT_MODULE_NAME = FSLineChart;
+				PRODUCT_NAME = FSLineChart;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		7EF7227D9B20A1D549000096ACCB23D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -430,316 +484,130 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Debug;
 		};
-		0D7D557608C121517D54FF2325C9362B /* Debug */ = {
+		DC370206E6D735C116D3AF546E778928 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E9E789B0B2DB382999D07436AB979D3 /* Pods-Formant Analyzer.debug.xcconfig */;
+			baseConfigurationReference = 258CDE3303AC800F00CAE40F1312083E /* FSLineChart.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Formant_Analyzer;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		2A7CF976BCBBCAFD70E3EC53F00C7FB5 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/FSLineChart-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FSLineChart;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
-		44CDBB6D11DE06DB64D6268622BDC47E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGNING_REQUIRED = NO;
-				COPY_PHASE_STRIP = YES;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"POD_CONFIGURATION_RELEASE=1",
+				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
 				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				PROVISIONING_PROFILE_SPECIFIER = NO_SIGNING/;
-				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SYMROOT = "${SRCROOT}/../build";
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				PRODUCT_MODULE_NAME = FSLineChart;
+				PRODUCT_NAME = FSLineChart;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		6AB739E921F66BD0617FFE06470391BF /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FDSoundActivatedRecorder;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
-		8D9FD3778EE0230E4482A7A69181AF7C /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E72DD7CD35A01F2DB213BA5DE8D8C091 /* FDSoundActivatedRecorder.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = FDSoundActivatedRecorder;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
 		};
-		E12A3F6A5670690B2E0A248938831D33 /* Release */ = {
+		E6A5627E70B10A98C17C7B130DD10702 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 58AECD7E72F116686F5B376EA10A9ACC /* Pods-Formant Analyzer.release.xcconfig */;
+			baseConfigurationReference = 8D2216BBC4F96533E43342F0E61F86AC /* Pods-Formant Analyzer.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
 				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer/Info.plist";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = Pods_Formant_Analyzer;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		FA84D3176C287D41186B43951BBD0ED4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 085C24B0082BAA72C028BCA5628A6492 /* FSLineChart.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/FSLineChart/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
-				MTL_ENABLE_DEBUG_INFO = YES;
-				PRODUCT_NAME = FSLineChart;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */ = {
+		425FC46E8042248DD27D5F896A73972D /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				015A368F878AC3E2CEAE21DDE8026304 /* Debug */,
-				44CDBB6D11DE06DB64D6268622BDC47E /* Release */,
+				4B2D8411430F39271C1DD7CE19535A9A /* Debug */,
+				E6A5627E70B10A98C17C7B130DD10702 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		407EC161763408383D6DF8D997BC827F /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				FA84D3176C287D41186B43951BBD0ED4 /* Debug */,
-				2A7CF976BCBBCAFD70E3EC53F00C7FB5 /* Release */,
+				7EF7227D9B20A1D549000096ACCB23D7 /* Debug */,
+				4BE66A09A74FD25164AAB3C2645B9B93 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		BA57196364B972CDA68871A271136E8F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer" */ = {
+		BE609BAFEBCDDBE2DAE8051D127CCF53 /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				0D7D557608C121517D54FF2325C9362B /* Debug */,
-				E12A3F6A5670690B2E0A248938831D33 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F7085F609C1072C6D07D99798F837791 /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6AB739E921F66BD0617FFE06470391BF /* Debug */,
-				8D9FD3778EE0230E4482A7A69181AF7C /* Release */,
+				7D38E1EC6B15BC179C38EFCB45B18B6B /* Debug */,
+				DC370206E6D735C116D3AF546E778928 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 }

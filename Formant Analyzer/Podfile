@@ -3,5 +3,5 @@ use_frameworks!
 
 target "Formant Analyzer" do
 	pod 'FSLineChart'
-	pod 'FDSoundActivatedRecorder'
+#	pod 'FDSoundActivatedRecorder'
 end
