@@ -194,7 +194,7 @@ class SpeechAnalyzer {
         var retval = [Double]()
         // Calculate frequency response of the inverse of the predictor filter
         for frequency in frequencies {
-            let radians = Double(frequency) / Double(samplingRate) * M_PI * 2
+            let radians = Double(frequency) / Double(samplingRate) * Double.pi * 2
             var response: Complex<Double> = 0.0 + 0.0.i
             for (index, coefficient) in coefficients.enumerated() {
                 response += Complex<Double>(abs: coefficient, arg:Double(index) * radians)
@@ -303,7 +303,7 @@ class SpeechAnalyzer {
         //MAYBE: This may cause duplicated roots, is that a problem?
         
         // Find real frequencies corresponding to all roots
-        let formantFrequencies = polishedRoots.map({$0.arg * Double(rate) / M_PI / 2})
+        let formantFrequencies = polishedRoots.map({$0.arg * Double(rate) / Double.pi / 2})
         return formantFrequencies.sorted()
     }
 
@@ -322,7 +322,7 @@ class SpeechAnalyzer {
         /// Formants closer than this will be merged into one, in Hz
         let MIN_DISTANCE = 10.0
         
-        var editedFormants = formants.sorted().flatMap({$0 >= MIN_FORMANT && $0 <= MAX_FORMANT ? $0 : nil})
+        var editedFormants = formants.sorted().compactMap({$0 >= MIN_FORMANT && $0 <= MAX_FORMANT ? $0 : nil})
         var done = false
         while !done {
             {

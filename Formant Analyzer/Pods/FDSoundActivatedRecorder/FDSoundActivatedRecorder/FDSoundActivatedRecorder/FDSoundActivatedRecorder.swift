@@ -111,7 +111,7 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
     
     /// A log-scale reading between 0.0 (silent) and 1.0 (loud), nil if not recording
     /// TODO: make this optional (KVO needs Objective-C compatible classes, Swift bug)
-    dynamic open var microphoneLevel: Double = 0.0
+    @objc dynamic open var microphoneLevel: Double = 0.0
     
     /// Receiver for status updates
     open weak var delegate: FDSoundActivatedRecorderDelegate?
@@ -137,7 +137,7 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
         delegate?.soundActivatedRecorderDidStartRecording(self)
         triggerCount = 0
         let timeSamples = max(0.0, audioRecorder.currentTime - Double(INTERVAL_SECONDS) * Double(RISE_TRIGGER_INTERVALS)) * Double(SAVING_SAMPLES_PER_SECOND)
-        recordingBeginTime = CMTimeMake(Int64(timeSamples), Int32(SAVING_SAMPLES_PER_SECOND))
+        recordingBeginTime = CMTimeMake(value: Int64(timeSamples), timescale: Int32(SAVING_SAMPLES_PER_SECOND))
     }
     
     /// End the recording and send any processed & saved file to `delegate`
@@ -149,7 +149,7 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
         status = .processingRecording
         self.microphoneLevel = 0.0
         let timeSamples = audioRecorder.currentTime * Double(SAVING_SAMPLES_PER_SECOND)
-        recordingEndTime = CMTimeMake(Int64(timeSamples), Int32(SAVING_SAMPLES_PER_SECOND))
+        recordingEndTime = CMTimeMake(value: Int64(timeSamples), timescale: Int32(SAVING_SAMPLES_PER_SECOND))
         audioRecorder.stop()
         
         // Prepare output
@@ -161,15 +161,15 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
         }
         
         // Create time ranges for trimming and fading
-        let fadeInDoneTime = CMTimeAdd(recordingBeginTime, CMTimeMake(Int64(Double(RISE_TRIGGER_INTERVALS) * Double(INTERVAL_SECONDS) * Double(SAVING_SAMPLES_PER_SECOND)), Int32(SAVING_SAMPLES_PER_SECOND)))
-        let fadeOutStartTime = CMTimeSubtract(recordingEndTime, CMTimeMake(Int64(Double(FALL_TRIGGER_INTERVALS) * Double(INTERVAL_SECONDS) * Double(SAVING_SAMPLES_PER_SECOND)), Int32(SAVING_SAMPLES_PER_SECOND)))
-        let exportTimeRange = CMTimeRangeFromTimeToTime(recordingBeginTime, recordingEndTime)
-        let fadeInTimeRange = CMTimeRangeFromTimeToTime(recordingBeginTime, fadeInDoneTime)
-        let fadeOutTimeRange = CMTimeRangeFromTimeToTime(fadeOutStartTime, recordingEndTime)
+        let fadeInDoneTime = CMTimeAdd(recordingBeginTime, CMTimeMake(value: Int64(Double(RISE_TRIGGER_INTERVALS) * Double(INTERVAL_SECONDS) * Double(SAVING_SAMPLES_PER_SECOND)), timescale: Int32(SAVING_SAMPLES_PER_SECOND)))
+        let fadeOutStartTime = CMTimeSubtract(recordingEndTime, CMTimeMake(value: Int64(Double(FALL_TRIGGER_INTERVALS) * Double(INTERVAL_SECONDS) * Double(SAVING_SAMPLES_PER_SECOND)), timescale: Int32(SAVING_SAMPLES_PER_SECOND)))
+        let exportTimeRange = CMTimeRangeFromTimeToTime(start: recordingBeginTime, end: recordingEndTime)
+        let fadeInTimeRange = CMTimeRangeFromTimeToTime(start: recordingBeginTime, end: fadeInDoneTime)
+        let fadeOutTimeRange = CMTimeRangeFromTimeToTime(start: fadeOutStartTime, end: recordingEndTime)
         
         // Set up the AVMutableAudioMix which does fading
         let avAsset = AVAsset(url: self.audioRecorder.url)
-        let tracks = avAsset.tracks(withMediaType: AVMediaTypeAudio)
+        let tracks = avAsset.tracks(withMediaType: AVMediaType.audio)
         let track = tracks[0]
         let exportAudioMix = AVMutableAudioMix()
         let exportAudioMixInputParameters = AVMutableAudioMixInputParameters(track: track)
@@ -177,13 +177,10 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
         exportAudioMixInputParameters.setVolumeRamp(fromStartVolume: 1.0, toEndVolume: 0.0, timeRange: fadeOutTimeRange)
         exportAudioMix.inputParameters = [exportAudioMixInputParameters]
         
-        let presets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
-        
-        
         // Configure AVAssetExportSession which sets audio format
         let exportSession = AVAssetExportSession(asset: avAsset, presetName: AVAssetExportPresetAppleM4A)!
         exportSession.outputURL = trimmedAudioFileURL
-        exportSession.outputFileType = AVFileTypeAppleM4A
+        exportSession.outputFileType = AVFileType.m4a
         exportSession.timeRange = exportTimeRange
         exportSession.audioMix = exportAudioMix
         
@@ -220,7 +217,7 @@ open class FDSoundActivatedRecorder: NSObject, AVAudioRecorderDelegate {
     }
     
     /// This is a PRIVATE method but it must be public because a selector is used in NSTimer (Swift bug)
-    open func interval() {
+    @objc open func interval() {
         guard self.audioRecorder.isRecording else {
             // Timed out
             self.abort()

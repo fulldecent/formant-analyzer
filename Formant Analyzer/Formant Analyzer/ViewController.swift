@@ -236,11 +236,11 @@ class FirstViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.indicatorImageView.image = UIImage(named: "green_light.png")
-        self.inputSelector.setTitle("Microphone", for: UIControlState())
+        self.inputSelector.setTitle("Microphone", for: UIControl.State())
         self.speechIsFromMicrophone = true
         self.indicatorImageView.isHidden = false
         self.statusLabel.text = "Listening ..."
-        _ = try? AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayAndRecord)
+        _ = try? AVAudioSession.sharedInstance().setCategory(.playAndRecord, mode: AVAudioSession.Mode.default)
         self.soundActivatedRecorder.startListening()
     }
     
@@ -260,7 +260,7 @@ class FirstViewController: UIViewController {
         let alert: UIAlertController = UIAlertController(title: "Audio source", message: "Select the audio soucre to analyze", preferredStyle: .actionSheet)
         alert.addAction(UIAlertAction(title: "Microphone", style: .default, handler: {
             (action: UIAlertAction) -> Void in
-            self.inputSelector.setTitle("Microphone", for: UIControlState())
+            self.inputSelector.setTitle("Microphone", for: UIControl.State())
             self.speechIsFromMicrophone = true
             self.indicatorImageView.isHidden = false
             self.statusLabel.text = "Waiting ..."
@@ -270,7 +270,7 @@ class FirstViewController: UIViewController {
             alert.addAction(UIAlertAction(title: basename, style: .default, handler: {
                 (action: UIAlertAction) -> Void in
                 self.soundActivatedRecorder.abort()
-                self.inputSelector.setTitle("File", for: UIControlState())
+                self.inputSelector.setTitle("File", for: UIControl.State())
                 self.speechIsFromMicrophone = false
                 self.indicatorImageView.isHidden = true
                 self.soundFileIdentifier = self.soundFileBaseNames.index(of: basename)!
@@ -307,7 +307,7 @@ class FirstViewController: UIViewController {
             let blockBuffer = CMSampleBufferGetDataBuffer(buffer)!
             let size = CMBlockBufferGetDataLength(blockBuffer)
             let outBytes = NSMutableData(length: size)!
-            CMBlockBufferCopyDataBytes(blockBuffer, 0, size, outBytes.mutableBytes)
+            CMBlockBufferCopyDataBytes(blockBuffer, atOffset: 0, dataLength: size, destination: outBytes.mutableBytes)
             CMSampleBufferInvalidate(buffer)
             retval.append(outBytes as Data)
         }
@@ -374,4 +374,9 @@ extension FirstViewController: SFSafariViewControllerDelegate {
     {
         controller.dismiss(animated: true, completion: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromAVAudioSessionCategory(_ input: AVAudioSession.Category) -> String {
+	return input.rawValue
 }

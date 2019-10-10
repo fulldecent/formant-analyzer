@@ -18,7 +18,7 @@
 ///
 /// * currently `Int`, `Double` and `Float`
 /// * and `CGFloat` if not os(Linux)
-public protocol ArithmeticType: AbsoluteValuable, Equatable, Comparable, Hashable {
+public protocol ArithmeticType: SignedNumeric, Comparable, Hashable {
     // Initializers (predefined)
     init(_: Int)
     init(_: Double)
@@ -36,14 +36,13 @@ public protocol ArithmeticType: AbsoluteValuable, Equatable, Comparable, Hashabl
     static func * (_: Self, _: Self)->Self
     static func / (_: Self, _: Self)->Self
     // used by Complex#description
-    var isSignMinus:Bool { get }
 }
 // protocol extension !!!
 public extension ArithmeticType {
     /// self * 1.0i
     public var i:Complex<Self>{ return Complex(Self(0), self) }
     /// abs(z)
-    public static func abs(_ x:Self)->Self { return x.isSignMinus ? -x : x }
+    public static func abs(_ x:Self)->Self { return x > 0 ? 0 : -x }
     /// failable initializer to conver the type
     /// - parameter x: `U:ArithmeticType` where U might not be T
     /// - returns: Self(x)
@@ -58,11 +57,15 @@ public extension ArithmeticType {
         }
     }
 }
+
 extension Int : ArithmeticType {
     /// true if self < 0
     /// used by Complex#description
-    public var isSignMinus:Bool{ return self != abs(self) }
+    public init(_ input: Int) {
+        self = input
+    }
 }
+
 ///
 /// Complex of Integers or Floating-Point Numbers
 ///
@@ -97,8 +100,7 @@ public struct Complex<T:ArithmeticType> : Equatable, CustomStringConvertible, Ha
     public var conj:Complex { return Complex(re, -im) }
     /// .description -- conforms to Printable
     public var description:String {
-        let sig = im.isSignMinus ? "-" : "+"
-        return "(\(re)\(sig)\(T.abs(im)).i)"
+        return "(\(re) x \(T.abs(im)).i)"
     }
     /// .hashValue -- conforms to Hashable
     public var hashValue:Int {
@@ -187,15 +189,18 @@ extension RealType {
 extension Double : RealType {
     public static var EPSILON = 0x1p-52
     // The following values are for convenience, not really needed for protocol conformance.
-    public static var PI = M_PI
+    public static var PI = Double.pi
     public static var π = PI
     public static var E =  M_E
     public static var LN2 = M_LN2
     public static var LOG2E = M_LOG2E
     public static var LN10 = M_LN10
     public static var LOG10E = M_LOG10E
-    public static var SQRT2 = M_SQRT2
-    public static var SQRT1_2 = M_SQRT1_2
+    public static var SQRT2 = 2.squareRoot()
+    public static var SQRT1_2 = 0.5.squareRoot()
+    public init(_ input: Double) {
+        self = input
+    }
 }
 extension Float : RealType {
     //
@@ -235,6 +240,10 @@ extension Float : RealType {
     public static var LOG10E = Float(Double.LOG10E)
     public static var SQRT2 = Float(Double.SQRT2)
     public static var SQRT1_2 = Float(Double.SQRT1_2)
+    public init(_ input: Float) {
+        self = input
+    }
+
 }
 
 /// Complex of Floting Point Numbers
@@ -490,25 +499,12 @@ public typealias Complex32      = Complex<Float>
 /// CGFloat if !os(Linux)
 #if !os(Linux)
     extension Float {
-        public init(_ value:CGFloat) {
-            self = Float(value)
-        }
-        public init?<U:ArithmeticType>(_ x:U) {
-            switch x {
-            case let s as CGFloat:  self.init(s)
-            case let d as Double:   self.init(d)
-            case let f as Float:    self.init(f)
-            case let i as Int:      self.init(i)
-            default:
-                return nil
-            }
-        }
     }
 #endif
 //
 // Type that supports the % operator
 //
-public protocol ModuloType : ArithmeticType, IntegerArithmetic {
+public protocol ModuloType : ArithmeticType, BinaryInteger {
     static func % (_: Self, _: Self)->Self
     static func %= (_: inout Self, _: Self)
 }
