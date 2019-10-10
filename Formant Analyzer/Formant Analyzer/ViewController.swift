@@ -212,7 +212,7 @@ class FirstViewController: UIViewController {
     }
     
     func displayFormantFrequencies() {
-        var formants: [Double] = self.speechAnalyzer.formants
+        let formants: [Double] = self.speechAnalyzer.formants
         let firstFLabel = String(format: "Formant 1:%5.0f", formants[0])
         self.firstFormantLabel.text = firstFLabel
         let secondFLabel = String(format: "Formant 2:%5.0f", formants[1])
@@ -273,7 +273,7 @@ class FirstViewController: UIViewController {
                 self.inputSelector.setTitle("File", for: UIControl.State())
                 self.speechIsFromMicrophone = false
                 self.indicatorImageView.isHidden = true
-                self.soundFileIdentifier = self.soundFileBaseNames.index(of: basename)!
+                self.soundFileIdentifier = self.soundFileBaseNames.firstIndex(of: basename)!
                 self.statusLabel.text = self.soundFileBaseNames[self.soundFileIdentifier]
                 self.processRawBuffer()
             }))

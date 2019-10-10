@@ -40,13 +40,13 @@ public protocol ArithmeticType: SignedNumeric, Comparable, Hashable {
 // protocol extension !!!
 public extension ArithmeticType {
     /// self * 1.0i
-    public var i:Complex<Self>{ return Complex(Self(0), self) }
+    var i:Complex<Self>{ return Complex(Self(0), self) }
     /// abs(z)
-    public static func abs(_ x:Self)->Self { return x > 0 ? 0 : -x }
+    static func abs(_ x:Self)->Self { return x > 0 ? 0 : -x }
     /// failable initializer to conver the type
     /// - parameter x: `U:ArithmeticType` where U might not be T
     /// - returns: Self(x)
-    public init<U:ArithmeticType>(_ x:U) {
+    init<U:ArithmeticType>(_ x:U) {
         switch x {
         case let s as Self:     self.init(s)
         case let d as Double:   self.init(d)
@@ -102,30 +102,12 @@ public struct Complex<T:ArithmeticType> : Equatable, CustomStringConvertible, Ha
     public var description:String {
         return "(\(re) x \(T.abs(im)).i)"
     }
-    /// .hashValue -- conforms to Hashable
-    public var hashValue:Int {
-        let bits = MemoryLayout<Int>.size * 4
-        let mask = bits == 16 ? 0xffff : 0x7fffFFFF
-        // Apply different strategies by types.
-        // this is ugly but you can't go like 're is RealType'
-        // or implement separately at extension Complex where T:RealType
-        //
-        // take the most significant halves and join for floating-point
-        if re is Double || re is Float {
-            return (re.hashValue & ~mask) | (im.hashValue >> bits)
-        }
-        #if !os(Linux)
-            if re is CGFloat {
-                return (re.hashValue & ~mask) | (im.hashValue >> bits)
-            }
-        #endif
-        // take the least significant halves and join for integer
-        if re is Int || re is Int64 || re is Int32 || re is Int16 || re is Int8 {
-            return (re.hashValue << bits) | (im.hashValue & mask)
-        }
-        // use description for last resort
-        return self.description.hashValue
+    
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(re)
+        hasher.combine(im)
     }
+
     /// (re:real, im:imag)
     public var tuple:(T, T) {
         get{ return (re, im) }

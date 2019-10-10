@@ -113,7 +113,7 @@ class SpeechAnalyzerTests: XCTestCase {
             let analyzer = analyzers[file]!
             let result = analyzer.estimatedLpcCoefficients
             for index in 1...expectedResult.count {
-                XCTAssertEqualWithAccuracy(result[index], expectedResult[index], accuracy: 0.000001)
+                XCTAssertEqual(result[index], expectedResult[index], accuracy: 0.000001)
             }
         }
     }
@@ -122,6 +122,6 @@ class SpeechAnalyzerTests: XCTestCase {
     func testZeroData() {
         let speechData = Data()
         let analyzer = SpeechAnalyzer(int16Samples: speechData as Data, withFrequency: 44100)
-        let result = analyzer.estimatedLpcCoefficients
+        _ = analyzer.estimatedLpcCoefficients
     }
 }

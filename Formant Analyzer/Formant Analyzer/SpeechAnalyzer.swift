@@ -125,10 +125,10 @@ class SpeechAnalyzer {
             maxChunkEnergy = max(maxChunkEnergy, chunkEnergy)
             chunkEnergies.append(chunkEnergy)
         }
-        let firstSelectedChunk = chunkEnergies.index {$0 > maxChunkEnergy * factor} ?? 0
+        let firstSelectedChunk = chunkEnergies.firstIndex {$0 > maxChunkEnergy * factor} ?? 0
         let lastSelectedChunk: Int
         // http://stackoverflow.com/a/33153621/300224
-        if let reverseIndex = chunkEnergies.reversed().index(where: {$0 > maxChunkEnergy * factor}) {
+        if let reverseIndex = chunkEnergies.reversed().firstIndex(where: {$0 > maxChunkEnergy * factor}) {
             lastSelectedChunk = reverseIndex.base - 1
         } else {
             lastSelectedChunk = chunkEnergies.endIndex - 1
@@ -333,8 +333,8 @@ class SpeechAnalyzer {
                     let formantB = editedFormants[(index + 1)]
                     if abs(formantA - formantB) < MIN_DISTANCE {
                         let newFormant = (formantA + formantB) / 2
-                        editedFormants.remove(at: editedFormants.index(of: formantA)!)
-                        editedFormants.remove(at: editedFormants.index(of: formantB)!)
+                        editedFormants.remove(at: editedFormants.firstIndex(of: formantA)!)
+                        editedFormants.remove(at: editedFormants.firstIndex(of: formantB)!)
                         editedFormants.append(newFormant)
                         editedFormants = editedFormants.sorted()
                         return
