@@ -11,7 +11,7 @@ Project Scope and Updates
 The project started with an original motivation to "recognize words, recognize a
 string of words and identify a voice." [At first, the approach
 was](<https://www.clear.rice.edu/elec431/projects96/digitalbb/original_proposal.html>)
-to use continious wavelet transform to do wavelet analysis for recognizing
+to use continuous wavelet transform to do wavelet analysis for recognizing
 vowels however, [this was quickly
 updated](<https://www.clear.rice.edu/elec431/projects96/digitalbb/new_proposal.html>)
 to target formant analysis and pitch determination with a new goal of

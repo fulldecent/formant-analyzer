@@ -178,7 +178,7 @@ class FirstViewController: UIViewController {
             return String(format: "%.02f", value)
         }
         self.lineChartFull.valueLabelPosition = .left
-        // Number of visible step in the chart
+        // Number of visible steps in the chart
         self.lineChartFull.verticalGridStep = 3
         self.lineChartFull.horizontalGridStep = 5
         // Margin of the chart

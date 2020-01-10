@@ -18,7 +18,7 @@ class FormantPlotView: UIView {
             view.removeFromSuperview()
         }
         
-        // Now, we add an image to current view to plot location of first two formants
+        // Now, we add an image to current view to plot location of the first two formants
         let backgroundRect = CGRect(x: 0, y: 0, width: self.frame.size.width, height: self.frame.size.height)
         let backgroundImageView = UIImageView(frame: backgroundRect)
         backgroundImageView.image = UIImage(named: "vowelPlotBackground.png")

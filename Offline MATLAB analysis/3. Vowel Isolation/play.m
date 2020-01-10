@@ -1,6 +1,6 @@
 %% VOWEL ISOLATION
 % We process all recordings to isolate just the vowel sound
-% Then we play the two original and the isolation back-to-back
+% Then we play the original and the isolation back-to-back
 %
 
 recordings = {'arm', 'beat', 'bid', 'calm', 'cat', 'four', 'who'};

@@ -4,7 +4,7 @@
 %  - Raw audio samples
 %  - 44 100 Hz sample rate
 %  - Mono channel
-%  - 16-bit signed integer samples written little-endian
+%  - 16-bit signed integer samples written in little-endian format
 %
 
 recordings = {'arm', 'beat', 'bid', 'calm', 'cat', 'four', 'who'};

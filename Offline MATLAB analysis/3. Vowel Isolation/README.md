@@ -25,7 +25,7 @@ And the chosen constants are given as:
 
 -   `TRIM_FACTOR` = 0.15;
 
-**Warning: The results of this algorithm should be off by one compared to the
+**Warning: The results of this algorithm should be off-by-one compared to the
 iOS project because Matlab counts indices starting with 1 but Swift counts starting with 0.**
 
 Analysis

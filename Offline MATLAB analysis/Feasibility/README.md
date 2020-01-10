@@ -99,7 +99,7 @@ particularly from Figure 4. We can see that if a speech signal does not change
 over the duration of observation, the formant frequencies remain stable and we
 get a tight cluster (4th cluster). On the other hand, if speech sample is short
 and surrounded by consonants, we get poor results (3rd cluster). In general, the
-clusters are well spread and we need to perform post processing on the results
+clusters are well spread and we need to perform post-processing on the results
 of all speech segments present in a vowel sound.
 
 Now, we are in a good position to estimate the effort required for real-time

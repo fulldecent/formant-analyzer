@@ -101,7 +101,7 @@ class SpeechAnalyzer {
     }
     
     //
-    //MARK: Class functions that allow tweaking the parameters
+    //MARK: Class functions that allow tweaking of parameters
     //
     
     /// Analyzes a signal to find the significant part
@@ -355,7 +355,7 @@ class SpeechAnalyzer {
 // Must be able to represent an empty range
 extension CountableRange where Bound.Stride == Int {
     /// Shrink range by `portion` of its length from each size
-    /// - Parameter portion a fraction in the range 0...0.5
+    /// - Parameter portion is a fraction in the range 0...0.5
     func truncatedTails(byPortion portion: Double) -> CountableRange<Bound> {
         let start = self.lowerBound.advanced(by: Int((portion * Double(self.count)).rounded()))
         let end = self.lowerBound.advanced(by: Int(((1 - portion) * Double(self.count)).rounded()))

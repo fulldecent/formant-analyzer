@@ -2,7 +2,7 @@ Audio Format Conversion
 =======================
 
 The prerecorded utterances are converted into a standardized format for
-processing in Matlab. To ensure identical results with offline processing as
+processing in Matlab. To ensure identical results with offline processing and
 when using the Formant Analyzer iOS app, we have chosen a very simple preferred
 format for storing the audio.
 

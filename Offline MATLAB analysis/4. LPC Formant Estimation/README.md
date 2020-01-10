@@ -29,7 +29,7 @@ periodic signal which does not go to zero at the beginning and end.**
 Analysis
 ========
 
-You can perform this analysis using by running `estimateFormants.m`.
+You can perform this analysis by running `estimateFormants.m`.
 
 Following are the transfer functions for each recording.
 
