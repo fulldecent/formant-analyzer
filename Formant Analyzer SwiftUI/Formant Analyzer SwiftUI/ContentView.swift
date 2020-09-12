@@ -179,23 +179,7 @@ struct ContentView: View {
         ].reduce([], +)
     }
 
-
-    /*
-    func actionSheetButtons() -> [ActionSheet.Button] {
-        
-        [
-            [ActionSheet.Button.default(Text("Microphone")) { self.viewModel.microphoneSelected() }],
-            viewModel.soundFileBaseNames.map { basename in
-                ActionSheet.Button.default(Text(basename)) { self.viewModel.fileSelected(as: basename) }
-            },
-            [ActionSheet.Button.cancel()]
-            ].reduce([], +)
-    }*/
-    
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
