@@ -1,0 +1,1181 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		03B9108CBF45F36DB72ACE79BB0598A5 /* Pods-Formant Analyzer SwiftUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FCE5491D35D5D93439F048B3AD42D09C /* Pods-Formant Analyzer SwiftUI-dummy.m */; };
+		06AF0DE0C2633E06D9E54F9F55772B67 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		0DC46313E6C6CB859A5FE0AD5F755E7C /* FSLineChart-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 719EE8D990A184C21E7EBB903BFA5408 /* FSLineChart-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		16B8F3129BD54D3923E7A8D660677C81 /* Pods-Formant Analyzer SwiftUI-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 2AC88C16093432A37EB9FD74E96C2FE6 /* Pods-Formant Analyzer SwiftUI-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1765CE19E47B56723BB7B13DADC0DF0E /* FSLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 91FF5AF7C70E9A23517E082FF705FC24 /* FSLineChart.m */; };
+		3BD0E5E248592E3CBBF1F627689B757C /* FSLineChart-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 237A19B5513E05DD0101971BBE4B2550 /* FSLineChart-dummy.m */; };
+		3E3B09A8C1CA7DC2E84D344F23030587 /* FSLineChart.h in Headers */ = {isa = PBXBuildFile; fileRef = D5369CA6B2CE4C2C4AF0F0C426F68894 /* FSLineChart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		522FC0839921B22AB83C70CC27B2EFC5 /* FDSoundActivatedRecorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1D2CEE2E0A3126891959969D6204A2E /* FDSoundActivatedRecorder.swift */; };
+		54C77E0205A6004C70C2F81FFA6F6F51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		58EBD1776260EA214453998FFE353F4A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		6141C0DDA452BB7396B87001468E977A /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C9ABBF4070FF6B2ED0C4453372F165AA /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m */; };
+		61AD5C784D148CD009070480D0106CAB /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 91F1B75C0B53DBB636E3404D27388B5F /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		783A23C2114B541F2774BBB535BD1E95 /* FDSoundActivatedRecorder-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 76137E64C7F3BAE78CC9C9A7414EC4E9 /* FDSoundActivatedRecorder-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		84A5F9B0FA699DEA1D707FE3621CDFFF /* FDSoundActivatedRecorder-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 5FC053815EBDD283C66A9FA87A6AF31C /* FDSoundActivatedRecorder-dummy.m */; };
+		89F6DF1EBC3FEEC7247BC62204FBE91E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		926DA67DACA62E05A3AC393026EF27BF /* UIColor+FSPalette.h in Headers */ = {isa = PBXBuildFile; fileRef = BEA8199E1AC00439FEF446C450BC5552 /* UIColor+FSPalette.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		96CEEE08C2946D9B0E187C80FE96BB6B /* UIColor+FSPalette.m in Sources */ = {isa = PBXBuildFile; fileRef = AE619603A322C5E6C7D749BF4BD73E68 /* UIColor+FSPalette.m */; };
+		C9144CEF41CC27388F2A2BE424601362 /* Pods-Formant Analyzer SwiftUITests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F1B31A692D897A2162A2A5A4A22E619 /* Pods-Formant Analyzer SwiftUITests-dummy.m */; };
+		D67859594543DA8C878ED639248BBCC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
+		EC0BCCFEF51A9F8262C1580AC5F63128 /* Pods-Formant Analyzer SwiftUITests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3642669B1A2FE99FADA04A971B4D2312 /* Pods-Formant Analyzer SwiftUITests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		44485BFE0CF38FF447C77BCCDF011ADE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F77E3134CCC87EECF2CAAD13CDE1678A;
+			remoteInfo = FDSoundActivatedRecorder;
+		};
+		5038A9B9351E244E44158520EC714764 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 063012662B52B5217821A59061152E8E;
+			remoteInfo = FSLineChart;
+		};
+		817759312422EDFAC97B4579EA24B95D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F77E3134CCC87EECF2CAAD13CDE1678A;
+			remoteInfo = FDSoundActivatedRecorder;
+		};
+		835872419DFF0C662D6F73B4D15C98B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 063012662B52B5217821A59061152E8E;
+			remoteInfo = FSLineChart;
+		};
+		C0D28EE2AF5701964522D52778F4F1DF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F2230AB5411888FAABBEC1F6E186457F;
+			remoteInfo = "Pods-Formant Analyzer SwiftUI";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0EF6CEA944838791D331E1BBB5AA61FC /* Pods-Formant Analyzer SwiftUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUITests-Info.plist"; sourceTree = "<group>"; };
+		17C9C0544470BF434467AD07642620F5 /* Pods-Formant Analyzer SwiftUI-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUI-Info.plist"; sourceTree = "<group>"; };
+		1D07B9E843BF395B98060F883711BC08 /* FSLineChart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.debug.xcconfig; sourceTree = "<group>"; };
+		1F1B31A692D897A2162A2A5A4A22E619 /* Pods-Formant Analyzer SwiftUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer SwiftUITests-dummy.m"; sourceTree = "<group>"; };
+		237A19B5513E05DD0101971BBE4B2550 /* FSLineChart-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FSLineChart-dummy.m"; sourceTree = "<group>"; };
+		2785FD68804861C0599A6AFFAF44EE36 /* Pods-Formant Analyzer SwiftUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2AC88C16093432A37EB9FD74E96C2FE6 /* Pods-Formant Analyzer SwiftUI-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer SwiftUI-umbrella.h"; sourceTree = "<group>"; };
+		2D0ECB40421BE7E31EAF829CFAA11686 /* FSLineChart-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-prefix.pch"; sourceTree = "<group>"; };
+		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		33899058B8F6ABA39BCB6582145A6265 /* Pods-Formant Analyzer SwiftUI-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer SwiftUI-frameworks.sh"; sourceTree = "<group>"; };
+		34A2734369F59B6108B10488741BD0C5 /* FDSoundActivatedRecorder-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-prefix.pch"; sourceTree = "<group>"; };
+		3642669B1A2FE99FADA04A971B4D2312 /* Pods-Formant Analyzer SwiftUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer SwiftUITests-umbrella.h"; sourceTree = "<group>"; };
+		37F97D69BD5E2820C614AAA36A9CB7D2 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.modulemap"; sourceTree = "<group>"; };
+		48D37268D0056B9707F2A3A2423A58A3 /* Pods-Formant Analyzer SwiftUI.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formant Analyzer SwiftUI.modulemap"; sourceTree = "<group>"; };
+		4ED0D4F0A7824BDE81A35855E16B2372 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-frameworks.sh"; sourceTree = "<group>"; };
+		562C99BCD8CA52CD88FE9A6BE90146EA /* Pods-Formant Analyzer SwiftUI-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer SwiftUI-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5B6EC76674CCA4260B445A477C8C1E49 /* FSLineChart-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FSLineChart-Info.plist"; sourceTree = "<group>"; };
+		5FC053815EBDD283C66A9FA87A6AF31C /* FDSoundActivatedRecorder-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "FDSoundActivatedRecorder-dummy.m"; sourceTree = "<group>"; };
+		61EDFC341AA9A1E9554E1CFA7B4ABA23 /* Pods-Formant Analyzer SwiftUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		62E592359B39CF9D2E3F62FBF14D85CA /* Pods_Formant_Analyzer_SwiftUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formant_Analyzer_SwiftUITests.framework; path = "Pods-Formant Analyzer SwiftUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7101E479D14BE9BE4CADA0AB22D053A1 /* Pods-Formant Analyzer SwiftUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUITests.release.xcconfig"; sourceTree = "<group>"; };
+		719EE8D990A184C21E7EBB903BFA5408 /* FSLineChart-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FSLineChart-umbrella.h"; sourceTree = "<group>"; };
+		75830A95964ECB3E808EEF599A99EF9A /* FSLineChart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FSLineChart.release.xcconfig; sourceTree = "<group>"; };
+		76137E64C7F3BAE78CC9C9A7414EC4E9 /* FDSoundActivatedRecorder-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FDSoundActivatedRecorder-umbrella.h"; sourceTree = "<group>"; };
+		781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FSLineChart.framework; path = FSLineChart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B9BAEA117AE4F11206FBC20D55C88AD /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-Info.plist"; sourceTree = "<group>"; };
+		7BE98C3B09D51F04AEC74FF4BF783ACF /* Pods-Formant Analyzer SwiftUI-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUI-acknowledgements.plist"; sourceTree = "<group>"; };
+		7F9C34A2B57642A59816A1F25F9B1313 /* FDSoundActivatedRecorder-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "FDSoundActivatedRecorder-Info.plist"; sourceTree = "<group>"; };
+		851C739964E7FCE8E0863855377A17B0 /* Pods-Formant Analyzer SwiftUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUI.debug.xcconfig"; sourceTree = "<group>"; };
+		8E86663B9F243995463C579586491332 /* Pods-Formant Analyzer SwiftUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer SwiftUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		91F1B75C0B53DBB636E3404D27388B5F /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h"; sourceTree = "<group>"; };
+		91FF5AF7C70E9A23517E082FF705FC24 /* FSLineChart.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = FSLineChart.m; path = FSLineChart/FSLineChart/FSLineChart.m; sourceTree = "<group>"; };
+		95CB2E2B37C59DAECDF09A74B12409D4 /* FDSoundActivatedRecorder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FDSoundActivatedRecorder.release.xcconfig; sourceTree = "<group>"; };
+		9A06E909D4CE11DD41B22FB30115E9F3 /* Pods_Formant_Analyzer_SwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formant_Analyzer_SwiftUI.framework; path = "Pods-Formant Analyzer SwiftUI.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A4C042B91EA559E8EEFBE04A2E32E29C /* FDSoundActivatedRecorder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FDSoundActivatedRecorder.debug.xcconfig; sourceTree = "<group>"; };
+		AE619603A322C5E6C7D749BF4BD73E68 /* UIColor+FSPalette.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIColor+FSPalette.m"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.m"; sourceTree = "<group>"; };
+		B1D2CEE2E0A3126891959969D6204A2E /* FDSoundActivatedRecorder.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = FDSoundActivatedRecorder.swift; path = FDSoundActivatedRecorder/FDSoundActivatedRecorder/FDSoundActivatedRecorder.swift; sourceTree = "<group>"; };
+		B75B8B3204001B358C10CFE1A96169C7 /* Pods_Formant_Analyzer_SwiftUI_Formant_Analyzer_SwiftUIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Formant_Analyzer_SwiftUI_Formant_Analyzer_SwiftUIUITests.framework; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB9BFD83CF32F11504DB80A4665ABA19 /* Pods-Formant Analyzer SwiftUITests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-Formant Analyzer SwiftUITests.modulemap"; sourceTree = "<group>"; };
+		BC264C42E4A61E491B73F1E10FEA539D /* FSLineChart.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FSLineChart.modulemap; sourceTree = "<group>"; };
+		BEA8199E1AC00439FEF446C450BC5552 /* UIColor+FSPalette.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIColor+FSPalette.h"; path = "FSLineChart/FSLineChart/UIColor+FSPalette.h"; sourceTree = "<group>"; };
+		C3ECE7916DDF5109521DE6A934CC2E99 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C9ABBF4070FF6B2ED0C4453372F165AA /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m"; sourceTree = "<group>"; };
+		CF97A2BA21B5C1F2238831AC19C7DF46 /* Pods-Formant Analyzer SwiftUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUI.release.xcconfig"; sourceTree = "<group>"; };
+		D40A86B3C27798BC50A32EE524977833 /* FDSoundActivatedRecorder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FDSoundActivatedRecorder.framework; path = FDSoundActivatedRecorder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D5369CA6B2CE4C2C4AF0F0C426F68894 /* FSLineChart.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FSLineChart.h; path = FSLineChart/FSLineChart/FSLineChart.h; sourceTree = "<group>"; };
+		DA2FC314FEFFA21D9F743C0F8925D8A0 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.plist"; sourceTree = "<group>"; };
+		DB06FFD62EC03C745EFD2486F4571D6C /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		E07BD166A0245CD5773E8FDF7DAECC39 /* FDSoundActivatedRecorder.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = FDSoundActivatedRecorder.modulemap; sourceTree = "<group>"; };
+		E8C041F06B252E320F080B4E72F6003C /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		FCE5491D35D5D93439F048B3AD42D09C /* Pods-Formant Analyzer SwiftUI-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Formant Analyzer SwiftUI-dummy.m"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40B9E01BEADF9265C0DED5910428CF6D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				06AF0DE0C2633E06D9E54F9F55772B67 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		69C2DC96484CF13BE0820C6A0A0A8FCD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				89F6DF1EBC3FEEC7247BC62204FBE91E /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		90D1A1347D53C19CFB11C2ABCEEE9EB9 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				58EBD1776260EA214453998FFE353F4A /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A186D199F50887CE74FADD5871C83BB1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				54C77E0205A6004C70C2F81FFA6F6F51 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7A1D2AED41BBC375C57111FFB59FC56 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D67859594543DA8C878ED639248BBCC2 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		100D9EA34DFF451B9B52AF13E4B8BA66 /* FDSoundActivatedRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				B1D2CEE2E0A3126891959969D6204A2E /* FDSoundActivatedRecorder.swift */,
+				EC0C654619C5C386131B2B37AB7EC736 /* Support Files */,
+			);
+			name = FDSoundActivatedRecorder;
+			path = FDSoundActivatedRecorder;
+			sourceTree = "<group>";
+		};
+		18B67EE47087CEBF3F599EBE8CF27D84 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D40A86B3C27798BC50A32EE524977833 /* FDSoundActivatedRecorder.framework */,
+				781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */,
+				9A06E909D4CE11DD41B22FB30115E9F3 /* Pods_Formant_Analyzer_SwiftUI.framework */,
+				B75B8B3204001B358C10CFE1A96169C7 /* Pods_Formant_Analyzer_SwiftUI_Formant_Analyzer_SwiftUIUITests.framework */,
+				62E592359B39CF9D2E3F62FBF14D85CA /* Pods_Formant_Analyzer_SwiftUITests.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		6ACD691FF58DB171A5430C0CF16A4F68 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests */ = {
+			isa = PBXGroup;
+			children = (
+				37F97D69BD5E2820C614AAA36A9CB7D2 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.modulemap */,
+				DB06FFD62EC03C745EFD2486F4571D6C /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.markdown */,
+				DA2FC314FEFFA21D9F743C0F8925D8A0 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-acknowledgements.plist */,
+				C9ABBF4070FF6B2ED0C4453372F165AA /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m */,
+				4ED0D4F0A7824BDE81A35855E16B2372 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-frameworks.sh */,
+				7B9BAEA117AE4F11206FBC20D55C88AD /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-Info.plist */,
+				91F1B75C0B53DBB636E3404D27388B5F /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h */,
+				C3ECE7916DDF5109521DE6A934CC2E99 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.debug.xcconfig */,
+				E8C041F06B252E320F080B4E72F6003C /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.release.xcconfig */,
+			);
+			name = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests";
+			path = "Target Support Files/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests";
+			sourceTree = "<group>";
+		};
+		7BFF985E1B86DCBD0B02889E07DFBA94 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				100D9EA34DFF451B9B52AF13E4B8BA66 /* FDSoundActivatedRecorder */,
+				9BEBE2582DB56F3C63842545F6D9E0B5 /* FSLineChart */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		99AA4E85F0573EDC66D5789E0C6CAE20 /* Pods-Formant Analyzer SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				48D37268D0056B9707F2A3A2423A58A3 /* Pods-Formant Analyzer SwiftUI.modulemap */,
+				562C99BCD8CA52CD88FE9A6BE90146EA /* Pods-Formant Analyzer SwiftUI-acknowledgements.markdown */,
+				7BE98C3B09D51F04AEC74FF4BF783ACF /* Pods-Formant Analyzer SwiftUI-acknowledgements.plist */,
+				FCE5491D35D5D93439F048B3AD42D09C /* Pods-Formant Analyzer SwiftUI-dummy.m */,
+				33899058B8F6ABA39BCB6582145A6265 /* Pods-Formant Analyzer SwiftUI-frameworks.sh */,
+				17C9C0544470BF434467AD07642620F5 /* Pods-Formant Analyzer SwiftUI-Info.plist */,
+				2AC88C16093432A37EB9FD74E96C2FE6 /* Pods-Formant Analyzer SwiftUI-umbrella.h */,
+				851C739964E7FCE8E0863855377A17B0 /* Pods-Formant Analyzer SwiftUI.debug.xcconfig */,
+				CF97A2BA21B5C1F2238831AC19C7DF46 /* Pods-Formant Analyzer SwiftUI.release.xcconfig */,
+			);
+			name = "Pods-Formant Analyzer SwiftUI";
+			path = "Target Support Files/Pods-Formant Analyzer SwiftUI";
+			sourceTree = "<group>";
+		};
+		9BEBE2582DB56F3C63842545F6D9E0B5 /* FSLineChart */ = {
+			isa = PBXGroup;
+			children = (
+				D5369CA6B2CE4C2C4AF0F0C426F68894 /* FSLineChart.h */,
+				91FF5AF7C70E9A23517E082FF705FC24 /* FSLineChart.m */,
+				BEA8199E1AC00439FEF446C450BC5552 /* UIColor+FSPalette.h */,
+				AE619603A322C5E6C7D749BF4BD73E68 /* UIColor+FSPalette.m */,
+				E369B533CF90B98DDE52C61DE02557BC /* Support Files */,
+			);
+			name = FSLineChart;
+			path = FSLineChart;
+			sourceTree = "<group>";
+		};
+		B36FB40089F11E1212DB909F7752C37D /* Targets Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				99AA4E85F0573EDC66D5789E0C6CAE20 /* Pods-Formant Analyzer SwiftUI */,
+				6ACD691FF58DB171A5430C0CF16A4F68 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests */,
+				C9BB2EEB7D0AEF2921BC1F5BC1736FE1 /* Pods-Formant Analyzer SwiftUITests */,
+			);
+			name = "Targets Support Files";
+			sourceTree = "<group>";
+		};
+		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		C9BB2EEB7D0AEF2921BC1F5BC1736FE1 /* Pods-Formant Analyzer SwiftUITests */ = {
+			isa = PBXGroup;
+			children = (
+				BB9BFD83CF32F11504DB80A4665ABA19 /* Pods-Formant Analyzer SwiftUITests.modulemap */,
+				8E86663B9F243995463C579586491332 /* Pods-Formant Analyzer SwiftUITests-acknowledgements.markdown */,
+				61EDFC341AA9A1E9554E1CFA7B4ABA23 /* Pods-Formant Analyzer SwiftUITests-acknowledgements.plist */,
+				1F1B31A692D897A2162A2A5A4A22E619 /* Pods-Formant Analyzer SwiftUITests-dummy.m */,
+				0EF6CEA944838791D331E1BBB5AA61FC /* Pods-Formant Analyzer SwiftUITests-Info.plist */,
+				3642669B1A2FE99FADA04A971B4D2312 /* Pods-Formant Analyzer SwiftUITests-umbrella.h */,
+				2785FD68804861C0599A6AFFAF44EE36 /* Pods-Formant Analyzer SwiftUITests.debug.xcconfig */,
+				7101E479D14BE9BE4CADA0AB22D053A1 /* Pods-Formant Analyzer SwiftUITests.release.xcconfig */,
+			);
+			name = "Pods-Formant Analyzer SwiftUITests";
+			path = "Target Support Files/Pods-Formant Analyzer SwiftUITests";
+			sourceTree = "<group>";
+		};
+		CF1408CF629C7361332E53B88F7BD30C = {
+			isa = PBXGroup;
+			children = (
+				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
+				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				7BFF985E1B86DCBD0B02889E07DFBA94 /* Pods */,
+				18B67EE47087CEBF3F599EBE8CF27D84 /* Products */,
+				B36FB40089F11E1212DB909F7752C37D /* Targets Support Files */,
+			);
+			sourceTree = "<group>";
+		};
+		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E369B533CF90B98DDE52C61DE02557BC /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				BC264C42E4A61E491B73F1E10FEA539D /* FSLineChart.modulemap */,
+				237A19B5513E05DD0101971BBE4B2550 /* FSLineChart-dummy.m */,
+				5B6EC76674CCA4260B445A477C8C1E49 /* FSLineChart-Info.plist */,
+				2D0ECB40421BE7E31EAF829CFAA11686 /* FSLineChart-prefix.pch */,
+				719EE8D990A184C21E7EBB903BFA5408 /* FSLineChart-umbrella.h */,
+				1D07B9E843BF395B98060F883711BC08 /* FSLineChart.debug.xcconfig */,
+				75830A95964ECB3E808EEF599A99EF9A /* FSLineChart.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FSLineChart";
+			sourceTree = "<group>";
+		};
+		EC0C654619C5C386131B2B37AB7EC736 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				E07BD166A0245CD5773E8FDF7DAECC39 /* FDSoundActivatedRecorder.modulemap */,
+				5FC053815EBDD283C66A9FA87A6AF31C /* FDSoundActivatedRecorder-dummy.m */,
+				7F9C34A2B57642A59816A1F25F9B1313 /* FDSoundActivatedRecorder-Info.plist */,
+				34A2734369F59B6108B10488741BD0C5 /* FDSoundActivatedRecorder-prefix.pch */,
+				76137E64C7F3BAE78CC9C9A7414EC4E9 /* FDSoundActivatedRecorder-umbrella.h */,
+				A4C042B91EA559E8EEFBE04A2E32E29C /* FDSoundActivatedRecorder.debug.xcconfig */,
+				95CB2E2B37C59DAECDF09A74B12409D4 /* FDSoundActivatedRecorder.release.xcconfig */,
+			);
+			name = "Support Files";
+			path = "../Target Support Files/FDSoundActivatedRecorder";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		1F5D06BC2D25BADF525A25589112F98B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				61AD5C784D148CD009070480D0106CAB /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		73B38B8ABF703D893085C1EB00938C96 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				783A23C2114B541F2774BBB535BD1E95 /* FDSoundActivatedRecorder-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		7908B38E93F0D3CAAFF86E686F3D207E /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EC0BCCFEF51A9F8262C1580AC5F63128 /* Pods-Formant Analyzer SwiftUITests-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A38F401E7B9B4673187D166068F8CE27 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B8F3129BD54D3923E7A8D660677C81 /* Pods-Formant Analyzer SwiftUI-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F5ED7A81E3FCDB0C0824F78D43F56158 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0DC46313E6C6CB859A5FE0AD5F755E7C /* FSLineChart-umbrella.h in Headers */,
+				3E3B09A8C1CA7DC2E84D344F23030587 /* FSLineChart.h in Headers */,
+				926DA67DACA62E05A3AC393026EF27BF /* UIColor+FSPalette.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		063012662B52B5217821A59061152E8E /* FSLineChart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BE609BAFEBCDDBE2DAE8051D127CCF53 /* Build configuration list for PBXNativeTarget "FSLineChart" */;
+			buildPhases = (
+				F5ED7A81E3FCDB0C0824F78D43F56158 /* Headers */,
+				759969E94C5994621D4202DF67100EF9 /* Sources */,
+				90D1A1347D53C19CFB11C2ABCEEE9EB9 /* Frameworks */,
+				289DF54302E9A4D51298D749DED1F56D /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FSLineChart;
+			productName = FSLineChart;
+			productReference = 781DD3A242C949375F534862AFD7CEDD /* FSLineChart.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		A31C75BC7401E311660ECFFD6950E1E7 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3B1DE52F14A0FEB7BE9BCDDCBF17ACD4 /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests" */;
+			buildPhases = (
+				1F5D06BC2D25BADF525A25589112F98B /* Headers */,
+				DD6F2ED262D74AB1206ED54CB65362F7 /* Sources */,
+				A7A1D2AED41BBC375C57111FFB59FC56 /* Frameworks */,
+				A7EE2AEC6B70D4F0B370F7B4B34C575B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				158FB8419970677AAD8C27735EBA1010 /* PBXTargetDependency */,
+				5A0A274F42C51E249938AB193FF8B399 /* PBXTargetDependency */,
+			);
+			name = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests";
+			productName = "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests";
+			productReference = B75B8B3204001B358C10CFE1A96169C7 /* Pods_Formant_Analyzer_SwiftUI_Formant_Analyzer_SwiftUIUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		C5DE7E8C51D92A29382EAD74966FA4FC /* Pods-Formant Analyzer SwiftUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CDD5CDA1C090CCCE3C8B840371043AB2 /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUITests" */;
+			buildPhases = (
+				7908B38E93F0D3CAAFF86E686F3D207E /* Headers */,
+				A9B52F62E6D83E4DDDD175CA717130EA /* Sources */,
+				40B9E01BEADF9265C0DED5910428CF6D /* Frameworks */,
+				C011F9FD6F930256EB93D93D1436769E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F8657869DED3B19C360DF26794BB328C /* PBXTargetDependency */,
+			);
+			name = "Pods-Formant Analyzer SwiftUITests";
+			productName = "Pods-Formant Analyzer SwiftUITests";
+			productReference = 62E592359B39CF9D2E3F62FBF14D85CA /* Pods_Formant_Analyzer_SwiftUITests.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F2230AB5411888FAABBEC1F6E186457F /* Pods-Formant Analyzer SwiftUI */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 91E610675BD6B6230B0836E1C2B3899F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUI" */;
+			buildPhases = (
+				A38F401E7B9B4673187D166068F8CE27 /* Headers */,
+				4157EB89C89A78715AE4A322700694A0 /* Sources */,
+				A186D199F50887CE74FADD5871C83BB1 /* Frameworks */,
+				F749D0600B071B667E277126B714708B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A2AEB1943C8EB1BAC67E4E2248AA5FF8 /* PBXTargetDependency */,
+				9C2FFD1B902191040CA757F4DC2B0008 /* PBXTargetDependency */,
+			);
+			name = "Pods-Formant Analyzer SwiftUI";
+			productName = "Pods-Formant Analyzer SwiftUI";
+			productReference = 9A06E909D4CE11DD41B22FB30115E9F3 /* Pods_Formant_Analyzer_SwiftUI.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		F77E3134CCC87EECF2CAAD13CDE1678A /* FDSoundActivatedRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 41E793C766F28BB80B43C9D646C8E10F /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */;
+			buildPhases = (
+				73B38B8ABF703D893085C1EB00938C96 /* Headers */,
+				DCFEBA4C9C2E7F27C93C9214AD438B93 /* Sources */,
+				69C2DC96484CF13BE0820C6A0A0A8FCD /* Frameworks */,
+				8469F1154FE0A14C98AD44F39869B450 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FDSoundActivatedRecorder;
+			productName = FDSoundActivatedRecorder;
+			productReference = D40A86B3C27798BC50A32EE524977833 /* FDSoundActivatedRecorder.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFDFE7DC352907FC980B868725387E98 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1100;
+				LastUpgradeCheck = 1100;
+			};
+			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			productRefGroup = 18B67EE47087CEBF3F599EBE8CF27D84 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F77E3134CCC87EECF2CAAD13CDE1678A /* FDSoundActivatedRecorder */,
+				063012662B52B5217821A59061152E8E /* FSLineChart */,
+				F2230AB5411888FAABBEC1F6E186457F /* Pods-Formant Analyzer SwiftUI */,
+				A31C75BC7401E311660ECFFD6950E1E7 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests */,
+				C5DE7E8C51D92A29382EAD74966FA4FC /* Pods-Formant Analyzer SwiftUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		289DF54302E9A4D51298D749DED1F56D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8469F1154FE0A14C98AD44F39869B450 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A7EE2AEC6B70D4F0B370F7B4B34C575B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C011F9FD6F930256EB93D93D1436769E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F749D0600B071B667E277126B714708B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4157EB89C89A78715AE4A322700694A0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				03B9108CBF45F36DB72ACE79BB0598A5 /* Pods-Formant Analyzer SwiftUI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		759969E94C5994621D4202DF67100EF9 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BD0E5E248592E3CBBF1F627689B757C /* FSLineChart-dummy.m in Sources */,
+				1765CE19E47B56723BB7B13DADC0DF0E /* FSLineChart.m in Sources */,
+				96CEEE08C2946D9B0E187C80FE96BB6B /* UIColor+FSPalette.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A9B52F62E6D83E4DDDD175CA717130EA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C9144CEF41CC27388F2A2BE424601362 /* Pods-Formant Analyzer SwiftUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DCFEBA4C9C2E7F27C93C9214AD438B93 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				84A5F9B0FA699DEA1D707FE3621CDFFF /* FDSoundActivatedRecorder-dummy.m in Sources */,
+				522FC0839921B22AB83C70CC27B2EFC5 /* FDSoundActivatedRecorder.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD6F2ED262D74AB1206ED54CB65362F7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6141C0DDA452BB7396B87001468E977A /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		158FB8419970677AAD8C27735EBA1010 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FDSoundActivatedRecorder;
+			target = F77E3134CCC87EECF2CAAD13CDE1678A /* FDSoundActivatedRecorder */;
+			targetProxy = 44485BFE0CF38FF447C77BCCDF011ADE /* PBXContainerItemProxy */;
+		};
+		5A0A274F42C51E249938AB193FF8B399 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSLineChart;
+			target = 063012662B52B5217821A59061152E8E /* FSLineChart */;
+			targetProxy = 5038A9B9351E244E44158520EC714764 /* PBXContainerItemProxy */;
+		};
+		9C2FFD1B902191040CA757F4DC2B0008 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSLineChart;
+			target = 063012662B52B5217821A59061152E8E /* FSLineChart */;
+			targetProxy = 835872419DFF0C662D6F73B4D15C98B3 /* PBXContainerItemProxy */;
+		};
+		A2AEB1943C8EB1BAC67E4E2248AA5FF8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FDSoundActivatedRecorder;
+			target = F77E3134CCC87EECF2CAAD13CDE1678A /* FDSoundActivatedRecorder */;
+			targetProxy = 817759312422EDFAC97B4579EA24B95D /* PBXContainerItemProxy */;
+		};
+		F8657869DED3B19C360DF26794BB328C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "Pods-Formant Analyzer SwiftUI";
+			target = F2230AB5411888FAABBEC1F6E186457F /* Pods-Formant Analyzer SwiftUI */;
+			targetProxy = C0D28EE2AF5701964522D52778F4F1DF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		120F219368564FC12170841A2111A899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75830A95964ECB3E808EEF599A99EF9A /* FSLineChart.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/FSLineChart-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				PRODUCT_MODULE_NAME = FSLineChart;
+				PRODUCT_NAME = FSLineChart;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		16ED93C7D7768A9A510BB1986D159ADD /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 95CB2E2B37C59DAECDF09A74B12409D4 /* FDSoundActivatedRecorder.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
+				PRODUCT_MODULE_NAME = FDSoundActivatedRecorder;
+				PRODUCT_NAME = FDSoundActivatedRecorder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		1CA8CB890A291A54F2ECB2D695F9DE99 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7101E479D14BE9BE4CADA0AB22D053A1 /* Pods-Formant Analyzer SwiftUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUITests/Pods-Formant Analyzer SwiftUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUITests/Pods-Formant Analyzer SwiftUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		490A51758BCCC2AE7C0EAACE6E1F0B17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1D07B9E843BF395B98060F883711BC08 /* FSLineChart.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FSLineChart/FSLineChart-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FSLineChart/FSLineChart-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FSLineChart/FSLineChart.modulemap";
+				PRODUCT_MODULE_NAME = FSLineChart;
+				PRODUCT_NAME = FSLineChart;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		61FC5749665EDDB2D90E737333B3BA8D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_DEBUG=1",
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Debug;
+		};
+		7FAE7BAC97306C5DFED9CB4BCA157AFB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4C042B91EA559E8EEFBE04A2E32E29C /* FDSoundActivatedRecorder.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/FDSoundActivatedRecorder/FDSoundActivatedRecorder.modulemap";
+				PRODUCT_MODULE_NAME = FDSoundActivatedRecorder;
+				PRODUCT_NAME = FDSoundActivatedRecorder;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		917CCD8BC24E6BF2C6EAEBDF5D0E5A89 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 851C739964E7FCE8E0863855377A17B0 /* Pods-Formant Analyzer SwiftUI.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI/Pods-Formant Analyzer SwiftUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI/Pods-Formant Analyzer SwiftUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		9CA34D10932B1F062A318EEE47DE9D8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2785FD68804861C0599A6AFFAF44EE36 /* Pods-Formant Analyzer SwiftUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUITests/Pods-Formant Analyzer SwiftUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUITests/Pods-Formant Analyzer SwiftUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		B04FF5A1A4D6460EBCB6A5056526543F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3ECE7916DDF5109521DE6A934CC2E99 /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		C26A6910F440F565393ADB203F6425F4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF97A2BA21B5C1F2238831AC19C7DF46 /* Pods-Formant Analyzer SwiftUI.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI/Pods-Formant Analyzer SwiftUI-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI/Pods-Formant Analyzer SwiftUI.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F32D0958740685BE48E04175061DFC9D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E8C041F06B252E320F080B4E72F6003C /* Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests/Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		F671B4D3AA8F2CA18D12CD74BD1CDEF9 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"POD_CONFIGURATION_RELEASE=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				SYMROOT = "${SRCROOT}/../build";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3B1DE52F14A0FEB7BE9BCDDCBF17ACD4 /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUI-Formant Analyzer SwiftUIUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B04FF5A1A4D6460EBCB6A5056526543F /* Debug */,
+				F32D0958740685BE48E04175061DFC9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		41E793C766F28BB80B43C9D646C8E10F /* Build configuration list for PBXNativeTarget "FDSoundActivatedRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7FAE7BAC97306C5DFED9CB4BCA157AFB /* Debug */,
+				16ED93C7D7768A9A510BB1986D159ADD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				61FC5749665EDDB2D90E737333B3BA8D /* Debug */,
+				F671B4D3AA8F2CA18D12CD74BD1CDEF9 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		91E610675BD6B6230B0836E1C2B3899F /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUI" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				917CCD8BC24E6BF2C6EAEBDF5D0E5A89 /* Debug */,
+				C26A6910F440F565393ADB203F6425F4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BE609BAFEBCDDBE2DAE8051D127CCF53 /* Build configuration list for PBXNativeTarget "FSLineChart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				490A51758BCCC2AE7C0EAACE6E1F0B17 /* Debug */,
+				120F219368564FC12170841A2111A899 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CDD5CDA1C090CCCE3C8B840371043AB2 /* Build configuration list for PBXNativeTarget "Pods-Formant Analyzer SwiftUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9CA34D10932B1F062A318EEE47DE9D8C /* Debug */,
+				1CA8CB890A291A54F2ECB2D695F9DE99 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+}
