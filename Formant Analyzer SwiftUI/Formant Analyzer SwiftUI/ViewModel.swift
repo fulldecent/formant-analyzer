@@ -34,7 +34,7 @@ class FormantAnalyzerViewModel: ObservableObject {
     @Published var thirdFormantLabel: String?
     @Published var fourthFormantLabel: String?
     
-    @Published var displayIdentifier: GraphingMode = .formant
+    @Published var displayIdentifier: GraphingMode = .signal
     
     var plottingF1: Double?
     var plottingF2: Double?

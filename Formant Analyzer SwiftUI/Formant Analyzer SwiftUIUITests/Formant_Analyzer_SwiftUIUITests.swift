@@ -1,43 +1,72 @@
 //
-//  Formant_Analyzer_SwiftUIUITests.swift
-//  Formant Analyzer SwiftUIUITests
+//  FormantPlotterUITests.swift
+//  FormantPlotterUITests
 //
-//  Created by Engin BULANIK on 10.09.2020.
-//  Copyright © 2020 Engin BULANIK. All rights reserved.
+//  Created by William Entriken on 11/10/15.
+//  Copyright © 2015 William Entriken. All rights reserved.
 //
 
 import XCTest
 
-class Formant_Analyzer_SwiftUIUITests: XCTestCase {
+func delay(_ delay:Double, closure:@escaping ()->()) {
+    DispatchQueue.main.asyncAfter(
+        deadline: DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
+}
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
+class Formant_AnalyzerUITests: XCTestCase {
+        
+    override func setUp() {
+        super.setUp()
+        
         // In UI tests it is usually best to stop immediately when a failure occurs.
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+        
         let app = XCUIApplication()
+        setupSnapshot(app)
         app.launch()
-
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        app.buttons["Microphone"].tap()
+        app.sheets["Audio source"].collectionViews.buttons["arm"].tap()
+    }
+    
+    override func tearDown() {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        super.tearDown()
+    }
+    
+    func testSig() {
+        let app = XCUIApplication()
+        app.buttons["Sig"].tap()
+        delay(1.5) {
+            snapshot("1Sig", waitForLoadingIndicator:true)
+        }
+        self.waitForExpectations(timeout: 2, handler: nil)
+    }
+    
+    func testLpc() {
+        let app = XCUIApplication()
+        app.buttons["LPC"].tap()
+        delay(1.5) {
+            snapshot("2Lpc", waitForLoadingIndicator:true)
+        }
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTOSSignpostMetric.applicationLaunch]) {
-                XCUIApplication().launch()
-            }
+    func testHw() {
+        let app = XCUIApplication()
+        app.segmentedControls.buttons.element(boundBy: 2).tap()
+        delay(1.5) {
+            snapshot("3Hw", waitForLoadingIndicator:true)
         }
+        self.waitForExpectations(timeout: 2, handler: nil)
+    }
+
+    func testFrmnt() {
+        let app = XCUIApplication()
+        app.buttons["Frmnt"].tap()
+        delay(1.5) {
+            snapshot("4Frmnt", waitForLoadingIndicator:true)
+        }
+        self.waitForExpectations(timeout: 2, handler: nil)
     }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,6 +14,9 @@
 		BD5F37B3250B8821006C91ED /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B2250B8821006C91ED /* Complex.swift */; };
 		BD5F37B5250BD493006C91ED /* DrawSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B4250BD493006C91ED /* DrawSignal.swift */; };
 		BD9AF590250B7BAC00569851 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9AF58F250B7BAC00569851 /* ViewModel.swift */; };
+		BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */ = {isa = PBXBuildFile; productRef = BDB9489E250D09AF00ADA64F /* ActionOver */; };
+		BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */; };
+		BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */; };
 		BDFF843E250AC60900233E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843D250AC60900233E39 /* AppDelegate.swift */; };
 		BDFF8440250AC60900233E39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843F250AC60900233E39 /* SceneDelegate.swift */; };
 		BDFF8442250AC60900233E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8441250AC60900233E39 /* ContentView.swift */; };
@@ -61,6 +64,8 @@
 		BD5F37B2250B8821006C91ED /* Complex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complex.swift; sourceTree = "<group>"; };
 		BD5F37B4250BD493006C91ED /* DrawSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSignal.swift; sourceTree = "<group>"; };
 		BD9AF58F250B7BAC00569851 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzerTests.swift; sourceTree = "<group>"; };
+		BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		BDFF843A250AC60900233E39 /* Formant Analyzer SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formant Analyzer SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFF843D250AC60900233E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BDFF843F250AC60900233E39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */,
 				2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer_SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -198,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFF8454250AC60C00233E39 /* Formant_Analyzer_SwiftUITests.swift */,
+				BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */,
 				BDFF8456250AC60C00233E39 /* Info.plist */,
 			);
 			path = "Formant Analyzer SwiftUITests";
@@ -207,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				BDFF845F250AC60C00233E39 /* Formant_Analyzer_SwiftUIUITests.swift */,
+				BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */,
 				BDFF8461250AC60C00233E39 /* Info.plist */,
 			);
 			path = "Formant Analyzer SwiftUIUITests";
@@ -230,6 +238,9 @@
 			dependencies = (
 			);
 			name = "Formant Analyzer SwiftUI";
+			packageProductDependencies = (
+				BDB9489E250D09AF00ADA64F /* ActionOver */,
+			);
 			productName = "Formant Analyzer SwiftUI";
 			productReference = BDFF843A250AC60900233E39 /* Formant Analyzer SwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -305,6 +316,9 @@
 				Base,
 			);
 			mainGroup = BDFF8431250AC60900233E39;
+			packageReferences = (
+				BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */,
+			);
 			productRefGroup = BDFF843B250AC60900233E39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -474,6 +488,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFF8455250AC60C00233E39 /* Formant_Analyzer_SwiftUITests.swift in Sources */,
+				BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,6 +497,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFF8460250AC60C00233E39 /* Formant_Analyzer_SwiftUIUITests.swift in Sources */,
+				BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -636,6 +652,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Formant Analyzer SwiftUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -657,6 +674,7 @@
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Formant Analyzer SwiftUI/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -796,6 +814,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AndreaMiotto/ActionOver.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BDB9489E250D09AF00ADA64F /* ActionOver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */;
+			productName = ActionOver;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BDFF8432250AC60900233E39 /* Project object */;
 }

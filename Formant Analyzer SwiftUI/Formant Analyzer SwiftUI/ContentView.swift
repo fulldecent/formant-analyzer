@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ActionOver
 
 struct ContentView: View {
     
@@ -16,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         
         ZStack {
-            Color(red: 253.0 / 255, green: 239.0 / 255, blue: 238.0 / 255)
+            Color(red: 255.0 / 255, green: 254.0 / 255, blue: 249.0 / 255)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
@@ -32,9 +33,17 @@ struct ContentView: View {
                     
                     Button(action: {
                         self.showingActionSheet = true
-                    }) {
+                    }, label: {
                         Text(viewModel.inputSelector)
-                    }
+                    })
+                        .actionOver(
+                                presented: $showingActionSheet,
+                                title: "Audio Source",
+                                message: "Select the audio source to analyze",
+                                buttons: actionSheetButtons(),
+                                ipadAndMacConfiguration: ipadMacConfig,
+                                normalButtonColor: UIColor(red: 255.0 / 255, green: 103.0 / 255, blue: 97.0 / 255, alpha: 1)
+                        )
                 }
                 
                 Picker("Numbers", selection: $viewModel.displayIdentifier) {
@@ -110,22 +119,22 @@ struct ContentView: View {
                         && viewModel.thirdFormantLabel != nil
                         && viewModel.fourthFormantLabel != nil{
                         HStack {
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text("Formant 1:")
                                 Text("Formant 3:")
                             }
-                            VStack {
+                            VStack(alignment: .trailing) {
                                 Text(viewModel.firstFormantLabel!)
                                 Text(viewModel.thirdFormantLabel!)
                             }
                             
                             Spacer()
                             
-                            VStack {
+                            VStack(alignment: .leading) {
                                 Text("Formant 2:")
                                 Text("Formant 4:")
                             }
-                            VStack {
+                            VStack(alignment: .trailing) {
                                 Text(viewModel.secondFormantLabel!)
                                 Text(viewModel.fourthFormantLabel!)
                             }
@@ -133,16 +142,45 @@ struct ContentView: View {
                     }
                 }
                 .frame(height:50)
+
                 
-            }.padding()
+            }
+            .padding()
+
             
             
             
-        }.actionSheet(isPresented: $showingActionSheet) {
-            ActionSheet(title: Text("Audio Source"), message: Text("Select the audio source to analyze"), buttons: actionSheetButtons())
         }
     }
     
+    private var ipadMacConfig = {
+        IpadAndMacConfiguration(anchor: nil, arrowEdge: nil)
+    }()
+    
+    private func actionSheetButtons() -> [ActionOverButton] {
+        return [
+            [ActionOverButton(
+                title: "Microphone",
+                type: .normal,
+                action: { self.viewModel.microphoneSelected() }
+            )],
+            viewModel.soundFileBaseNames.map { basename in
+                ActionOverButton(
+                    title: basename,
+                    type: .normal,
+                    action: { self.viewModel.fileSelected(as: basename) }
+                )
+            },
+            [ActionOverButton(
+                title: nil,
+                type: .cancel,
+                action: nil
+            )],
+        ].reduce([], +)
+    }
+
+
+    /*
     func actionSheetButtons() -> [ActionSheet.Button] {
         
         [
@@ -152,7 +190,7 @@ struct ContentView: View {
             },
             [ActionSheet.Button.cancel()]
             ].reduce([], +)
-    }
+    }*/
     
 }
 
