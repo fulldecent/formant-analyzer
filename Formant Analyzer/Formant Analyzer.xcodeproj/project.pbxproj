@@ -7,210 +7,231 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C74F84F3109213DA04868FF /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 105D06CFCFFB595ACC2AA50E /* Pods_Formant_Analyzer.framework */; };
-		D905E21C1CDABE5900C5FD50 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905E21B1CDABE5900C5FD50 /* SnapshotHelper.swift */; };
-		D905E2201CDABE8800C5FD50 /* Formant_AnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905E21F1CDABE8800C5FD50 /* Formant_AnalyzerTests.swift */; };
-		D905E2221CDABE9400C5FD50 /* Formant_AnalyzerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D905E2211CDABE9400C5FD50 /* Formant_AnalyzerUITests.swift */; };
-		D9321823234EC8A700F698AA /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = D9321822234EC8A700F698AA /* SwiftPackageProductDependency */; };
-		D95F3E9E1CDC06020050B871 /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C4800C1CDAB1300021F3C7 /* arm.raw */; };
-		D95F3E9F1CDC06020050B871 /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C4800D1CDAB1300021F3C7 /* beat.raw */; };
-		D95F3EA01CDC06020050B871 /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C4800E1CDAB1300021F3C7 /* bid.raw */; };
-		D95F3EA11CDC06020050B871 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C4800F1CDAB1300021F3C7 /* calm.raw */; };
-		D95F3EA21CDC06020050B871 /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C480101CDAB1300021F3C7 /* cat.raw */; };
-		D95F3EA31CDC06020050B871 /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C480111CDAB1300021F3C7 /* four.raw */; };
-		D95F3EA41CDC06020050B871 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = D9C480121CDAB1300021F3C7 /* who.raw */; };
-		D9C47FE21CDAB0150021F3C7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D9C47FE11CDAB0150021F3C7 /* Assets.xcassets */; };
-		D9C4800A1CDAB0F10021F3C7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C480081CDAB0F10021F3C7 /* LaunchScreen.storyboard */; };
-		D9C4800B1CDAB0F10021F3C7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C480091CDAB0F10021F3C7 /* Main.storyboard */; };
-		D9C480181CDAB1690021F3C7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480131CDAB1690021F3C7 /* AppDelegate.swift */; };
-		D9C480191CDAB1690021F3C7 /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480141CDAB1690021F3C7 /* Complex.swift */; };
-		D9C4801A1CDAB1690021F3C7 /* FormantPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480151CDAB1690021F3C7 /* FormantPlotView.swift */; };
-		D9C4801B1CDAB1690021F3C7 /* SpeechAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480161CDAB1690021F3C7 /* SpeechAnalyzer.swift */; };
-		D9C4801C1CDAB1690021F3C7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480171CDAB1690021F3C7 /* ViewController.swift */; };
-		D9C480211CDAB17C0021F3C7 /* blue_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C4801D1CDAB17C0021F3C7 /* blue_light.png */; };
-		D9C480221CDAB17C0021F3C7 /* green_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C4801E1CDAB17C0021F3C7 /* green_light.png */; };
-		D9C480231CDAB17C0021F3C7 /* red_light.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C4801F1CDAB17C0021F3C7 /* red_light.png */; };
-		D9C480241CDAB17C0021F3C7 /* vowelPlotBackground.png in Resources */ = {isa = PBXBuildFile; fileRef = D9C480201CDAB17C0021F3C7 /* vowelPlotBackground.png */; };
-		D9C480281CDAB1B10021F3C7 /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C480261CDAB1B10021F3C7 /* SpeechAnalyzerTests.swift */; };
+		1E5F714AEEAA0FB09C0BAB78 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */; };
+		2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */; };
+		89EF55BB2A3C2CCF7C2ED208 /* Pods_Formant_AnalyzerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */; };
+		BD0D9C3F250C10300031B587 /* FormantPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D9C3E250C10300031B587 /* FormantPlotView.swift */; };
+		BD5F37B1250B85B1006C91ED /* SpeechAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B0250B85B1006C91ED /* SpeechAnalyzer.swift */; };
+		BD5F37B3250B8821006C91ED /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B2250B8821006C91ED /* Complex.swift */; };
+		BD5F37B5250BD493006C91ED /* DrawSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B4250BD493006C91ED /* DrawSignal.swift */; };
+		BD9AF590250B7BAC00569851 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9AF58F250B7BAC00569851 /* ViewModel.swift */; };
+		BDB9489F250D09AF00ADA64F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */; };
+		BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */; };
+		BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */; };
+		BDFF843E250AC60900233E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843D250AC60900233E39 /* AppDelegate.swift */; };
+		BDFF8440250AC60900233E39 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843F250AC60900233E39 /* SceneDelegate.swift */; };
+		BDFF8442250AC60900233E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8441250AC60900233E39 /* ContentView.swift */; };
+		BDFF8444250AC60B00233E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8443250AC60B00233E39 /* Assets.xcassets */; };
+		BDFF8447250AC60B00233E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8446250AC60B00233E39 /* Preview Assets.xcassets */; };
+		BDFF844A250AC60B00233E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */; };
+		BDFF8455250AC60C00233E39 /* Formant_Analyzer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8454250AC60C00233E39 /* Formant_Analyzer_Tests.swift */; };
+		BDFF8460250AC60C00233E39 /* Formant_Analyzer_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF845F250AC60C00233E39 /* Formant_Analyzer_UITests.swift */; };
+		BDFF8474250AC67F00233E39 /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF846D250AC67E00233E39 /* bid.raw */; };
+		BDFF8475250AC67F00233E39 /* arm.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF846E250AC67E00233E39 /* arm.raw */; };
+		BDFF8476250AC67F00233E39 /* cat.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF846F250AC67E00233E39 /* cat.raw */; };
+		BDFF8477250AC67F00233E39 /* four.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8470250AC67F00233E39 /* four.raw */; };
+		BDFF8478250AC67F00233E39 /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8471250AC67F00233E39 /* beat.raw */; };
+		BDFF8479250AC67F00233E39 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8472250AC67F00233E39 /* who.raw */; };
+		BDFF847A250AC67F00233E39 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8473250AC67F00233E39 /* calm.raw */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		D9C47FEC1CDAB0160021F3C7 /* PBXContainerItemProxy */ = {
+		BDFF8451250AC60C00233E39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D9C47FCF1CDAB0150021F3C7 /* Project object */;
+			containerPortal = BDFF8432250AC60900233E39 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D9C47FD61CDAB0150021F3C7;
+			remoteGlobalIDString = BDFF8439250AC60900233E39;
 			remoteInfo = "Formant Analyzer";
 		};
-		D9C47FF71CDAB0160021F3C7 /* PBXContainerItemProxy */ = {
+		BDFF845C250AC60C00233E39 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = D9C47FCF1CDAB0150021F3C7 /* Project object */;
+			containerPortal = BDFF8432250AC60900233E39 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = D9C47FD61CDAB0150021F3C7;
+			remoteGlobalIDString = BDFF8439250AC60900233E39;
 			remoteInfo = "Formant Analyzer";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		105D06CFCFFB595ACC2AA50E /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66C3D3A01452D771E1A33313 /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
-		82E5D63DE47495F837A641F1 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
-		D905E21B1CDABE5900C5FD50 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
-		D905E21F1CDABE8800C5FD50 /* Formant_AnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formant_AnalyzerTests.swift; sourceTree = "<group>"; };
-		D905E2211CDABE9400C5FD50 /* Formant_AnalyzerUITests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formant_AnalyzerUITests.swift; sourceTree = "<group>"; };
-		D9C47FD71CDAB0150021F3C7 /* Formant Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formant Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9C47FE11CDAB0150021F3C7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		D9C47FE61CDAB0150021F3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9C47FEB1CDAB0160021F3C7 /* Formant AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9C47FF11CDAB0160021F3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9C47FF61CDAB0160021F3C7 /* Formant AnalyzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D9C47FFC1CDAB0160021F3C7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9C480081CDAB0F10021F3C7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D9C480091CDAB0F10021F3C7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		D9C4800C1CDAB1300021F3C7 /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
-		D9C4800D1CDAB1300021F3C7 /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
-		D9C4800E1CDAB1300021F3C7 /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
-		D9C4800F1CDAB1300021F3C7 /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
-		D9C480101CDAB1300021F3C7 /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
-		D9C480111CDAB1300021F3C7 /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
-		D9C480121CDAB1300021F3C7 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
-		D9C480131CDAB1690021F3C7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D9C480141CDAB1690021F3C7 /* Complex.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Complex.swift; sourceTree = "<group>"; };
-		D9C480151CDAB1690021F3C7 /* FormantPlotView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormantPlotView.swift; sourceTree = "<group>"; };
-		D9C480161CDAB1690021F3C7 /* SpeechAnalyzer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzer.swift; sourceTree = "<group>"; };
-		D9C480171CDAB1690021F3C7 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D9C4801D1CDAB17C0021F3C7 /* blue_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_light.png; sourceTree = "<group>"; };
-		D9C4801E1CDAB17C0021F3C7 /* green_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = green_light.png; sourceTree = "<group>"; };
-		D9C4801F1CDAB17C0021F3C7 /* red_light.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = red_light.png; sourceTree = "<group>"; };
-		D9C480201CDAB17C0021F3C7 /* vowelPlotBackground.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vowelPlotBackground.png; sourceTree = "<group>"; };
-		D9C480261CDAB1B10021F3C7 /* SpeechAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzerTests.swift; sourceTree = "<group>"; };
+		3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant AnalyzerTests.debug.xcconfig"; path = "Target Support Files/Pods-Formant AnalyzerTests/Pods-Formant AnalyzerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_AnalyzerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig"; sourceTree = "<group>"; };
+		996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
+		BD0D9C3E250C10300031B587 /* FormantPlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotView.swift; sourceTree = "<group>"; };
+		BD5F37B0250B85B1006C91ED /* SpeechAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzer.swift; sourceTree = "<group>"; };
+		BD5F37B2250B8821006C91ED /* Complex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complex.swift; sourceTree = "<group>"; };
+		BD5F37B4250BD493006C91ED /* DrawSignal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DrawSignal.swift; sourceTree = "<group>"; };
+		BD9AF58F250B7BAC00569851 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzerTests.swift; sourceTree = "<group>"; };
+		BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
+		BDFF843A250AC60900233E39 /* Formant Analyzer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Formant Analyzer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFF843D250AC60900233E39 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BDFF843F250AC60900233E39 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BDFF8441250AC60900233E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		BDFF8443250AC60B00233E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BDFF8446250AC60B00233E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		BDFF8449250AC60B00233E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BDFF844B250AC60B00233E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDFF8450250AC60C00233E39 /* Formant AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFF8454250AC60C00233E39 /* Formant_Analyzer_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formant_Analyzer_Tests.swift; sourceTree = "<group>"; };
+		BDFF8456250AC60C00233E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDFF845B250AC60C00233E39 /* Formant AnalyzerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BDFF845F250AC60C00233E39 /* Formant_Analyzer_UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formant_Analyzer_UITests.swift; sourceTree = "<group>"; };
+		BDFF8461250AC60C00233E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BDFF846D250AC67E00233E39 /* bid.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = bid.raw; sourceTree = "<group>"; };
+		BDFF846E250AC67E00233E39 /* arm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = arm.raw; sourceTree = "<group>"; };
+		BDFF846F250AC67E00233E39 /* cat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = cat.raw; sourceTree = "<group>"; };
+		BDFF8470250AC67F00233E39 /* four.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = four.raw; sourceTree = "<group>"; };
+		BDFF8471250AC67F00233E39 /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
+		BDFF8472250AC67F00233E39 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
+		BDFF8473250AC67F00233E39 /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
+		C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant AnalyzerTests.release.xcconfig"; path = "Target Support Files/Pods-Formant AnalyzerTests/Pods-Formant AnalyzerTests.release.xcconfig"; sourceTree = "<group>"; };
+		E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D9C47FD41CDAB0150021F3C7 /* Frameworks */ = {
+		BDFF8437250AC60900233E39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9321823234EC8A700F698AA /* BuildFile in Frameworks */,
-				8C74F84F3109213DA04868FF /* Pods_Formant_Analyzer.framework in Frameworks */,
+				BDB9489F250D09AF00ADA64F /* BuildFile in Frameworks */,
+				2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FE81CDAB0160021F3C7 /* Frameworks */ = {
+		BDFF844D250AC60C00233E39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				89EF55BB2A3C2CCF7C2ED208 /* Pods_Formant_AnalyzerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FF31CDAB0160021F3C7 /* Frameworks */ = {
+		BDFF8458250AC60C00233E39 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E5F714AEEAA0FB09C0BAB78 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CC17CECC099E40DB51BBF1C8 /* Frameworks */ = {
+		2A2DA749CB62A78124F9F36D /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				105D06CFCFFB595ACC2AA50E /* Pods_Formant_Analyzer.framework */,
+				E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */,
+				ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */,
+				4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */,
+				8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */,
+				3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */,
+				C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		84EA20F596ED9F8FD551DFF3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */,
+				996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */,
+				83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D9C47FCE1CDAB0150021F3C7 = {
+		BDFF8431250AC60900233E39 = {
 			isa = PBXGroup;
 			children = (
-				D9C47FD91CDAB0150021F3C7 /* Formant Analyzer */,
-				D9C47FEE1CDAB0160021F3C7 /* Formant AnalyzerTests */,
-				D9C47FF91CDAB0160021F3C7 /* Formant AnalyzerUITests */,
-				D9C47FD81CDAB0150021F3C7 /* Products */,
-				FAD5730CC2A5641E8AAB9222 /* Pods */,
-				CC17CECC099E40DB51BBF1C8 /* Frameworks */,
+				BDFF843C250AC60900233E39 /* Formant Analyzer */,
+				BDFF8453250AC60C00233E39 /* Formant Analyzer Tests */,
+				BDFF845E250AC60C00233E39 /* Formant Analyzer UITests */,
+				BDFF843B250AC60900233E39 /* Products */,
+				2A2DA749CB62A78124F9F36D /* Pods */,
+				84EA20F596ED9F8FD551DFF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		D9C47FD81CDAB0150021F3C7 /* Products */ = {
+		BDFF843B250AC60900233E39 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D9C47FD71CDAB0150021F3C7 /* Formant Analyzer.app */,
-				D9C47FEB1CDAB0160021F3C7 /* Formant AnalyzerTests.xctest */,
-				D9C47FF61CDAB0160021F3C7 /* Formant AnalyzerUITests.xctest */,
+				BDFF843A250AC60900233E39 /* Formant Analyzer.app */,
+				BDFF8450250AC60C00233E39 /* Formant AnalyzerTests.xctest */,
+				BDFF845B250AC60C00233E39 /* Formant AnalyzerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		D9C47FD91CDAB0150021F3C7 /* Formant Analyzer */ = {
+		BDFF843C250AC60900233E39 /* Formant Analyzer */ = {
 			isa = PBXGroup;
 			children = (
-				D9C480131CDAB1690021F3C7 /* AppDelegate.swift */,
-				D9C480141CDAB1690021F3C7 /* Complex.swift */,
-				D9C480151CDAB1690021F3C7 /* FormantPlotView.swift */,
-				D9C480161CDAB1690021F3C7 /* SpeechAnalyzer.swift */,
-				D9C480171CDAB1690021F3C7 /* ViewController.swift */,
-				D9C480081CDAB0F10021F3C7 /* LaunchScreen.storyboard */,
-				D9C480091CDAB0F10021F3C7 /* Main.storyboard */,
-				D9C4800C1CDAB1300021F3C7 /* arm.raw */,
-				D9C4800D1CDAB1300021F3C7 /* beat.raw */,
-				D9C4800E1CDAB1300021F3C7 /* bid.raw */,
-				D9C4800F1CDAB1300021F3C7 /* calm.raw */,
-				D9C480101CDAB1300021F3C7 /* cat.raw */,
-				D9C480111CDAB1300021F3C7 /* four.raw */,
-				D9C480121CDAB1300021F3C7 /* who.raw */,
-				D9C4801D1CDAB17C0021F3C7 /* blue_light.png */,
-				D9C4801E1CDAB17C0021F3C7 /* green_light.png */,
-				D9C4801F1CDAB17C0021F3C7 /* red_light.png */,
-				D9C480201CDAB17C0021F3C7 /* vowelPlotBackground.png */,
-				D9C47FE11CDAB0150021F3C7 /* Assets.xcassets */,
-				D9C47FE61CDAB0150021F3C7 /* Info.plist */,
+				BDFF843D250AC60900233E39 /* AppDelegate.swift */,
+				BDFF843F250AC60900233E39 /* SceneDelegate.swift */,
+				BDFF8441250AC60900233E39 /* ContentView.swift */,
+				BD9AF58F250B7BAC00569851 /* ViewModel.swift */,
+				BD0D9C3E250C10300031B587 /* FormantPlotView.swift */,
+				BD5F37B4250BD493006C91ED /* DrawSignal.swift */,
+				BD5F37B0250B85B1006C91ED /* SpeechAnalyzer.swift */,
+				BD5F37B2250B8821006C91ED /* Complex.swift */,
+				BDFF846E250AC67E00233E39 /* arm.raw */,
+				BDFF8471250AC67F00233E39 /* beat.raw */,
+				BDFF846D250AC67E00233E39 /* bid.raw */,
+				BDFF8473250AC67F00233E39 /* calm.raw */,
+				BDFF846F250AC67E00233E39 /* cat.raw */,
+				BDFF8470250AC67F00233E39 /* four.raw */,
+				BDFF8472250AC67F00233E39 /* who.raw */,
+				BDFF8443250AC60B00233E39 /* Assets.xcassets */,
+				BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */,
+				BDFF844B250AC60B00233E39 /* Info.plist */,
+				BDFF8445250AC60B00233E39 /* Preview Content */,
 			);
 			path = "Formant Analyzer";
 			sourceTree = "<group>";
 		};
-		D9C47FEE1CDAB0160021F3C7 /* Formant AnalyzerTests */ = {
+		BDFF8445250AC60B00233E39 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				D905E21F1CDABE8800C5FD50 /* Formant_AnalyzerTests.swift */,
-				D9C480261CDAB1B10021F3C7 /* SpeechAnalyzerTests.swift */,
-				D9C47FF11CDAB0160021F3C7 /* Info.plist */,
+				BDFF8446250AC60B00233E39 /* Preview Assets.xcassets */,
 			);
-			path = "Formant AnalyzerTests";
+			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		D9C47FF91CDAB0160021F3C7 /* Formant AnalyzerUITests */ = {
+		BDFF8453250AC60C00233E39 /* Formant Analyzer Tests */ = {
 			isa = PBXGroup;
 			children = (
-				D905E2211CDABE9400C5FD50 /* Formant_AnalyzerUITests.swift */,
-				D905E21B1CDABE5900C5FD50 /* SnapshotHelper.swift */,
-				D9C47FFC1CDAB0160021F3C7 /* Info.plist */,
+				BDFF8454250AC60C00233E39 /* Formant_Analyzer_Tests.swift */,
+				BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */,
+				BDFF8456250AC60C00233E39 /* Info.plist */,
 			);
-			path = "Formant AnalyzerUITests";
+			path = "Formant Analyzer Tests";
 			sourceTree = "<group>";
 		};
-		FAD5730CC2A5641E8AAB9222 /* Pods */ = {
+		BDFF845E250AC60C00233E39 /* Formant Analyzer UITests */ = {
 			isa = PBXGroup;
 			children = (
-				82E5D63DE47495F837A641F1 /* Pods-Formant Analyzer.debug.xcconfig */,
-				66C3D3A01452D771E1A33313 /* Pods-Formant Analyzer.release.xcconfig */,
+				BDFF845F250AC60C00233E39 /* Formant_Analyzer_UITests.swift */,
+				BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */,
+				BDFF8461250AC60C00233E39 /* Info.plist */,
 			);
-			name = Pods;
+			path = "Formant Analyzer UITests";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D9C47FD61CDAB0150021F3C7 /* Formant Analyzer */ = {
+		BDFF8439250AC60900233E39 /* Formant Analyzer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9C47FFF1CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant Analyzer" */;
+			buildConfigurationList = BDFF8464250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant Analyzer" */;
 			buildPhases = (
-				5FB6586B28852D3EE4807F2C /* [CP] Check Pods Manifest.lock */,
-				D9C47FD31CDAB0150021F3C7 /* Sources */,
-				D9C47FD41CDAB0150021F3C7 /* Frameworks */,
-				D9C47FD51CDAB0150021F3C7 /* Resources */,
-				F950F7D99D11748B6B3D96DF /* [CP] Embed Pods Frameworks */,
+				B4520503F92F5147F247A9CD /* [CP] Check Pods Manifest.lock */,
+				BDFF8436250AC60900233E39 /* Sources */,
+				BDFF8437250AC60900233E39 /* Frameworks */,
+				BDFF8438250AC60900233E39 /* Resources */,
+				65951C922D6C217E2CDF22A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,128 +239,123 @@
 			);
 			name = "Formant Analyzer";
 			packageProductDependencies = (
-				D9321822234EC8A700F698AA /* SwiftPackageProductDependency */,
+				BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */,
 			);
 			productName = "Formant Analyzer";
-			productReference = D9C47FD71CDAB0150021F3C7 /* Formant Analyzer.app */;
+			productReference = BDFF843A250AC60900233E39 /* Formant Analyzer.app */;
 			productType = "com.apple.product-type.application";
 		};
-		D9C47FEA1CDAB0160021F3C7 /* Formant AnalyzerTests */ = {
+		BDFF844F250AC60C00233E39 /* Formant AnalyzerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9C480021CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */;
+			buildConfigurationList = BDFF8467250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */;
 			buildPhases = (
-				D9C47FE71CDAB0160021F3C7 /* Sources */,
-				D9C47FE81CDAB0160021F3C7 /* Frameworks */,
-				D9C47FE91CDAB0160021F3C7 /* Resources */,
+				0A9B0743907BC028F5931251 /* [CP] Check Pods Manifest.lock */,
+				BDFF844C250AC60C00233E39 /* Sources */,
+				BDFF844D250AC60C00233E39 /* Frameworks */,
+				BDFF844E250AC60C00233E39 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D9C47FED1CDAB0160021F3C7 /* PBXTargetDependency */,
+				BDFF8452250AC60C00233E39 /* PBXTargetDependency */,
 			);
 			name = "Formant AnalyzerTests";
 			productName = "Formant AnalyzerTests";
-			productReference = D9C47FEB1CDAB0160021F3C7 /* Formant AnalyzerTests.xctest */;
+			productReference = BDFF8450250AC60C00233E39 /* Formant AnalyzerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		D9C47FF51CDAB0160021F3C7 /* Formant AnalyzerUITests */ = {
+		BDFF845A250AC60C00233E39 /* Formant AnalyzerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D9C480051CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */;
+			buildConfigurationList = BDFF846A250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */;
 			buildPhases = (
-				D9C47FF21CDAB0160021F3C7 /* Sources */,
-				D9C47FF31CDAB0160021F3C7 /* Frameworks */,
-				D9C47FF41CDAB0160021F3C7 /* Resources */,
+				576AA0E567460926E5FB3062 /* [CP] Check Pods Manifest.lock */,
+				BDFF8457250AC60C00233E39 /* Sources */,
+				BDFF8458250AC60C00233E39 /* Frameworks */,
+				BDFF8459250AC60C00233E39 /* Resources */,
+				E983D93A8C7D709632FAEFD1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				D9C47FF81CDAB0160021F3C7 /* PBXTargetDependency */,
+				BDFF845D250AC60C00233E39 /* PBXTargetDependency */,
 			);
 			name = "Formant AnalyzerUITests";
 			productName = "Formant AnalyzerUITests";
-			productReference = D9C47FF61CDAB0160021F3C7 /* Formant AnalyzerUITests.xctest */;
+			productReference = BDFF845B250AC60C00233E39 /* Formant AnalyzerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		D9C47FCF1CDAB0150021F3C7 /* Project object */ = {
+		BDFF8432250AC60900233E39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 1110;
-				ORGANIZATIONNAME = "William Entriken";
+				LastSwiftUpdateCheck = 1170;
+				LastUpgradeCheck = 1170;
+				ORGANIZATIONNAME = "Engin BULANIK";
 				TargetAttributes = {
-					D9C47FD61CDAB0150021F3C7 = {
-						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 8Q693ZG5RN;
-						LastSwiftMigration = 1110;
+					BDFF8439250AC60900233E39 = {
+						CreatedOnToolsVersion = 11.7;
 					};
-					D9C47FEA1CDAB0160021F3C7 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 1110;
-						TestTargetID = D9C47FD61CDAB0150021F3C7;
+					BDFF844F250AC60C00233E39 = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = BDFF8439250AC60900233E39;
 					};
-					D9C47FF51CDAB0160021F3C7 = {
-						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 1110;
-						TestTargetID = D9C47FD61CDAB0150021F3C7;
+					BDFF845A250AC60C00233E39 = {
+						CreatedOnToolsVersion = 11.7;
+						TestTargetID = BDFF8439250AC60900233E39;
 					};
 				};
 			};
-			buildConfigurationList = D9C47FD21CDAB0150021F3C7 /* Build configuration list for PBXProject "Formant Analyzer" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = BDFF8435250AC60900233E39 /* Build configuration list for PBXProject "Formant Analyzer" */;
+			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = D9C47FCE1CDAB0150021F3C7;
+			mainGroup = BDFF8431250AC60900233E39;
 			packageReferences = (
-				D9321821234EC8A700F698AA /* RemoteSwiftPackageReference */,
+				BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */,
 			);
-			productRefGroup = D9C47FD81CDAB0150021F3C7 /* Products */;
+			productRefGroup = BDFF843B250AC60900233E39 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D9C47FD61CDAB0150021F3C7 /* Formant Analyzer */,
-				D9C47FEA1CDAB0160021F3C7 /* Formant AnalyzerTests */,
-				D9C47FF51CDAB0160021F3C7 /* Formant AnalyzerUITests */,
+				BDFF8439250AC60900233E39 /* Formant Analyzer */,
+				BDFF844F250AC60C00233E39 /* Formant AnalyzerTests */,
+				BDFF845A250AC60C00233E39 /* Formant AnalyzerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		D9C47FD51CDAB0150021F3C7 /* Resources */ = {
+		BDFF8438250AC60900233E39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9C480231CDAB17C0021F3C7 /* red_light.png in Resources */,
-				D95F3EA11CDC06020050B871 /* calm.raw in Resources */,
-				D9C480241CDAB17C0021F3C7 /* vowelPlotBackground.png in Resources */,
-				D95F3EA41CDC06020050B871 /* who.raw in Resources */,
-				D95F3EA21CDC06020050B871 /* cat.raw in Resources */,
-				D9C480211CDAB17C0021F3C7 /* blue_light.png in Resources */,
-				D9C4800B1CDAB0F10021F3C7 /* Main.storyboard in Resources */,
-				D95F3EA31CDC06020050B871 /* four.raw in Resources */,
-				D9C47FE21CDAB0150021F3C7 /* Assets.xcassets in Resources */,
-				D9C480221CDAB17C0021F3C7 /* green_light.png in Resources */,
-				D95F3EA01CDC06020050B871 /* bid.raw in Resources */,
-				D9C4800A1CDAB0F10021F3C7 /* LaunchScreen.storyboard in Resources */,
-				D95F3E9F1CDC06020050B871 /* beat.raw in Resources */,
-				D95F3E9E1CDC06020050B871 /* arm.raw in Resources */,
+				BDFF8479250AC67F00233E39 /* who.raw in Resources */,
+				BDFF844A250AC60B00233E39 /* LaunchScreen.storyboard in Resources */,
+				BDFF8447250AC60B00233E39 /* Preview Assets.xcassets in Resources */,
+				BDFF8474250AC67F00233E39 /* bid.raw in Resources */,
+				BDFF8477250AC67F00233E39 /* four.raw in Resources */,
+				BDFF8478250AC67F00233E39 /* beat.raw in Resources */,
+				BDFF8476250AC67F00233E39 /* cat.raw in Resources */,
+				BDFF847A250AC67F00233E39 /* calm.raw in Resources */,
+				BDFF8475250AC67F00233E39 /* arm.raw in Resources */,
+				BDFF8444250AC60B00233E39 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FE91CDAB0160021F3C7 /* Resources */ = {
+		BDFF844E250AC60C00233E39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FF41CDAB0160021F3C7 /* Resources */ = {
+		BDFF8459250AC60C00233E39 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -349,25 +365,51 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5FB6586B28852D3EE4807F2C /* [CP] Check Pods Manifest.lock */ = {
+		0A9B0743907BC028F5931251 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			inputFileListPaths = (
 			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Formant Analyzer-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Formant AnalyzerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F950F7D99D11748B6B3D96DF /* [CP] Embed Pods Frameworks */ = {
+		576AA0E567460926E5FB3062 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Formant Analyzer-Formant AnalyzerUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		65951C922D6C217E2CDF22A0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -384,70 +426,126 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		B4520503F92F5147F247A9CD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Formant Analyzer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E983D93A8C7D709632FAEFD1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		D9C47FD31CDAB0150021F3C7 /* Sources */ = {
+		BDFF8436250AC60900233E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9C4801C1CDAB1690021F3C7 /* ViewController.swift in Sources */,
-				D9C480191CDAB1690021F3C7 /* Complex.swift in Sources */,
-				D9C4801B1CDAB1690021F3C7 /* SpeechAnalyzer.swift in Sources */,
-				D9C4801A1CDAB1690021F3C7 /* FormantPlotView.swift in Sources */,
-				D9C480181CDAB1690021F3C7 /* AppDelegate.swift in Sources */,
+				BDFF843E250AC60900233E39 /* AppDelegate.swift in Sources */,
+				BD0D9C3F250C10300031B587 /* FormantPlotView.swift in Sources */,
+				BDFF8440250AC60900233E39 /* SceneDelegate.swift in Sources */,
+				BD9AF590250B7BAC00569851 /* ViewModel.swift in Sources */,
+				BD5F37B5250BD493006C91ED /* DrawSignal.swift in Sources */,
+				BDFF8442250AC60900233E39 /* ContentView.swift in Sources */,
+				BD5F37B3250B8821006C91ED /* Complex.swift in Sources */,
+				BD5F37B1250B85B1006C91ED /* SpeechAnalyzer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FE71CDAB0160021F3C7 /* Sources */ = {
+		BDFF844C250AC60C00233E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D9C480281CDAB1B10021F3C7 /* SpeechAnalyzerTests.swift in Sources */,
-				D905E2201CDABE8800C5FD50 /* Formant_AnalyzerTests.swift in Sources */,
+				BDFF8455250AC60C00233E39 /* Formant_Analyzer_Tests.swift in Sources */,
+				BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		D9C47FF21CDAB0160021F3C7 /* Sources */ = {
+		BDFF8457250AC60C00233E39 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D905E21C1CDABE5900C5FD50 /* SnapshotHelper.swift in Sources */,
-				D905E2221CDABE9400C5FD50 /* Formant_AnalyzerUITests.swift in Sources */,
+				BDFF8460250AC60C00233E39 /* Formant_Analyzer_UITests.swift in Sources */,
+				BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		D9C47FED1CDAB0160021F3C7 /* PBXTargetDependency */ = {
+		BDFF8452250AC60C00233E39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D9C47FD61CDAB0150021F3C7 /* Formant Analyzer */;
-			targetProxy = D9C47FEC1CDAB0160021F3C7 /* PBXContainerItemProxy */;
+			target = BDFF8439250AC60900233E39 /* Formant Analyzer */;
+			targetProxy = BDFF8451250AC60C00233E39 /* PBXContainerItemProxy */;
 		};
-		D9C47FF81CDAB0160021F3C7 /* PBXTargetDependency */ = {
+		BDFF845D250AC60C00233E39 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D9C47FD61CDAB0150021F3C7 /* Formant Analyzer */;
-			targetProxy = D9C47FF71CDAB0160021F3C7 /* PBXContainerItemProxy */;
+			target = BDFF8439250AC60900233E39 /* Formant Analyzer */;
+			targetProxy = BDFF845C250AC60C00233E39 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
+/* Begin PBXVariantGroup section */
+		BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BDFF8449250AC60B00233E39 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
-		D9C47FFD1CDAB0160021F3C7 /* Debug */ = {
+		BDFF8462250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -459,14 +557,14 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -480,30 +578,34 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				MTL_ENABLE_DEBUG_INFO = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		D9C47FFE1CDAB0160021F3C7 /* Release */ = {
+		BDFF8463250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
 				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
@@ -515,14 +617,14 @@
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
@@ -530,47 +632,27 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		D9C480001CDAB0160021F3C7 /* Debug */ = {
+		BDFF8465250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 82E5D63DE47495F837A641F1 /* Pods-Formant Analyzer.debug.xcconfig */;
+			baseConfigurationReference = E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Formant Analyzer/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-			};
-			name = Debug;
-		};
-		D9C480011CDAB0160021F3C7 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 66C3D3A01452D771E1A33313 /* Pods-Formant Analyzer.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -578,74 +660,116 @@
 				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BDFF8466250AC60C00233E39 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Formant Analyzer/Preview Content\"";
+				DEVELOPMENT_TEAM = "";
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
-		D9C480031CDAB0160021F3C7 /* Debug */ = {
+		BDFF8468250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "Formant AnalyzerTests/Info.plist";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQA762WH8Q;
+				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-Analyzer-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Formant Analyzer.app/Formant Analyzer";
 			};
 			name = Debug;
 		};
-		D9C480041CDAB0160021F3C7 /* Release */ = {
+		BDFF8469250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				INFOPLIST_FILE = "Formant AnalyzerTests/Info.plist";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQA762WH8Q;
+				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.7;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-Analyzer-Tests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Formant Analyzer.app/Formant Analyzer";
 			};
 			name = Release;
 		};
-		D9C480061CDAB0160021F3C7 /* Debug */ = {
+		BDFF846B250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = "Formant AnalyzerUITests/Info.plist";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQA762WH8Q;
+				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-Analyzer-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Formant Analyzer";
 			};
 			name = Debug;
 		};
-		D9C480071CDAB0160021F3C7 /* Release */ = {
+		BDFF846C250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */;
 			buildSettings = {
-				INFOPLIST_FILE = "Formant AnalyzerUITests/Info.plist";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UQA762WH8Q;
+				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-AnalyzerUITests";
+				PRODUCT_BUNDLE_IDENTIFIER = "net.phor.Formant-Analyzer-UITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "Formant Analyzer";
 			};
 			name = Release;
@@ -653,38 +777,38 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D9C47FD21CDAB0150021F3C7 /* Build configuration list for PBXProject "Formant Analyzer" */ = {
+		BDFF8435250AC60900233E39 /* Build configuration list for PBXProject "Formant Analyzer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9C47FFD1CDAB0160021F3C7 /* Debug */,
-				D9C47FFE1CDAB0160021F3C7 /* Release */,
+				BDFF8462250AC60C00233E39 /* Debug */,
+				BDFF8463250AC60C00233E39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9C47FFF1CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant Analyzer" */ = {
+		BDFF8464250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant Analyzer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9C480001CDAB0160021F3C7 /* Debug */,
-				D9C480011CDAB0160021F3C7 /* Release */,
+				BDFF8465250AC60C00233E39 /* Debug */,
+				BDFF8466250AC60C00233E39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9C480021CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */ = {
+		BDFF8467250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant AnalyzerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9C480031CDAB0160021F3C7 /* Debug */,
-				D9C480041CDAB0160021F3C7 /* Release */,
+				BDFF8468250AC60C00233E39 /* Debug */,
+				BDFF8469250AC60C00233E39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D9C480051CDAB0160021F3C7 /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */ = {
+		BDFF846A250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant AnalyzerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				D9C480061CDAB0160021F3C7 /* Debug */,
-				D9C480071CDAB0160021F3C7 /* Release */,
+				BDFF846B250AC60C00233E39 /* Debug */,
+				BDFF846C250AC60C00233E39 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -692,23 +816,23 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		D9321821234EC8A700F698AA /* RemoteSwiftPackageReference */ = {
+		BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/fulldecent/FDSoundActivatedRecorder.git";
+			repositoryURL = "https://github.com/AndreaMiotto/ActionOver.git";
 			requirement = {
-				branch = master;
-				kind = branch;
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		D9321822234EC8A700F698AA /* SwiftPackageProductDependency */ = {
+		BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = D9321821234EC8A700F698AA /* RemoteSwiftPackageReference */;
-			productName = FDSoundActivatedRecorder;
+			package = BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */;
+			productName = ActionOver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = D9C47FCF1CDAB0150021F3C7 /* Project object */;
+	rootObject = BDFF8432250AC60900233E39 /* Project object */;
 }

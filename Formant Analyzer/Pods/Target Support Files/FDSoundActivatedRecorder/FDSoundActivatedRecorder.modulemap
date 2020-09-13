@@ -1,0 +1,6 @@
+framework module FDSoundActivatedRecorder {
+  umbrella header "FDSoundActivatedRecorder-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -95,7 +95,8 @@ class SpeechAnalyzer {
     /// Creates an analyzer with given 16-bit PCM samples
     init(int16Samples data: Data, withFrequency rate: Int) {
         samples = data.withUnsafeBytes {
-            Array(UnsafeBufferPointer<Int16>(start: $0, count: data.count / MemoryLayout<Int16>.size))
+//            Array(UnsafeBufferPointer<Int16>(start: $0, count: data.count / MemoryLayout<Int16>.size))
+            Array($0.bindMemory(to: Int16.self)) // little endian
         }
         sampleRate = rate
     }
