@@ -1,6 +1,0 @@
-framework module Pods_Formant_Analyzer_SwiftUITests {
-  umbrella header "Pods-Formant Analyzer SwiftUITests-umbrella.h"
-
-  export *
-  module * { export * }
-}

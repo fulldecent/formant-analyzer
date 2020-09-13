@@ -34,7 +34,7 @@ lineChart.labelForValue = ^(CGFloat value) {
 [lineChart setChartData:chartData];
 ```
 
-You can also set several parameters. Some of the parameters, including `color` and `fillColor`, must be set before calling the `setChartData` method. All those properties are available:
+You can also set several parameters. Some of the parameters including `color` and `fillColor` must be set before calling the `setChartData` method. All those properties are available:
 
 ```objc
 // Index label properties
@@ -50,7 +50,7 @@ You can also set several parameters. Some of the parameters, including `color` a
 @property (nonatomic) UIColor* valueLabelBackgroundColor;
 @property (nonatomic) ValueLabelPositionType valueLabelPosition;
 
-// Number of visible steps in the chart
+// Number of visible step in the chart
 @property (nonatomic) int gridStep;
 @property (nonatomic) int verticalGridStep;
 @property (nonatomic) int horizontalGridStep;

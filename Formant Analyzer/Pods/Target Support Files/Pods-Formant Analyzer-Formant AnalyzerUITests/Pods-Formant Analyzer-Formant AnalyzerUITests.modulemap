@@ -1,0 +1,6 @@
+framework module Pods_Formant_Analyzer_Formant_AnalyzerUITests {
+  umbrella header "Pods-Formant Analyzer-Formant AnalyzerUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

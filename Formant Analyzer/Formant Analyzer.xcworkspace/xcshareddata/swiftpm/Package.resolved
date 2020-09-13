@@ -2,12 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "FDSoundActivatedRecorder",
-        "repositoryURL": "https://github.com/fulldecent/FDSoundActivatedRecorder.git",
+        "package": "ActionOver",
+        "repositoryURL": "https://github.com/AndreaMiotto/ActionOver.git",
         "state": {
-          "branch": "master",
-          "revision": "f95134e138bc2772b964a7adc7dc93fb6215e5be",
-          "version": null
+          "branch": null,
+          "revision": "06b0918c491232af1ce483ed528802522b9f201d",
+          "version": "1.0.3"
         }
       }
     ]
