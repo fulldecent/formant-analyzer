@@ -49,6 +49,11 @@ oo	male	300	870	2240
   * MATLAB Formant Tracker example http://www.mathworks.com/matlabcentral/fileexchange/8959-formant-tracker
   * Formant Java example http://chronos.ece.miami.edu/~dasp/SeniorProject/Presentation/416Presentation.pdf
   * Digital Bubble Bath - Don H. Johnson Great discussion on formant analysis and practical implementation http://www.clear.rice.edu/elec431/projects96/digitalbb/formants.html
+  * https://github.com/MLSpeech/DeepFormants
+  * https://2020.ieeeicassp.org/
+  * http://htk.eng.cam.ac.uk/
+  * https://github.com/jaekookang/p2fa_py3
+  * https://github.com/gre/zpeech
 
 The Formant Plotter
 ------------------------
