@@ -1,20 +1,16 @@
 PODS:
-  - FDSoundActivatedRecorder (3.1.0)
   - FSLineChart (0.1.7)
 
 DEPENDENCIES:
-  - FDSoundActivatedRecorder
   - FSLineChart
 
 SPEC REPOS:
   trunk:
-    - FDSoundActivatedRecorder
     - FSLineChart
 
 SPEC CHECKSUMS:
-  FDSoundActivatedRecorder: f08e5114767d843a7d781488cb3ed209a3ffe546
   FSLineChart: 1b8d3727e8feb323144126d381184bf1b15e6efc
 
-PODFILE CHECKSUM: eeb7104d7de086c6604346ced4d50f4a5613a5ad
+PODFILE CHECKSUM: 9a8e75995eb7e58dc8232e61d7554fc354490ef4
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.11.2

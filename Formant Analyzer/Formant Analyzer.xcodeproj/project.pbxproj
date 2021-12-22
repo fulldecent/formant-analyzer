@@ -15,7 +15,7 @@
 		BD5F37B3250B8821006C91ED /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B2250B8821006C91ED /* Complex.swift */; };
 		BD5F37B5250BD493006C91ED /* DrawSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B4250BD493006C91ED /* DrawSignal.swift */; };
 		BD9AF590250B7BAC00569851 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9AF58F250B7BAC00569851 /* ViewModel.swift */; };
-		BDB9489F250D09AF00ADA64F /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */; };
+		BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */ = {isa = PBXBuildFile; productRef = BDB9489E250D09AF00ADA64F /* ActionOver */; };
 		BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */; };
 		BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */; };
 		BDFF843E250AC60900233E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843D250AC60900233E39 /* AppDelegate.swift */; };
@@ -33,6 +33,7 @@
 		BDFF8478250AC67F00233E39 /* beat.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8471250AC67F00233E39 /* beat.raw */; };
 		BDFF8479250AC67F00233E39 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8472250AC67F00233E39 /* who.raw */; };
 		BDFF847A250AC67F00233E39 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8473250AC67F00233E39 /* calm.raw */; };
+		D97A6F0E2772EA1E00F581D9 /* FDSoundActivatedRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,7 +98,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB9489F250D09AF00ADA64F /* BuildFile in Frameworks */,
+				BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */,
+				D97A6F0E2772EA1E00F581D9 /* FDSoundActivatedRecorder in Frameworks */,
 				2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -239,7 +241,8 @@
 			);
 			name = "Formant Analyzer";
 			packageProductDependencies = (
-				BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */,
+				BDB9489E250D09AF00ADA64F /* ActionOver */,
+				D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */,
 			);
 			productName = "Formant Analyzer";
 			productReference = BDFF843A250AC60900233E39 /* Formant Analyzer.app */;
@@ -291,7 +294,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1170;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "Engin BULANIK";
 				TargetAttributes = {
 					BDFF8439250AC60900233E39 = {
@@ -317,7 +320,8 @@
 			);
 			mainGroup = BDFF8431250AC60900233E39;
 			packageReferences = (
-				BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */,
+				BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */,
+				D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */,
 			);
 			productRefGroup = BDFF843B250AC60900233E39 /* Products */;
 			projectDirPath = "";
@@ -554,6 +558,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -614,6 +619,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -649,7 +655,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Formant Analyzer/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8Q693ZG5RN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -657,6 +663,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -671,7 +678,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Formant Analyzer/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8Q693ZG5RN;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Formant Analyzer/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -679,6 +686,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.3.5;
 				PRODUCT_BUNDLE_IDENTIFIER = net.phor.FormantPlotter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -816,7 +824,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */ = {
+		BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AndreaMiotto/ActionOver.git";
 			requirement = {
@@ -824,13 +832,26 @@
 				minimumVersion = 1.0.3;
 			};
 		};
+		D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fulldecent/FDSoundActivatedRecorder";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BDB9489E250D09AF00ADA64F /* SwiftPackageProductDependency */ = {
+		BDB9489E250D09AF00ADA64F /* ActionOver */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BDB9489D250D09AF00ADA64F /* RemoteSwiftPackageReference */;
+			package = BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */;
 			productName = ActionOver;
+		};
+		D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */;
+			productName = FDSoundActivatedRecorder;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

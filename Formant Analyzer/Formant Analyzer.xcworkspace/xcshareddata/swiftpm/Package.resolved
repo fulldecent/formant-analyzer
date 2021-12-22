@@ -9,6 +9,15 @@
           "revision": "06b0918c491232af1ce483ed528802522b9f201d",
           "version": "1.0.3"
         }
+      },
+      {
+        "package": "FDSoundActivatedRecorder",
+        "repositoryURL": "https://github.com/fulldecent/FDSoundActivatedRecorder",
+        "state": {
+          "branch": "master",
+          "revision": "a03435e8b93548a35634959b57e53cd59f449cdb",
+          "version": null
+        }
       }
     ]
   },
