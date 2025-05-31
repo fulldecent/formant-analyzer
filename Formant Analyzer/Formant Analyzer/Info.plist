@@ -19,9 +19,11 @@
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
-	<true/>
+	<false/>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>to be able to analyze your formants</string>
+	<string>to analyze your formants</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

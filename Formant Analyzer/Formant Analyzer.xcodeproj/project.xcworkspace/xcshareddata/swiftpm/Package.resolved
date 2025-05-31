@@ -1,0 +1,33 @@
+{
+  "originHash" : "d913076a09b5bd9cd7909e277a4e1b3585b6182eb21aada8c7431caa459b5135",
+  "pins" : [
+    {
+      "identity" : "actionover",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AlexDubikov/ActionOver",
+      "state" : {
+        "revision" : "1fb634b75c3f92df741e42f2112b21da480d13bb",
+        "version" : "1.0.2"
+      }
+    },
+    {
+      "identity" : "fdsoundactivatedrecorder",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fulldecent/FDSoundActivatedRecorder",
+      "state" : {
+        "branch" : "master",
+        "revision" : "a03435e8b93548a35634959b57e53cd59f449cdb"
+      }
+    },
+    {
+      "identity" : "fslinechart",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/fulldecent/FSLineChart",
+      "state" : {
+        "revision" : "6e14df3758099a9c29e2cc014f62593c9a06aeb5",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 3
+}

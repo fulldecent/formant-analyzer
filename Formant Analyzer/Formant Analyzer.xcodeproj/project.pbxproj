@@ -3,19 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1E5F714AEEAA0FB09C0BAB78 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */; };
-		2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */; };
-		89EF55BB2A3C2CCF7C2ED208 /* Pods_Formant_AnalyzerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */; };
 		BD0D9C3F250C10300031B587 /* FormantPlotView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD0D9C3E250C10300031B587 /* FormantPlotView.swift */; };
 		BD5F37B1250B85B1006C91ED /* SpeechAnalyzer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B0250B85B1006C91ED /* SpeechAnalyzer.swift */; };
 		BD5F37B3250B8821006C91ED /* Complex.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B2250B8821006C91ED /* Complex.swift */; };
 		BD5F37B5250BD493006C91ED /* DrawSignal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5F37B4250BD493006C91ED /* DrawSignal.swift */; };
 		BD9AF590250B7BAC00569851 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD9AF58F250B7BAC00569851 /* ViewModel.swift */; };
-		BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */ = {isa = PBXBuildFile; productRef = BDB9489E250D09AF00ADA64F /* ActionOver */; };
 		BDB948A1250D1C7100ADA64F /* SpeechAnalyzerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A0250D1C7100ADA64F /* SpeechAnalyzerTests.swift */; };
 		BDB948A3250D1CCC00ADA64F /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDB948A2250D1CCC00ADA64F /* SnapshotHelper.swift */; };
 		BDFF843E250AC60900233E39 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF843D250AC60900233E39 /* AppDelegate.swift */; };
@@ -23,7 +19,6 @@
 		BDFF8442250AC60900233E39 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8441250AC60900233E39 /* ContentView.swift */; };
 		BDFF8444250AC60B00233E39 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8443250AC60B00233E39 /* Assets.xcassets */; };
 		BDFF8447250AC60B00233E39 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8446250AC60B00233E39 /* Preview Assets.xcassets */; };
-		BDFF844A250AC60B00233E39 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */; };
 		BDFF8455250AC60C00233E39 /* Formant_Analyzer_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF8454250AC60C00233E39 /* Formant_Analyzer_Tests.swift */; };
 		BDFF8460250AC60C00233E39 /* Formant_Analyzer_UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDFF845F250AC60C00233E39 /* Formant_Analyzer_UITests.swift */; };
 		BDFF8474250AC67F00233E39 /* bid.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF846D250AC67E00233E39 /* bid.raw */; };
@@ -34,6 +29,8 @@
 		BDFF8479250AC67F00233E39 /* who.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8472250AC67F00233E39 /* who.raw */; };
 		BDFF847A250AC67F00233E39 /* calm.raw in Resources */ = {isa = PBXBuildFile; fileRef = BDFF8473250AC67F00233E39 /* calm.raw */; };
 		D97A6F0E2772EA1E00F581D9 /* FDSoundActivatedRecorder in Frameworks */ = {isa = PBXBuildFile; productRef = D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */; };
+		D9E4FA952DEB58D8007F57D4 /* FSLineChart in Frameworks */ = {isa = PBXBuildFile; productRef = D9E4FA942DEB58D8007F57D4 /* FSLineChart */; };
+		D9E4FA982DEB5970007F57D4 /* ActionOver in Frameworks */ = {isa = PBXBuildFile; productRef = D9E4FA972DEB5970007F57D4 /* ActionOver */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,13 +51,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant AnalyzerTests.debug.xcconfig"; path = "Target Support Files/Pods-Formant AnalyzerTests/Pods-Formant AnalyzerTests.debug.xcconfig"; sourceTree = "<group>"; };
-		4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_AnalyzerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig"; sourceTree = "<group>"; };
-		996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.release.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.release.xcconfig"; sourceTree = "<group>"; };
 		BD0D9C3E250C10300031B587 /* FormantPlotView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormantPlotView.swift; sourceTree = "<group>"; };
 		BD5F37B0250B85B1006C91ED /* SpeechAnalyzer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechAnalyzer.swift; sourceTree = "<group>"; };
 		BD5F37B2250B8821006C91ED /* Complex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Complex.swift; sourceTree = "<group>"; };
@@ -74,7 +64,6 @@
 		BDFF8441250AC60900233E39 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		BDFF8443250AC60B00233E39 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDFF8446250AC60B00233E39 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		BDFF8449250AC60B00233E39 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDFF844B250AC60B00233E39 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDFF8450250AC60C00233E39 /* Formant AnalyzerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Formant AnalyzerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDFF8454250AC60C00233E39 /* Formant_Analyzer_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formant_Analyzer_Tests.swift; sourceTree = "<group>"; };
@@ -89,8 +78,6 @@
 		BDFF8471250AC67F00233E39 /* beat.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = beat.raw; sourceTree = "<group>"; };
 		BDFF8472250AC67F00233E39 /* who.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = who.raw; sourceTree = "<group>"; };
 		BDFF8473250AC67F00233E39 /* calm.raw */ = {isa = PBXFileReference; lastKnownFileType = file; path = calm.raw; sourceTree = "<group>"; };
-		C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant AnalyzerTests.release.xcconfig"; path = "Target Support Files/Pods-Formant AnalyzerTests/Pods-Formant AnalyzerTests.release.xcconfig"; sourceTree = "<group>"; };
-		E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Formant Analyzer.debug.xcconfig"; path = "Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,9 +85,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BDB9489F250D09AF00ADA64F /* ActionOver in Frameworks */,
+				D9E4FA952DEB58D8007F57D4 /* FSLineChart in Frameworks */,
 				D97A6F0E2772EA1E00F581D9 /* FDSoundActivatedRecorder in Frameworks */,
-				2B09B13C9EAD17D1985570EB /* Pods_Formant_Analyzer.framework in Frameworks */,
+				D9E4FA982DEB5970007F57D4 /* ActionOver in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,7 +95,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				89EF55BB2A3C2CCF7C2ED208 /* Pods_Formant_AnalyzerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,36 +102,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E5F714AEEAA0FB09C0BAB78 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A2DA749CB62A78124F9F36D /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */,
-				ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */,
-				4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */,
-				8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */,
-				3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */,
-				C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
-		84EA20F596ED9F8FD551DFF3 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				842B253CD5114EEAAABFC654 /* Pods_Formant_Analyzer.framework */,
-				996D1AD4764CB0D849006402 /* Pods_Formant_Analyzer_Formant_AnalyzerUITests.framework */,
-				83E9CF5B8A117EC28A8E1219 /* Pods_Formant_AnalyzerTests.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		BDFF8431250AC60900233E39 = {
 			isa = PBXGroup;
 			children = (
@@ -153,8 +115,6 @@
 				BDFF8453250AC60C00233E39 /* Formant Analyzer Tests */,
 				BDFF845E250AC60C00233E39 /* Formant Analyzer UITests */,
 				BDFF843B250AC60900233E39 /* Products */,
-				2A2DA749CB62A78124F9F36D /* Pods */,
-				84EA20F596ED9F8FD551DFF3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -187,7 +147,6 @@
 				BDFF8470250AC67F00233E39 /* four.raw */,
 				BDFF8472250AC67F00233E39 /* who.raw */,
 				BDFF8443250AC60B00233E39 /* Assets.xcassets */,
-				BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */,
 				BDFF844B250AC60B00233E39 /* Info.plist */,
 				BDFF8445250AC60B00233E39 /* Preview Content */,
 			);
@@ -229,11 +188,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BDFF8464250AC60C00233E39 /* Build configuration list for PBXNativeTarget "Formant Analyzer" */;
 			buildPhases = (
-				B4520503F92F5147F247A9CD /* [CP] Check Pods Manifest.lock */,
 				BDFF8436250AC60900233E39 /* Sources */,
 				BDFF8437250AC60900233E39 /* Frameworks */,
 				BDFF8438250AC60900233E39 /* Resources */,
-				65951C922D6C217E2CDF22A0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -241,8 +198,9 @@
 			);
 			name = "Formant Analyzer";
 			packageProductDependencies = (
-				BDB9489E250D09AF00ADA64F /* ActionOver */,
 				D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */,
+				D9E4FA942DEB58D8007F57D4 /* FSLineChart */,
+				D9E4FA972DEB5970007F57D4 /* ActionOver */,
 			);
 			productName = "Formant Analyzer";
 			productReference = BDFF843A250AC60900233E39 /* Formant Analyzer.app */;
@@ -293,8 +251,9 @@
 		BDFF8432250AC60900233E39 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1170;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = "Engin BULANIK";
 				TargetAttributes = {
 					BDFF8439250AC60900233E39 = {
@@ -320,8 +279,9 @@
 			);
 			mainGroup = BDFF8431250AC60900233E39;
 			packageReferences = (
-				BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */,
 				D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */,
+				D9E4FA932DEB58D8007F57D4 /* XCRemoteSwiftPackageReference "FSLineChart" */,
+				D9E4FA962DEB5970007F57D4 /* XCRemoteSwiftPackageReference "ActionOver" */,
 			);
 			productRefGroup = BDFF843B250AC60900233E39 /* Products */;
 			projectDirPath = "";
@@ -340,7 +300,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDFF8479250AC67F00233E39 /* who.raw in Resources */,
-				BDFF844A250AC60B00233E39 /* LaunchScreen.storyboard in Resources */,
 				BDFF8447250AC60B00233E39 /* Preview Assets.xcassets in Resources */,
 				BDFF8474250AC67F00233E39 /* bid.raw in Resources */,
 				BDFF8477250AC67F00233E39 /* four.raw in Resources */,
@@ -413,45 +372,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		65951C922D6C217E2CDF22A0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer/Pods-Formant Analyzer-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B4520503F92F5147F247A9CD /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Formant Analyzer-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		E983D93A8C7D709632FAEFD1 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -460,9 +380,13 @@
 			inputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
+			inputPaths = (
+			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-Formant Analyzer-Formant AnalyzerUITests/Pods-Formant Analyzer-Formant AnalyzerUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -520,17 +444,6 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		BDFF8448250AC60B00233E39 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BDFF8449250AC60B00233E39 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
 		BDFF8462250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -569,6 +482,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -630,6 +544,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -650,7 +565,6 @@
 		};
 		BDFF8465250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E42F7B8B9FDB05E0BE0DCB95 /* Pods-Formant Analyzer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -673,7 +587,6 @@
 		};
 		BDFF8466250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = ACBC93E89ED864AB37D1F336 /* Pods-Formant Analyzer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -696,9 +609,7 @@
 		};
 		BDFF8468250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3B947530DA82A20E6B631CC8 /* Pods-Formant AnalyzerTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQA762WH8Q;
@@ -719,9 +630,7 @@
 		};
 		BDFF8469250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C4433BD8BD56F46F8ECD15BB /* Pods-Formant AnalyzerTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQA762WH8Q;
@@ -742,9 +651,7 @@
 		};
 		BDFF846B250AC60C00233E39 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4960A5F35EF2E19201466C78 /* Pods-Formant Analyzer-Formant AnalyzerUITests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQA762WH8Q;
 				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
@@ -763,9 +670,7 @@
 		};
 		BDFF846C250AC60C00233E39 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8ED6A11878CB3FC2E6018412 /* Pods-Formant Analyzer-Formant AnalyzerUITests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UQA762WH8Q;
 				INFOPLIST_FILE = "Formant Analyzer UITests/Info.plist";
@@ -824,14 +729,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/AndreaMiotto/ActionOver.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
-			};
-		};
 		D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/fulldecent/FDSoundActivatedRecorder";
@@ -840,18 +737,39 @@
 				kind = branch;
 			};
 		};
+		D9E4FA932DEB58D8007F57D4 /* XCRemoteSwiftPackageReference "FSLineChart" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fulldecent/FSLineChart";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+		D9E4FA962DEB5970007F57D4 /* XCRemoteSwiftPackageReference "ActionOver" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AlexDubikov/ActionOver";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		BDB9489E250D09AF00ADA64F /* ActionOver */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = BDB9489D250D09AF00ADA64F /* XCRemoteSwiftPackageReference "ActionOver" */;
-			productName = ActionOver;
-		};
 		D97A6F0D2772EA1E00F581D9 /* FDSoundActivatedRecorder */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D97A6F0C2772EA1D00F581D9 /* XCRemoteSwiftPackageReference "FDSoundActivatedRecorder" */;
 			productName = FDSoundActivatedRecorder;
+		};
+		D9E4FA942DEB58D8007F57D4 /* FSLineChart */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9E4FA932DEB58D8007F57D4 /* XCRemoteSwiftPackageReference "FSLineChart" */;
+			productName = FSLineChart;
+		};
+		D9E4FA972DEB5970007F57D4 /* ActionOver */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D9E4FA962DEB5970007F57D4 /* XCRemoteSwiftPackageReference "ActionOver" */;
+			productName = ActionOver;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

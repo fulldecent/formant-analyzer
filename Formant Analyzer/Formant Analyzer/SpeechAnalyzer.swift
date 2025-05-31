@@ -8,344 +8,303 @@
 
 import Foundation
 
+/// Analyzes speech signals to extract formants and related properties.
 class SpeechAnalyzer {
-    /// Individual audio samples
+    /// Individual audio samples.
     let samples: [Int16]
     
-    /// The rate in Hz
+    /// The rate in Hz.
     let sampleRate: Int
     
-    /// Human formants are < 5 kHz so we do not need signal information above 10 kHz
+    /// Human formants are < 5 kHz, so we do not need signal information above 10 kHz.
     lazy var decimationFactor: Int = {
-        return self.sampleRate / 10000
+        max(1, sampleRate / 10000)
     }()
     
-    /// The part of `samples` which has a strong signal
+    /// The part of `samples` which has a strong signal.
     lazy var strongPart: CountableRange<Int> = {
-        return SpeechAnalyzer.findStrongPartOfSignal(self.samples, withChunks: 300, sensitivity: 0.1)
+        SpeechAnalyzer.findStrongPartOfSignal(samples, withChunks: 300, sensitivity: 0.1)
     }()
     
-    /// The part of `samples` which is a vowel utterance
+    /// The part of `samples` which is a vowel utterance.
     lazy var vowelPart: CountableRange<Int> = {
-        return self.strongPart.truncatedTails(byPortion: 0.15)
+        strongPart.truncatedTails(byPortion: 0.15)
     }()
     
-    /// The vowel part of `samples` decimated by `decimationFactor`
-    fileprivate lazy var vowelSamplesDecimated: [Int16] = {
-        let range = self.vowelPart
-        return self.samples[range].decimated(by: self.decimationFactor)
+    /// The vowel part of `samples` decimated by `decimationFactor`.
+    private lazy var vowelSamplesDecimated: [Int16] = {
+        let range = vowelPart
+        return samples[range].decimated(by: decimationFactor)
     }()
     
-    /// Linear prediction coefficients of the vowel signal
+    /// Linear prediction coefficients of the vowel signal.
     lazy var estimatedLpcCoefficients: [Double] = {
-        return SpeechAnalyzer.estimateLpcCoefficients(samples: self.vowelSamplesDecimated, sampleRate: self.sampleRate/self.decimationFactor, modelLength: 10)
+        SpeechAnalyzer.estimateLpcCoefficients(samples: vowelSamplesDecimated, sampleRate: sampleRate / decimationFactor, modelLength: 10)
     }()
     
-    /// Synthesize the frequency response for the estimated LPC coefficients
-    ///
-    /// - Returns: the response at frequencies 0, 5, ... Hz, the first index (identity) is 1.0
+    /// Synthesized frequency response for the estimated LPC coefficients.
+    /// - Returns: The response at frequencies 0, 15, ... Hz, with the first index (identity) as 1.0.
     lazy var synthesizedFrequencyResponse: [Double] = {
-        let frequencies = Array(stride(from: 0, to: self.sampleRate/self.decimationFactor/2, by: 15))
-        return SpeechAnalyzer.synthesizeResponseForLPC(self.estimatedLpcCoefficients, withRate: self.sampleRate/self.decimationFactor, atFrequencies:frequencies)
+        let frequencies = Array(stride(from: 0, to: sampleRate / decimationFactor / 2, by: 15))
+        return SpeechAnalyzer.synthesizeResponseForLPC(estimatedLpcCoefficients, withRate: sampleRate / decimationFactor, atFrequencies: frequencies)
     }()
     
-    /// Finds at least first four formants which are in the range for estimating human vowel pronunciation
-    ///
-    /// - Returns: Formants in Hz
+    /// Finds at least the first four formants in the range for estimating human vowel pronunciation.
+    /// - Returns: Formants in Hz.
     lazy var formants: [Double] = {
-        let complexPolynomial = self.estimatedLpcCoefficients.map({0.0.i + $0})
-        let formants = SpeechAnalyzer.findFormants(complexPolynomial, sampleRate: self.sampleRate/self.decimationFactor)
+        let complexPolynomial = estimatedLpcCoefficients.map { 0.0.i + $0 }
+        let formants = SpeechAnalyzer.findFormants(complexPolynomial, sampleRate: sampleRate / decimationFactor)
         return SpeechAnalyzer.filterSpeechFormants(formants)
     }()
     
-    /// Reduce horizontal resolution of `strongPart` of `signal` for plotting
+    /// Reduces horizontal resolution of `strongPart` for plotting.
+    /// - Parameter newSampleCount: The desired number of samples.
+    /// - Returns: Downsampled signal values.
     func downsampleStrongPartToSamples(_ newSampleCount: Int) -> [Int16] {
-        let chunkSize = self.strongPart.count / newSampleCount
-        var chunkMaxElements = [Int16]()
+        guard newSampleCount > 0, !strongPart.isEmpty else { return [] }
+        let chunkSize = strongPart.count / newSampleCount
+        guard chunkSize > 0 else { return Array(samples[strongPart].prefix(newSampleCount)) }
         
-        // Find the chunk with the most energy and set energy threshold
-        for chunkStart in stride(from: self.strongPart.lowerBound, through: self.strongPart.upperBound.advanced(by: -chunkSize), by: chunkSize) {
-            let range = (chunkStart..<chunkStart+chunkSize)
-            let maxValue = self.samples[range].max()!
-            chunkMaxElements.append(maxValue)
+        var chunkMaxElements: [Int16] = []
+        for chunkStart in stride(from: strongPart.lowerBound, through: strongPart.upperBound - chunkSize, by: chunkSize) {
+            let range = chunkStart..<min(chunkStart + chunkSize, strongPart.upperBound)
+            chunkMaxElements.append(samples[range].max() ?? 0)
         }
         return chunkMaxElements
     }
     
-    /// Reduce horizontal resolution of `signal` for plotting
+    /// Reduces horizontal resolution of `samples` for plotting.
+    /// - Parameter newSampleCount: The desired number of samples.
+    /// - Returns: Downsampled signal values.
     func downsampleToSamples(_ newSampleCount: Int) -> [Int16] {
-        guard newSampleCount > 0 else {
-            return []
-        }
-        guard newSampleCount < self.samples.count else {
-            return self.samples
-        }
-        let chunkSize = self.samples.count / newSampleCount
-        var chunkMaxElements = [Int16]()
+        guard newSampleCount > 0 else { return [] }
+        guard newSampleCount < samples.count else { return samples }
+        let chunkSize = samples.count / newSampleCount
+        guard chunkSize > 0 else { return Array(samples.prefix(newSampleCount)) }
         
-        // Find the chunk with the most energy and set energy threshold
-        for chunkStart in stride(from: self.samples.startIndex, through: self.samples.endIndex.advanced(by: -chunkSize), by: chunkSize) {
-            let range = (chunkStart..<chunkStart+chunkSize)
-            let maxValue = self.samples[range].max()!
-            chunkMaxElements.append(maxValue)
+        var chunkMaxElements: [Int16] = []
+        for chunkStart in stride(from: samples.startIndex, through: samples.endIndex - chunkSize, by: chunkSize) {
+            let range = chunkStart..<min(chunkStart + chunkSize, samples.endIndex)
+            chunkMaxElements.append(samples[range].max() ?? 0)
         }
         return chunkMaxElements
     }
-
-    /// Creates an analyzer with given 16-bit PCM samples
+    
+    /// Creates an analyzer with given 16-bit PCM samples.
+    /// - Parameters:
+    ///   - data: The raw PCM data.
+    ///   - rate: The sample rate in Hz.
     init(int16Samples data: Data, withFrequency rate: Int) {
-        samples = data.withUnsafeBytes {
-//            Array(UnsafeBufferPointer<Int16>(start: $0, count: data.count / MemoryLayout<Int16>.size))
-            Array($0.bindMemory(to: Int16.self)) // little endian
+        samples = data.withUnsafeBytes { buffer in
+            Array(buffer.bindMemory(to: Int16.self))
         }
         sampleRate = rate
     }
     
-    //
-    //MARK: Class functions that allow tweaking of parameters
-    //
-    
-    /// Analyzes a signal to find the significant part
-    ///
-    /// Considers `numChunks` parts of the signal and trims ends with signal strength not greater than a `factor` of the maximum signal strength
-    ///
-    /// - Returns the range of the selected signal from the selected chunks
+    /// Analyzes a signal to find the significant part.
+    /// - Parameters:
+    ///   - signal: The input signal.
+    ///   - numChunks: Number of chunks to divide the signal into.
+    ///   - factor: Sensitivity factor for energy threshold.
+    /// - Returns: The range of the strong signal.
     class func findStrongPartOfSignal(_ signal: [Int16], withChunks numChunks: Int, sensitivity factor: Double) -> CountableRange<Int> {
-        let chunkSize = signal.count / numChunks
-        var chunkEnergies = [Double]()
+        guard !signal.isEmpty, numChunks > 0 else { return 0..<0 }
+        let chunkSize = max(1, signal.count / numChunks)
+        var chunkEnergies: [Double] = []
         var maxChunkEnergy: Double = 0
         
-        guard chunkSize > 0 else {
-            return 0..<0
-        }
-
-        // Find the chunk with the most energy and set energy threshold
-        for chunkStart in stride(from: signal.startIndex, through: signal.endIndex.advanced(by: -chunkSize), by: chunkSize) {
-            let range = (chunkStart..<chunkStart+chunkSize)
-            let chunkEnergy = signal[range].reduce(0, {$0 + Double($1)*Double($1)})
+        for chunkStart in stride(from: signal.startIndex, through: signal.endIndex - chunkSize, by: chunkSize) {
+            let range = chunkStart..<min(chunkStart + chunkSize, signal.endIndex)
+            let chunkEnergy = signal[range].reduce(0.0) { $0 + Double($1) * Double($1) }
             maxChunkEnergy = max(maxChunkEnergy, chunkEnergy)
             chunkEnergies.append(chunkEnergy)
         }
-        let firstSelectedChunk = chunkEnergies.firstIndex {$0 > maxChunkEnergy * factor} ?? 0
-        let lastSelectedChunk: Int
-        // http://stackoverflow.com/a/33153621/300224
-        if let reverseIndex = chunkEnergies.reversed().firstIndex(where: {$0 > maxChunkEnergy * factor}) {
-            lastSelectedChunk = reverseIndex.base - 1
-        } else {
-            lastSelectedChunk = chunkEnergies.endIndex - 1
-        }
-        return firstSelectedChunk * chunkSize ..< (lastSelectedChunk + 1) * chunkSize
+        
+        let firstSelectedChunk = chunkEnergies.firstIndex { $0 > maxChunkEnergy * factor } ?? 0
+        let lastSelectedChunk = chunkEnergies.reversed().firstIndex { $0 > maxChunkEnergy * factor }.map { chunkEnergies.count - 1 - $0 } ?? chunkEnergies.count - 1
+        return firstSelectedChunk * chunkSize..<min((lastSelectedChunk + 1) * chunkSize, signal.count)
     }
     
-    /// Estimate LPC polynomial coefficients from the signal
-    /// Uses the Levinson-Durbin recursion algorithm
-    /// - Returns: `modelLength` + 1 autocorrelation coefficients for an all-pole model
-    /// the first coefficient is 1.0 for perfect autocorrelation with zero offset
+    /// Estimates LPC polynomial coefficients from the signal using Levinson-Durbin recursion.
+    /// - Parameters:
+    ///   - samples: The input samples.
+    ///   - rate: The sample rate in Hz.
+    ///   - modelLength: The number of coefficients.
+    /// - Returns: Autocorrelation coefficients for an all-pole model.
     class func estimateLpcCoefficients(samples: [Int16], sampleRate rate: Int, modelLength: Int) -> [Double] {
-        var correlations = [Double]()
-        var coefficients = [Double]()
-        var modelError: Double
-        
         guard samples.count > modelLength else {
             return [Double](repeating: 1, count: modelLength + 1)
         }
         
-        for delay in 0 ... modelLength {
+        var correlations: [Double] = []
+        var coefficients: [Double] = []
+        var modelError: Double
+        
+        for delay in 0...modelLength {
             var correlationSum = 0.0
-            for sampleIndex in 0 ..< samples.count - delay {
+            for sampleIndex in 0..<(samples.count - delay) {
                 correlationSum += Double(samples[sampleIndex]) * Double(samples[sampleIndex + delay])
             }
             correlations.append(correlationSum)
         }
         
-        // The first predictor (delay 0) is 100% correlation
-        modelError = correlations[0] // total power is unexplained
-        coefficients.append(1.0) // 100% correlation for zero delay
+        modelError = correlations[0]
+        guard modelError != 0 else { return [Double](repeating: 1, count: modelLength + 1) }
+        coefficients.append(1.0)
         
-        // For each coefficient in turn
-        for delay in 1 ... modelLength {
-            // Find next reflection coefficient from coefficients and correlations
+        for delay in 1...modelLength {
             var rcNum = 0.0
-            for i in 1 ... delay {
+            for i in 1...delay {
                 rcNum -= coefficients[delay - i] * correlations[i]
             }
             coefficients.append(rcNum / modelError)
             
-            // Perform recursion on coefficients
-            for i in stride(from: 1, through: delay/2, by: 1) {
+            for i in stride(from: 1, through: delay / 2, by: 1) {
                 let pci = coefficients[i] + coefficients[delay] * coefficients[delay - i]
                 let pcki = coefficients[delay - i] + coefficients[delay] * coefficients[i]
                 coefficients[i] = pci
                 coefficients[delay - i] = pcki
             }
-
-            // Calculate residual error
+            
             modelError *= 1.0 - coefficients[delay] * coefficients[delay]
         }
         return coefficients
     }
     
-    /// Synthesize the frequency response for the estimated LPC coefficients
-    ///
-    /// - Parameter coefficients: an all-pole LPC model
-    /// - Parameter samplingRate: the sampling frequency in Hz
-    /// - Parameter frequencies: the frequencies whose response you'd like to know
-    /// - Returns: a response from 0 to 1 for each frequency you are interrogating
-    class func synthesizeResponseForLPC(_ coefficients: [Double], withRate samplingRate:Int, atFrequencies frequencies:[Int]) -> [Double] {
-        var retval = [Double]()
-        // Calculate frequency response of the inverse of the predictor filter
+    /// Synthesizes the frequency response for the estimated LPC coefficients.
+    /// - Parameters:
+    ///   - coefficients: The LPC model coefficients.
+    ///   - samplingRate: The sampling frequency in Hz.
+    ///   - frequencies: The frequencies to evaluate.
+    /// - Returns: The response from 0 to 1 for each frequency.
+    class func synthesizeResponseForLPC(_ coefficients: [Double], withRate samplingRate: Int, atFrequencies frequencies: [Int]) -> [Double] {
+        var response: [Double] = []
         for frequency in frequencies {
             let radians = Double(frequency) / Double(samplingRate) * Double.pi * 2
-            var response: Complex<Double> = 0.0 + 0.0.i
+            var sum: Complex<Double> = 0.0 + 0.0.i
             for (index, coefficient) in coefficients.enumerated() {
-                response += Complex<Double>(abs: coefficient, arg:Double(index) * radians)
+                sum += Complex<Double>(abs: coefficient, arg: Double(index) * radians)
             }
-            retval.append(20 * log10(1.0 / response.abs))
+            response.append(20 * log10(1.0 / sum.abs))
         }
-        return retval
+        return response
     }
     
-    /// Laguerre's method to find one root of the given complex polynomial
-    /// Call this method repeatedly to find all the complex roots one by one
-    /// Algorithm from Numerical Recipes in C by Press/Teutkolsky/Vetterling/Flannery
-    ///
+    /// Finds one root of a complex polynomial using Laguerre's method.
+    /// - Parameters:
+    ///   - polynomial: The polynomial coefficients.
+    ///   - guess: The initial guess for the root.
+    /// - Returns: The computed root.
     class func laguerreRoot(_ polynomial: [Complex<Double>], initialGuess guess: Complex<Double> = 0.0 + 0.0.i) -> Complex<Double> {
         let m = polynomial.count - 1
-        
         let MR = 8
         let MT = 10
-        let maximumIterations = MR * MT // is MR * MT
-
-        /// Error threshold
+        let maximumIterations = MR * MT
         let EPSS = 1.0e-7
-
-        var abx, abp, abm, err: Double
-        var dx, x1, b, d, f, g, h, sq, gp, gm, g2: Complex<Double>
-        let frac = [0.0, 0.5, 0.25, 0.75, 0.125, 0.375, 0.625, 0.875, 1.0]
-        var x = guess
         
-        for iteration in 1 ... maximumIterations {
-            b = polynomial[m]
-            err = b.abs
-            d = 0.0 + 0.0.i
-            f = 0.0 + 0.0.i
-            abx = x.abs
-            for j in stride(from: (m-1), through: 0, by: -1) {
-                // efficient computation of 1st and 2nd derivatives of polynomials
-                // f is P``/2
+        var x = guess
+        let frac = [0.0, 0.5, 0.25, 0.75, 0.125, 0.375, 0.625, 0.875, 1.0]
+        
+        for iteration in 1...maximumIterations {
+            var b = polynomial[m]
+            var err = b.abs
+            var d: Complex<Double> = 0.0 + 0.0.i
+            var f: Complex<Double> = 0.0 + 0.0.i
+            let abx = x.abs
+            
+            for j in stride(from: m - 1, through: 0, by: -1) {
                 f = x * f + d
                 d = x * d + b
                 b = x * b + polynomial[j]
                 err = b.abs + abx * err
             }
-            err *= EPSS // estimate of round-off error in evaluating polynomial
-            if (b.abs < err) {
+            err *= EPSS
+            
+            if b.abs < err {
                 return x
             }
-            g = d / b
-            g2 = g * g
-            h = g2 - 2.0 * f / b
-            sq = sqrt((Double(m) - 1) * (Double(m) * h - g2))
-            gp = g + sq
-            gm = g - sq
-            abp = gp.abs
-            abm = gm.abs
-            if (abp < abm) {
+            
+            let g = d / b
+            let g2 = g * g
+            let h = g2 - 2.0 * f / b
+            let sq = sqrt((Double(m) - 1) * (Double(m) * h - g2))
+            var gp = g + sq
+            let gm = g - sq
+            let abp = gp.abs
+            let abm = gm.abs
+            if abp < abm {
                 gp = gm
             }
-            dx = max(abp, abm) > 0.0 ? Double(m) / gp : (1 + abx) * (cos(Double(iteration)) + sin(Double(iteration)).i)
-            x1 = x - dx
-            if (x == x1) {
-                return x // converged
+            let dx = max(abp, abm) > 0.0 ? Double(m) / gp : (1 + abx) * (cos(Double(iteration)) + sin(Double(iteration)).i)
+            let x1 = x - dx
+            
+            if x == x1 {
+                return x
             }
-            // Every so often we take a fractional step, to break any limit cycle (itself a rare occurrence)
-            if iteration % MT > 0 {
-                x = x1
-            } else {
-                x = x - frac[iteration/MT] * dx
-            }
+            
+            x = iteration % MT > 0 ? x1 : x - frac[iteration / MT] * dx
         }
-        NSLog("Too many iterations in Laguerre, giving up")
+        NSLog("Too many iterations in Laguerre, returning zero")
         return 0 + 0.i
     }
     
-    /// Use Laguerre's method to find roots.
-    ///
-    /// - Parameter polynomial: coefficients of the input polynomial
-    /// - Note: Does not implement root polishing, so accuracy may be impacted
-    /// - Note: May include duplicated roots/formants
+    /// Finds the roots of a complex polynomial using Laguerre's method.
+    /// - Parameters:
+    ///   - polynomial: The polynomial coefficients.
+    ///   - rate: The sample rate in Hz.
+    /// - Returns: Formant frequencies in Hz.
     class func findFormants(_ polynomial: [Complex<Double>], sampleRate rate: Int) -> [Double] {
-        /// Laguerre imaginary noise gate
-        let EPS = 2.0e-6
-
-        var roots = [Complex<Double>]()
+        var roots: [Complex<Double>] = []
         var deflatedPolynomial = polynomial
         let modelOrder = polynomial.count - 1
         
         for j in stride(from: modelOrder, through: 1, by: -1) {
-            var root = SpeechAnalyzer.laguerreRoot(deflatedPolynomial)
-            
-            // If imaginary part is very small, ignore it
-            if abs(root.imag) < 2.0 * EPS * abs(root.real) {
+            var root = laguerreRoot(deflatedPolynomial)
+            if abs(root.imag) < 2.0e-6 * abs(root.real) {
                 root.imag = 0.0
             }
             roots.append(root)
             
-            // Perform forward deflation. Divide by the factor of the root found above
             var b = deflatedPolynomial[j]
-            for jj in stride(from: (j-1), through: 0, by: -1) {
+            for jj in stride(from: j - 1, through: 0, by: -1) {
                 let c = deflatedPolynomial[jj]
                 deflatedPolynomial[jj] = b
                 b = root * b + c
             }
         }
         
-        let polishedRoots = roots.map({SpeechAnalyzer.laguerreRoot(polynomial, initialGuess: $0)})
-        //MAYBE: This may cause duplicated roots, is that a problem?
-        
-        // Find real frequencies corresponding to all roots
-        let formantFrequencies = polishedRoots.map({$0.arg * Double(rate) / Double.pi / 2})
+        let polishedRoots = roots.map { laguerreRoot(polynomial, initialGuess: $0) }
+        let formantFrequencies = polishedRoots.map { $0.arg * Double(rate) / Double.pi / 2 }
         return formantFrequencies.sorted()
     }
-
-    /// Finds the first four formants and cleans out negatives, and other problems
-    ///
-    /// - Returns: Formants in Hz
+    
+    /// Filters formants to ensure they are valid for human speech.
+    /// - Parameter formants: The input formants in Hz.
+    /// - Returns: At least four filtered formants in Hz.
     class func filterSpeechFormants(_ formants: [Double]) -> [Double] {
-        /// Human minimum format ability in Hz
         let MIN_FORMANT = 50.0
-        
-        /// Maximum format ability in Hz
-        ///
-        /// - Note: This should be lower than sampling rate / 2 - MIN_FORMANT
         let MAX_FORMANT = 5000.0
-        
-        /// Formants closer than this will be merged into one, in Hz
         let MIN_DISTANCE = 10.0
         
-        var editedFormants = formants.sorted().compactMap({$0 >= MIN_FORMANT && $0 <= MAX_FORMANT ? $0 : nil})
+        var editedFormants = formants.sorted().filter { $0 >= MIN_FORMANT && $0 <= MAX_FORMANT }
         var done = false
         while !done {
-            {
-                for (index, formantA) in editedFormants.enumerated() {
-                    guard index < editedFormants.count - 1 else {
-                        continue
-                    }
-                    let formantB = editedFormants[(index + 1)]
-                    if abs(formantA - formantB) < MIN_DISTANCE {
-                        let newFormant = (formantA + formantB) / 2
-                        editedFormants.remove(at: editedFormants.firstIndex(of: formantA)!)
-                        editedFormants.remove(at: editedFormants.firstIndex(of: formantB)!)
-                        editedFormants.append(newFormant)
-                        editedFormants = editedFormants.sorted()
-                        return
-                    }
+            done = true
+            for (index, formantA) in editedFormants.enumerated() {
+                guard index < editedFormants.count - 1 else { continue }
+                let formantB = editedFormants[index + 1]
+                if abs(formantA - formantB) < MIN_DISTANCE {
+                    let newFormant = (formantA + formantB) / 2
+                    editedFormants.remove(at: index + 1)
+                    editedFormants[index] = newFormant
+                    editedFormants.sort()
+                    done = false
+                    break
                 }
-                done = true
-            }()
+            }
         }
         
-        for _ in stride(from: editedFormants.count, through: 4, by: 1) {
+        while editedFormants.count < 4 {
             editedFormants.append(9999.0)
         }
         
@@ -353,21 +312,23 @@ class SpeechAnalyzer {
     }
 }
 
-// Must be able to represent an empty range
+/// Truncates the tails of a range by a portion of its length.
 extension CountableRange where Bound.Stride == Int {
-    /// Shrink range by `portion` of its length from each size
-    /// - Parameter portion is a fraction in the range 0...0.5
+    /// Shrinks range by `portion` of its length from each side.
+    /// - Parameter portion: A fraction in the range 0...0.5.
     func truncatedTails(byPortion portion: Double) -> CountableRange<Bound> {
-        let start = self.lowerBound.advanced(by: Int((portion * Double(self.count)).rounded()))
-        let end = self.lowerBound.advanced(by: Int(((1 - portion) * Double(self.count)).rounded()))
-        return start ..< end
+        let start = lowerBound.advanced(by: Int((portion * Double(count)).rounded()))
+        let end = lowerBound.advanced(by: Int(((1 - portion) * Double(count)).rounded()))
+        return start..<end
     }
 }
 
 extension ArraySlice {
-    /// Select the first of every `stride` items from `samples`
-    func decimated(by stride: Int) -> Array<Iterator.Element> {
-        let selectedSamples = Swift.stride(from: self.startIndex, to: self.endIndex, by: stride)
-        return selectedSamples.map({self[$0]})
+    /// Selects the first of every `step` items.
+    /// - parameter step: the decimation factor.
+    /// - returns: the decimated array.
+    func decimated(by step: Int) -> [Element] {
+        guard step > 0 else { return [] }
+        return Swift.stride(from: startIndex, to: endIndex, by: step).map { self[$0] }
     }
 }

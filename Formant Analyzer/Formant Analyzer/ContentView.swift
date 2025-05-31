@@ -9,20 +9,20 @@
 import SwiftUI
 import ActionOver
 
+/// The main SwiftUI view for the formant analyzer app, displaying audio input controls and plots.
 struct ContentView: View {
-    
     @EnvironmentObject var viewModel: FormantAnalyzerViewModel
     @State private var showingActionSheet = false
     
     var body: some View {
-        
         ZStack {
             Color(red: 255.0 / 255, green: 254.0 / 255, blue: 249.0 / 255)
                 .edgesIgnoringSafeArea(.all)
             
             VStack {
+                // Input controls
                 HStack {
-                    if (viewModel.speechIsFromMicrophone) {
+                    if viewModel.speechIsFromMicrophone {
                         Image(viewModel.indicatorImage)
                     } else {
                         Image(viewModel.indicatorImage).hidden()
@@ -36,96 +36,85 @@ struct ContentView: View {
                     }, label: {
                         Text(viewModel.inputSelector)
                     })
-                        .actionOver(
-                                presented: $showingActionSheet,
-                                title: "Audio Source",
-                                message: "Select the audio source to analyze",
-                                buttons: actionSheetButtons(),
-                                ipadAndMacConfiguration: ipadMacConfig,
-                                normalButtonColor: UIColor(red: 255.0 / 255, green: 103.0 / 255, blue: 97.0 / 255, alpha: 1)
-                        )
+                    .actionOver(
+                        presented: $showingActionSheet,
+                        title: "Audio source",
+                        message: "Select the audio source to analyze",
+                        buttons: actionSheetButtons(),
+                        ipadAndMacConfiguration: ipadMacConfig,
+                        normalButtonColor: UIColor(red: 255.0 / 255, green: 103.0 / 255, blue: 97.0 / 255, alpha: 1)
+                    )
                 }
                 
-                Picker("Numbers", selection: $viewModel.displayIdentifier) {
-                    
+                // Plot selector
+                Picker("Plots", selection: $viewModel.displayIdentifier) {
                     Text("Sig").tag(GraphingMode.signal)
                     Text("LPC").tag(GraphingMode.lpc)
                     Text("H(ω)").tag(GraphingMode.frequencyResponse)
                     Text("Frmnt").tag(GraphingMode.formant)
-                    
                 }
-                .pickerStyle(SegmentedPickerStyle())
+                .pickerStyle(.segmented)
                 
-                ZStack {
-                    Spacer()
-                    
-                    if viewModel.displayIdentifier == .signal && viewModel.speechAnalyzer.samples.count > 0{
-                        VStack(spacing: 0) {
-                            GeometryReader { geometry in
-                                drawSignalPlot(plottableValues: self.viewModel.speechAnalyzer.downsampleToSamples(400).map{max(0,Double($0))},
-                                               size: geometry.size,
-                                               strongPartFirst: self.viewModel.speechAnalyzer.strongPart.first!,
-                                               strongPartCount: self.viewModel.speechAnalyzer.strongPart.count,
-                                               vowelPartFirst: self.viewModel.speechAnalyzer.vowelPart.first!,
-                                               vowelPartCount: self.viewModel.speechAnalyzer.vowelPart.count,
-                                               samplesCount: self.viewModel.speechAnalyzer.samples.count
-                                )
-                            }
-                            GeometryReader { geometry in
-                                drawSignalPlot(plottableValues: self.viewModel.speechAnalyzer.downsampleToSamples(400).map{max(0,Double($0))}.map({-$0}),
-                                               size: geometry.size,
-                                               strongPartFirst: self.viewModel.speechAnalyzer.strongPart.first!,
-                                               strongPartCount: self.viewModel.speechAnalyzer.strongPart.count,
-                                               vowelPartFirst: self.viewModel.speechAnalyzer.vowelPart.first!,
-                                               vowelPartCount: self.viewModel.speechAnalyzer.vowelPart.count,
-                                               samplesCount: self.viewModel.speechAnalyzer.samples.count
-                                )
-                            }
+                // Plot display
+                GeometryReader { geometry in
+                    ZStack {
+                        if viewModel.displayIdentifier == .signal && viewModel.speechAnalyzer.samples.count > 0 {
+                            drawSignalPlot(
+                                plottableValues: viewModel.speechAnalyzer.downsampleToSamples(400).map { Double($0) },
+                                strongPartFirst: viewModel.speechAnalyzer.strongPart.first ?? 0,
+                                strongPartCount: viewModel.speechAnalyzer.strongPart.count,
+                                vowelPartFirst: viewModel.speechAnalyzer.vowelPart.first ?? 0,
+                                vowelPartCount: viewModel.speechAnalyzer.vowelPart.count,
+                                samplesCount: viewModel.speechAnalyzer.samples.count
+                            )
+                            .frame(width: geometry.size.width, height: geometry.size.height)   // ⬅️ Force fill
                         }
-                    }
-                    
-                    if viewModel.displayIdentifier == .lpc {
-                        GeometryReader { geometry in
-                            drawLPCPlot(lpcCoefficients: self.viewModel.speechAnalyzer.estimatedLpcCoefficients,
-                                        size: geometry.size)
-                        }
-                    }
-                    
-                    if viewModel.displayIdentifier == .frequencyResponse {
-                        GeometryReader { geometry in
-                            drawHwPlot(synthesizedFrequencyResponse: self.viewModel.speechAnalyzer.synthesizedFrequencyResponse,
-                                        size: geometry.size)
-                        }
-                    }
-                    
-                    if viewModel.displayIdentifier == .formant {
-                        drawFormantPlot(plottingF1: self.viewModel.plottingF1,
-                        plottingF2: self.viewModel.plottingF2,
-                        plottingF3: self.viewModel.plottingF3)
-                    }
 
+                        if viewModel.displayIdentifier == .lpc {
+                            drawLPCPlot(
+                                lpcCoefficients: viewModel.speechAnalyzer.estimatedLpcCoefficients,
+                                size: geometry.size
+                            )
+                        }
+                        
+                        if viewModel.displayIdentifier == .frequencyResponse {
+                            drawHwPlot(
+                                synthesizedFrequencyResponse: viewModel.speechAnalyzer.synthesizedFrequencyResponse,
+                                size: geometry.size
+                            )
+                        }
+                        
+                        if viewModel.displayIdentifier == .formant {
+                            drawFormantPlot(
+                                plottingF1: viewModel.plottingF1,
+                                plottingF2: viewModel.plottingF2,
+                                plottingF3: viewModel.plottingF3
+                            )
+                        }
+                    }
                 }
                 
+                // Formant labels and help button
                 ZStack {
-                    
                     Button(action: {
-                        self.viewModel.showHelp()
+                        viewModel.showHelp()
                     }) {
                         Text("?")
                     }
+                    .frame(maxWidth: .infinity, alignment: .leading)
                     
-                    if viewModel.firstFormantLabel != nil
-                        && viewModel.secondFormantLabel != nil
-                        && viewModel.thirdFormantLabel != nil
-                        && viewModel.fourthFormantLabel != nil{
+                    if let f1 = viewModel.firstFormantLabel,
+                       let f2 = viewModel.secondFormantLabel,
+                       let f3 = viewModel.thirdFormantLabel,
+                       let f4 = viewModel.fourthFormantLabel {
                         HStack {
                             VStack(alignment: .leading) {
                                 Text("Formant 1:")
                                 Text("Formant 3:")
                             }
                             VStack(alignment: .trailing) {
-                                Text(viewModel.firstFormantLabel!)
-                                Text(viewModel.thirdFormantLabel!)
+                                Text(f1)
+                                Text(f3)
                             }
                             
                             Spacer()
@@ -135,27 +124,19 @@ struct ContentView: View {
                                 Text("Formant 4:")
                             }
                             VStack(alignment: .trailing) {
-                                Text(viewModel.secondFormantLabel!)
-                                Text(viewModel.fourthFormantLabel!)
+                                Text(f2)
+                                Text(f4)
                             }
                         }
                     }
                 }
-                .frame(height:50)
-
-                
+                .frame(height: 50)
             }
             .padding()
-
-            
-            
-            
         }
     }
     
-    private var ipadMacConfig = {
-        IpadAndMacConfiguration(anchor: nil, arrowEdge: nil)
-    }()
+    private var ipadMacConfig = IpadAndMacConfiguration(anchor: nil, arrowEdge: nil)
     
     private func actionSheetButtons() -> [ActionOverButton] {
         return [
@@ -176,14 +157,13 @@ struct ContentView: View {
                 type: .cancel,
                 action: nil
             )],
-        ].reduce([], +)
+        ].flatMap { $0 }
     }
-
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        .environmentObject(FormantAnalyzerViewModel())
+            .environmentObject(FormantAnalyzerViewModel())
     }
 }
