@@ -22,14 +22,14 @@ struct MonophthongAnalysis {
     
     
     // MARK: Analysis inputs
-    let formants: [FormantAnalysis.Formant]
+    let formants: [SpeechAnalysis.Resonance]
     let configuration: Configuration
 
     // MARK: Analysis outputs
     //let classification: Classification
     let classification: String /// IPA
     
-    init(formants: [FormantAnalysis.Formant], configuration: Configuration) {
+    init(formants: [SpeechAnalysis.Resonance], configuration: Configuration) {
         self.formants = formants
         self.configuration = configuration
         // MOCK ANALYSIS

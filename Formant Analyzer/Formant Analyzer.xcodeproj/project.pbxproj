@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D97F4E2A2E82121F004B8741 /* ComplexModule in Frameworks */ = {isa = PBXBuildFile; productRef = D97F4E292E82121F004B8741 /* ComplexModule */; };
+		D97F4E2C2E82121F004B8741 /* Numerics in Frameworks */ = {isa = PBXBuildFile; productRef = D97F4E2B2E82121F004B8741 /* Numerics */; };
+		D97F4E2E2E82121F004B8741 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = D97F4E2D2E82121F004B8741 /* RealModule */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		D9B2580C2E77B6D40048AA84 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +58,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D97F4E2C2E82121F004B8741 /* Numerics in Frameworks */,
+				D97F4E2A2E82121F004B8741 /* ComplexModule in Frameworks */,
+				D97F4E2E2E82121F004B8741 /* RealModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +121,9 @@
 			);
 			name = "Formant Analyzer";
 			packageProductDependencies = (
+				D97F4E292E82121F004B8741 /* ComplexModule */,
+				D97F4E2B2E82121F004B8741 /* Numerics */,
+				D97F4E2D2E82121F004B8741 /* RealModule */,
 			);
 			productName = "Formant Analyzer";
 			productReference = D9B257FD2E77B6D30048AA84 /* Formant Analyzer.app */;
@@ -195,6 +207,9 @@
 			);
 			mainGroup = D9B257F42E77B6D30048AA84;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				D97F4E282E82121F004B8741 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D9B257FE2E77B6D30048AA84 /* Products */;
 			projectDirPath = "";
@@ -607,6 +622,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D97F4E282E82121F004B8741 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D97F4E292E82121F004B8741 /* ComplexModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D97F4E282E82121F004B8741 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = ComplexModule;
+		};
+		D97F4E2B2E82121F004B8741 /* Numerics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D97F4E282E82121F004B8741 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = Numerics;
+		};
+		D97F4E2D2E82121F004B8741 /* RealModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D97F4E282E82121F004B8741 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = RealModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D9B257F52E77B6D30048AA84 /* Project object */;
 }
