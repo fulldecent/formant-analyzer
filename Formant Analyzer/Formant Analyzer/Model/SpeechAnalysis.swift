@@ -18,8 +18,9 @@ struct SpeechAnalysis {
         let framingTrimFactor: Double
         let cosineWindowAlpha: Double
         let lpcModelOrder: Int
-// TODO: MELS STRIDE
-        let frequencyResponseInputsHz: [Double] = Array<Double>(stride(from: 0, to: 5000, by: 50))
+        
+        // About 20 Hz to 5100 Hz
+        let frequencyResponseInputsHz = Array<Double>(stride(from: 30, to: 2400, by: 24)).map(melToHz)
         let minFormantSeparationMel: Double = 50.0
         let voicedSampleDuration: Double = 1.5
 
@@ -42,7 +43,10 @@ struct SpeechAnalysis {
             String(format: "%.2f Hz / %.2f Q", frequency, q)
         }
     }
-    struct ChunkPower { let indicies: ClosedRange<Int>; let rmsPower: Double }
+    struct ChunkPower {
+        let indicies: ClosedRange<Int>
+        let rmsPower: Double
+    }
     
     // MARK: Analysis inputs
     let originalSamples: [Double]
