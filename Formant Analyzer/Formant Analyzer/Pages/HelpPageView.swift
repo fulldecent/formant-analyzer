@@ -12,16 +12,26 @@ struct HelpPageView: View {
     }
 }
 
-struct WebView: UIViewRepresentable {
-    func makeUIView(context: Context) -> WKWebView {
+#if os(macOS)
+typealias PlatformViewRepresentable = NSViewRepresentable
+#else
+typealias PlatformViewRepresentable = UIViewRepresentable
+#endif
+
+struct WebView: PlatformViewRepresentable {
+    #if os(macOS)
+    func makeNSView(context: Context) -> WKWebView { makeView() }
+    func updateNSView(_ view: WKWebView, context: Context) {}
+    #else
+    func makeUIView(context: Context) -> WKWebView { makeView() }
+    func updateUIView(_ view: WKWebView, context: Context) {}
+    #endif
+    
+    private func makeView() -> WKWebView {
         let htmlURL = Bundle.main.url(forResource: "help", withExtension: "html")!
         let webView = WKWebView()
         webView.loadFileURL(htmlURL, allowingReadAccessTo: htmlURL)
         return webView
-    }
-    
-    func updateUIView(_ uiView: WKWebView, context: Context) {
-        // No-op: the HTML will relayout itself and respond to color scheme changes
     }
 }
 
