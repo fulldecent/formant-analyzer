@@ -36,7 +36,7 @@ struct HillenbrandBenchmark {
     @Test func checkFormants() {
         hillenbrandData[..<10].forEach { data in
             let wavFile = loadTestWavFile(data.filename)
-            let analysis = SpeechAnalysis(samples: wavFile.samples, sampleRate: wavFile.sampleRate)
+            let analysis = FormantAnalysis(samples: wavFile.samples, sampleRate: wavFile.sampleRate)
             print(data.filename)
             print(analysis.formants)
             #expect(analysis.formants.count > 0)

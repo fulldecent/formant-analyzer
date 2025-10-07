@@ -2,7 +2,6 @@
 // (c) William Entriken
 // See LICENSE
 
-import Foundation
 import Numerics
 import Accelerate
 

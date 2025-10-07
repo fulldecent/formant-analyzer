@@ -1,4 +1,4 @@
-// SpeechAnalysis.swift
+// Formant Analyzer
 // (c) William Entriken
 // See LICENSE
 
@@ -8,7 +8,7 @@ import AVFoundation
 import Accelerate
 
 /// The completed analysis from a speech signals to extract formants and related properties.
-struct SpeechAnalysis {
+struct FormantAnalysis {
     // They are included here so the file is complete.
     struct Configuration {
         let resampleRate: Double
@@ -41,6 +41,10 @@ struct SpeechAnalysis {
         let q: Double
         var description: String {
             String(format: "%.2f Hz / %.2f Q", frequency, q)
+        }
+        /// Bandwidth in Hz (full width half maximum); but really this FWHM should only be in log scale (Mels)
+        var bandwidth: Double {
+            frequency / q
         }
     }
     struct ChunkPower {
@@ -133,11 +137,11 @@ struct SpeechAnalysis {
         formantsVoicedSamples = []
     }
     
-    static let empty: SpeechAnalysis = .init()
+    static let empty: FormantAnalysis = .init()
 }
 
 // MARK: - Standalone DSP Functions
-extension SpeechAnalysis {
+extension FormantAnalysis {
     /// Do a low quality 32-bit downsample, there is no available library for 64-bit downsample
     static func resample(samples: [Double], sampleRate: Double, toSampleRate newSampleRate: Double) -> [Double] {
         guard !samples.isEmpty, sampleRate > 0, newSampleRate > 0 else { return [] }
