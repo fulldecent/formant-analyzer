@@ -1,9 +1,6 @@
-//
-//  MonophthongAnalysis.swift
-//  Formant Analyzer
-//
-//  Created by William Entriken on 2025-09-14.
-//
+// Formant Analyzer
+// (c) William Entriken
+// See LICENSE
 
 import Foundation
 // import Numerics
