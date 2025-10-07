@@ -366,11 +366,6 @@ struct VoronoiView_Previews: PreviewProvider {
     // MARK: - Preview
     
     static var previews: some View {
-        let f1HzRange = vowels.map( \.f1 ).min()!...vowels.map( \.f1 ).max()!
-        let f2HzRange = vowels.map( \.f2 ).min()!...vowels.map( \.f2 ).max()!
-        let f1MelRange = frequencyToMel(f1HzRange.lowerBound)...frequencyToMel(f1HzRange.upperBound)
-        let f2MelRange = frequencyToMel(f2HzRange.lowerBound)...frequencyToMel(f2HzRange.upperBound)
-        
         // Normalize
         let normalizer = VowelNormalizer(
             f1HzRange: 150...1200,

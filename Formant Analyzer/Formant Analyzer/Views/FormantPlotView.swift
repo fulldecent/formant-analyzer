@@ -127,6 +127,7 @@ struct FormantPlotView: View {
                                 
                                 Ellipse()
                                     .fill(Color.black)
+                                    .opacity(0.7)
                                     .frame(
                                         width: max(geometry.size.width * widthFraction, minOvalSize),
                                         height: max(geometry.size.height * heightFraction, minOvalSize)
@@ -202,7 +203,7 @@ fileprivate struct XAxisView2: View {
 fileprivate struct YAxisView2: View {
     var body: some View {
         VStack(spacing: 0) {
-            Text("Close")
+            Text("Closed")
                 .rotated()
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .top)
             Text("<-- Formant 1")
