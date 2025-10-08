@@ -10,7 +10,7 @@ import SwiftUI
 
 @MainActor
 class AppViewModel: ObservableObject {
-    // MARK: - App State
+    // MARK: - App state
     enum Status: Equatable {
         case idle
         case recording
@@ -33,10 +33,8 @@ class AppViewModel: ObservableObject {
     @Published var lpcModelOrder: Int = FormantAnalysis.Configuration.default.lpcModelOrder
         
     // MARK: - Private properties
-    private let audioEngine = AVAudioEngine()
-    private var recordedSamples: [Double] = []
-    private var recordedSampleRate: Double = 0
-    private var recordingTask: Task<Void, Never>?
+    private let audioRecorder = AudioRecorder()
+    private var recordedAudio: RecordedAudio?
     private let recordingDuration: TimeInterval = 1.5
     private var cancellables = Set<AnyCancellable>()
     
@@ -45,122 +43,69 @@ class AppViewModel: ObservableObject {
         setupBindings()
     }
     
-    // MARK: - Public Methods (Recording Control)
+    // MARK: - Public methods (recording control)
     
     func startRecording() {
         Task {
-            let granted = await requestMicrophonePermission()
+            let granted = await audioRecorder.requestPermission()
             guard granted else {
                 status = .error("Microphone permission denied")
                 return
             }
             
-            beginRecording()
+            do {
+                status = .recording
+                
+                try await audioRecorder.startRecording(duration: recordingDuration) { [weak self] audio in
+                    Task { @MainActor in
+                        self?.handleRecordingComplete(audio)
+                    }
+                }
+            } catch {
+                status = .error("Failed to start recording: \(error.localizedDescription)")
+            }
         }
     }
     
-    nonisolated func stopRecording() {
-        Task { @MainActor in
-            recordingTask?.cancel()
-            recordingTask = nil
-            audioEngine.stop()
-            audioEngine.inputNode.removeTap(onBus: 0)
-            
-            status = .processing
-            await processRecording()
-        }
+    func stopRecording() async {
+        let audio = await audioRecorder.stopRecording()
+        handleRecordingComplete(audio)
     }
     
     func reset() {
         status = .idle
         formantAnalysis = .empty
-        recordedSamples = []
-        recordedSampleRate = 0
-    }
-    
-    // MARK: - Private methods (permissions)
-    
-    /// Request microphone permission using modern AVAudioApplication API (iOS 17+, macOS 14+)
-    private func requestMicrophonePermission() async -> Bool {
-        let audioApp = AVAudioApplication.shared
-        
-        switch audioApp.recordPermission {
-        case .granted:
-            return true
-        case .undetermined:
-            return await requestMicrophonePermission()
-        case .denied:
-            return false
-        @unknown default:
-            return false
-        }
+        recordedAudio = nil
+        audioRecorder.reset()
     }
     
     // MARK: - Private methods (recording)
     
-    private func beginRecording() {
-        do {
-            // Configure audio session (iOS/iPadOS only)
-            #if !os(macOS)
-            let audioSession = AVAudioSession.sharedInstance()
-            try audioSession.setCategory(.playAndRecord, mode: .measurement, options: [])
-            try audioSession.setActive(true)
-            #endif
-            
-            // Reset recording state
-            recordedSamples = []
-            let inputNode = audioEngine.inputNode
-            let inputFormat = inputNode.outputFormat(forBus: 0)
-            recordedSampleRate = inputFormat.sampleRate
-            
-            // Install tap to capture audio buffers
-            inputNode.installTap(onBus: 0, bufferSize: 4096, format: inputFormat) { [weak self] buffer, _ in
-                Task { @MainActor in
-                    self?.appendBuffer(buffer)
-                }
-            }
-            
-            // Start the audio engine
-            audioEngine.prepare()
-            try audioEngine.start()
-            status = .recording
-            
-            // Schedule automatic stop using Swift Concurrency
-            recordingTask = Task {
-                try? await Task.sleep(for: .seconds(recordingDuration))
-                if !Task.isCancelled {
-                    stopRecording()
-                }
-            }
-            
-        } catch {
-            let errorMessage = "Failed to start recording: \(error.localizedDescription)"
-            status = .error(errorMessage)
-            print(errorMessage)
-        }
-    }
-    
-    private func appendBuffer(_ buffer: AVAudioPCMBuffer) {
-        guard let channelData = buffer.floatChannelData else { return }
-        let channelDataPointer = channelData.pointee
-        let frameLength = Int(buffer.frameLength)
+    private func handleRecordingComplete(_ audio: RecordedAudio) {
+        recordedAudio = audio
         
-        // Convert Float32 samples to Double and append
-        for i in 0..<frameLength {
-            recordedSamples.append(Double(channelDataPointer[i]))
-        }
-    }
-    
-    // MARK: - Private Methods (Analysis Pipeline)
-    
-    private func processRecording() async {
-        guard !recordedSamples.isEmpty else {
+        guard !audio.isEmpty else {
             status = .error("No audio data recorded")
             return
         }
         
-        guard recordedSampleRate > 0 else {
-            status = .error("Invalid sample rate")
+        status = .processing
+        
+        Task {
+            await processRecording()
+        }
+    }
+    
+    // MARK: - Private methods (analysis pipeline)
+    
+    private func processRecording() async {
+        guard let audio = recordedAudio else {
+            status = .error("No audio data available")
+            return
+        }
+        
+        guard !audio.isEmpty else {
+            status = .error("No audio data recorded")
             return
         }
         
@@ -169,7 +114,7 @@ class AppViewModel: ObservableObject {
     
     /// Re-runs the formant analysis with current configuration and recorded samples.
     private func rerunAnalysis() async {
-        guard !recordedSamples.isEmpty, recordedSampleRate > 0 else {
+        guard let audio = recordedAudio, !audio.isEmpty else {
             formantAnalysis = .empty
             return
         }
@@ -185,8 +130,8 @@ class AppViewModel: ObservableObject {
         )
         
         // Capture values for background processing
-        let samples = recordedSamples
-        let sampleRate = recordedSampleRate
+        let samples = audio.samples
+        let sampleRate = audio.sampleRate
         
         // Run analysis on a background task
         let newAnalysis = await Task.detached(priority: .userInitiated) {
@@ -216,11 +161,15 @@ class AppViewModel: ObservableObject {
         
         Publishers.MergeMany(configurationPublishers)
             .debounce(for: .milliseconds(200), scheduler: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] _ in
-                Task { @MainActor in
-                    // Only re-run if we have recorded samples to analyze
-                    if self?.recordedSamples.isEmpty == false {
-                        await self?.rerunAnalysis()
+                // Defer to next run loop to avoid "publishing changes from within view updates"
+                DispatchQueue.main.async {
+                    Task { @MainActor in
+                        // Only re-run if we have recorded audio to analyze
+                        if self?.recordedAudio?.isEmpty == false {
+                            await self?.rerunAnalysis()
+                        }
                     }
                 }
             }

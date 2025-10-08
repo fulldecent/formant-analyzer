@@ -51,17 +51,13 @@ struct MainView: View {
     // The toolbar has been updated to be fully state-aware.
     private var toolbar: some View {
         HStack {
-            // This button now correctly handles all states from the AppViewModel.
             Button {
                 // The ACTION changes based on the current status.
                 switch viewModel.status {
                 case .idle, .ready, .error:
                     // If idle, ready, or after an error, start a new recording.
                     viewModel.startRecording()
-                case .recording:
-                    // If currently recording, stop it.
-                    viewModel.stopRecording()
-                case .processing:
+                case .recording, .processing:
                     // Do nothing while processing. The button is disabled.
                     break
                 }

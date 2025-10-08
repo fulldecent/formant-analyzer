@@ -8,7 +8,7 @@ import AVFoundation
 
 struct DetailPageView: View {
     @EnvironmentObject var viewModel: AppViewModel
-    @StateObject private var audioPlayer = AudioPlayer()
+    @StateObject private var audioPlayer = AudioPlayer2()
 
     var body: some View {
         ScrollView {
@@ -25,9 +25,12 @@ struct DetailPageView: View {
             .padding(20)
         }
         .navigationTitle("Analysis details")
-        .navigationBarTitleDisplayMode(.inline)
-        .onAppear(perform: audioPlayer.setupAudioSession)
-        .onDisappear(perform: audioPlayer.stop)
+        .task {
+            audioPlayer.setupAudioSession()
+        }
+        .onDisappear {
+            audioPlayer.stop()
+        }
     }
 
     // MARK: - Pipeline Sections
@@ -115,7 +118,7 @@ struct DetailPageView: View {
             .pickerStyle(.segmented)
             
             Picker("Power threshold", selection: $viewModel.framingPowerThreshold) {
-                ForEach([0.01, 0.05, 0.1, 0.2], id: \.self) { threshold in
+                ForEach([0.03, 0.08, 0.15, 0.25], id: \.self) { threshold in
                     Text("\(Int(threshold * 100))%").tag(threshold)
                 }
             }
@@ -163,7 +166,7 @@ struct DetailPageView: View {
             // --- Configuration ---
             Picker("Trim factor", selection: $viewModel.framingTrimFactor) {
                 ForEach([0.0, 0.05, 0.1, 0.15], id: \.self) { factor in
-                    Text("\(Int(factor * 200))%").tag(factor) // factor is from one side, so UI shows total
+                    Text("\(Int(factor * 200))%").tag(factor) // Factor is from one side, so UI shows total
                 }
             }
             .pickerStyle(.segmented)
@@ -332,7 +335,7 @@ private struct KeyValueRow: View {
 }
 
 private struct PlayableWaveformView: View {
-    @ObservedObject var audioPlayer: AudioPlayer
+    @ObservedObject var audioPlayer: AudioPlayer2
     let samples: [Double]
     let sampleRate: Double
     let color: Color
@@ -354,7 +357,7 @@ private struct PlayableWaveformView: View {
             
             if samples.isEmpty {
                  RoundedRectangle(cornerRadius: 8)
-                    .fill(Color(.systemGray6))
+                    .fill(Color(.lightGray))
                     .frame(height: 80)
             } else {
                 Chart(Array(samples.enumerated()), id: \.offset) { index, sample in
@@ -370,42 +373,6 @@ private struct PlayableWaveformView: View {
             }
         }
         .padding(.top, 4)
-    }
-}
-
-private struct FrequencyResponseChart: View {
-    let signalResponse: [Float]
-    let lpcResponse: [Float]
-    let frequencies: [Double]
-    
-    var body: some View {
-        let signalSeries = zip(frequencies, signalResponse).map { freq, resp in (freq, resp) }
-        let lpcSeries = zip(frequencies, lpcResponse).map { freq, resp in (freq, resp) }
-        
-        Chart {
-            ForEach(signalSeries, id: \.0) { freq, response in
-                let melToHzValue = FormantAnalysis.melToHz(freq)
-                LineMark(
-                    x: .value("Frequency", melToHzValue),
-                    y: .value("Response", response)
-                )
-                .foregroundStyle(.blue.opacity(0.8))
-            }
-            
-            ForEach(lpcSeries, id: \.0) { freq, response in
-                let melToHzValue = FormantAnalysis.melToHz(freq)
-                LineMark(
-                    x: .value("Frequency", melToHzValue),
-                    y: .value("Response", response)
-                )
-                .foregroundStyle(.orange)
-                .lineStyle(StrokeStyle(lineWidth: 2.5))
-            }
-        }
-        .chartXScale(type: .log)
-        .chartXAxisLabel("Frequency (Hz)")
-        .chartYAxisLabel("Magnitude (dB)")
-        .frame(height: 250)
     }
 }
 
@@ -447,77 +414,25 @@ private struct VowelSpaceChart: View {
 
 // MARK: - Audio player
 
-class AudioPlayer: ObservableObject {
-    @Published var isPlaying = false
-    private var audioEngine: AVAudioEngine?
-    private var playerNode: AVAudioPlayerNode?
-    
-    func setupAudioSession() {
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, options: .defaultToSpeaker)
-        } catch {
-            print("AudioPlayer error: Could not set up audio session: \(error.localizedDescription)")
-        }
-    }
-    
-    func play(samples: [Double], sampleRate: Double) {
-        guard !samples.isEmpty else { return }
-        let samples = samples.map(Float.init)
-        
-        stop() // Ensure any previous playback is stopped and cleaned up.
-        
-        let engine = AVAudioEngine()
-        let player = AVAudioPlayerNode()
-        
-        let format = AVAudioFormat(commonFormat: .pcmFormatFloat32, sampleRate: sampleRate, channels: 1, interleaved: false)!
-        guard let buffer = AVAudioPCMBuffer(pcmFormat: format, frameCapacity: AVAudioFrameCount(samples.count)) else { return }
-        
-        buffer.frameLength = buffer.frameCapacity
-        buffer.floatChannelData?.pointee.initialize(from: samples, count: samples.count)
-
-        engine.attach(player)
-        engine.connect(player, to: engine.mainMixerNode, format: format)
-        
-        do {
-            try engine.start()
-            player.scheduleBuffer(buffer, at: nil, options: .interrupts) { [weak self] in
-                // This callback is on a background thread.
-                DispatchQueue.main.async {
-                    self?.stop() // Stop and cleanup when buffer is finished.
-                }
-            }
-            player.play()
-            
-            self.audioEngine = engine
-            self.playerNode = player
-            self.isPlaying = true
-            
-        } catch {
-            print("AudioPlayer error: Could not start engine: \(error.localizedDescription)")
-            stop()
-        }
-    }
-    
-    func stop() {
-        playerNode?.stop()
-        audioEngine?.stop()
-        
-        if let player = playerNode {
-            audioEngine?.detach(player)
-        }
-        
-        playerNode = nil
-        audioEngine = nil
-        
-        if isPlaying { // Avoids unnecessary UI updates
-            isPlaying = false
-        }
+// Weak reference box to avoid retain cycles
+private final class WeakBox<T: AnyObject>: @unchecked Sendable {
+    weak var value: T?
+    init(_ value: T) {
+        self.value = value
     }
 }
 
-// MARK: - View Modifiers & Styles
+// MARK: - View modifiers & styles
+
 private extension View {
-    func h1Style() -> some View { self.font(.system(.title, design: .rounded, weight: .bold)) }
-    func bodyStyle() -> some View { self.font(.system(.body, design: .rounded)).foregroundStyle(.secondary).multilineTextAlignment(.center) }
+    func h1Style() -> some View {
+        self.font(.system(.title, design: .rounded, weight: .bold))
+    }
+    
+    func bodyStyle() -> some View {
+        self.font(.system(.body, design: .rounded))
+            .foregroundStyle(.secondary)
+            .multilineTextAlignment(.center)
+    }
 }
 
