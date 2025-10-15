@@ -1,13 +1,10 @@
-//
-//  Formant_AnalyzerUITestsLaunchTests.swift
-//  Formant AnalyzerUITests
-//
-//  Created by William Entriken on 2025-09-14.
-//
+// Vowel Practice
+// (c) William Entriken
+// See LICENSE
 
 import XCTest
 
-final class Formant_AnalyzerUITestsLaunchTests: XCTestCase {
+final class Vowel_PracticeUITestsLaunchTests: XCTestCase {
 
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
         true

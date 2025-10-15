@@ -1,13 +1,10 @@
-//
-//  Formant_AnalyzerTests.swift
-//  Formant AnalyzerTests
-//
-//  Created by William Entriken on 2025-09-14.
-//
+// Vowel Practice
+// (c) William Entriken
+// See LICENSE
 
 import Testing
 import Foundation
-@testable import Formant_Analyzer
+@testable import Vowel_Practice
 import Accelerate
 import AVFoundation
 

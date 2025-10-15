@@ -1,13 +1,10 @@
-//
-//  Formant_AnalyzerUITests.swift
-//  Formant AnalyzerUITests
-//
-//  Created by William Entriken on 2025-09-14.
-//
+// Vowel Practice
+// (c) William Entriken
+// See LICENSE
 
 import XCTest
 
-final class Formant_AnalyzerUITests: XCTestCase {
+final class Vowel_PracticeUITests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

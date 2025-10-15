@@ -1,9 +1,6 @@
-//
-//  Hillenbrand1995Access.swift
-//  Formant Analyzer
-//
-//  Created by William Entriken on 2025-09-15.
-//
+// Vowel Practice
+// (c) William Entriken
+// See LICENSE
 
 import Foundation
 

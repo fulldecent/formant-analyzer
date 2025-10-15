@@ -1,12 +1,12 @@
-# Speech Practice: therapeutic guide
+# Vowel Practice: therapeutic guide
 
 ## Introduction to vowel-based speech therapy
 
-Speech Practice helps you improve vowel pronunciation for  speech therapy, accent training, and English as a Second Language (ESL)  learning. The app visualizes formant frequencies/resonances of your  vocal tract that define vowel sounds—allowing you to see and refine your articulation in real time.
+Vowel Practice helps you improve vowel pronunciation for  speech therapy, accent training, and English as a Second Language (ESL)  learning. The app visualizes formant frequencies/resonances of your  vocal tract that define vowel sounds—allowing you to see and refine your articulation in real time.
 
 ## Why monophthongs? The therapeutic foundation
 
-Speech Practice focuses exclusively on **monophthongs** (pure vowel sounds) rather than diphthongs (vowel glides). This choice  is based on established speech therapy and phonetics research:
+Vowel Practice focuses exclusively on **monophthongs** (pure vowel sounds) rather than diphthongs (vowel glides). This choice  is based on established speech therapy and phonetics research:
 
 ### Stable articulatory targets
 
@@ -39,7 +39,7 @@ The formant plot shows stable, distinct regions for each  monophthong. When you 
 
 ## The ten American English monophthongs
 
-Speech Practice uses the standard set of American English  monophthongs, based on the Hillenbrand et al. (1995) acoustic database.  Each vowel is labeled with:
+Vowel Practice uses the standard set of American English  monophthongs, based on the Hillenbrand et al. (1995) acoustic database.  Each vowel is labeled with:
 
 - **IPA symbol**: international phonetic alphabet notation (e.g., /i/, /æ/, /ɑ/)
 - **Wells keyword**: a standard reference word in small caps (e.g., fleece, trap, lot)
@@ -66,7 +66,7 @@ Speech Practice uses the standard set of American English  monophthongs, based o
 
 **Note on excluded vowels**: Pure /e/ and /o/  sounds do not exist as monophthongs in standard American English—they  are pronounced as diphthongs [eɪ] and [oʊ]. These are reserved for  advanced diphthong practice or for ESL learners whose native language  (Spanish, Italian, Japanese) includes these pure vowels.
 
-## Using the Speech Practice app
+## Using the Vowel Practice app
 
 ### Toolbar controls
 
@@ -170,7 +170,7 @@ IPA symbols (e.g., /i/, /æ/, /u/) appear on the chart at  their ideal formant p
 
 ### Speech therapy
 
-For individuals with dysarthria, apraxia, or articulation disorders, Speech Practice provides:
+For individuals with dysarthria, apraxia, or articulation disorders, Vowel Practice provides:
 
 - Visual biofeedback for vowel production
 - Clear targets for motor planning
@@ -194,7 +194,7 @@ For English language learners, especially from languages with different vowel sy
 
 ## Getting started
 
-1. Open Speech Practice and select "Microphone" as the audio source
+1. Open Vowel Practice and select "Microphone" as the audio source
 2. Choose formant mode (waveform icon) to see the vowel chart
 3. Start with a corner vowel: say "eee" for /i/ (fleece) and hold it
 4. Observe where your black oval appears on the chart
@@ -204,7 +204,7 @@ For English language learners, especially from languages with different vowel sy
 
 ## Technical notes
 
-Speech Practice uses formant frequency analysis based on established acoustic phonetics research:
+Vowel Practice uses formant frequency analysis based on established acoustic phonetics research:
 
 - **Base formant values**: Hillenbrand, Getty, Clark, & Wheeler (1995)
 - **Wells lexical sets**: Wells (1982), *Accents of English*

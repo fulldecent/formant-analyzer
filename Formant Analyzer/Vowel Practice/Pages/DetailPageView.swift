@@ -1,4 +1,4 @@
-// Formant Analyzer
+// Vowel Practice
 // (c) William Entriken
 // See LICENSE
 

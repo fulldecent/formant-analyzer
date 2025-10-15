@@ -1,5 +1,5 @@
 # Exclude Hillenbrand 1995 data, you need to get it yourself
-Formant\ Analyzer/Formant\ AnalyzerTests/Hillenbrand\ 1995
+Hillenbrand\ 1995
 
 # FROM https://raw.githubusercontent.com/github/gitignore/refs/heads/main/Swift.gitignore
 

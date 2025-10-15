@@ -1,21 +1,34 @@
-## Accessing Hillenbrand 1995 data
+# Vowel Practice
 
-Test cases in this project reference the audio files and analysis of the Hillenbrand 1995 data set.
+[macOS app](https://apps.apple.com/us/app/vowel-practice/id799183655) / [iOS app](https://apps.apple.com/us/app/vowel-practice/id799183655)
 
-> Hillenbrand, James. Vowel Data Set. Western Michigan University, https://homepages.wmich.edu/~hillenbr/voweldata.html. Accessed 11 Sept. 2025.
+Practice all the popular vowels: A, E, I, O, U and more! This app helps you with speech therapy and accent reduction.
 
-This website is down but you can still access these files on the Wayback machine.
+<img width="1458" height="1468" alt="Image" src="https://github.com/user-attachments/assets/0da0e886-d6b3-4fdd-bc65-810382045125" />
+<img width="729" height="734" alt="Image" src="https://github.com/user-attachments/assets/60c17d6e-ce56-49f2-b0ee-26e09e6566a8" />
 
-To perform the unit tests with this data, place the files at:
+The main function of the app is you will speak individual vowel sounds (diphthongs) and the app will show you what we hear. And there is a configuration page to help get better results, this helps if you don't have professional recording gear.
 
-- Formant AnalyzerTests/Hillenbrand 1995
-  - biddata.dat
-  - iddata.dat
-  - vowdata.dat
-  - men
-    - m01ae.wav
-    - ...
-  - women
-    - ...
-  - kids
-    - ...
+## Test data
+
+The has built-in test cases which replicate the Hillenbrand 1995 data set. Although you will need to supply those audio files and data files your self. Instructions are in the test folder.
+
+## Research
+
+Here are citations and research that this app is based on.
+
+  * Speech Acoustics Made Easy http://web.archive.org/web/20120914101638/http://www.cochlear.com/files/assets/speech_acoustics_made_easy.pdf
+  * English vowel word reference http://www.fonetiks.org/engsou2am.html
+  * Chinese vowel diagram http://en.wikipedia.org/wiki/Chinese_vowel_diagram
+  * Wiki page http://en.wikipedia.org/wiki/Formant
+  * The National Center for Voice and Speech http://www.ncvs.org/ncvs/tutorials/voiceprod/tutorial/filter.html
+  * Linguistics 110 Berkeley http://linguistics.berkeley.edu/~kjohnson/ling110/Homework_assignments/HW7_PlotVowels/PlotYourVowels.pdf
+  * MATLAB Speech Signal Analysis http://www.phon.ucl.ac.uk/courses/spsci/matlab/lect10.html
+  * MATLAB Formant Tracker example http://www.mathworks.com/matlabcentral/fileexchange/8959-formant-tracker
+  * Formant Java example http://chronos.ece.miami.edu/~dasp/SeniorProject/Presentation/416Presentation.pdf
+  * Digital Bubble Bath - Don H. Johnson Great discussion on formant analysis and practical implementation http://www.clear.rice.edu/elec431/projects96/digitalbb/formants.html
+  * https://github.com/MLSpeech/DeepFormants
+  * https://2020.ieeeicassp.org/
+  * http://htk.eng.cam.ac.uk/
+  * https://github.com/jaekookang/p2fa_py3
+  * https://github.com/gre/zpeech

@@ -1,11 +1,11 @@
-// Formant Analyzer
+// Vowel Practice
 // (c) William Entriken
 // See LICENSE
 
 import SwiftUI
 
 @main
-struct Formant_AnalyzerApp: App {
+struct Vowel_PracticeApp: App {
     @StateObject private var viewModel = AppViewModel()
 
     var body: some Scene {
