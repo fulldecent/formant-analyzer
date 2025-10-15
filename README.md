@@ -1,43 +1,21 @@
-FORMANT PLOTTER
-------------------------
+# Vowel Practice
 
-Buy on the App Store: https://itunes.apple.com/us/app/formant-analyzer/id799183655?mt=8&uo=4&at=11l6hc&ct=fnd
+[macOS app](https://apps.apple.com/us/app/vowel-practice/id799183655) / [iOS app](https://apps.apple.com/us/app/vowel-practice/id799183655)
 
-This is an iOS project to analyze formants. The user speaks and the formant is plotted on the screen immediately. It is designed for speaking a single vowel syllable. It will try to isolate the vowel sound from any surrounding consonants if it can.
+Practice all the popular vowels: A, E, I, O, U and more! This app helps you with speech therapy and accent reduction.
 
-<img src="http://i.imgur.com/PnmTS53.png">
+<img width="1458" height="1468" alt="Image" src="https://github.com/user-attachments/assets/0da0e886-d6b3-4fdd-bc65-810382045125" />
+<img width="729" height="734" alt="Image" src="https://github.com/user-attachments/assets/60c17d6e-ce56-49f2-b0ee-26e09e6566a8" />
 
+The main function of the app is you will speak individual vowel sounds (diphthongs) and the app will show you what we hear. And there is a configuration page to help get better results, this helps if you don't have professional recording gear.
 
-Formant Research
-------------------------
+## Test data
 
-Other related tools and formant information
+The has built-in test cases which replicate the Hillenbrand 1995 data set. Although you will need to supply those audio files and data files your self. Instructions are in the test folder.
 
-  * Praat: http://www.fon.hum.uva.nl/praat/
-  * WaveSurfer: https://sourceforge.net/projects/wavesurfer/
-  * Perry R. Cook, "Identification of control parameters in an articulatory vocal tract model, with applications to the synthesis of singing", 1990, Ph.D Dissertation, CCRMA
-    https://ccrma.stanford.edu/~kglee/m220c/formant.html
+## Research
 
-````
-Vowel formant chart:
-
-vowel		F1	F2	F3
-ee	male	270	2290	3010
-	female	310	2790	3310
-	child	370	3200	3730
-e	male	530	1840	2480
-	female	610	2330	2990
-	child	690	2610	3570
-ae	male	660	1720	2410
-	female	850	2050	2850
-	child	1030	2320	3320
-ah	male	730	1090	2440
-	female	590	1220	2810
-	child	680	1370	3170
-oo	male	300	870	2240
-	female	370	950	2670
-	child	430	1170	3260
-````
+Here are citations and research that this app is based on.
 
   * Speech Acoustics Made Easy http://web.archive.org/web/20120914101638/http://www.cochlear.com/files/assets/speech_acoustics_made_easy.pdf
   * English vowel word reference http://www.fonetiks.org/engsou2am.html
@@ -54,22 +32,3 @@ oo	male	300	870	2240
   * http://htk.eng.cam.ac.uk/
   * https://github.com/jaekookang/p2fa_py3
   * https://github.com/gre/zpeech
-
-The Formant Plotter
-------------------------
-
-The program starts in green state. When the user starts talking (i.e. RMS goes above 0dBm for at least 0.1 seconds), the program goes into listening state and records the sound. When the user stops talking (i.e. RMS goes below 0dBm for at least 0.1 seconds), the program returns to ready state and draws graphs.
-
-Graph drawing is done as follows:
-The recorded sound is truncated to remove the first and last 10% of the data. Then perform a Fast Fourier Transform (FFT) with autocorrelation. The result is plotted linear from 0 - 4000 Hz on the X axis and from -60 to 0 dB log scale on the Y axis.
-
-The second graph is drawn as follows:
-An image is placed on the background for the chart (you create an image to start with) and two dots are plotted on the chart, representing the highest and lowest sample value from the recording. That's it.
-
-The correct algorithm which takes the FFT results which were plotted above and creates the vowel plot is discussed in Formant Research above.
-
-Some potential next steps include:
-* Use autocorrelation to increase trimming accuracy
-* Windowing on the truncated sound buffer so that edge samples have an attenuated effect
-* Root polishing. The code has been written but commented out (please see PlotView.m). If we can test and refine this part, we will have better estimates of roots of LPC polynomials, and formant frequencies. We may not want VERY accurate estimates of formant frequencies and may not need root polishing.
-* Elimination of weak roots (far away from unit circle). They do not produce a peak in H(w) and should be ignored. I hope that if we reduce order of LPC, we may not see such weak roots. This should be investigated after reduction of LPC filter order.
